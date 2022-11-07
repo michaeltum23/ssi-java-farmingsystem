@@ -28,10 +28,11 @@ public class UserImp implements UserController {
             ResultSet rs = stm.executeQuery(sql);
             System.out.println(users.getUsername());
             System.out.println(users.getPassword());
-            System.out.println(rs.next());
             if (rs.next()) {
                 System.out.println("Login Successfull");
                 JOptionPane.showMessageDialog(null, "Login Succesful");
+            }else{
+                System.out.println("what");
             }
         } catch (Exception ex) {
             System.out.println(ex);
