@@ -115,7 +115,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
        User user = new User();
        String username = txtUsername.getText();
-       String password = txtPassword.getPassword().toString();
+       String password = String.valueOf(txtPassword.getPassword());
        
        user.setUsername(username);
        user.setPassword(password);

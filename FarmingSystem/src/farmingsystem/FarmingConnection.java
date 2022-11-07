@@ -17,13 +17,15 @@ public class FarmingConnection {
     static String url = "jdbc:mysql://localhost:3306/farmingdb";
     static String username = "root";
     static String password = "password";
-    static PreparedStatement pst;
-    static ResultSet rs;
 
     public static Connection getConnection() throws Exception {
         if(con == null){
             Class.forName(driver);
             con = DriverManager.getConnection(url, username, password);
+            System.out.println("Connection Successful");
+        }
+        else{
+            System.out.println("No connection");
         }
         return con;
     }
