@@ -14,16 +14,7 @@ public class FarmingSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello");
-        System.out.println("World");
-        System.out.println("kevin");
-        System.out.println("Michael");
-        System.out.println("JomarADAS");
-        System.out.println("dave");
-        System.out.println("test");
-        System.out.println("mark");
-        System.out.println("testjomar");
-         System.out.println("testkevin");
+        
         
     }
     
