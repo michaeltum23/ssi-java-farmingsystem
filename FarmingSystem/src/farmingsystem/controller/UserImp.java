@@ -10,8 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,24 +22,17 @@ public class UserImp implements UserController {
     public void login(User users) {
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM tbl_user";
+            String sql = "SELECT * FROM tbl_user WHERE username='"
+                    + users.getUsername() + "'and password='" + users.getPassword() + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-            String username = "";
-            String password = "";
-            while (rs.next()) {
-                username = rs.getString("username");
-                password = rs.getString("password");
-                System.out.println(username);
-                System.out.println(password);
-                if (users.getUsername().equals(username) && users.getPassword().equals(password)) {
-                    System.out.println("Login Successful");
-                } else {
-                    System.out.println("Login Failed");
-                }
+            System.out.println(users.getUsername());
+            System.out.println(users.getPassword());
+            System.out.println(rs.next());
+            if (rs.next()) {
+                System.out.println("Login Successfull");
+                JOptionPane.showMessageDialog(null, "Login Succesful");
             }
-            con.close();
-
         } catch (Exception ex) {
             System.out.println(ex);
         }
