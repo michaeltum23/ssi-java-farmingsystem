@@ -43,7 +43,6 @@ public class UserImp implements UserController {
     public void register(User users) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String userId = users.getUserType()+users.getUsername();
             String sql = "INSERT INTO users("
                     + "username, "
                     + "password,"
