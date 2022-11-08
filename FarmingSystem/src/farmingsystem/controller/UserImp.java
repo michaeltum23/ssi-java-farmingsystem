@@ -7,6 +7,7 @@ package farmingsystem.controller;
 import farmingsystem.FarmingConnection;
 import farmingsystem.model.User;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -42,6 +43,7 @@ public class UserImp implements UserController {
     public void register(User users) {
         try{
             Connection con = FarmingConnection.getConnection();
+            String userId = users.getUserType()+users.getUsername();
             String sql = "INSERT INTO users("
                     + "username, "
                     + "password,"

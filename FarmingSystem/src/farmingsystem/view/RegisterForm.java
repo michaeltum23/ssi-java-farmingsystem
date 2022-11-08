@@ -279,13 +279,14 @@ public class RegisterForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         User user = new User();
         String password = String.valueOf(txtPassword.getText());
+        String userType = cmbRole.getSelectedItem().toString();
         rbnMale.setActionCommand("Male");
         rbnFemale.setActionCommand("Female");
         String gender = rbnGender.getSelection().getActionCommand().toString();
-        user.setUserId(txtUsername.getText()+password);
+        user.setUserId(userType+txtUsername.getText()+(int)(Math.random()*1000000));
         user.setPassword(password);
         user.setUsername(txtUsername.getText());
-        user.setUserType(cmbRole.getSelectedItem().toString());
+        user.setUserType(userType);
         user.setFirstName(txtFirstName.getText());
         user.setMiddleName(txtMiddleName.getText());
         user.setLastName(txtLastName.getText());
