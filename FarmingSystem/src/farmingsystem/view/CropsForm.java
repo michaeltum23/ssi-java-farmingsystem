@@ -205,7 +205,7 @@ public class CropsForm extends javax.swing.JFrame {
         
         CropsImpl cs = new CropsImpl();
         cs.addCrops(crop);
-        
+        Load();
         textCname.setText("");
         textCprice.setText("");
         textCqty.setText("");

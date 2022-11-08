@@ -65,7 +65,7 @@ public class CropsImpl implements CropsController{
         try {
           
             Connection con = FarmingConnection.getConnection();
-            String sql = "delete from students  WHERE id=?";
+            String sql = "delete from crops  WHERE id=?";
             PreparedStatement ps = con.prepareStatement(sql);  
             ps.setInt(1, crops.getId());
             ps.executeUpdate();
