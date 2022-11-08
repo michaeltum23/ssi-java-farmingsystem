@@ -15,7 +15,7 @@ public interface CropsController {
     public void addCrops(Crops crops);
     public void updateCrops(Crops crops);
     public void deleteCrops (Crops crops);
-    public Crops get(String cropName);
+    public Crops get(int id);
     public List<Crops>list();
     
 }
