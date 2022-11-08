@@ -22,7 +22,7 @@ public class UserImp implements UserController {
     public void login(User users) {
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM tbl_user WHERE username='"
+            String sql = "SELECT * FROM users WHERE username='"
                     + users.getUsername() + "'and password='" + users.getPassword() + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
