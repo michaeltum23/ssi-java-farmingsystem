@@ -5,6 +5,7 @@
 package farmingsystem;
 
 import farmingsystem.view.LoginForm;
+import farmingsystem.view.RegisterForm;
 
 /**
  *
@@ -18,6 +19,8 @@ public class FarmingSystem {
     public static void main(String[] args) {
         LoginForm lf = new LoginForm();
         lf.setVisible(true);
+        RegisterForm rf = new RegisterForm();
+        rf.setVisible(true);
     }
 
 }
