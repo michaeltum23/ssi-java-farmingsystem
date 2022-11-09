@@ -5,6 +5,7 @@
 package farmingsystem.controller;
 
 import farmingsystem.model.User;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,9 @@ import farmingsystem.model.User;
 public interface UserController {
     public void login(User users);
     public void register(User users);
+    public void update(User users);
+    public User get(String userId);
+    public List<User>list();
    
   
 }
