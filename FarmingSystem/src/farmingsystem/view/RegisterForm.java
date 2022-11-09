@@ -63,8 +63,6 @@ public class RegisterForm extends javax.swing.JFrame {
         txtConfirmPassword = new javax.swing.JPasswordField();
         txtPassword = new javax.swing.JPasswordField();
 
-
-
         jLabel14 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -79,7 +77,6 @@ public class RegisterForm extends javax.swing.JFrame {
         lblValidIDSrc = new javax.swing.JLabel();
         lblPhotoSrc = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(948, 628));
@@ -166,6 +163,7 @@ public class RegisterForm extends javax.swing.JFrame {
         txtLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         txtLastName.setOpaque(false);
         jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 230, 30));
+
 
         rbnMale.setBackground(new java.awt.Color(17, 129, 70));
         rbnGender.add(rbnMale);
@@ -460,7 +458,6 @@ public class RegisterForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbRole;
-
 
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
