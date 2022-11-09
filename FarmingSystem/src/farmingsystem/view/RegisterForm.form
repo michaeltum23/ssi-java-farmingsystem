@@ -4,14 +4,6 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="rbnGender">
     </Component>
-    <Component class="com.raven.datechooser.DateChooser" name="date">
-      <Properties>
-        <Property name="dateFormat" type="java.lang.String" value="dd-MMMM-yyyy"/>
-        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="txtDate"/>
-        </Property>
-      </Properties>
-    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>

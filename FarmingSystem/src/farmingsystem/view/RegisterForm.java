@@ -31,7 +31,6 @@ public class RegisterForm extends javax.swing.JFrame {
     private void initComponents() {
 
         rbnGender = new javax.swing.ButtonGroup();
-        date = new com.raven.datechooser.DateChooser();
         jPanel1 = new javax.swing.JPanel();
         btnRegister = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -62,9 +61,6 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JPasswordField();
         txtPassword = new javax.swing.JPasswordField();
-
-        date.setDateFormat("dd-MMMM-yyyy");
-        date.setTextRefernce(txtDate);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -352,7 +348,6 @@ public class RegisterForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbRole;
-    private com.raven.datechooser.DateChooser date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
