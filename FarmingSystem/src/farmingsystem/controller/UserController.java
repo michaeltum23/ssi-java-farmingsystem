@@ -13,4 +13,6 @@ import farmingsystem.model.User;
 public interface UserController {
     public void login(User users);
     public void register(User users);
+   
+  
 }

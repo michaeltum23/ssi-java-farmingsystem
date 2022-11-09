@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -87,6 +89,53 @@ public class UserImp implements UserController {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error");
         }
+    }
+
+    public List<User> list() {
+     List<User> list = new ArrayList<>();
+      try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT * FROM users ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                User us = new User();
+                us.setId(rs.getInt("id"));
+                us.setUsername(rs.getString("username")); 
+                us.setPassword(rs.getString("password"));
+                
+                us.setFirstName(rs.getString("first_name"));
+                us.setMiddleName(rs.getString("middle_name"));
+                us.setLastName(rs.getString("last_name"));
+                us.setGender(rs.getString("gender"));
+                
+                us.setBirthDate(rs.getString("birthday"));
+                us.setContactNumber(rs.getString("contact_number"));
+                us.setHouseNo(rs.getString("house_no"));
+                us.setStreetAddress(rs.getString("street_address"));
+                us.setCityAddress(rs.getString("city_address"));
+                
+                // us.setProfielImage(rs.getByte("profile_image"));
+                
+                
+                us.setEmail(rs.getString("email"));
+                us.setUserType(rs.getString("user_type"));
+                us.setActive(rs.getBoolean("active"));
+                us.setUserId(rs.getString("user_id"));
+                                
+                 
+               
+               
+
+ 
+                list.add(us);
+            }     
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return list;
     }
 
 }
