@@ -108,7 +108,7 @@ public class LoginForm extends javax.swing.JFrame {
                 btnForgotPasswordMouseClicked(evt);
             }
         });
-        jPanel1.add(btnForgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 100, -1));
+        jPanel1.add(btnForgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 110, -1));
 
         jLabel2.setFont(new java.awt.Font("Gill Sans MT", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,7 +122,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Don't have an Account?");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, 130, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 140, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, -6, 580, 630));
 
@@ -149,6 +149,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        StringBuilder warnings = new StringBuilder();
         User user = new User();
         String username = txtUsername.getText();
         String password = String.valueOf(txtPassword.getPassword());
@@ -158,6 +159,18 @@ public class LoginForm extends javax.swing.JFrame {
 
         UserImp ui = new UserImp();
         ui.login(user);
+        
+        if (txtUsername.getText().isEmpty()) {
+            warnings.append("Firstname must not be empty\n");
+            
+        } else {
+            username = txtUsername.getText();
+        }
+        if (txtPassword.getText().isEmpty()){
+            warnings.append("Password must not be empty\n");
+        }else{
+            password = txtPassword.getText();
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUpMouseClicked
