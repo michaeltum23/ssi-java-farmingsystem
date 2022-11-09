@@ -44,6 +44,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
+        labelStatus = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(textdateneeded);
 
@@ -64,13 +65,13 @@ public class AdvertisementForm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Crop Name", "Quantity Needed", "Date Needed"
+                "ID", "Crop Name", "Quantity Needed", "Date Needed", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -100,26 +101,23 @@ public class AdvertisementForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(btnPost)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textqtyneeded)
-                                    .addComponent(textCname)
-                                    .addComponent(textdateneeded, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
-                                .addGap(96, 96, 96))))))
+                        .addGap(8, 8, 8)
+                        .addComponent(btnPost))
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(textqtyneeded, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(textCname, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(textdateneeded, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                        .addComponent(labelStatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,8 +135,10 @@ public class AdvertisementForm extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(textdateneeded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnPost)
@@ -162,7 +162,8 @@ public class AdvertisementForm extends javax.swing.JFrame {
             String cropname = ads.getCropName();
             double quantityNeeded = ads.getQuantityNeeded();
             String date = ads.getDate();
-            DFT.addRow(new Object[]{sid,cropname,quantityNeeded,date});
+            String status = ads.getStatus();
+            DFT.addRow(new Object[]{sid,cropname,quantityNeeded,date,status});
         }    
   
     }
@@ -177,6 +178,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
         ads.setCropName(cropName);
         ads.setQuantityNeeded(quantity_needed);
         ads.setDate(dateneeded);
+        ads.setStatus("Pending Offer");
         
         AdvertisementImpl advertisement = new AdvertisementImpl();
         advertisement.postAds(ads);
@@ -232,6 +234,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelStatus;
     private javax.swing.JTextField textCname;
     private javax.swing.JTextField textdateneeded;
     private javax.swing.JTextField textqtyneeded;
