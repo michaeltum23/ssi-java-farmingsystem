@@ -13,9 +13,9 @@ import java.sql.*;
 public class FarmingConnection {
 
     static Connection con;
-    static String driver = "com.mysql.cj.jdbc.Driver";
-    static String url = "jdbc:mysql://localhost:3306/farmingdb";
-    static String username = "root";
+    static String driver = "org.postgresql.Driver";
+    static String url = "jdbc:postgresql://26.100.93.148:5432/farmingdb";
+    static String username = "postgres";
     static String password = "password";
 
     public static Connection getConnection() throws Exception {
