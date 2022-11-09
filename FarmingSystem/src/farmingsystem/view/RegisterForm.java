@@ -74,6 +74,8 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        lblValidIDSrc = new javax.swing.JLabel();
+        lblPhotoSrc = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,157 +96,173 @@ public class RegisterForm extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 230, 30));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 230, 30));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username *");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 120, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 120, -1));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password *");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 110, -1));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("First name *");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 90, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 110, -1));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Confirm Password *");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 170, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 170, -1));
 
-        txtFirstName.setBackground(new java.awt.Color(0, 153, 51));
-        txtFirstName.setBorder(null);
+        txtFirstName.setBackground(new java.awt.Color(204, 204, 204));
+        txtFirstName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtFirstName.setOpaque(false);
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 230, -1));
+        jPanel1.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 230, 30));
 
-        txtUsername.setBackground(new java.awt.Color(0, 153, 0));
-        txtUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtUsername.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtUsername.setOpaque(false);
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 230, -1));
+        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 230, 30));
 
-        txtMiddleName.setBackground(new java.awt.Color(0, 153, 0));
-        txtMiddleName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtMiddleName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtMiddleName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtMiddleName.setOpaque(false);
         txtMiddleName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMiddleNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMiddleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 230, -1));
+        jPanel1.add(txtMiddleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 230, 30));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Middle name*");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 110, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 110, -1));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Last name:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 90, -1));
+        jLabel6.setText("Last name *");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 110, -1));
 
-        txtLastName.setBackground(new java.awt.Color(0, 153, 0));
-        txtLastName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 230, -1));
+        txtLastName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtLastName.setOpaque(false);
+        jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 230, 30));
 
         rbnMale.setBackground(new java.awt.Color(17, 129, 70));
         rbnGender.add(rbnMale);
+        rbnMale.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         rbnMale.setForeground(new java.awt.Color(204, 204, 204));
         rbnMale.setText("Male");
-        jPanel1.add(rbnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+        jPanel1.add(rbnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
 
         rbnFemale.setBackground(new java.awt.Color(17, 129, 70));
         rbnGender.add(rbnFemale);
+        rbnFemale.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         rbnFemale.setForeground(new java.awt.Color(204, 204, 204));
         rbnFemale.setText("Female");
-        jPanel1.add(rbnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
+        jPanel1.add(rbnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 280, 90, -1));
 
-        txtDate.setBackground(new java.awt.Color(0, 153, 0));
-        txtDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 80, -1));
+        txtDate.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtDate.setOpaque(false);
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 80, 30));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Gender");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 50, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 70, -1));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Phone Number");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
+        jLabel8.setText("Phone *");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, -1));
 
-        txtContactNumber.setBackground(new java.awt.Color(0, 153, 0));
-        txtContactNumber.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtContactNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 230, -1));
+        txtContactNumber.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtContactNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtContactNumber.setOpaque(false);
+        jPanel1.add(txtContactNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 230, 30));
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("House No.");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
 
-        txtHouseNo.setBackground(new java.awt.Color(0, 153, 0));
-        txtHouseNo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtHouseNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 92, -1));
+        txtHouseNo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtHouseNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtHouseNo.setOpaque(false);
+        jPanel1.add(txtHouseNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 92, 30));
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Street/Sitio/Brgy");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 150, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 150, -1));
 
-        txtStreetAddress.setBackground(new java.awt.Color(0, 153, 0));
-        txtStreetAddress.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtStreetAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 230, -1));
+        txtStreetAddress.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtStreetAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtStreetAddress.setOpaque(false);
+        jPanel1.add(txtStreetAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 230, 30));
 
-        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("City/Municipal");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, -1, -1));
 
-        txtCityAddress.setBackground(new java.awt.Color(0, 153, 0));
-        txtCityAddress.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtCityAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 130, -1));
+        txtCityAddress.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtCityAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtCityAddress.setOpaque(false);
+        jPanel1.add(txtCityAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 130, 30));
 
-        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Email *");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 129, 70, 20));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 70, 20));
 
-        txtEmail.setBackground(new java.awt.Color(0, 153, 51));
-        txtEmail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 230, -1));
+        txtEmail.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtEmail.setOpaque(false);
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 118, 230, 30));
 
-        cmbRole.setBackground(new java.awt.Color(0, 153, 0));
+        cmbRole.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         cmbRole.setForeground(new java.awt.Color(255, 255, 255));
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Farmer", "Supplier/Wholesaler" }));
         cmbRole.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 230, -1));
+        cmbRole.setOpaque(false);
+        jPanel1.add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 230, 30));
 
-        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("What bring you here? *");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 150, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 180, 20));
 
-        txtConfirmPassword.setBackground(new java.awt.Color(0, 153, 0));
-        txtConfirmPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 230, -1));
+        txtConfirmPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtConfirmPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtConfirmPassword.setOpaque(false);
+        jPanel1.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 318, 230, 30));
 
-        txtPassword.setBackground(new java.awt.Color(0, 153, 0));
-        txtPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 230, -1));
+        txtPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        txtPassword.setOpaque(false);
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 230, 30));
 
-        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Birthday");
+        jLabel14.setText("Birthday *");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 80, -1));
 
         jButton1.setBackground(new java.awt.Color(218, 218, 217));
@@ -255,7 +273,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 110, 70));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 110, 20));
 
         jButton2.setBackground(new java.awt.Color(218, 218, 217));
         jButton2.setForeground(new java.awt.Color(17, 129, 70));
@@ -265,18 +283,18 @@ public class RegisterForm extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 110, 70));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 110, 20));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 580, 70, 10));
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel15.setText("Sing In/Login");
+        jLabel15.setText("Sign-In / Login");
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel15MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, 80, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 80, -1));
 
         jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setText("Already have an account? ");
@@ -287,15 +305,28 @@ public class RegisterForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 950, 20));
 
-        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Sign-Up");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 180, 40));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 180, 40));
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel18.setText("Terms & Agreement Policy");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, -1, -1));
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, -1, 20));
+
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, 20));
+
+        lblValidIDSrc.setBackground(new java.awt.Color(204, 204, 204));
+        lblValidIDSrc.setFont(new java.awt.Font("Nirmala UI", 2, 14)); // NOI18N
+        lblValidIDSrc.setText("imgsrc/dcim");
+        jPanel1.add(lblValidIDSrc, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 110, 90));
+
+        lblPhotoSrc.setBackground(new java.awt.Color(204, 204, 204));
+        lblPhotoSrc.setFont(new java.awt.Font("Nirmala UI", 2, 14)); // NOI18N
+        lblPhotoSrc.setText("imgsrc/dcim");
+        jPanel1.add(lblPhotoSrc, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 110, 90));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 950, 580));
 
@@ -452,6 +483,8 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblPhotoSrc;
+    private javax.swing.JLabel lblValidIDSrc;
     private javax.swing.JRadioButton rbnFemale;
     private javax.swing.ButtonGroup rbnGender;
     private javax.swing.JRadioButton rbnMale;

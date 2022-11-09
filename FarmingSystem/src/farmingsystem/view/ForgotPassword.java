@@ -110,15 +110,10 @@ public class ForgotPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-//        User user = new User();
-//        String username = txtUsername.getText();
-//        String password = String.valueOf(txtPassword.getPassword());
-//
-//        user.setUsername(username);
-//        user.setPassword(password);
-//
-//        UserImp ui = new UserImp();
-//        ui.login(user);
+        RecoveryForm recoveryForm = new RecoveryForm();
+        recoveryForm.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void txtVerifyUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerifyUsernameActionPerformed
