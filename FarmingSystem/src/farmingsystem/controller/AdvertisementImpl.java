@@ -24,11 +24,12 @@ public class AdvertisementImpl implements AdvertisementController{
     public void postAds(Advertisement ads) {
         try {
             Connection con =  FarmingConnection.getConnection();
-            String sql = "INSERT INTO advertisement(crop_name,quantity_needed,date_needed) VALUES (?,?,?)";
+            String sql = "INSERT INTO advertisement(crop_name,quantity_needed,date_needed,status) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ads.getCropName());
             ps.setDouble(2, ads.getQuantityNeeded());
-            ps.setString(3, ads.getDate());
+            ps.setString(3, ads.getDate());          
+            ps.setString(4,ads.getStatus());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Successfully Post!");
         } catch (Exception e) {
@@ -52,6 +53,7 @@ public class AdvertisementImpl implements AdvertisementController{
                 ads.setCropName(rs.getString("crop_name"));
                 ads.setQuantityNeeded(rs.getDouble("quantity_needed"));                
                 ads.setDate(rs.getString("date_needed"));
+                ads.setStatus(rs.getString("status"));
  
                 list.add(ads);
             }
