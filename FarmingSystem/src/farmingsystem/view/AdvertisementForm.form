@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="com.raven.datechooser.DateChooser" name="dateChooser1">
-      <Properties>
-        <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="textdateneeded"/>
-        </Property>
-      </Properties>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -52,13 +43,10 @@
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="textqtyneeded" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="textCname" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="textdateneeded" pref="127" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textqtyneeded" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textCname" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textdateneeded" pref="127" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
