@@ -13,14 +13,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author MY-PC
  */
-public class ViewForm extends javax.swing.JFrame {
+public class UserViewAllUser extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewUsers
      */
-    public ViewForm() {
+    public UserViewAllUser() {
         initComponents();
-       Load();
+        AllUsers();
        
     }
 
@@ -37,7 +37,9 @@ public class ViewForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        buttonSupplier1 = new javax.swing.JButton();
+        buttonSupplier = new javax.swing.JButton();
+        buttonFarmer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,25 +73,49 @@ public class ViewForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("All Users");
+        buttonSupplier1.setText("All Users");
+        buttonSupplier1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSupplier1ActionPerformed(evt);
+            }
+        });
+
+        buttonSupplier.setText("Suppliers");
+        buttonSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSupplierActionPerformed(evt);
+            }
+        });
+
+        buttonFarmer.setText("Farmers");
+        buttonFarmer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFarmerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(buttonFarmer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonSupplier)
+                .addGap(18, 18, 18)
+                .addComponent(buttonSupplier1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonFarmer)
+                    .addComponent(buttonSupplier)
+                    .addComponent(buttonSupplier1))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -114,7 +140,24 @@ public class ViewForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Load(){
+    private void buttonSupplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupplier1ActionPerformed
+       initComponents();
+        AllUsers();
+    }//GEN-LAST:event_buttonSupplier1ActionPerformed
+
+    private void buttonSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupplierActionPerformed
+      initComponents();
+     Supliers();
+    }//GEN-LAST:event_buttonSupplierActionPerformed
+
+    private void buttonFarmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFarmerActionPerformed
+
+        initComponents();
+        Farmers();
+
+    }//GEN-LAST:event_buttonFarmerActionPerformed
+
+    public void AllUsers(){
         UserImp dao = new UserImp();
         List<User> list = dao.list();
         DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
@@ -146,8 +189,86 @@ public class ViewForm extends javax.swing.JFrame {
             
             
             DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","binary data",email,
+            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
             userType,active,userId});
+        }   
+        
+    }
+    
+     public void Farmers(){
+        UserImp dao = new UserImp();
+        List<User> list = dao.list();
+        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
+         DFT.setRowCount(0);
+         for(User us: list)
+        {
+            if("Farmer".equals(us.getUserType())){
+            int id = us.getId();
+            String username = us.getUsername();
+            String password = us.getPassword();
+            
+             String firstName = us.getFirstName();
+             String middleName = us.getMiddleName();
+             String lastName = us.getLastName();
+             
+              String birthDate = us.getBirthDate();
+              String contactNumber = us.getContactNumber();
+              String houseNo = us.getHouseNo();
+              String streetAddress = us.getStreetAddress();
+              String cityAddress= us.getCityAddress();
+              
+             // byte profileImage = us.getProfielImage();
+             
+            
+             String email = us.getEmail();
+             String userType = us.getUserType();
+             boolean active = us.getActive();
+             String userId = us.getUserId();
+             
+            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+            userType,active,userId});
+            }
+        }     
+    }
+     
+     
+         public void Supliers(){
+        UserImp dao = new UserImp();
+        List<User> list = dao.list();
+        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
+         DFT.setRowCount(0);
+         for(User us: list)
+        {
+            if("Supplier/Wholesaler".equals(us.getUserType())){
+            int id = us.getId();
+            String username = us.getUsername();
+            String password = us.getPassword();
+            
+             String firstName = us.getFirstName();
+             String middleName = us.getMiddleName();
+             String lastName = us.getLastName();
+             
+              String birthDate = us.getBirthDate();
+              String contactNumber = us.getContactNumber();
+              String houseNo = us.getHouseNo();
+              String streetAddress = us.getStreetAddress();
+              String cityAddress= us.getCityAddress();
+              
+             // byte profileImage = us.getProfielImage();
+             
+            
+             String email = us.getEmail();
+             String userType = us.getUserType();
+             boolean active = us.getActive();
+             String userId = us.getUserId();
+             
+            
+            
+            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+            userType,active,userId});
+            }
         }   
         
     }
@@ -168,27 +289,59 @@ public class ViewForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserViewAllUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserViewAllUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserViewAllUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserViewAllUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewForm().setVisible(true);
+                new UserViewAllUser().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton buttonFarmer;
+    private javax.swing.JButton buttonSupplier;
+    private javax.swing.JButton buttonSupplier1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
