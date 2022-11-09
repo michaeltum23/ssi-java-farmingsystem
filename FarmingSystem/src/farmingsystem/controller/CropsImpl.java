@@ -8,6 +8,8 @@ import farmingsystem.FarmingConnection;
 import farmingsystem.model.Crops;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -41,22 +43,90 @@ public class CropsImpl implements CropsController{
 
     @Override
     public void updateCrops(Crops crops) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+          
+            Connection con = FarmingConnection.getConnection();
+            String sql = "UPDATE crops SET crop_name=?,price=?,quantity=? WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, crops.getCropName());
+            ps.setDouble(2, crops.getPrice());
+            ps.setDouble(3, crops.getQuantity());
+            ps.setInt(4, crops.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Updated!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }
 
     @Override
     public void deleteCrops(Crops crops) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+          
+            Connection con = FarmingConnection.getConnection();
+            String sql = "delete from crops  WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(sql);  
+            ps.setInt(1, crops.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Deleteddd!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }
 
     @Override
-    public Crops get(String cropName) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Crops get(int id) {
+        Crops st = new Crops();
+        try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT * FROM crops WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                
+                st.setId(rs.getInt("id"));
+                st.setCropName(rs.getString("crop_name"));
+                st.setPrice(rs.getDouble("price"));
+                st.setQuantity(rs.getDouble("quantity"));
+ 
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return st;
     }
 
     @Override
     public List<Crops> list() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        List<Crops> list = new ArrayList<Crops>();
+        try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT * FROM crops ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+           
+            while(rs.next()){
+                Crops st = new Crops();
+                st.setId(rs.getInt("id"));
+                st.setCropName(rs.getString("crop_name"));
+                st.setPrice(rs.getDouble("price"));
+                st.setQuantity(rs.getDouble("quantity"));
+ 
+                list.add(st);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return list;
+        
     }
 
     
