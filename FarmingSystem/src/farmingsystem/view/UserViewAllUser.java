@@ -7,6 +7,7 @@ package farmingsystem.view;
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,9 +38,7 @@ public class UserViewAllUser extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        buttonSupplier1 = new javax.swing.JButton();
-        buttonSupplier = new javax.swing.JButton();
-        buttonFarmer = new javax.swing.JButton();
+        filterbtn = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,7 +57,7 @@ public class UserViewAllUser extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Byte.class, java.lang.Byte.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false, true, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -73,24 +72,10 @@ public class UserViewAllUser extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        buttonSupplier1.setText("All Users");
-        buttonSupplier1.addActionListener(new java.awt.event.ActionListener() {
+        filterbtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All User", "Farmer", "Supplier", "Admin" }));
+        filterbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSupplier1ActionPerformed(evt);
-            }
-        });
-
-        buttonSupplier.setText("Suppliers");
-        buttonSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSupplierActionPerformed(evt);
-            }
-        });
-
-        buttonFarmer.setText("Farmers");
-        buttonFarmer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonFarmerActionPerformed(evt);
+                filterbtnActionPerformed(evt);
             }
         });
 
@@ -99,23 +84,16 @@ public class UserViewAllUser extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonFarmer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonSupplier)
-                .addGap(18, 18, 18)
-                .addComponent(buttonSupplier1)
+                .addGap(280, 280, 280)
+                .addComponent(filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonFarmer)
-                    .addComponent(buttonSupplier)
-                    .addComponent(buttonSupplier1))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -140,22 +118,59 @@ public class UserViewAllUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonSupplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupplier1ActionPerformed
-       initComponents();
-        AllUsers();
-    }//GEN-LAST:event_buttonSupplier1ActionPerformed
-
-    private void buttonSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSupplierActionPerformed
-      initComponents();
-     Supliers();
-    }//GEN-LAST:event_buttonSupplierActionPerformed
-
-    private void buttonFarmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFarmerActionPerformed
-
-        initComponents();
-        Farmers();
-
-    }//GEN-LAST:event_buttonFarmerActionPerformed
+    private void filterbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterbtnActionPerformed
+        String filter = filterbtn.getSelectedItem().toString();
+        
+        UserImp dao = new UserImp();
+        List<User> list = dao.list();
+        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
+        DFT.setRowCount(0);
+        
+        
+        for(User us: list){
+            int id = us.getId();
+            String username = us.getUsername();
+            String password = us.getPassword();
+            
+            String firstName = us.getFirstName();
+            String middleName = us.getMiddleName();
+            String lastName = us.getLastName();
+             
+            String birthDate = us.getBirthDate();
+            String contactNumber = us.getContactNumber();
+            String houseNo = us.getHouseNo();
+            String streetAddress = us.getStreetAddress();
+            String cityAddress= us.getCityAddress();
+              
+            // byte profileImage = us.getProfielImage();
+             
+           
+            String email = us.getEmail();
+            String userType = us.getUserType();
+            boolean active = us.getActive();
+            String userId = us.getUserId();
+            if(filter.equals("Farmer")){
+                if("Farmer".equals(us.getUserType()))
+                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+                    userType,active,userId});             
+                
+            }else if(filter.equals("Supplier")){
+                if("Supplier/Wholesaler".equals(us.getUserType()))
+                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+                    userType,active,userId});              
+            }else if(filter.equals("All User")){               
+                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+                    userType,active,userId});             
+            }else{
+                System.out.println("Error");
+            }
+             
+        }
+        
+    }//GEN-LAST:event_filterbtnActionPerformed
 
     public void AllUsers(){
         UserImp dao = new UserImp();
@@ -195,83 +210,10 @@ public class UserViewAllUser extends javax.swing.JFrame {
         
     }
     
-     public void Farmers(){
-        UserImp dao = new UserImp();
-        List<User> list = dao.list();
-        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
-         DFT.setRowCount(0);
-         for(User us: list)
-        {
-            if("Farmer".equals(us.getUserType())){
-            int id = us.getId();
-            String username = us.getUsername();
-            String password = us.getPassword();
-            
-             String firstName = us.getFirstName();
-             String middleName = us.getMiddleName();
-             String lastName = us.getLastName();
-             
-              String birthDate = us.getBirthDate();
-              String contactNumber = us.getContactNumber();
-              String houseNo = us.getHouseNo();
-              String streetAddress = us.getStreetAddress();
-              String cityAddress= us.getCityAddress();
-              
-             // byte profileImage = us.getProfielImage();
-             
-            
-             String email = us.getEmail();
-             String userType = us.getUserType();
-             boolean active = us.getActive();
-             String userId = us.getUserId();
-             
-            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-            userType,active,userId});
-            }
-        }     
-    }
+    
      
      
-         public void Supliers(){
-        UserImp dao = new UserImp();
-        List<User> list = dao.list();
-        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
-         DFT.setRowCount(0);
-         for(User us: list)
-        {
-            if("Supplier/Wholesaler".equals(us.getUserType())){
-            int id = us.getId();
-            String username = us.getUsername();
-            String password = us.getPassword();
-            
-             String firstName = us.getFirstName();
-             String middleName = us.getMiddleName();
-             String lastName = us.getLastName();
-             
-              String birthDate = us.getBirthDate();
-              String contactNumber = us.getContactNumber();
-              String houseNo = us.getHouseNo();
-              String streetAddress = us.getStreetAddress();
-              String cityAddress= us.getCityAddress();
-              
-             // byte profileImage = us.getProfielImage();
-             
-            
-             String email = us.getEmail();
-             String userType = us.getUserType();
-             boolean active = us.getActive();
-             String userId = us.getUserId();
-             
-            
-            
-            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-            userType,active,userId});
-            }
-        }   
-        
-    }
+       
     /**
      * @param args the command line arguments
      */
@@ -339,9 +281,7 @@ public class UserViewAllUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonFarmer;
-    private javax.swing.JButton buttonSupplier;
-    private javax.swing.JButton buttonSupplier1;
+    private javax.swing.JComboBox<String> filterbtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

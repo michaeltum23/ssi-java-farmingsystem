@@ -72,9 +72,9 @@
                     <Column editable="false" title="password" type="java.lang.String"/>
                     <Column editable="false" title="first_name" type="java.lang.String"/>
                     <Column editable="false" title="middle_name" type="java.lang.String"/>
-                    <Column editable="true" title="last_name" type="java.lang.String"/>
+                    <Column editable="false" title="last_name" type="java.lang.String"/>
                     <Column editable="false" title="gender" type="java.lang.String"/>
-                    <Column editable="true" title="birthday" type="java.lang.String"/>
+                    <Column editable="false" title="birthday" type="java.lang.String"/>
                     <Column editable="false" title="contact_number" type="java.lang.String"/>
                     <Column editable="false" title="house_no" type="java.lang.String"/>
                     <Column editable="false" title="city_address" type="java.lang.String"/>
@@ -193,12 +193,8 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonFarmer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="buttonSupplier" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttonSupplier1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+                      <Component id="filterbtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -207,40 +203,30 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonFarmer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSupplier1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                      <Component id="filterbtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="buttonSupplier1">
+            <Component class="javax.swing.JComboBox" name="filterbtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="All Users"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="All User"/>
+                    <StringItem index="1" value="Farmer"/>
+                    <StringItem index="2" value="Supplier"/>
+                    <StringItem index="3" value="Admin"/>
+                  </StringArray>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSupplier1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterbtnActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="buttonSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Suppliers"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSupplierActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="buttonFarmer">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Farmers"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonFarmerActionPerformed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
