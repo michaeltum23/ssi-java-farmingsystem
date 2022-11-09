@@ -164,6 +164,7 @@ public class RegisterForm extends javax.swing.JFrame {
         txtLastName.setOpaque(false);
         jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 230, 30));
 
+
         rbnMale.setBackground(new java.awt.Color(17, 129, 70));
         rbnGender.add(rbnMale);
         rbnMale.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -457,9 +458,11 @@ public class RegisterForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbRole;
+
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
