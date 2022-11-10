@@ -124,6 +124,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Don't have an Account?");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 140, -1));
 
         jLabel1.setText("test admin view");
@@ -155,7 +160,7 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        
+
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -169,27 +174,24 @@ public class LoginForm extends javax.swing.JFrame {
 
         UserImp ui = new UserImp();
         ui.login(user);
-        
-        if (txtUsername.getText().isEmpty()) {
-            warnings.append("Firstname must not be empty\n");
-            
+
+        if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+            warnings.append("Username or Password must not be empty\n");
+
         } else {
-            username = txtUsername.getText();
-        }
-        if (txtPassword.getText().isEmpty()){
-            warnings.append("Password must not be empty\n");
-        }else{
-            password = txtPassword.getText();
+            AdminForm ad = new AdminForm();
+            ad.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUpMouseClicked
-       
+
         RegisterForm rf = new RegisterForm();
         rf.setVisible(true);
         rf.setLocationRelativeTo(null);
-       
-    // TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnSignUpMouseClicked
 
     private void btnForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnForgotPasswordMouseClicked
@@ -200,13 +202,21 @@ public class LoginForm extends javax.swing.JFrame {
         ForgotPassword fp = new ForgotPassword();
         fp.setVisible(true);
         fp.setLocationRelativeTo(null);
-        
+
     }//GEN-LAST:event_btnForgotPasswordMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         AdminForm fd = new AdminForm();
         fd.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        RegisterForm rf = new RegisterForm();
+        rf.setVisible(true);
+        rf.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments

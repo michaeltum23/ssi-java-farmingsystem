@@ -216,7 +216,7 @@ public class CropsForm extends javax.swing.JFrame {
     
         int search;
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        search = Integer.parseInt(JOptionPane.showInputDialog("Enter Student ID"));
+        search = Integer.parseInt(JOptionPane.showInputDialog("Enter Crop ID"));
      
         CropsImpl crops = new CropsImpl();
         Crops crop  = crops.get(search);
