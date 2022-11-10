@@ -100,7 +100,7 @@ public class UpdateUser extends javax.swing.JFrame {
         filterbtn = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnRegister.setText("REGISTER");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -399,8 +399,8 @@ public class UpdateUser extends javax.swing.JFrame {
         user.setStreetAddress(txtStreetAddress.getText());
         user.setCityAddress(txtCityAddress.getText());
         user.setBirthDate(txtDate.getText());
-        user.setProfielImage((byte) 1);
-        user.setValidId((byte) 1);
+//        user.setProfielImage((byte) 1);
+//        user.setValidId((byte) 1);
         user.setEmail(txtEmail.getText());
         user.setActive(true);
 
@@ -505,6 +505,11 @@ String search;
                 DFT.addRow(new Object[]{sid,username,password,firstName,middleName
                             ,lastName,birthDate,contactNumber,houseNo,streetAddress
                             ,cityAddress,email,userType});
+            }else if(filter.equals("Admin")){
+                if("Admin".equals(users.getUserType()))
+                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
+                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+                        ,cityAddress,email,userType});
             }else if(filter.equals("All User")){
                 DFT.addRow(new Object[]{sid,username,password,firstName,middleName
                         ,lastName,birthDate,contactNumber,houseNo,streetAddress

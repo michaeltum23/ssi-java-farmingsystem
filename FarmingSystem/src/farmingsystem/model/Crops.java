@@ -4,6 +4,9 @@
  */
 package farmingsystem.model;
 
+import java.io.File;
+import java.io.InputStream;
+
 /**
  *
  * @author jtamayo
@@ -13,22 +16,24 @@ public class Crops {
     private int id;
 //    private User userID;
     private String cropName;
-//    private String cropImage;
     private double price;
     private double quantity;
+    private InputStream cropImage;
+    private File file;
     
     public Crops(){
         
     }
 
-    public Crops(int id, String cropName, double price, double quantity) {
+    public Crops(int id, String cropName, double price, double quantity, InputStream cropImage, File file) {
         this.id = id;
         this.cropName = cropName;
         this.price = price;
         this.quantity = quantity;
+        this.cropImage = cropImage;
+        this.file = file;
     }
 
-    
     public int getId() {
         return id;
     }
@@ -60,12 +65,24 @@ public class Crops {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
-    
-    
-    
-    
-    
 
+    public InputStream getCropImage() {
+        return cropImage;
+    }
+
+    public void setCropImage(InputStream cropImage) {
+        this.cropImage = cropImage;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+    
+    
     
         
     
