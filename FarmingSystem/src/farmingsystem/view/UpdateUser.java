@@ -399,8 +399,8 @@ public class UpdateUser extends javax.swing.JFrame {
         user.setStreetAddress(txtStreetAddress.getText());
         user.setCityAddress(txtCityAddress.getText());
         user.setBirthDate(txtDate.getText());
-        user.setProfielImage((byte) 1);
-        user.setValidId((byte) 1);
+//        user.setProfielImage((byte) 1);
+//        user.setValidId((byte) 1);
         user.setEmail(txtEmail.getText());
         user.setActive(true);
 

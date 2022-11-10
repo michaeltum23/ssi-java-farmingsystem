@@ -6,7 +6,17 @@ package farmingsystem.view;
 
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JRadioButton;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -19,7 +29,7 @@ public class RegisterForm extends javax.swing.JFrame {
      */
     public RegisterForm() {
         initComponents();
-     
+
     }
 
     /**
@@ -62,7 +72,6 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JPasswordField();
         txtPassword = new javax.swing.JPasswordField();
-
         jLabel14 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -75,7 +84,8 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         lblValidIDSrc = new javax.swing.JLabel();
-        lblPhotoSrc = new javax.swing.JLabel();
+        lblProfileImage = new javax.swing.JLabel();
+        lblFilePath = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,7 +131,6 @@ public class RegisterForm extends javax.swing.JFrame {
         txtFirstName.setBackground(new java.awt.Color(204, 204, 204));
         txtFirstName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtFirstName.setOpaque(false);
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstNameActionPerformed(evt);
@@ -131,7 +140,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtUsername.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtUsername.setOpaque(false);
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -141,7 +149,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtMiddleName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtMiddleName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtMiddleName.setOpaque(false);
         txtMiddleName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMiddleNameActionPerformed(evt);
@@ -161,9 +168,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtLastName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtLastName.setOpaque(false);
         jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 230, 30));
-
 
         rbnMale.setBackground(new java.awt.Color(17, 129, 70));
         rbnGender.add(rbnMale);
@@ -181,7 +186,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtDate.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtDate.setOpaque(false);
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 80, 30));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -196,7 +200,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtContactNumber.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtContactNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtContactNumber.setOpaque(false);
         jPanel1.add(txtContactNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 230, 30));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -206,7 +209,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtHouseNo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtHouseNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtHouseNo.setOpaque(false);
         jPanel1.add(txtHouseNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 92, 30));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -216,7 +218,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtStreetAddress.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtStreetAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtStreetAddress.setOpaque(false);
         jPanel1.add(txtStreetAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 230, 30));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -226,7 +227,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtCityAddress.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtCityAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtCityAddress.setOpaque(false);
         jPanel1.add(txtCityAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 130, 30));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -236,14 +236,12 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtEmail.setOpaque(false);
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 118, 230, 30));
 
         cmbRole.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         cmbRole.setForeground(new java.awt.Color(255, 255, 255));
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Farmer", "Supplier/Wholesaler" }));
         cmbRole.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        cmbRole.setOpaque(false);
         jPanel1.add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 230, 30));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -253,12 +251,10 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtConfirmPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtConfirmPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtConfirmPassword.setOpaque(false);
         jPanel1.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 318, 230, 30));
 
         txtPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtPassword.setOpaque(false);
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 230, 30));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -324,10 +320,11 @@ public class RegisterForm extends javax.swing.JFrame {
         lblValidIDSrc.setText("imgsrc/dcim");
         jPanel1.add(lblValidIDSrc, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 110, 90));
 
-        lblPhotoSrc.setBackground(new java.awt.Color(204, 204, 204));
-        lblPhotoSrc.setFont(new java.awt.Font("Nirmala UI", 2, 14)); // NOI18N
-        lblPhotoSrc.setText("imgsrc/dcim");
-        jPanel1.add(lblPhotoSrc, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 110, 90));
+        lblProfileImage.setBackground(new java.awt.Color(204, 204, 204));
+        lblProfileImage.setFont(new java.awt.Font("Nirmala UI", 2, 14)); // NOI18N
+        lblProfileImage.setText("imgsrc/dcim");
+        jPanel1.add(lblProfileImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 110, 90));
+        jPanel1.add(lblFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 950, 580));
 
@@ -356,16 +353,27 @@ public class RegisterForm extends javax.swing.JFrame {
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
-
+    InputStream is;
+    File f;
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+
         User user = new User();
+        f = new File(lblFilePath.getText());
+        System.out.println(f);
+        try {
+            is = new FileInputStream(f);
+        } catch (FileNotFoundException ex) {
+        }
+        user.setProfielImage(is);
+        user.setFile(f);
+        
         String password = String.valueOf(txtPassword.getText());
         String userType = cmbRole.getSelectedItem().toString();
         rbnMale.setActionCommand("Male");
         rbnFemale.setActionCommand("Female");
         String gender = rbnGender.getSelection().getActionCommand().toString();
-        user.setUserId(userType+txtUsername.getText()+(int)(Math.random()*1000000));
+        user.setUserId(userType + txtUsername.getText() + (int) (Math.random() * 1000000));
         user.setPassword(password);
         user.setUsername(txtUsername.getText());
         user.setUserType(userType);
@@ -378,11 +386,10 @@ public class RegisterForm extends javax.swing.JFrame {
         user.setStreetAddress(txtStreetAddress.getText());
         user.setCityAddress(txtCityAddress.getText());
         user.setBirthDate(txtDate.getText());
-        user.setProfielImage((byte) 1);
         user.setValidId((byte) 1);
         user.setEmail(txtEmail.getText());
         user.setActive(true);
-        
+
         System.out.println(user.getUserId());
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
@@ -391,7 +398,7 @@ public class RegisterForm extends javax.swing.JFrame {
         System.out.println(user.getUserType());
         System.out.println(user.getProfielImage());
         System.out.println(user.getActive());
-        
+
         UserImp ui = new UserImp();
         ui.register(user);
         // Validations
@@ -406,6 +413,21 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Image Type", "png", "jpg", "jpeg");
+        fileChooser.addChoosableFileFilter(fileFilter);
+        int load = fileChooser.showOpenDialog(null);
+        if (load == fileChooser.APPROVE_OPTION) {
+
+            File f = fileChooser.getSelectedFile();
+            String path = f.getAbsolutePath();
+            lblFilePath.setText(path);
+            System.out.println("Path: " + path);
+            ImageIcon ii = new ImageIcon(path);
+            Image img = ii.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH);
+            lblProfileImage.setText("");
+            lblProfileImage.setIcon(new ImageIcon(img));
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
@@ -458,12 +480,9 @@ public class RegisterForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbRole;
-
-
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
-
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -487,7 +506,8 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblPhotoSrc;
+    private javax.swing.JLabel lblFilePath;
+    private javax.swing.JLabel lblProfileImage;
     private javax.swing.JLabel lblValidIDSrc;
     private javax.swing.JRadioButton rbnFemale;
     private javax.swing.ButtonGroup rbnGender;
