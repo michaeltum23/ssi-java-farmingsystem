@@ -39,6 +39,9 @@ public class UserViewAllUser extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         filterbtn = new javax.swing.JComboBox<>();
+        filterStats = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,21 +82,48 @@ public class UserViewAllUser extends javax.swing.JFrame {
             }
         });
 
+        filterStats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Active User", "Deactive User" }));
+        filterStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterStatsActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Users  Status");
+        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Users  by Type");
+        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(280, 280, 280)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filterStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(filterbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(filterbtn)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filterStats)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -171,6 +201,55 @@ public class UserViewAllUser extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_filterbtnActionPerformed
+
+    private void filterStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterStatsActionPerformed
+        String filter = filterStats.getSelectedItem().toString();
+
+        UserImp dao = new UserImp();
+        List<User> list = dao.list();
+        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
+        DFT.setRowCount(0);
+
+        for(User us: list){
+            int id = us.getId();
+            String username = us.getUsername();
+            String password = us.getPassword();
+
+            String firstName = us.getFirstName();
+            String middleName = us.getMiddleName();
+            String lastName = us.getLastName();
+
+            String birthDate = us.getBirthDate();
+            String contactNumber = us.getContactNumber();
+            String houseNo = us.getHouseNo();
+            String streetAddress = us.getStreetAddress();
+            String cityAddress= us.getCityAddress();
+
+            // byte profileImage = us.getProfielImage();
+
+            String email = us.getEmail();
+            String userType = us.getUserType();
+            boolean active = us.getActive();
+            String userId = us.getUserId();
+
+            if(filter.equals("Active User")){
+                if(us.getActive()==true)
+                DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+                    userType,active,userId});
+
+        }else if(filter.equals("Deactive User")){
+            if(us.getActive()==false)
+            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+                ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+                userType,active,userId});
+        }else{
+            System.out.println("Error");
+        }
+
+        }
+
+    }//GEN-LAST:event_filterStatsActionPerformed
 
     public void AllUsers(){
         UserImp dao = new UserImp();
@@ -281,7 +360,10 @@ public class UserViewAllUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> filterStats;
     private javax.swing.JComboBox<String> filterbtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
