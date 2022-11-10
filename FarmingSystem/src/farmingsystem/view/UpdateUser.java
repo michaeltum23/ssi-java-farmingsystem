@@ -9,6 +9,7 @@ import farmingsystem.model.User;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -162,9 +163,14 @@ public class UpdateUser extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13"
+                "User ID", "Username", "Password", "FirstName", "Middle Name", "Last Name", "Bithday", "Contact Number", "House Number", "Street Address", "City Address", "Email", "User Type"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Update");
@@ -510,6 +516,27 @@ String search;
         }
 
     }//GEN-LAST:event_filterbtnActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       int i = jTable1.getSelectedRow();
+
+        TableModel model = jTable1.getModel();
+        
+        txtUsername.setText(model.getValueAt(i,1).toString());
+        txtPassword.setText(model.getValueAt(i,2).toString());
+        txtFirstName.setText(model.getValueAt(i,3).toString());
+        txtMiddleName.setText(model.getValueAt(i,4).toString());
+        txtLastName.setText(model.getValueAt(i,5).toString());
+        txtDate.setText(model.getValueAt(i,6).toString());
+        txtContactNumber.setText(model.getValueAt(i,7).toString());
+        txtHouseNo.setText(model.getValueAt(i,8).toString());
+        txtStreetAddress.setText(model.getValueAt(i,9).toString());
+        txtCityAddress.setText(model.getValueAt(i,10).toString());
+        txtEmail.setText(model.getValueAt(i,11).toString());
+        
+
+        //sid,username,password,firstName,middleName,lastName,birthDate,contactNumber,houseNo,streetAddress,cityAddress,email,userType});
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
