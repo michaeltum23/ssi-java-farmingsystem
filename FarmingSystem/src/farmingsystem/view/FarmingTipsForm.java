@@ -183,6 +183,7 @@ public class FarmingTipsForm extends javax.swing.JFrame {
         FarmingTips tip = new FarmingTips ();
         String title = txtTitle.getText();
         String content = txtareaTips.getText();
+        System.out.println("test");
         
         tip.setTitle(title);
         tip.setContent(content);
