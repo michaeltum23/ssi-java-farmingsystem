@@ -23,22 +23,19 @@ public class CropsImpl implements CropsController{
     public void addCrops(Crops crops) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO crops("
-                    + "crop_name, "
-                    + "price,"
-                    + "quantity)"
-                    + "VALUES('"
-                    + crops.getCropName() + "','"
-                    + crops.getPrice()+ "','"
-                    + crops.getQuantity()+ "'"
-                    + ")";
+            String sql = "INSERT INTO crops(crop_name, crop_image, price, quantity) VALUES(?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, crops.getCropName());
+            pst.setBinaryStream(2, crops.getCropImage(), crops.getFile().length());
+            pst.setDouble(3, crops.getPrice());
+            pst.setDouble(4, crops.getQuantity());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Success!");
+            JOptionPane.showMessageDialog(null, "Post Success!");
         }catch(Exception e){
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error");
         }
+        
     }
 
     @Override
