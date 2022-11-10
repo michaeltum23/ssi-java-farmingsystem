@@ -4,6 +4,9 @@
  */
 package farmingsystem.model;
 
+import java.io.File;
+import java.io.InputStream;
+
 /**
  *
  * @author MTUMANGAN
@@ -23,16 +26,29 @@ public class User {
     private String houseNo;
     private String streetAddress;
     private String cityAddress;
-    private byte profielImage;
+    private InputStream profielImage;
     private byte validId;
     private String email;
     private String userType;
     private Boolean active;
+    private File file;
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     public User() {
     }
 
-    public User(int id, String userId, String username, String password, String firstName, String middleName, String lastName, String gender, String birthDate, String contactNumber, String houseNo, String streetAddress, String cityAddress, byte profielImage, byte validId, String email, String userType, Boolean active) {
+    public User(int id, String userId, String username, String password, 
+            String firstName, String middleName, String lastName, String gender, 
+            String birthDate, String contactNumber, String houseNo, 
+            String streetAddress, String cityAddress, InputStream profielImage, 
+            byte validId, String email, String userType, Boolean active, File file) {
         this.id = id;
         this.userId = userId;
         this.username = username;
@@ -51,6 +67,7 @@ public class User {
         this.email = email;
         this.userType = userType;
         this.active = active;
+        this.file = file;
     }
 
     public int getId() {
@@ -157,11 +174,11 @@ public class User {
         this.cityAddress = cityAddress;
     }
 
-    public byte getProfielImage() {
+    public InputStream getProfielImage() {
         return profielImage;
     }
 
-    public void setProfielImage(byte profielImage) {
+    public void setProfielImage(InputStream profielImage) {
         this.profielImage = profielImage;
     }
 
