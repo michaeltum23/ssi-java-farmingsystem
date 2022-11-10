@@ -78,6 +78,12 @@ public class CropsForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Crop Quantity:");
 
+        textCname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textCnameActionPerformed(evt);
+            }
+        });
+
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +265,10 @@ public class CropsForm extends javax.swing.JFrame {
         textCqty.setText("");
         textCname.requestFocus();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void textCnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textCnameActionPerformed
 
     /**
      * @param args the command line arguments
