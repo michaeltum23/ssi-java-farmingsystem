@@ -90,52 +90,106 @@ public class UserImp implements UserController {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
+    
+    
+    @Override
+    public void update(User users) {
+        try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "UPDATE users SET username=?,password=?,first_name=?,middle_name=?,last_name=?,birthday=?,contact_number=?,house_no=?,street_address=?,city_address =?,email=? WHERE user_id=?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1,users.getUsername());
+            pst.setString(2, users.getPassword());
+            pst.setString(3, users.getFirstName());
+            pst.setString(4, users.getMiddleName());
+            pst.setString(5, users.getLastName()); 
+            pst.setString(6, users.getBirthDate());
+            pst.setString(7, users.getContactNumber());
+            pst.setString(8, users.getHouseNo());
+            pst.setString(9, users.getStreetAddress());
+            pst.setString(10, users.getCityAddress());
+            pst.setString(11, users.getEmail());
+            
+            pst.setString(12, users.getUserId());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "UPDATED!");
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+    @Override
+    public User get(String userId) {
+        User st = new User();
+        try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT * FROM users WHERE user_id=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                
+                st.setUserId(rs.getString("user_id"));
+                st.setUsername(rs.getString("username"));
+                st.setPassword(rs.getString("password"));
+                st.setFirstName(rs.getString("first_name"));
+                st.setMiddleName(rs.getString("middle_name"));
+                st.setLastName(rs.getString("last_name"));
+                st.setBirthDate(rs.getString("birthday"));
+                st.setContactNumber(rs.getString("contact_number"));
+                st.setHouseNo(rs.getString("house_no"));
+                st.setStreetAddress(rs.getString("street_address"));
+                st.setCityAddress(rs.getString("city_address"));
+                st.setEmail(rs.getString("email"));
+             
+                
+ 
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return st;
+    }
 
+    @Override
     public List<User> list() {
-     List<User> list = new ArrayList<>();
-      try {
+        
+        List<User> list = new ArrayList<User>();
+        try {
             Connection con = FarmingConnection.getConnection();
             String sql = "SELECT * FROM users ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
+           
             while(rs.next()){
-                User us = new User();
-                us.setId(rs.getInt("id"));
-                us.setUsername(rs.getString("username")); 
-                us.setPassword(rs.getString("password"));
-                
-                us.setFirstName(rs.getString("first_name"));
-                us.setMiddleName(rs.getString("middle_name"));
-                us.setLastName(rs.getString("last_name"));
-                us.setGender(rs.getString("gender"));
-                
-                us.setBirthDate(rs.getString("birthday"));
-                us.setContactNumber(rs.getString("contact_number"));
-                us.setHouseNo(rs.getString("house_no"));
-                us.setStreetAddress(rs.getString("street_address"));
-                us.setCityAddress(rs.getString("city_address"));
-                
-                // us.setProfielImage(rs.getByte("profile_image"));
-                
-                
-                us.setEmail(rs.getString("email"));
-                us.setUserType(rs.getString("user_type"));
-                us.setActive(rs.getBoolean("active"));
-                us.setUserId(rs.getString("user_id"));
-                                
-                 
-               
-               
-
+                User st = new User();
+                st.setUserId(rs.getString("user_id"));
+                st.setUsername(rs.getString("username"));
+                st.setPassword(rs.getString("password"));
+                st.setFirstName(rs.getString("first_name"));
+                st.setMiddleName(rs.getString("middle_name"));
+                st.setLastName(rs.getString("last_name"));
+                st.setBirthDate(rs.getString("birthday"));
+                st.setContactNumber(rs.getString("contact_number"));
+                st.setHouseNo(rs.getString("house_no"));
+                st.setStreetAddress(rs.getString("street_address"));
+                st.setCityAddress(rs.getString("city_address"));
+                st.setEmail(rs.getString("email"));
  
-                list.add(us);
-            }     
+                list.add(st);
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error");
         }
         return list;
+        
     }
+
+
+   
 
 }
