@@ -6,6 +6,7 @@ package farmingsystem.view;
 
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
+import farmingsystem.view.farmerdashboard;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,6 +126,14 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel6.setText("Don't have an Account?");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 140, -1));
 
+        jLabel1.setText("test admin view");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, -6, 580, 630));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -193,6 +203,11 @@ public class LoginForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnForgotPasswordMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        AdminForm fd = new AdminForm();
+        fd.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -232,6 +247,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel btnForgotPassword;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel btnSignUp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
