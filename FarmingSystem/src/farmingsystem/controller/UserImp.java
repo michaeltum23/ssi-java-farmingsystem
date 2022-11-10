@@ -45,44 +45,25 @@ public class UserImp implements UserController {
     public void register(User users) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO users("
-                    + "username, "
-                    + "password,"
-                    + "first_name,"
-                    + "middle_name,"
-                    + "last_name,"
-                    + "gender,"
-                    + "birthday,"
-                    + "contact_number,"
-                    + "house_no,"
-                    + "street_address,"
-                    + "city_address,"
-                    + "profile_image,"
-                    + "valid_id,"
-                    + "email,"
-                    + "user_type,"
-                    + "active,"
-                    + "user_id)"
-                    + "VALUES('"
-                    + users.getUsername() + "','"
-                    + users.getPassword()+ "','"
-                    + users.getFirstName()+ "','"
-                    + users.getMiddleName()+ "','"
-                    + users.getLastName()+ "','"
-                    + users.getGender()+ "','"
-                    + users.getBirthDate()+ "','"
-                    + users.getContactNumber()+ "','"
-                    + users.getHouseNo()+ "','"
-                    + users.getStreetAddress()+ "','"
-                    + users.getCityAddress()+ "','"
-                    + users.getProfielImage()+ "','"
-                    + users.getValidId()+ "','"
-                    + users.getEmail()+ "','"
-                    + users.getUserType()+ "','"
-                    + users.getActive()+ "','"
-                    + users.getUserId()+ "'"
-                    + ")";
+            String sql = "INSERT INTO users(username, password, first_name, middle_name, last_name, gender, birthday, contact_number, house_no, street_address, city_address, valid_id, email, user_type, active, user_id, profile_image) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, users.getUsername());
+            pst.setString(2, users.getPassword());
+            pst.setString(3, users.getFirstName());
+            pst.setString(4, users.getMiddleName());
+            pst.setString(5, users.getLastName());
+            pst.setString(6, users.getGender());
+            pst.setString(7, users.getBirthDate());
+            pst.setString(8, users.getContactNumber());
+            pst.setString(9, users.getHouseNo());
+            pst.setString(10, users.getStreetAddress());
+            pst.setString(11, users.getCityAddress());
+            pst.setBytes(12, null);
+            pst.setString(13, users.getEmail());
+            pst.setString(14, users.getUserType());
+            pst.setBoolean(15, users.getActive());
+            pst.setString(16, users.getUserId());
+            pst.setBinaryStream(17, users.getProfielImage(), users.getFile().length());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "REGISTERED!");
         }catch(Exception e){

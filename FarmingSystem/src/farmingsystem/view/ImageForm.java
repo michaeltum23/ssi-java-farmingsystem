@@ -168,7 +168,7 @@ public class ImageForm extends javax.swing.JFrame {
 
     public void load() {
         try {
-            byte[] imageData = rs.getBytes("image_byte");
+            byte[] imageData = rs.getBytes("profile_image");
             format = new ImageIcon(imageData);
             Image mm = format.getImage();
             Image img2 = mm.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -183,7 +183,7 @@ public class ImageForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             con = FarmingConnection.getConnection();
-            pst = con.prepareStatement("SELECT * FROM images WHERE id=1");
+            pst = con.prepareStatement("SELECT * FROM users WHERE id=51");
             rs = pst.executeQuery();
 
             if (rs.next()) {
