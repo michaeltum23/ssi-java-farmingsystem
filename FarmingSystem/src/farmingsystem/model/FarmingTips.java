@@ -14,6 +14,7 @@ public class FarmingTips {
     private String content;
 
     public FarmingTips() {
+        
     }
 
     public FarmingTips(int id, String title, String content) {

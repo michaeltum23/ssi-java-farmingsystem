@@ -13,6 +13,7 @@ public interface FarmingtipsController {
     public void addTips(FarmingTips tips);
     public void updateTips(FarmingTips tips);
     public void deleteTips (FarmingTips tips);
+    
     public FarmingTips get(int id);
     public List<FarmingTips>list();
 }

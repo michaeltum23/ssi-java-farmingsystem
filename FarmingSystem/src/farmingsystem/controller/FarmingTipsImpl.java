@@ -21,6 +21,7 @@ public class FarmingTipsImpl implements FarmingtipsController {
 
     @Override
     public void addTips(FarmingTips tips) {
+        System.out.println("");
         try {
             Connection con = FarmingConnection.getConnection();
             String sql = "INSERT INTO tips("
