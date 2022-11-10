@@ -177,6 +177,7 @@ public class UserImp implements UserController {
                 st.setStreetAddress(rs.getString("street_address"));
                 st.setCityAddress(rs.getString("city_address"));
                 st.setEmail(rs.getString("email"));
+                st.setUserType(rs.getString("user_type"));
  
                 list.add(st);
             }
