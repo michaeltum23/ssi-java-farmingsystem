@@ -14,7 +14,7 @@ import java.io.InputStream;
 public class Crops {
     
     private int id;
-//    private User userID;
+    private int userID;
     private String cropName;
     private double price;
     private double quantity;
@@ -25,8 +25,9 @@ public class Crops {
         
     }
 
-    public Crops(int id, String cropName, double price, double quantity, InputStream cropImage, File file) {
+    public Crops(int id, int userID, String cropName, double price, double quantity, InputStream cropImage, File file) {
         this.id = id;
+        this.userID = userID;
         this.cropName = cropName;
         this.price = price;
         this.quantity = quantity;
@@ -40,6 +41,14 @@ public class Crops {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getCropName() {
