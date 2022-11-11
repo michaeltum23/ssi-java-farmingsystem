@@ -9,13 +9,13 @@ package farmingsystem.model;
  * @author FPALES
  */
 public class Offer {
-    private int offerId;
+    private int offerId; // primary key
     // offer Id
-    private int userId;
+    private int userId; // foreign key
     // userId
-    private int advertisementId;
+    private int advertisementId; // fk
     // advertisementId
-    private double priceOffer;
+    private double priceOffer; // double
     
     public Offer(){
         //

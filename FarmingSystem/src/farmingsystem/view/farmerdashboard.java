@@ -454,8 +454,8 @@ public class farmerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel8MouseExited
 
     private void dashAdsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashAdsMouseClicked
-        AdminForm adForm = new AdminForm();
-        adForm.setVisible(true);
+//        AdminForm adForm = new AdminForm();
+//        adForm.setVisible(true);
     }//GEN-LAST:event_dashAdsMouseClicked
 
     /**

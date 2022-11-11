@@ -204,8 +204,8 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnForgotPasswordMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        AdminForm fd = new AdminForm();
-        fd.setVisible(true);
+//        AdminForm fd = new AdminForm();
+//        fd.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
