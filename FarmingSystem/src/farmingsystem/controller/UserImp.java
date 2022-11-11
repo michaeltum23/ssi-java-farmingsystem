@@ -139,6 +139,7 @@ public class UserImp implements UserController {
             while (rs.next()) {
                 count = rs.getInt("count_user");
             }
+
         } catch (Exception ex) {
             System.out.println(ex);
         }
