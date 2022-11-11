@@ -7,6 +7,7 @@ package farmingsystem.view;
 import farmingsystem.controller.AdvertisementImpl;
 import farmingsystem.model.Advertisement;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -110,7 +111,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textdateneeded, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textCname, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,12 +155,15 @@ public class AdvertisementForm extends javax.swing.JFrame {
         DFT.setRowCount(0);
         for(Advertisement ads: list)
         {
+            // add button here for action to include the make offer
+          //  JButton action = new JButton();
             int sid = ads.getId();
             String cropname = ads.getCropName();
             double quantityNeeded = ads.getQuantityNeeded();
             String date = ads.getDate();
             String status = ads.getStatus();
             DFT.addRow(new Object[]{sid,cropname,quantityNeeded,date,status});
+            // insert under the dft.addRow the action and input manually the jbutton for make an offer and add to cart
         }    
   
     }
