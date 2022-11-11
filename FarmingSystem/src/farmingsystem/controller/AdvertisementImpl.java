@@ -24,12 +24,13 @@ public class AdvertisementImpl implements AdvertisementController{
     public void postAds(Advertisement ads) {
         try {
             Connection con =  FarmingConnection.getConnection();
-            String sql = "INSERT INTO advertisement(crop_name,quantity_needed,date_needed,status) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO advertisement(user_id,crop_name,quantity_needed,date_needed,status) VALUES (?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, ads.getCropName());
-            ps.setDouble(2, ads.getQuantityNeeded());
-            ps.setString(3, ads.getDate());          
-            ps.setString(4,ads.getStatus());
+            ps.setInt(1, ads.getUserID());
+            ps.setString(2, ads.getCropName());
+            ps.setDouble(3, ads.getQuantityNeeded());
+            ps.setString(4, ads.getDate());          
+            ps.setString(5,ads.getStatus());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Successfully Post!");
         } catch (Exception e) {
@@ -50,6 +51,7 @@ public class AdvertisementImpl implements AdvertisementController{
             while(rs.next()){
                 Advertisement ads = new Advertisement();
                 ads.setId(rs.getInt("id"));
+                ads.setUserID(rs.getInt("user_id"));
                 ads.setCropName(rs.getString("crop_name"));
                 ads.setQuantityNeeded(rs.getDouble("quantity_needed"));                
                 ads.setDate(rs.getString("date_needed"));
@@ -63,6 +65,34 @@ public class AdvertisementImpl implements AdvertisementController{
             JOptionPane.showMessageDialog(null, "Error");
         }
         return list;
+    }
+
+    @Override
+    public Advertisement get(int AdvertisementId) {
+        Advertisement st = new Advertisement();
+        try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT * FROM advertisement WHERE id=?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, AdvertisementId);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                
+                st.setId(rs.getInt("id"));
+                st.setCropName(rs.getString("crop_name"));
+                st.setQuantityNeeded(rs.getDouble("quantity_needed"));                
+                st.setDate(rs.getString("date_needed"));
+                st.setStatus(rs.getString("status"));
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return st;
+    
     }
     
 }
