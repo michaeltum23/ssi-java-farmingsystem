@@ -23,12 +23,13 @@ public class CropsImpl implements CropsController{
     public void addCrops(Crops crops) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO crops(crop_name, crop_image, price, quantity) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO crops(user_id,crop_name, crop_image, price, quantity) VALUES(?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, crops.getCropName());
-            pst.setBinaryStream(2, crops.getCropImage(), crops.getFile().length());
-            pst.setDouble(3, crops.getPrice());
-            pst.setDouble(4, crops.getQuantity());
+            pst.setInt(1, crops.getUserID());
+            pst.setString(2, crops.getCropName());
+            pst.setBinaryStream(3, crops.getCropImage(), crops.getFile().length());
+            pst.setDouble(4, crops.getPrice());
+            pst.setDouble(5, crops.getQuantity());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Post Success!");
         }catch(Exception e){
@@ -111,6 +112,7 @@ public class CropsImpl implements CropsController{
             while(rs.next()){
                 Crops st = new Crops();
                 st.setId(rs.getInt("id"));
+                st.setUserID(rs.getInt("user_id"));
                 st.setCropName(rs.getString("crop_name"));
                 st.setPrice(rs.getDouble("price"));
                 st.setQuantity(rs.getDouble("quantity"));
