@@ -10,9 +10,8 @@ package farmingsystem.model;
  */
 public class Advertisement {
     private int id;
-//    private User userID;
+    private int userID;
     private String cropName;
-//    private String cropImage;
     private double quantityNeeded;
     private String date;
 //    private List Offer;//object variable
@@ -22,13 +21,15 @@ public class Advertisement {
         
     }
 
-    public Advertisement(int id, String cropName, double quantityNeeded, String date, String status) {
+    public Advertisement(int id, int userID, String cropName, double quantityNeeded, String date, String status) {
         this.id = id;
+        this.userID = userID;
         this.cropName = cropName;
         this.quantityNeeded = quantityNeeded;
         this.date = date;
         this.status = status;
     }
+    
 
     public int getId() {
         return id;
@@ -36,6 +37,14 @@ public class Advertisement {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getCropName() {
@@ -69,6 +78,8 @@ public class Advertisement {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    
     
     
 }
