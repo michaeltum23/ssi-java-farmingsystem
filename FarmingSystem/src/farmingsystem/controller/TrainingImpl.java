@@ -5,7 +5,7 @@
 package farmingsystem.controller;
 
 import farmingsystem.FarmingConnection;
-import farmingsystem.model.Crops;
+import farmingsystem.model.Training;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,38 +17,41 @@ import javax.swing.JOptionPane;
  *
  * @author jtamayo
  */
-public class CropsImpl implements CropsController{
+public class TrainingImpl implements TrainingController{
 
     @Override
-    public void addCrops(Crops crops) {
+    public void addTraining(Training training) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO crops(crop_name, crop_image, price, quantity) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO training(title,description,schedule_date,schedule_time,training_image,status) VALUES(?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, crops.getCropName());
-            pst.setBinaryStream(2, crops.getCropImage(), crops.getFile().length());
-            pst.setDouble(3, crops.getPrice());
-            pst.setDouble(4, crops.getQuantity());
+            pst.setString(1, training.getTitle());
+            pst.setString(2, training.getDescription());
+            pst.setString(3, training.getScheduleDate());
+            pst.setString(4, training.getSchedulteTime());
+            pst.setBinaryStream(5, training.getTrainingImage(), training.getFile().length());
+            pst.setString(6, training.getStatus());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Post Success!");
         }catch(Exception e){
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error");
         }
-        
     }
 
     @Override
-    public void updateCrops(Crops crops) {
+    public void updateTraining(Training training) {
         try {
           
             Connection con = FarmingConnection.getConnection();
-            String sql = "UPDATE crops SET crop_name=?,price=?,quantity=? WHERE id=?";
+            String sql = "UPDATE training SET title=?,description=?,schedule_date=?,schedule_time=?,status=? WHERE id=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, crops.getCropName());
-            ps.setDouble(2, crops.getPrice());
-            ps.setDouble(3, crops.getQuantity());
-            ps.setInt(4, crops.getId());
+            ps.setString(1, training.getTitle());
+            ps.setString(2, training.getDescription());
+            ps.setString(3, training.getScheduleDate());
+            ps.setString(4, training.getSchedulteTime());
+            ps.setString(5, training.getStatus());   
+            ps.setInt(6, training.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Updated!");
         } catch (Exception e) {
@@ -58,15 +61,15 @@ public class CropsImpl implements CropsController{
     }
 
     @Override
-    public void deleteCrops(Crops crops) {
+    public void deleteTraining(Training training) {
         try {
           
             Connection con = FarmingConnection.getConnection();
-            String sql = "DELETE from crops  WHERE id=?";
+            String sql = "DELETE from training  WHERE id=?";
             PreparedStatement ps = con.prepareStatement(sql);  
-            ps.setInt(1, crops.getId());
+            ps.setInt(1, training.getId());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Deleteddd!");
+            JOptionPane.showMessageDialog(null, "Deleted!");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error");
@@ -74,21 +77,24 @@ public class CropsImpl implements CropsController{
     }
 
     @Override
-    public Crops get(int id) {
-        Crops st = new Crops();
+    public Training get(int id) {
+        Training st = new Training();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM crops WHERE id=?";
+            String sql = "SELECT * FROM training WHERE id=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 
                 st.setId(rs.getInt("id"));
-                st.setCropName(rs.getString("crop_name"));
-                st.setPrice(rs.getDouble("price"));
-                st.setQuantity(rs.getDouble("quantity"));
- 
+                st.setTitle(rs.getString("title"));
+                st.setDescription(rs.getString("description"));
+                st.setScheduleDate(rs.getString("schedule_date"));
+                st.setSchedulteTime(rs.getString("schedule_time"));
+                st.setStatus(rs.getString("status"));
+                
+                
             }
             
         } catch (Exception e) {
@@ -96,26 +102,29 @@ public class CropsImpl implements CropsController{
             JOptionPane.showMessageDialog(null, "Error");
         }
         return st;
+    
     }
 
     @Override
-    public List<Crops> list() {
-        
-        List<Crops> list = new ArrayList<Crops>();
+    public List<Training> list() {
+        List<Training> list = new ArrayList<Training>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM crops ";
+            String sql = "SELECT * FROM training ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
            
             while(rs.next()){
-                Crops st = new Crops();
-                st.setId(rs.getInt("id"));
-                st.setCropName(rs.getString("crop_name"));
-                st.setPrice(rs.getDouble("price"));
-                st.setQuantity(rs.getDouble("quantity"));
+                Training tr = new Training();
+                tr.setId(rs.getInt("id"));
+                tr.setTitle(rs.getString("title"));
+                tr.setDescription(rs.getString("description"));
+                tr.setScheduleDate(rs.getString("schedule_date"));
+                tr.setSchedulteTime(rs.getString("schedule_time"));
+                tr.setStatus(rs.getString("status"));
+
  
-                list.add(st);
+                list.add(tr);
             }
             
         } catch (Exception e) {
@@ -123,9 +132,7 @@ public class CropsImpl implements CropsController{
             JOptionPane.showMessageDialog(null, "Error");
         }
         return list;
-        
-    }
-
     
+    }
     
 }

@@ -66,6 +66,7 @@ public class CropsForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        textCname = new javax.swing.JTextField();
         textCprice = new javax.swing.JTextField();
         textCqty = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
@@ -76,10 +77,10 @@ public class CropsForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        btnUpdate1 = new javax.swing.JButton();
+        btnUpload = new javax.swing.JButton();
         lblFilePath = new javax.swing.JLabel();
         cropImage = new javax.swing.JLabel();
-        textCname = new javax.swing.JTextField();
+        textCname1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,10 +154,10 @@ public class CropsForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Crop Image:");
 
-        btnUpdate1.setText("Upload");
-        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+        btnUpload.setText("Upload");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdate1ActionPerformed(evt);
+                btnUploadActionPerformed(evt);
             }
         });
 
@@ -192,7 +193,7 @@ public class CropsForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnUpdate1)
+                                .addComponent(btnUpload)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(textCqty, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +220,7 @@ public class CropsForm extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnUpdate1)
+                        .addComponent(btnUpload)
                         .addComponent(jLabel4))
                     .addComponent(lblFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -318,7 +319,7 @@ public class CropsForm extends javax.swing.JFrame {
         textCname.requestFocus();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Image Type", "png", "jpg", "jpeg");
         fileChooser.addChoosableFileFilter(fileFilter);
@@ -334,7 +335,7 @@ public class CropsForm extends javax.swing.JFrame {
             cropImage.setText("");
             cropImage.setIcon(new ImageIcon(img));
         }
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
+    }//GEN-LAST:event_btnUploadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,7 +377,7 @@ public class CropsForm extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btnUpdate1;
+    private javax.swing.JButton btnUpload;
     private javax.swing.JLabel cropImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -387,6 +388,7 @@ public class CropsForm extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFilePath;
     private javax.swing.JTextField textCname;
+    private javax.swing.JTextField textCname1;
     private javax.swing.JTextField textCprice;
     private javax.swing.JTextField textCqty;
     // End of variables declaration//GEN-END:variables
