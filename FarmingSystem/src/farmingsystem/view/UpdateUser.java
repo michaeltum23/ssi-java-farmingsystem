@@ -54,8 +54,6 @@ public class UpdateUser extends javax.swing.JFrame {
             String userType= users.getUserType();
             
             DFT.addRow(new Object[]{sid,username,password,firstName,middleName,lastName,birthDate,contactNumber,houseNo,streetAddress,cityAddress,email,userType});
-//                    
-              
         }    
   
     }
