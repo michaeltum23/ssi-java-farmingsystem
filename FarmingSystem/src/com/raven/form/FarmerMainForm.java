@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 
-public class MainForm_1 extends javax.swing.JPanel {
+public class FarmerMainForm extends javax.swing.JPanel {
 
-    public MainForm_1() {
+    public FarmerMainForm() {
         initComponents();
         setOpaque(false);
         setLayout(new BorderLayout());

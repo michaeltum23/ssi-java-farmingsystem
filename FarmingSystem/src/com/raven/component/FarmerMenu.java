@@ -16,7 +16,7 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
 
-public class Menu extends javax.swing.JPanel {
+public class FarmerMenu extends javax.swing.JPanel {
 
     public boolean isShowMenu() {
         return showMenu;
@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JPanel {
     private boolean enableMenu = true;
     private boolean showMenu = true;
 
-    public Menu() {
+    public FarmerMenu() {
         initComponents();
         setOpaque(false);
         sp.getViewport().setOpaque(false);
@@ -55,16 +55,17 @@ public class Menu extends javax.swing.JPanel {
 
     public void initMenuItem() {
 
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Dashboard"));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/ads.png")), "Advertisement"));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/order.png")), "OrderTracker"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/course.png")), "Course"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/complaints.png")), "Complaints"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farming.png")), "FarmingTips"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/blogs.png")), "Blogs"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/admin.png")), "Admin"));
-      addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/supplier.png")), "Supplier"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farmer.png")), "Farmer"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Dashboard"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/ads.png")), "Advertisement"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/order.png")), "Transaction"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/course.png")), "Farming Tips/ Training"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/complaints.png")), "Products/Crops"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farming.png")), "Complaints"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/blogs.png")), "My Profile"));
+       
+      addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
          addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
@@ -116,11 +117,10 @@ public class Menu extends javax.swing.JPanel {
 
         sp = new javax.swing.JScrollPane();
         panel = new javax.swing.JPanel();
-        profile1 = new com.raven.component.Profile();
+        profile1 = new com.raven.component.FarmerProfile();
 
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        sp.setViewportBorder(null);
 
         panel.setOpaque(false);
 
@@ -149,7 +149,7 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
+                .addComponent(sp))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,7 +167,7 @@ public class Menu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panel;
-    private com.raven.component.Profile profile1;
+    private com.raven.component.FarmerProfile profile1;
     private javax.swing.JScrollPane sp;
     // End of variables declaration//GEN-END:variables
 }
