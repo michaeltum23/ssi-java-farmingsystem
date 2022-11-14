@@ -1,7 +1,7 @@
 package com.raven.form;
 
 import com.raven.dialog.Message;
-import com.raven.main.Main;
+import com.raven.main.FarmerMain;
 import com.raven.model.ModelCard;
 import com.raven.model.ModelStudent;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
@@ -86,7 +86,7 @@ public class FarmingTips extends javax.swing.JPanel {
     }
 
     private boolean showMessage(String message) {
-        Message obj = new Message(Main.getFrames()[0], true);
+        Message obj = new Message(FarmerMain.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
@@ -95,11 +95,11 @@ public class FarmingTips extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        card1 = new com.raven.component.Card();
+        card1 = new com.raven.component.FarmerCard();
         jLabel1 = new javax.swing.JLabel();
-        card2 = new com.raven.component.Card();
-        card3 = new com.raven.component.Card();
-        card4 = new com.raven.component.Card();
+        card2 = new com.raven.component.FarmerCard();
+        card3 = new com.raven.component.FarmerCard();
+        card4 = new com.raven.component.FarmerCard();
         jPanel1 = new javax.swing.JPanel();
         noticeBoard = new com.raven.swing.noticeboard.NoticeBoard();
         jLabel2 = new javax.swing.JLabel();
@@ -129,7 +129,7 @@ public class FarmingTips extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel2.setText("Admin History");
+        jLabel2.setText("FarmingTips History");
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -172,7 +172,7 @@ public class FarmingTips extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel5.setText("Data Admin");
+        jLabel5.setText("Data FarmingTips");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -263,10 +263,10 @@ public class FarmingTips extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.component.Card card1;
-    private com.raven.component.Card card2;
-    private com.raven.component.Card card3;
-    private com.raven.component.Card card4;
+    private com.raven.component.FarmerCard card1;
+    private com.raven.component.FarmerCard card2;
+    private com.raven.component.FarmerCard card3;
+    private com.raven.component.FarmerCard card4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

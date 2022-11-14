@@ -37,10 +37,6 @@
           <Border info="null"/>
         </Property>
         <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
-
-      //  <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-      //    <Border info="null"/>
-      //  </Property>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -65,7 +61,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="com.raven.component.Profile" name="profile1">
+    <Component class="com.raven.component.FarmerProfile" name="profile1">
     </Component>
   </SubComponents>
 </Form>

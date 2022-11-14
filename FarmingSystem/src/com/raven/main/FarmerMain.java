@@ -1,22 +1,21 @@
 package com.raven.main;
 
-import com.raven.component.Header;
-import com.raven.component.Menu;
+import com.raven.component.FarmerHeader;
+import com.raven.component.FarmerMenu;
+
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
 
-import com.raven.form.Admin;
-import com.raven.form.Advertisement;
-import com.raven.form.Blogs;
-import com.raven.form.Complaints;
-import com.raven.form.Course;
-import com.raven.form.Farmer;
+
+import com.raven.form.FarmerAdvertisement;
+import com.raven.form.FarmerProducts;
+import com.raven.form.FarmerComplaints;
 import com.raven.form.FarmingTips;
-import com.raven.form.Form1;
-import com.raven.form.Form_Home;
-import com.raven.form.MainForm;
-import com.raven.form.OrderTracker;
-import com.raven.form.Supplier;
+import com.raven.form.FarmerForm_Home;
+import com.raven.form.FarmerMainForm;
+import com.raven.form.FarmerProfile;
+import com.raven.form.FarmerTransaction;
+
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -30,15 +29,15 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class Main extends javax.swing.JFrame {
+public class FarmerMain extends javax.swing.JFrame {
 
     private MigLayout layout;
-    private Menu menu;
-    private Header header;
-    private MainForm main;
+    private FarmerMenu menu;
+    private FarmerHeader header;
+    private FarmerMainForm main;
     private Animator animator;
 
-    public Main() {
+    public FarmerMain() {
         initComponents();
         init();
     }
@@ -46,76 +45,56 @@ public class Main extends javax.swing.JFrame {
     private void init() {
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         bg.setLayout(layout);
-        menu = new Menu();
-        header = new Header();
-        main = new MainForm();
+        menu = new FarmerMenu();
+        header = new FarmerHeader();
+        main = new FarmerMainForm();
         menu.addEvent(new EventMenuSelected() {
             @Override
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
 
-                      main.showForm(new Form_Home());
-//                    if (subMenuIndex == 0) {
-//                        main.showForm(new Form_Home());
-//                    } else if (subMenuIndex == 1) {
-//                        main.showForm(new Form1());
-//                    }
+                      main.showForm(new FarmerForm_Home());
                 }
                 
                  if (menuIndex == 1) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Advertisement());
+                        main.showForm(new FarmerAdvertisement());
                        } 
                      }
                  
                   if (menuIndex == 2) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new OrderTracker());
+                        main.showForm(new FarmerTransaction());
                        } 
                      }
                     
                     if (menuIndex == 3) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Course());
+                        main.showForm(new FarmingTips());
                        } 
                      }
                     
                     if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Complaints());
+                        main.showForm(new FarmerProducts());
                        } 
                      }
                     
                     if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new FarmingTips());
+                        main.showForm(new FarmerComplaints());
                        } 
                      }
                     
                     if (menuIndex == 6) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Blogs());
+                        main.showForm(new FarmerProfile());
                        } 
                      }
                     
-                    if (menuIndex == 7) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Admin());
-                       } 
-                     }
-                    
-                    if (menuIndex == 8) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Supplier());
-                       } 
-                     }
-                    
-                    if (menuIndex == 9) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Farmer());
-                       } 
-                     }
+                 
+                   
                     
                     if (menuIndex == 16) {
                     if (subMenuIndex == -1) {
@@ -132,9 +111,9 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void showPopup(Component com) {
                 MenuItem item = (MenuItem) com;
-                PopupMenu popup = new PopupMenu(Main.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
-                int x = Main.this.getX() + 52;
-                int y = Main.this.getY() + com.getY() + 86;
+                PopupMenu popup = new PopupMenu(FarmerMain.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
+                int x = FarmerMain.this.getX() + 52;
+                int y = FarmerMain.this.getY() + com.getY() + 86;
                 popup.setLocation(x, y);
                 popup.setVisible(true);
             }
@@ -182,7 +161,7 @@ public class Main extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new Form_Home());
+        main.showForm(new FarmerForm_Home());
     }
 
     @SuppressWarnings("unchecked")
@@ -237,21 +216,22 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FarmerMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FarmerMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FarmerMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FarmerMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Main().setVisible(true);
+                new FarmerMain().setVisible(true);
             }
         });
     }

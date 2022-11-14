@@ -65,7 +65,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.raven.component.Card" name="card1">
+    <Component class="com.raven.component.FarmerCard" name="card1">
       <Properties>
         <Property name="colorGradient" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d7" green="1c" red="d3" type="rgb"/>
@@ -80,10 +80,10 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d2" green="48" red="4" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dashboard / Farmer"/>
+        <Property name="text" type="java.lang.String" value="Dashboard / Products"/>
       </Properties>
     </Component>
-    <Component class="com.raven.component.Card" name="card2">
+    <Component class="com.raven.component.FarmerCard" name="card2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d6" green="1e" red="a" type="rgb"/>
@@ -93,7 +93,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="com.raven.component.Card" name="card3">
+    <Component class="com.raven.component.FarmerCard" name="card3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1" green="55" red="c2" type="rgb"/>
@@ -103,7 +103,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="com.raven.component.Card" name="card4">
+    <Component class="com.raven.component.FarmerCard" name="card4">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="c3" red="3c" type="rgb"/>
@@ -166,7 +166,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4c" green="4c" red="4c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Farmer History"/>
+            <Property name="text" type="java.lang.String" value="Products History"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="1" left="10" right="1" top="1"/>
@@ -241,7 +241,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4c" green="4c" red="4c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Data Farmer"/>
+            <Property name="text" type="java.lang.String" value="Data Products"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="1" left="10" right="1" top="1"/>

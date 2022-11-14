@@ -1,24 +1,20 @@
 package com.raven.form;
 
 import com.raven.dialog.Message;
-import com.raven.main.Main;
+import com.raven.main.FarmerMain;
 import com.raven.model.ModelCard;
 import com.raven.model.ModelStudent;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
 import com.raven.swing.icon.IconFontSwing;
 import com.raven.swing.noticeboard.ModelNoticeBoard;
 import com.raven.swing.table.EventAction;
-import farmingsystem.controller.UserImp;
-import farmingsystem.model.User;
 import java.awt.Color;
-import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.table.DefaultTableModel;
 
-public class Form_Home extends javax.swing.JPanel {
+public class FarmerProfile extends javax.swing.JPanel {
 
-    public Form_Home() {
+    public FarmerProfile() {
         initComponents();
         table1.fixTable(jScrollPane1);
         setOpaque(false);
@@ -51,25 +47,12 @@ public class Form_Home extends javax.swing.JPanel {
                 }
             }
         };
-        UserImp user = new UserImp();
-        List<User> list = user.list();
-        for (User users : list) {
-            String fullName = users.getLastName() + "," + users.getFirstName();
-            String userType = users.getUserType();
-            String email = users.getEmail();
-            Boolean active = users.getActive();
-           
-
-            table1.addRow(new Object[]{fullName, userType, email, active});
-
-        }
-        //  table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
-    }
+        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Kevin", "Male", "Farmer", 300).toRowTable(eventAction));
+       }
 
     private void initCardData() {
-        UserImp ui = new UserImp();
         Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card1.setData(new ModelCard("Users", ui.countUser(), 20, icon1));
+        card1.setData(new ModelCard("Profile", 5100, 20, icon1));
         Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.MONETIZATION_ON, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
         card2.setData(new ModelCard("Income", 2000, 60, icon2));
         Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.SHOPPING_BASKET, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
@@ -91,7 +74,7 @@ public class Form_Home extends javax.swing.JPanel {
     }
 
     private boolean showMessage(String message) {
-        Message obj = new Message(Main.getFrames()[0], true);
+        Message obj = new Message(FarmerMain.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
@@ -100,11 +83,11 @@ public class Form_Home extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        card1 = new com.raven.component.Card();
+        card1 = new com.raven.component.FarmerCard();
         jLabel1 = new javax.swing.JLabel();
-        card2 = new com.raven.component.Card();
-        card3 = new com.raven.component.Card();
-        card4 = new com.raven.component.Card();
+        card2 = new com.raven.component.FarmerCard();
+        card3 = new com.raven.component.FarmerCard();
+        card4 = new com.raven.component.FarmerCard();
         jPanel1 = new javax.swing.JPanel();
         noticeBoard = new com.raven.swing.noticeboard.NoticeBoard();
         jLabel2 = new javax.swing.JLabel();
@@ -119,7 +102,7 @@ public class Form_Home extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
-        jLabel1.setText("Dashboard / Home");
+        jLabel1.setText("Dashboard / Profile");
 
         card2.setBackground(new java.awt.Color(10, 30, 214));
         card2.setColorGradient(new java.awt.Color(72, 111, 252));
@@ -134,7 +117,7 @@ public class Form_Home extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel2.setText("Notice Board");
+        jLabel2.setText("Profile History");
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -177,7 +160,7 @@ public class Form_Home extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel5.setText("Users Data");
+        jLabel5.setText("My Profile");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -185,19 +168,12 @@ public class Form_Home extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Role", "Email", "Active", "Action"
+                "Name", "Gender", "Course", "Fees", "Action"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, true
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -275,10 +251,10 @@ public class Form_Home extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.component.Card card1;
-    private com.raven.component.Card card2;
-    private com.raven.component.Card card3;
-    private com.raven.component.Card card4;
+    private com.raven.component.FarmerCard card1;
+    private com.raven.component.FarmerCard card2;
+    private com.raven.component.FarmerCard card3;
+    private com.raven.component.FarmerCard card4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
