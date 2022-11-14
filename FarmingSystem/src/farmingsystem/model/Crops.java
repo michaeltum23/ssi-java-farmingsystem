@@ -6,6 +6,7 @@ package farmingsystem.model;
 
 import java.io.File;
 import java.io.InputStream;
+import javax.swing.Icon;
 
 /**
  *
@@ -20,12 +21,13 @@ public class Crops {
     private double quantity;
     private InputStream cropImage;
     private File file;
+    private byte[] cropImageData;
     
     public Crops(){
         
     }
 
-    public Crops(int id, int userID, String cropName, double price, double quantity, InputStream cropImage, File file) {
+    public Crops(int id, int userID, String cropName, double price, double quantity, InputStream cropImage, File file, byte[] cropImageData) {
         this.id = id;
         this.userID = userID;
         this.cropName = cropName;
@@ -33,6 +35,7 @@ public class Crops {
         this.quantity = quantity;
         this.cropImage = cropImage;
         this.file = file;
+        this.cropImageData = cropImageData;
     }
 
     public int getId() {
@@ -90,9 +93,13 @@ public class Crops {
     public void setFile(File file) {
         this.file = file;
     }
-    
-    
-    
-        
+
+    public byte[] getCropImageData() {
+        return cropImageData;
+    }
+
+    public void setCropImageData(byte[] cropImageData) {
+        this.cropImageData = cropImageData;
+    }
     
 }

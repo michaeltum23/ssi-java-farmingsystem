@@ -89,6 +89,7 @@ public class CropsImpl implements CropsController{
                 st.setCropName(rs.getString("crop_name"));
                 st.setPrice(rs.getDouble("price"));
                 st.setQuantity(rs.getDouble("quantity"));
+                st.setCropImageData(rs.getBytes("crop_image"));
  
             }
             
@@ -116,6 +117,7 @@ public class CropsImpl implements CropsController{
                 st.setCropName(rs.getString("crop_name"));
                 st.setPrice(rs.getDouble("price"));
                 st.setQuantity(rs.getDouble("quantity"));
+                st.setCropImageData(rs.getBytes("crop_image"));
  
                 list.add(st);
             }
