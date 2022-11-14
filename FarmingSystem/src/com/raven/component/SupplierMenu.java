@@ -16,7 +16,7 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
 
-public class Menu extends javax.swing.JPanel {
+public class SupplierMenu extends javax.swing.JPanel {
 
     public boolean isShowMenu() {
         return showMenu;
@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JPanel {
     private boolean enableMenu = true;
     private boolean showMenu = true;
 
-    public Menu() {
+    public SupplierMenu() {
         initComponents();
         setOpaque(false);
         sp.getViewport().setOpaque(false);
@@ -54,24 +54,23 @@ public class Menu extends javax.swing.JPanel {
     }
 
     public void initMenuItem() {
-
+        
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Dashboard"));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/ads.png")), "Advertisement"));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/order.png")), "OrderTracker"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/course.png")), "Course"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/complaints.png")), "Complaints"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farming.png")), "FarmingTips"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/blogs.png")), "Blogs"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/admin.png")), "Admin"));
-      addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/supplier.png")), "Supplier"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farmer.png")), "Farmer"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/ads.png")), "Advertisement"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/order.png")), "Transactioin"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/complaints.png")), "Complaints"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/blogs.png")), "My Profile"));
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-          addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));  
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/Logout.png")), "Logout"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));  
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/Logout.png")), "Logout"));
 
     }
 
@@ -116,11 +115,12 @@ public class Menu extends javax.swing.JPanel {
 
         sp = new javax.swing.JScrollPane();
         panel = new javax.swing.JPanel();
-        profile1 = new com.raven.component.Profile();
+        supplierProfile1 = new com.raven.component.SupplierProfile();
+
+        setPreferredSize(new java.awt.Dimension(230, 619));
 
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        sp.setViewportBorder(null);
 
         panel.setOpaque(false);
 
@@ -137,19 +137,21 @@ public class Menu extends javax.swing.JPanel {
 
         sp.setViewportView(panel);
 
+        supplierProfile1.setPreferredSize(new java.awt.Dimension(300, 90));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-            .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(supplierProfile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(supplierProfile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
+                .addComponent(sp))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,7 +169,7 @@ public class Menu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panel;
-    private com.raven.component.Profile profile1;
     private javax.swing.JScrollPane sp;
+    private com.raven.component.SupplierProfile supplierProfile1;
     // End of variables declaration//GEN-END:variables
 }

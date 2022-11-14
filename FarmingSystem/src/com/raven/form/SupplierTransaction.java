@@ -1,7 +1,7 @@
 package com.raven.form;
 
 import com.raven.dialog.Message;
-import com.raven.main.Main;
+import com.raven.main.SupplierMain;
 import com.raven.model.ModelCard;
 import com.raven.model.ModelStudent;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
@@ -12,9 +12,9 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class OrderTracker extends javax.swing.JPanel {
+public class SupplierTransaction extends javax.swing.JPanel {
 
-    public OrderTracker() {
+    public SupplierTransaction() {
         initComponents();
         table1.fixTable(jScrollPane1);
         setOpaque(false);
@@ -86,7 +86,7 @@ public class OrderTracker extends javax.swing.JPanel {
     }
 
     private boolean showMessage(String message) {
-        Message obj = new Message(Main.getFrames()[0], true);
+        Message obj = new Message(SupplierMain.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
@@ -95,11 +95,11 @@ public class OrderTracker extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        card1 = new com.raven.component.Card();
+        card1 = new com.raven.component.SupplierCard();
         jLabel1 = new javax.swing.JLabel();
-        card2 = new com.raven.component.Card();
-        card3 = new com.raven.component.Card();
-        card4 = new com.raven.component.Card();
+        card2 = new com.raven.component.SupplierCard();
+        card3 = new com.raven.component.SupplierCard();
+        card4 = new com.raven.component.SupplierCard();
         jPanel1 = new javax.swing.JPanel();
         noticeBoard = new com.raven.swing.noticeboard.NoticeBoard();
         jLabel2 = new javax.swing.JLabel();
@@ -114,7 +114,7 @@ public class OrderTracker extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
-        jLabel1.setText("Dashboard / OrderTracker");
+        jLabel1.setText("Dashboard / Transaction");
 
         card2.setBackground(new java.awt.Color(10, 30, 214));
         card2.setColorGradient(new java.awt.Color(72, 111, 252));
@@ -263,10 +263,10 @@ public class OrderTracker extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.component.Card card1;
-    private com.raven.component.Card card2;
-    private com.raven.component.Card card3;
-    private com.raven.component.Card card4;
+    private com.raven.component.SupplierCard card1;
+    private com.raven.component.SupplierCard card2;
+    private com.raven.component.SupplierCard card3;
+    private com.raven.component.SupplierCard card4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

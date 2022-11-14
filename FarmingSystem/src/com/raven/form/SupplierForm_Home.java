@@ -1,20 +1,24 @@
 package com.raven.form;
 
 import com.raven.dialog.Message;
-import com.raven.main.Main;
+import com.raven.main.SupplierMain;
 import com.raven.model.ModelCard;
 import com.raven.model.ModelStudent;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
 import com.raven.swing.icon.IconFontSwing;
 import com.raven.swing.noticeboard.ModelNoticeBoard;
 import com.raven.swing.table.EventAction;
+import farmingsystem.controller.UserImp;
+import farmingsystem.model.User;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
-public class Blogs extends javax.swing.JPanel {
+public class SupplierForm_Home extends javax.swing.JPanel {
 
-    public Blogs() {
+    public SupplierForm_Home() {
         initComponents();
         table1.fixTable(jScrollPane1);
         setOpaque(false);
@@ -47,30 +51,29 @@ public class Blogs extends javax.swing.JPanel {
                 }
             }
         };
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile1.jpg")), "Dara", "Male", "C++", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile2.jpg")), "Bora", "Male", "C#", 300).toRowTable(eventAction));
+        UserImp user = new UserImp();
+        List<User> list = user.list();
+        for (User users : list) {
+            String fullName = users.getLastName() + "," + users.getFirstName();
+            String userType = users.getUserType();
+            String email = users.getEmail();
+            Boolean active = users.getActive();
+           
+
+            table1.addRow(new Object[]{fullName, userType, email, active});
+
+        }
+        //  table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
     }
 
     private void initCardData() {
+        UserImp ui = new UserImp();
         Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card1.setData(new ModelCard("New Blogs", 5100, 20, icon1));
+        card1.setData(new ModelCard("Advertisement", ui.countUser(), 20, icon1));
         Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.MONETIZATION_ON, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card2.setData(new ModelCard("Income", 2000, 60, icon2));
+        card2.setData(new ModelCard("Transaction", 2000, 60, icon2));
         Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.SHOPPING_BASKET, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card3.setData(new ModelCard("Expense", 3000, 80, icon3));
-        Icon icon4 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.BUSINESS_CENTER, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card4.setData(new ModelCard("Other Income", 550, 95, icon4));
+        card3.setData(new ModelCard("Complaints", 3000, 80, icon3));
     }
 
     private void initNoticeBoard() {
@@ -86,7 +89,7 @@ public class Blogs extends javax.swing.JPanel {
     }
 
     private boolean showMessage(String message) {
-        Message obj = new Message(Main.getFrames()[0], true);
+        Message obj = new Message(SupplierMain.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
@@ -95,11 +98,10 @@ public class Blogs extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        card1 = new com.raven.component.Card();
+        card1 = new com.raven.component.SupplierCard();
         jLabel1 = new javax.swing.JLabel();
-        card2 = new com.raven.component.Card();
-        card3 = new com.raven.component.Card();
-        card4 = new com.raven.component.Card();
+        card2 = new com.raven.component.SupplierCard();
+        card3 = new com.raven.component.SupplierCard();
         jPanel1 = new javax.swing.JPanel();
         noticeBoard = new com.raven.swing.noticeboard.NoticeBoard();
         jLabel2 = new javax.swing.JLabel();
@@ -114,7 +116,7 @@ public class Blogs extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
-        jLabel1.setText("Dashboard / Blogs");
+        jLabel1.setText("Dashboard / Home");
 
         card2.setBackground(new java.awt.Color(10, 30, 214));
         card2.setColorGradient(new java.awt.Color(72, 111, 252));
@@ -122,14 +124,11 @@ public class Blogs extends javax.swing.JPanel {
         card3.setBackground(new java.awt.Color(194, 85, 1));
         card3.setColorGradient(new java.awt.Color(255, 212, 99));
 
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel2.setText("Admin History");
+        jLabel2.setText("Notice Board");
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -172,7 +171,7 @@ public class Blogs extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel5.setText("Data Admin");
+        jLabel5.setText("Users Data");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -180,12 +179,19 @@ public class Blogs extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Gender", "Course", "Fees", "Action"
+                "Name", "Role", "Email", "Active", "Action"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -227,13 +233,13 @@ public class Blogs extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(card1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addGap(98, 98, 98)
                         .addComponent(card2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addGap(98, 98, 98)
                         .addComponent(card3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(card4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(68, 68, 68))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -252,8 +258,7 @@ public class Blogs extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -263,10 +268,9 @@ public class Blogs extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.component.Card card1;
-    private com.raven.component.Card card2;
-    private com.raven.component.Card card3;
-    private com.raven.component.Card card4;
+    private com.raven.component.SupplierCard card1;
+    private com.raven.component.SupplierCard card2;
+    private com.raven.component.SupplierCard card3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

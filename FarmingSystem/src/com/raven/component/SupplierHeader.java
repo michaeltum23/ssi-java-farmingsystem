@@ -2,9 +2,9 @@ package com.raven.component;
 
 import java.awt.event.ActionListener;
 
-public class Header extends javax.swing.JPanel {
+public class SupplierHeader extends javax.swing.JPanel {
 
-    public Header() {
+    public SupplierHeader() {
         initComponents();
     }
 
@@ -24,7 +24,7 @@ public class Header extends javax.swing.JPanel {
         buttonBadges1 = new com.raven.swing.ButtonBadges();
         buttonBadges2 = new com.raven.swing.ButtonBadges();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(229, 237, 208));
 
         cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/menu.png"))); // NOI18N
 
@@ -35,7 +35,7 @@ public class Header extends javax.swing.JPanel {
         lbUserName.setText("User Name");
 
         lbRole.setForeground(new java.awt.Color(127, 127, 127));
-        lbRole.setText("Admin");
+        lbRole.setText("Supplier");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 

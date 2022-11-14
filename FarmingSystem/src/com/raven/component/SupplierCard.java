@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.text.DecimalFormat;
 
-public class Card extends javax.swing.JPanel {
+public class SupplierCard extends javax.swing.JPanel {
 
     public Color getColorGradient() {
         return colorGradient;
@@ -20,7 +20,7 @@ public class Card extends javax.swing.JPanel {
 
     private Color colorGradient;
 
-    public Card() {
+    public SupplierCard() {
         initComponents();
         setOpaque(false);
         setBackground(new Color(112, 69, 246));

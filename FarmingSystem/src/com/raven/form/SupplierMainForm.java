@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 
-public class MainForm_1 extends javax.swing.JPanel {
+public class SupplierMainForm extends javax.swing.JPanel {
 
-    public MainForm_1() {
+    public SupplierMainForm() {
         initComponents();
         setOpaque(false);
         setLayout(new BorderLayout());
@@ -23,6 +23,8 @@ public class MainForm_1 extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setBackground(new java.awt.Color(229, 237, 208));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
