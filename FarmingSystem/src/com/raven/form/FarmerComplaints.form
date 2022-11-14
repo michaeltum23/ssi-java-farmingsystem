@@ -241,7 +241,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4c" green="4c" red="4c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Complaints Tips"/>
+            <Property name="text" type="java.lang.String" value="Complaints"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="1" left="10" right="1" top="1"/>
@@ -261,7 +261,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="Name" type="java.lang.Object"/>
-                    <Column editable="false" title="Gender" type="java.lang.Object"/>
+                    <Column editable="false" title="Compla" type="java.lang.Object"/>
                     <Column editable="false" title="Course" type="java.lang.Object"/>
                     <Column editable="false" title="Fees" type="java.lang.Object"/>
                     <Column editable="true" title="Action" type="java.lang.Object"/>
