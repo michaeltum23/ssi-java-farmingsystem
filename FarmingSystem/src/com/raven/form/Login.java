@@ -1,5 +1,6 @@
-package com.raven.component;
+package com.raven.form;
 
+import com.raven.component.*;
 import com.raven.event.EventMenu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
@@ -16,7 +17,7 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
 
-public class Menu extends javax.swing.JPanel {
+public class Login extends javax.swing.JPanel {
 
     public boolean isShowMenu() {
         return showMenu;
@@ -44,7 +45,7 @@ public class Menu extends javax.swing.JPanel {
     private boolean enableMenu = true;
     private boolean showMenu = true;
 
-    public Menu() {
+    public Login() {
         initComponents();
         setOpaque(false);
         sp.getViewport().setOpaque(false);
@@ -54,25 +55,31 @@ public class Menu extends javax.swing.JPanel {
     }
 
     public void initMenuItem() {
-
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Dashboard"));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/ads.png")), "Advertisement"));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/order.png")), "OrderTracker"));
+        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Dashboard", "Logout","Login"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/ads.png")), "Advertisement"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/order.png")), "OrderTracker"));
        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/course.png")), "Course"));
        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/complaints.png")), "Complaints"));
        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farming.png")), "FarmingTips"));
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/blogs.png")), "Blogs"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/admin.png")), "Admin"));
+       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/b"
+               + ""
+               + ""
+               + "logs.png")), "Blogs"));
+    // addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/5.png")), "User", "Admin", "Supplier", "Farmer"));
+      addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/admin.png")), "Admin"));
       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/supplier.png")), "Supplier"));
        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/farmer.png")), "Farmer"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-          addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-         addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));  
-       addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/Logout.png")), "Logout"));
-
+      
+     //  addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/13.png")), "Our Centres"));
+     //  addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/6.png")), "Student", "Menu 001", "Menu 002", "Menu 003"));
+     // addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/7.png")), "Library", "Menu 001", "Menu 002", "Menu 003"));
+     // addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/8.png")), "Holiday", "Menu 001", "Menu 002", "Menu 003"));
+      // addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/9.png")), "Calendar", "Menu 001", "Menu 002", "Menu 003"));
+      // addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/10.png")), "Chat App", "Menu 001", "Menu 002", "Menu 003"));
+     //  addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/11.png")), "Contace", "Menu 001", "Menu 002", "Menu 003"));
+      //  addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/12.png")), "File Manager", "Menu 001", "Menu 002", "Menu 003"));
+      
+     //addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/14.png")), "Gallery"));
     }
 
     private void addMenu(ModelMenu menu) {
@@ -120,7 +127,6 @@ public class Menu extends javax.swing.JPanel {
 
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        sp.setViewportBorder(null);
 
         panel.setOpaque(false);
 
@@ -128,7 +134,7 @@ public class Menu extends javax.swing.JPanel {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
+            .addGap(0, 697, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,15 +147,17 @@ public class Menu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-            .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(profile1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
+                .addComponent(sp))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,9 +165,7 @@ public class Menu extends javax.swing.JPanel {
     protected void paintComponent(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        GradientPaint gra = new GradientPaint(0, 0, new Color(60,195,0), getWidth(), 0, new Color(60,195,0));
-
+        GradientPaint gra = new GradientPaint(0, 0, new Color(33, 105, 249), getWidth(), 0, new Color(93, 58, 196));
         g2.setPaint(gra);
         g2.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(grphcs);

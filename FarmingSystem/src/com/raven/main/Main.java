@@ -4,9 +4,20 @@ import com.raven.component.Header;
 import com.raven.component.Menu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
+
+import com.raven.form.Admin;
+import com.raven.form.Advertisement;
+import com.raven.form.Blogs;
+import com.raven.form.Complaints;
+import com.raven.form.Course;
+import com.raven.form.Farmer;
+import com.raven.form.FarmingTips;
 import com.raven.form.Form1;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
+import com.raven.form.OrderTracker;
+import com.raven.form.Supplier;
+
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
@@ -43,12 +54,78 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-                    if (subMenuIndex == 0) {
-                        main.showForm(new Form_Home());
-                    } else if (subMenuIndex == 1) {
-                        main.showForm(new Form1());
-                    }
+
+                      main.showForm(new Form_Home());
+//                    if (subMenuIndex == 0) {
+//                        main.showForm(new Form_Home());
+//                    } else if (subMenuIndex == 1) {
+//                        main.showForm(new Form1());
+//                    }
                 }
+                
+                 if (menuIndex == 1) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Advertisement());
+                       } 
+                     }
+                 
+                  if (menuIndex == 2) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new OrderTracker());
+                       } 
+                     }
+                    
+                    if (menuIndex == 3) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Course());
+                       } 
+                     }
+                    
+                    if (menuIndex == 4) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Complaints());
+                       } 
+                     }
+                    
+                    if (menuIndex == 5) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new FarmingTips());
+                       } 
+                     }
+                    
+                    if (menuIndex == 6) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Blogs());
+                       } 
+                     }
+                    
+                    if (menuIndex == 7) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Admin());
+                       } 
+                     }
+                    
+                    if (menuIndex == 8) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Supplier());
+                       } 
+                     }
+                    
+                    if (menuIndex == 9) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new Farmer());
+                       } 
+                     }
+                    
+                    if (menuIndex == 16) {
+                    if (subMenuIndex == -1) {
+                        dispose();
+                       } 
+                     }
+                 
+                 
+                 
+                 
             }
         });
         menu.addEventShowPopup(new EventShowPopupMenu() {
