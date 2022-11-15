@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -523,12 +524,13 @@ public class CropsForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSearchUserIDActionPerformed
         CropsInfo ci = new CropsInfo();
+        public static ArrayList<Crops> cartItem = new ArrayList();
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+
         int rowIndex = jTable1.getSelectedRow();
         
-        ci.setVisible(true);
-        ci.pack();
+//        ci.setVisible(true);
+//        ci.pack();
         
         int selectedRow = jTable1.getSelectedRow();
         TableModel tm = jTable1.getModel();
@@ -538,27 +540,63 @@ public class CropsForm extends javax.swing.JFrame {
         String cropName = tm.getValueAt(selectedRow, 2).toString();
         String price = tm.getValueAt(selectedRow, 3).toString();
         String quantity = tm.getValueAt(selectedRow, 4).toString();
+        
+        
+        int n = JOptionPane.showConfirmDialog(
+            null,
+            "Are you sure do want to add this crops to your cart?",
+            null,
+            JOptionPane.YES_NO_OPTION);
+            if (n == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "Edi OK");
+                
+                
+                double qty = 1;
+                double price1 = qty*Double.parseDouble(price);
+                double quantity1 = Double.parseDouble(quantity);
+                    Crops crop = new Crops(Integer.parseInt(cropId),
+                                            Integer.parseInt(userId),
+                                            cropName, 
+                                            price1,
+                                            quantity1,null, null, null);
+                    
+                    
+                
+                    crop.setQuantity(qty);
+                    crop.setPrice(price1);
+                    cartItem.add(crop);
+            } else {
+                JOptionPane.showMessageDialog(null, "Edi Wag");
+            }
+            
+
+        
+        
 //        ImageIcon img = (ImageIcon) tm.getValueAt(selectedRow, 5);
         
-        ci.cropID.setText(cropId);
-        ci.userID.setText(userId);
-        ci.cropName.setText(cropName);
-        ci.cropPrice.setText(price);
-        ci.cropStocks.setText(quantity);
+//        ci.cropID.setText(cropId);
+//        ci.userID.setText(userId);
+//        ci.cropName.setText(cropName);
+//        ci.cropPrice.setText(price);
+//        ci.cropStocks.setText(quantity);
 //        ci.cropPhoto.setIcon(img);
-    }//GEN-LAST:event_jTable1MouseClicked
 
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel model =  (DefaultTableModel) jTable2.getModel();
          model.setRowCount(0);
          total = 0;
          tot = "";
         
-        for(int i=0; i<CropsInfo.cartItem.size(); i++){
-            JButton button = new JButton();
-            data[0] = CropsInfo.cartItem.get(i).getCropName();
-            data[1] = CropsInfo.cartItem.get(i).getPrice();
-            data[2] = CropsInfo.cartItem.get(i).getQuantity();
+        
+        for(int i=0; i<cartItem.size(); i++){
+            int id = cartItem.get(i).getId();
+            System.out.println(id);
+            data[0] = cartItem.get(i).getCropName();
+            data[1] = cartItem.get(i).getPrice();
+            data[2] = cartItem.get(i).getQuantity();
             
             model.addRow(data);
             jTable2.setRowHeight(20);
