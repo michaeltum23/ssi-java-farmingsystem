@@ -31,9 +31,9 @@ public class Crops {
         this.id = id;
         this.userID = userID;
         this.cropName = cropName;
-        this.price = price;
-        this.quantity = quantity;
-        this.cropImage = cropImage;
+//        this.price = price;
+//        this.quantity = quantity;
+//        this.cropImage = cropImage;
         this.file = file;
         this.cropImageData = cropImageData;
     }
