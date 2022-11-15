@@ -32,6 +32,8 @@ public class User {
     private String userType;
     private Boolean active;
     private File file;
+    private byte[] userImage;
+    private String verifyCode;
 
     public File getFile() {
         return file;
@@ -44,11 +46,29 @@ public class User {
     public User() {
     }
 
-    public User(int id, String userId, String username, String password, 
-            String firstName, String middleName, String lastName, String gender, 
-            String birthDate, String contactNumber, String houseNo, 
-            String streetAddress, String cityAddress, InputStream profielImage, 
-            byte validId, String email, String userType, Boolean active, File file) {
+    public User(int id, String username, String email, String password, String verifyCode) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.verifyCode = verifyCode;
+    }
+    
+    public User(int id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+    
+    
+
+    public User(int id, String userId, String username, String password,
+            String firstName, String middleName, String lastName, String gender,
+            String birthDate, String contactNumber, String houseNo,
+            String streetAddress, String cityAddress, InputStream profielImage,
+            byte validId, String email, String userType, Boolean active, File file, byte[] userImage,
+            String verifyCode) {
         this.id = id;
         this.userId = userId;
         this.username = username;
@@ -68,6 +88,8 @@ public class User {
         this.userType = userType;
         this.active = active;
         this.file = file;
+        this.userImage = userImage;
+        this.verifyCode = verifyCode;
     }
 
     public int getId() {
@@ -214,4 +236,21 @@ public class User {
         this.active = active;
     }
 
+    public byte[] getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(byte[] userImage) {
+        this.userImage = userImage;
+    }
+
+    public String getVerifyCode() {
+        return verifyCode;
+    }
+
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
+    }
+
+    
 }

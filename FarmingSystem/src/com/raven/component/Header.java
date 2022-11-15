@@ -1,11 +1,17 @@
 package com.raven.component;
 
+import farmingsystem.model.User;
 import java.awt.event.ActionListener;
 
 public class Header extends javax.swing.JPanel {
-
-    public Header() {
+    
+    private User user;
+    
+    public Header(User user) {
+        this.user = user;
         initComponents();
+        lbUserName.setText(user.getEmail());
+        lbRole.setText(user.getUserType());
     }
 
     public void addMenuEvent(ActionListener event) {

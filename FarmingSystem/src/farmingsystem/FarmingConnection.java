@@ -17,14 +17,13 @@ public class FarmingConnection {
     static String url = "jdbc:postgresql://26.100.93.148:5432/farmingdb";
     static String username = "postgres";
     static String password = "password";
-
+    
     public static Connection getConnection() throws Exception {
-        if(con == null){
+        if (con == null) {
             Class.forName(driver);
             con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Successful");
-        }
-        else{
+        } else {
             System.out.println("No connection");
         }
         return con;
