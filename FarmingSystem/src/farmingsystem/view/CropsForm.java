@@ -424,9 +424,11 @@ public class CropsForm extends javax.swing.JFrame {
         crops.setPrice(price);
         crops.setQuantity(quantity);
         crops.setId(search);
+        
         CropsImpl crop = new CropsImpl();
         crop.updateCrops(crops);
         Load();
+        
         textCname.setText("");
         textCprice.setText("");
         textCqty.setText("");
