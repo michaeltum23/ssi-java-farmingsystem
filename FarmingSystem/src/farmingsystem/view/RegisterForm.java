@@ -171,7 +171,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtLastName.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 270, 30));
 
         rbnMale.setBackground(new java.awt.Color(17, 129, 70));
@@ -195,7 +194,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtDate.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 110, 30));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -210,7 +208,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtContactNumber.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtContactNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtContactNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 270, 30));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -220,9 +217,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtHouseNo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtHouseNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtHouseNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 380, 130, 30));
-
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +226,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtStreetAddress.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtStreetAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtStreetAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 270, 30));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -250,14 +244,12 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 118, 270, 30));
 
         cmbRole.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         cmbRole.setForeground(new java.awt.Color(255, 255, 255));
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Farmer", "Supplier/Wholesaler" }));
         cmbRole.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
         jPanel1.add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 270, 30));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -267,13 +259,11 @@ public class RegisterForm extends javax.swing.JFrame {
 
         txtConfirmPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtConfirmPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-
         jPanel1.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 318, 270, 30));
 
         txtPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 270, 30));
-
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
