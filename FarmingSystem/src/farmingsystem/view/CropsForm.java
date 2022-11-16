@@ -227,7 +227,7 @@ public class CropsForm extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("User ID:");
 
-        textUserID.setText("45");
+        textUserID.setText("102");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -316,7 +316,7 @@ public class CropsForm extends javax.swing.JFrame {
                                 .addComponent(lblFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(159, Short.MAX_VALUE)
+                                .addContainerGap(176, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(textUserID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -359,7 +359,6 @@ public class CropsForm extends javax.swing.JFrame {
                                 .addGap(61, 61, 61)
                                 .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -370,7 +369,7 @@ public class CropsForm extends javax.swing.JFrame {
     InputStream is;
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
-        int userId = 64;
+        int userId = 102;
 
         Crops crop = new Crops();
         f = new File(lblFilePath.getText());
@@ -490,9 +489,13 @@ public void getSum() {
             String cropname = crops.getCropName();
             double price = crops.getPrice();
             double quantity = crops.getQuantity();
-
+            ImageIcon cropImage = new ImageIcon(crops.getCropImageData());
+            Image cropImg = cropImage.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+            ImageIcon image = new ImageIcon(cropImg);
+            JLabel lbl = new JLabel();
+            lbl.setIcon(image);
             if (search == user_id) {
-                DFT.addRow(new Object[]{sid, user_id, cropname, price, quantity,});
+                DFT.addRow(new Object[]{sid, user_id, cropname, price, quantity,lbl});
             } else {
                 System.out.println("error");
             }
