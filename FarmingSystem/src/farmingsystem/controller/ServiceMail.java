@@ -23,7 +23,9 @@ public class ServiceMail {
         String from = "tester100.assistance@gmail.com";
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.port", "587");     
+        prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
