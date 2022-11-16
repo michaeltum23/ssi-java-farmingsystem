@@ -14,20 +14,20 @@ import java.io.InputStream;
 public class User {
 
     private int id;
-    private String userId;
-    private String username;
     private String password;
     private String firstName;
     private String middleName;
     private String lastName;
     private String gender;
+    private String civilStatus;
     private String birthDate;
     private String contactNumber;
     private String houseNo;
     private String streetAddress;
     private String cityAddress;
+    private String province;
+    private int zipCode;
     private InputStream profielImage;
-    private byte validId;
     private String email;
     private String userType;
     private Boolean active;
@@ -46,44 +46,37 @@ public class User {
     public User() {
     }
 
-    public User(int id, String username, String email, String password, String verifyCode) {
+    public User(int id, String email, String password, String userType,String verifyCode) {
         this.id = id;
-        this.username = username;
         this.password = password;
         this.email = email;
         this.verifyCode = verifyCode;
+        this.userType = userType;
     }
-    
-    public User(int id, String username, String email, String password) {
+
+    public User(int id, String email, String password, String userType) {
         this.id = id;
-        this.username = username;
         this.password = password;
         this.email = email;
+        this.userType = userType;
     }
-    
-    
 
-    public User(int id, String userId, String username, String password,
-            String firstName, String middleName, String lastName, String gender,
-            String birthDate, String contactNumber, String houseNo,
-            String streetAddress, String cityAddress, InputStream profielImage,
-            byte validId, String email, String userType, Boolean active, File file, byte[] userImage,
-            String verifyCode) {
+    public User(int id, String password, String firstName, String middleName, String lastName, String gender, String civilStatus, String birthDate, String contactNumber, String houseNo, String streetAddress, String cityAddress, String province, int zipCode, InputStream profielImage, String email, String userType, Boolean active, File file, byte[] userImage, String verifyCode) {
         this.id = id;
-        this.userId = userId;
-        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
         this.gender = gender;
+        this.civilStatus = civilStatus;
         this.birthDate = birthDate;
         this.contactNumber = contactNumber;
         this.houseNo = houseNo;
         this.streetAddress = streetAddress;
         this.cityAddress = cityAddress;
+        this.province = province;
+        this.zipCode = zipCode;
         this.profielImage = profielImage;
-        this.validId = validId;
         this.email = email;
         this.userType = userType;
         this.active = active;
@@ -98,22 +91,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -156,6 +133,14 @@ public class User {
         this.gender = gender;
     }
 
+    public String getCivilStatus() {
+        return civilStatus;
+    }
+
+    public void setCivilStatus(String civilStatus) {
+        this.civilStatus = civilStatus;
+    }
+
     public String getBirthDate() {
         return birthDate;
     }
@@ -196,20 +181,28 @@ public class User {
         this.cityAddress = cityAddress;
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public int getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
+    }
+
     public InputStream getProfielImage() {
         return profielImage;
     }
 
     public void setProfielImage(InputStream profielImage) {
         this.profielImage = profielImage;
-    }
-
-    public byte getValidId() {
-        return validId;
-    }
-
-    public void setValidId(byte validId) {
-        this.validId = validId;
     }
 
     public String getEmail() {
@@ -252,5 +245,4 @@ public class User {
         this.verifyCode = verifyCode;
     }
 
-    
 }

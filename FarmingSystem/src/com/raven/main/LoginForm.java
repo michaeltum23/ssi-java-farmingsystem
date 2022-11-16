@@ -9,6 +9,7 @@ import com.raven.component.PanelCover;
 import com.raven.component.PanelLoading;
 import com.raven.component.PanelLoginAndRegister;
 import com.raven.component.PanelVerifyCode;
+import com.raven.form.RegisterForm;
 import com.raven.model.ModelLogin;
 import com.raven.model.ModelMessage;
 import farmingsystem.FarmingConnection;
@@ -17,12 +18,9 @@ import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLayeredPane;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
@@ -46,6 +44,7 @@ public class LoginForm extends javax.swing.JFrame {
     private final double coverSize = 40;
     private final double loginSize = 60;
     private UserImp userService;
+    private RegisterForm registerForm;
 
     public LoginForm() {
         initComponents();
@@ -150,6 +149,9 @@ public class LoginForm extends javax.swing.JFrame {
                         userService.doneVerify(user.getId());
                         showMessage(Message.MessageType.SUCCESS, "Register Success");
                         verifyCode.setVisible(false);
+                        registerForm = new RegisterForm(user);
+                        registerForm.setVisible(true);
+                        new LoginForm().dispose();
                     } else {
                         showMessage(Message.MessageType.ERROR, "Verification code incorrect");
                     }
@@ -164,9 +166,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void register() {
         User user = loginAndRegister.getUser();
         try {
-            if (userService.checkDuplicateUser(user.getUsername())) {
-                showMessage(Message.MessageType.ERROR, "Username already taken!");
-            } else if (userService.checkDuplicateEmail(user.getEmail())) {
+            if (userService.checkDuplicateEmail(user.getEmail())) {
                 showMessage(Message.MessageType.ERROR, "Email already exist!");
             } else {
                 userService.insertUser(user);
@@ -212,7 +212,7 @@ public class LoginForm extends javax.swing.JFrame {
         }).start();
     }
 
-    private void showMessage(Message.MessageType messageType, String message) {
+    public void showMessage(Message.MessageType messageType, String message) {
         Message ms = new Message();
         ms.showMessage(messageType, message);
         TimingTarget target = new TimingTargetAdapter() {

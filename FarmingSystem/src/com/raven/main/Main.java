@@ -12,7 +12,6 @@ import com.raven.form.Complaints;
 import com.raven.form.Course;
 import com.raven.form.Farmer;
 import com.raven.form.FarmingTips;
-import com.raven.form.Form1;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
@@ -45,7 +44,6 @@ public class Main extends javax.swing.JFrame {
         this.user = user;
         initComponents();
         init();
-        String username = user.getUsername();
     }
 
     private Main() {
