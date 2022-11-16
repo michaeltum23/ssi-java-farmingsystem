@@ -39,8 +39,8 @@ public class UpdateUser extends javax.swing.JFrame {
         DFT.setRowCount(0);
         for(User users: list)
         {
-            String sid = users.getUserId();
-            String username = users.getUsername();
+//            String sid = users.getUserId();
+//            String username = users.getUsername();
             String password = users.getPassword();
             String firstName= users.getFirstName();
             String middleName= users.getMiddleName();
@@ -53,7 +53,7 @@ public class UpdateUser extends javax.swing.JFrame {
             String email=users.getEmail();
             String userType= users.getUserType();
             
-            DFT.addRow(new Object[]{sid,username,password,firstName,middleName,lastName,birthDate,contactNumber,houseNo,streetAddress,cityAddress,email,userType});
+//            DFT.addRow(new Object[]{sid,username,password,firstName,middleName,lastName,birthDate,contactNumber,houseNo,streetAddress,cityAddress,email,userType});
         }    
   
     }
@@ -384,9 +384,9 @@ public class UpdateUser extends javax.swing.JFrame {
         rbnMale.setActionCommand("Male");
         rbnFemale.setActionCommand("Female");
         String gender = buttonGroup1.getSelection().getActionCommand().toString();
-        user.setUserId(userType+txtUsername.getText()+(int)(Math.random()*1000000));
+//        user.setUserId(userType+txtUsername.getText()+(int)(Math.random()*1000000));
         user.setPassword(password);
-        user.setUsername(txtUsername.getText());
+//        user.setUsername(txtUsername.getText());
         user.setUserType(cmbRole.getSelectedItem().toString());
         user.setFirstName(txtFirstName.getText());
         user.setMiddleName(txtMiddleName.getText());
@@ -429,7 +429,7 @@ public class UpdateUser extends javax.swing.JFrame {
         String birthDate = txtDate.getText();
         String email = txtEmail.getText();
 
-        user.setUsername(username);
+//        user.setUsername(username);
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setMiddleName(middleName);
@@ -441,7 +441,7 @@ public class UpdateUser extends javax.swing.JFrame {
         user.setCityAddress(cityAddress);
         user.setEmail(email);
 
-        user.setUserId(search);
+//        user.setUserId(search);
         UserImp ui = new UserImp();
         ui.update(user);
         AllUser();
@@ -453,19 +453,19 @@ String search;
         search = JOptionPane.showInputDialog("Enter User ID");
 
         UserImp users = new UserImp();
-        User user  = users.get(search);
+//        User user  = users.get(search);
 
-        txtUsername.setText(user.getUsername());
-        txtPassword.setText(String.valueOf(user.getPassword()));
-        txtFirstName.setText(String.valueOf(user.getFirstName()));
-        txtMiddleName.setText(String.valueOf(user.getMiddleName()));
-        txtLastName.setText(String.valueOf(user.getLastName()));
-        txtDate.setText(String.valueOf(user.getBirthDate()));
-        txtContactNumber.setText(String.valueOf(user.getContactNumber()));
-        txtHouseNo.setText(String.valueOf(user.getHouseNo()));
-        txtStreetAddress.setText(String.valueOf(user.getStreetAddress()));
-        txtCityAddress.setText(String.valueOf(user.getCityAddress()));
-        txtEmail.setText(String.valueOf(user.getEmail()));
+//        txtUsername.setText(user.getUsername());
+//        txtPassword.setText(String.valueOf(user.getPassword()));
+//        txtFirstName.setText(String.valueOf(user.getFirstName()));
+//        txtMiddleName.setText(String.valueOf(user.getMiddleName()));
+//        txtLastName.setText(String.valueOf(user.getLastName()));
+//        txtDate.setText(String.valueOf(user.getBirthDate()));
+//        txtContactNumber.setText(String.valueOf(user.getContactNumber()));
+//        txtHouseNo.setText(String.valueOf(user.getHouseNo()));
+//        txtStreetAddress.setText(String.valueOf(user.getStreetAddress()));
+//        txtCityAddress.setText(String.valueOf(user.getCityAddress()));
+//        txtEmail.setText(String.valueOf(user.getEmail()));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void filterbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterbtnActionPerformed
@@ -477,8 +477,8 @@ String search;
         DFT.setRowCount(0);
 
         for(User users: list){
-            String sid = users.getUserId();
-            String username = users.getUsername();
+//            String sid = users.getUserId();
+//            String username = users.getUsername();
             String password = users.getPassword();
             String firstName= users.getFirstName();
             String middleName= users.getMiddleName();
@@ -490,31 +490,31 @@ String search;
             String cityAddress= users.getCityAddress();
             String email=users.getEmail();
             String userType= users.getUserType();
-
-            // byte profileImage = us.getProfielImage()
-            if(filter.equals("Farmer")){
-                if("Farmer".equals(users.getUserType()))
-                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
-                        ,cityAddress,email,userType});
-
-            }else if(filter.equals("Supplier")){
-                if("Supplier/Wholesaler".equals(users.getUserType()))
-                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-                            ,lastName,birthDate,contactNumber,houseNo,streetAddress
-                            ,cityAddress,email,userType});
-            }else if(filter.equals("Admin")){
-                if("Admin".equals(users.getUserType()))
-                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
-                        ,cityAddress,email,userType});
-            }else if(filter.equals("All User")){
-                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
-                        ,cityAddress,email,userType});
-            }else{
-                System.out.println("Error");
-            }
+//
+//            // byte profileImage = us.getProfielImage()
+//            if(filter.equals("Farmer")){
+//                if("Farmer".equals(users.getUserType()))
+//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
+//                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+//                        ,cityAddress,email,userType});
+//
+//            }else if(filter.equals("Supplier")){
+//                if("Supplier/Wholesaler".equals(users.getUserType()))
+//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
+//                            ,lastName,birthDate,contactNumber,houseNo,streetAddress
+//                            ,cityAddress,email,userType});
+//            }else if(filter.equals("Admin")){
+//                if("Admin".equals(users.getUserType()))
+//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
+//                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+//                        ,cityAddress,email,userType});
+//            }else if(filter.equals("All User")){
+//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
+//                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+//                        ,cityAddress,email,userType});
+//            }else{
+//                System.out.println("Error");
+//            }
 
         }
 
