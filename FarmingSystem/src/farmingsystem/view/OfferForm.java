@@ -4,24 +4,30 @@
  */
 package farmingsystem.view;
 
+import farmingsystem.controller.AdvertisementImpl;
 import farmingsystem.controller.OfferImpl;
+import farmingsystem.model.Advertisement;
 import farmingsystem.model.Offer;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author jtamayo
  */
 public class OfferForm extends javax.swing.JFrame {
-
+    private OfferImpl offerImpl;
     /**
      * Creates new form OfferForm
      */
     public OfferForm() {
         initComponents();
         Load();
+        LoadAds();
         
         
         
@@ -43,13 +49,16 @@ public class OfferForm extends javax.swing.JFrame {
         textOffer = new javax.swing.JTextField();
         btnOffer = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        btnSearch1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         userID = new javax.swing.JTextField();
         adsID = new javax.swing.JTextField();
-        btnSearch1 = new javax.swing.JButton();
         Update = new javax.swing.JButton();
         offerAdsId = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,15 +78,28 @@ public class OfferForm extends javax.swing.JFrame {
             }
         });
 
+        btnSearch1.setText("Search AdsID for all Offer");
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(btnSearch1)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(btnSearch1)
+                .addGap(18, 18, 18))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -91,20 +113,15 @@ public class OfferForm extends javax.swing.JFrame {
                 "ID", "User ID", "Advertisement ID", "Offer"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         userID.setEditable(false);
-        userID.setText("45");
-
-        adsID.setEditable(false);
-        adsID.setText("3");
-
-        btnSearch1.setText("Search AdsID for all Offer");
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
-            }
-        });
+        userID.setText("64");
 
         Update.setText("Update");
         Update.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +137,27 @@ public class OfferForm extends javax.swing.JFrame {
             }
         });
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "User ID", "Crop Name", "Quantity Need", "Date Needed", "Status"
+            }
+        ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("List Of Advertisement");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,54 +165,50 @@ public class OfferForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(66, 66, 66)
-                                        .addComponent(btnOffer)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                        .addComponent(btnSearch1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1)
-                                            .addComponent(Offer))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(textOffer)
-                                            .addComponent(userID)
-                                            .addComponent(adsID, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))))
+                                .addGap(119, 119, 119)
+                                .addComponent(btnOffer)
+                                .addGap(18, 18, 18)
+                                .addComponent(Update))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Update))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(offerAdsId))))))
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(Offer))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textOffer)
+                                    .addComponent(userID)
+                                    .addComponent(adsID, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(offerAdsId))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(419, 419, 419))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(adsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(offerAdsId)))
+                    .addComponent(jLabel2)
+                    .addComponent(adsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Offer)
@@ -182,18 +216,43 @@ public class OfferForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOffer)
-                    .addComponent(btnSearch1)
-                    .addComponent(Update))
+                    .addComponent(Update)
+                    .addComponent(offerAdsId))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    
+    public void LoadAds()
+    {
+        AdvertisementImpl advertisement = new AdvertisementImpl();
+        List<Advertisement> list = advertisement.list();
+        DefaultTableModel DFT = (DefaultTableModel) jTable2.getModel();
+        DFT.setRowCount(0);
+        for(Advertisement ads: list)
+        {
+            int sid = ads.getId();
+            int user_id=ads.getUserID();
+            String cropname = ads.getCropName();
+            double quantityNeeded = ads.getQuantityNeeded();
+            String date = ads.getDate();
+            String status = ads.getStatus();
+            DFT.addRow(new Object[]{sid,user_id,cropname,quantityNeeded,date,status});
+        }    
+  
+    }
     public void Load()
     {
         OfferImpl offerImpl = new OfferImpl();
@@ -213,23 +272,41 @@ public class OfferForm extends javax.swing.JFrame {
     
     private void btnOfferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfferActionPerformed
         Offer offer = new Offer();
-           
-        int userId = 45;
-        int advertisementId = 3;
+        Advertisement ads = new Advertisement();
+        
+        int userId = 102;
+        int advertisementId = Integer.parseInt(adsID.getText());
         double offer_price = Double.parseDouble(textOffer.getText());
 
-        
         offer.setAdvertisementID(advertisementId);
         offer.setUserId(userId);
         offer.setPriceOffer(offer_price);
         
+        ads.setStatus("Pending Transaction");
+        ads.setId(advertisementId);
         
-        OfferImpl tr = new OfferImpl();
-        tr.addOffer(offer);
-        Load();
+        offerImpl = new OfferImpl();
+        try {
+            if(offerImpl.validateOfferuser(userId,advertisementId)){
+                
+                offerImpl.updateuserOffer(offer,ads);
+                Load();
+                LoadAds();
+                textOffer.setText("");
+                textOffer.requestFocus();
+                
+            }else{
+                offerImpl.addOffer(offer,ads);
+                Load();
+                LoadAds();
+                textOffer.setText("");
+                textOffer.requestFocus();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(OfferForm.class.getName()).log(Level.SEVERE, null, ex);
+        }      
         
-        textOffer.setText("");
-        textOffer.requestFocus();
+        
     }//GEN-LAST:event_btnOfferActionPerformed
         int search;
     private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
@@ -281,7 +358,7 @@ public class OfferForm extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void offerAdsIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offerAdsIdActionPerformed
-        search = Integer.parseInt(JOptionPane.showInputDialog("Enter Ads ID"));
+        search = Integer.parseInt(JOptionPane.showInputDialog("Enter Offer ID"));
 
         OfferImpl offer = new OfferImpl();
         Offer rs  = offer.get(search);
@@ -291,6 +368,18 @@ public class OfferForm extends javax.swing.JFrame {
         adsID.setText(String.valueOf(rs.getAdvertisementId()));
         textOffer.setText(String.valueOf(rs.getPriceOffer()));
     }//GEN-LAST:event_offerAdsIdActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+         int i = jTable2.getSelectedRow();
+
+        TableModel model = jTable2.getModel();
+      
+        adsID.setText(model.getValueAt(i,0).toString());
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
     
     /**
      * @param args the command line arguments
@@ -335,9 +424,12 @@ public class OfferForm extends javax.swing.JFrame {
     private javax.swing.JButton btnSearch1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton offerAdsId;
     private javax.swing.JTextField textOffer;
     private javax.swing.JTextField userID;
