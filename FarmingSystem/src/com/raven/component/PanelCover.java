@@ -31,12 +31,13 @@ public class PanelCover extends javax.swing.JPanel {
     private JLabel description;
     private JLabel description1;
     private ButtonOutLine button;
+    private ButtonOutLine close;
     private boolean isLogin;
 
     public PanelCover() {
         initComponents();
         setOpaque(false);
-        layout = new MigLayout("wrap, fill", "[center]", "push[]25[]10[]25[]push");
+        layout = new MigLayout("wrap, fill", "[center]", "push[]25[]10[]25[]10[]push");
         setLayout(layout);
         init();
     }
@@ -66,6 +67,18 @@ public class PanelCover extends javax.swing.JPanel {
             }
         });
         add(button, "w 60%, h 40");
+        close = new ButtonOutLine();
+        close.setBackground(new Color(255, 255, 255));
+        close.setForeground(new Color(255, 255, 255));
+        close.setText("EXIT");
+        close.setFont(new Font("sansserif", 1, 18));
+        close.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.exit(0);
+            }
+        });
+        add(close, "w 60%, h 40");
     }
 
     @Override

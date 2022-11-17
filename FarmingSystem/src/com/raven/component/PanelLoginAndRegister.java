@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -68,9 +69,9 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = txtEmail.getText();
-                String password = String.valueOf(txtPass.getPassword());
-                user = new User(0, email, password, "");
+                    String email = txtEmail.getText();
+                    String password = String.valueOf(txtPass.getPassword());
+                    user = new User(0, email, password, "");
             }
         });
     }

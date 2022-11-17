@@ -4,6 +4,8 @@
  */
 package com.raven.model;
 
+import java.io.InputStream;
+
 /**
  *
  * @author MTUMANGAN
@@ -45,4 +47,13 @@ public class ModelLogin {
     private String email;
     private String password;
     private String userType;
+    private InputStream userImage;
+
+    public InputStream getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(InputStream userImage) {
+        this.userImage = userImage;
+    }
 }

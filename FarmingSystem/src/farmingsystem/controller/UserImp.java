@@ -1,7 +1,5 @@
 package farmingsystem.controller;
 
-import com.raven.component.Message;
-import com.raven.main.LoginForm;
 import com.raven.model.ModelLogin;
 import farmingsystem.FarmingConnection;
 import farmingsystem.model.User;
@@ -34,7 +32,7 @@ public class UserImp implements UserController {
 
     public User login(ModelLogin login) throws SQLException {
         User user = new User();
-        PreparedStatement pst = con.prepareStatement("SELECT id, email, user_type FROM users WHERE email=? AND password=? AND active=true limit 1");
+        PreparedStatement pst = con.prepareStatement("SELECT id, email, user_type, profile_image FROM users WHERE email=? AND password=? AND active=true limit 1");
         pst.setString(1, login.getEmail());
         pst.setString(2, login.getPassword());
         ResultSet rs = pst.executeQuery();
@@ -42,6 +40,7 @@ public class UserImp implements UserController {
             user.setId(rs.getInt("id"));
             user.setEmail(rs.getString("email"));
             user.setUserType(rs.getString("user_type"));
+            user.setUserImage(rs.getBytes("profile_image"));
         }
         rs.close();
         pst.close();
