@@ -15,7 +15,7 @@ public interface UserController {
     public void login(User users);
     public void register(User users);
     public void update(User users);
-    public User get(String userId);
+    public User get(int userId);
     public List<User>list();
    
   

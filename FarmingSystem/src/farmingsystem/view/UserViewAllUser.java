@@ -159,7 +159,7 @@ public class UserViewAllUser extends javax.swing.JFrame {
         
         for(User us: list){
             int id = us.getId();
-            String username = us.getUsername();
+//            String username = us.getUsername();
             String password = us.getPassword();
             
             String firstName = us.getFirstName();
@@ -178,25 +178,25 @@ public class UserViewAllUser extends javax.swing.JFrame {
             String email = us.getEmail();
             String userType = us.getUserType();
             boolean active = us.getActive();
-            String userId = us.getUserId();
-            if(filter.equals("Farmer")){
-                if("Farmer".equals(us.getUserType()))
-                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-                    userType,active,userId});             
-                
-            }else if(filter.equals("Supplier")){
-                if("Supplier/Wholesaler".equals(us.getUserType()))
-                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-                    userType,active,userId});              
-            }else if(filter.equals("All User")){               
-                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-                    userType,active,userId});             
-            }else{
-                System.out.println("Error");
-            }
+//            String userId = us.getUserId();
+//            if(filter.equals("Farmer")){
+//                if("Farmer".equals(us.getUserType()))
+//                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+//                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+//                    userType,active,userId});             
+//                
+//            }else if(filter.equals("Supplier")){
+//                if("Supplier/Wholesaler".equals(us.getUserType()))
+//                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+//                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+//                    userType,active,userId});              
+//            }else if(filter.equals("All User")){               
+//                    DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+//                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+//                    userType,active,userId});             
+//            }else{
+//                System.out.println("Error");
+//            }
              
         }
         
@@ -212,7 +212,7 @@ public class UserViewAllUser extends javax.swing.JFrame {
 
         for(User us: list){
             int id = us.getId();
-            String username = us.getUsername();
+//            String username = us.getUsername();
             String password = us.getPassword();
 
             String firstName = us.getFirstName();
@@ -230,22 +230,22 @@ public class UserViewAllUser extends javax.swing.JFrame {
             String email = us.getEmail();
             String userType = us.getUserType();
             boolean active = us.getActive();
-            String userId = us.getUserId();
-
-            if(filter.equals("Active User")){
-                if(us.getActive()==true)
-                DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-                    userType,active,userId});
-
-        }else if(filter.equals("Deactive User")){
-            if(us.getActive()==false)
-            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-                ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-                userType,active,userId});
-        }else{
-            System.out.println("Error");
-        }
+//            String userId = us.getUserId();
+//
+//            if(filter.equals("Active User")){
+//                if(us.getActive()==true)
+//                DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+//                    ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+//                    userType,active,userId});
+//
+//        }else if(filter.equals("Deactive User")){
+//            if(us.getActive()==false)
+//            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+//                ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+//                userType,active,userId});
+//        }else{
+//            System.out.println("Error");
+//        }
 
         }
 
@@ -259,7 +259,7 @@ public class UserViewAllUser extends javax.swing.JFrame {
          for(User us: list)
         {
             int id = us.getId();
-            String username = us.getUsername();
+//            String username = us.getUsername();
             String password = us.getPassword();
             
              String firstName = us.getFirstName();
@@ -278,13 +278,13 @@ public class UserViewAllUser extends javax.swing.JFrame {
              String email = us.getEmail();
              String userType = us.getUserType();
              boolean active = us.getActive();
-             String userId = us.getUserId();
+//             String userId = us.getUserId();
              
             
-            
-            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
-            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
-            userType,active,userId});
+//            
+//            DFT.addRow(new Object[]{id,username,password,firstName,middleName,lastName
+//            ,birthDate,contactNumber,houseNo,streetAddress,cityAddress,"[binary data]","[binary data]",email,
+//            userType,active,userId});
         }   
         
     }

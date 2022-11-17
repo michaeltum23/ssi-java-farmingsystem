@@ -1,5 +1,7 @@
 package farmingsystem.controller;
 
+import com.raven.component.Message;
+import com.raven.main.LoginForm;
 import com.raven.model.ModelLogin;
 import farmingsystem.FarmingConnection;
 import farmingsystem.model.User;
@@ -12,8 +14,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,30 +33,29 @@ public class UserImp implements UserController {
     }
 
     public User login(ModelLogin login) throws SQLException {
-        User data = null;
-        PreparedStatement pst = con.prepareStatement("SELECT id, username, email FROM users WHERE email=? AND password=? AND active=true limit 1");
+        User user = new User();
+        PreparedStatement pst = con.prepareStatement("SELECT id, email, user_type FROM users WHERE email=? AND password=? AND active=true limit 1");
         pst.setString(1, login.getEmail());
         pst.setString(2, login.getPassword());
         ResultSet rs = pst.executeQuery();
         if (rs.next()) {
-            int userID = rs.getInt(1);
-            String userName = rs.getString(2);
-            String email = rs.getString(3);
-            data = new User(userID, userName, email, "");
+            user.setId(rs.getInt("id"));
+            user.setEmail(rs.getString("email"));
+            user.setUserType(rs.getString("user_type"));
         }
         rs.close();
         pst.close();
-        return data;
+        return user;
     }
 
     @Override
     public void login(User users) {
         try {
-            String sql = "SELECT * FROM users WHERE username='"
-                    + users.getUsername() + "'and password='" + users.getPassword() + "'";
+            String sql = "SELECT * FROM users WHERE email='"
+                    + users.getEmail() + "'and password='" + users.getPassword() + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-            System.out.println(users.getUsername());
+            System.out.println(users.getEmail());
             System.out.println(users.getPassword());
             if (rs.next()) {
                 System.out.println("Login Successfull");
@@ -72,76 +71,82 @@ public class UserImp implements UserController {
     @Override
     public void register(User users) {
         try {
-            String sql = "INSERT INTO users(username, password, first_name, middle_name, last_name, gender, birthday, contact_number, house_no, street_address, city_address, email, user_type, active, user_id, profile_image) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "UPDATE users "
+                    + "SET password=?, first_name=?, middle_name=?, "
+                    + "last_name=?, gender=?, birthday=?, contact_number=?, "
+                    + "house_no=?, street_address=?, city_address=?, "
+                    + "profile_image=?, province=?, "
+                    + "civil_status=?, zip_code=?, user_type=? "
+                    + "WHERE id=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, users.getUsername());
-            pst.setString(2, users.getPassword());
-            pst.setString(3, users.getFirstName());
-            pst.setString(4, users.getMiddleName());
-            pst.setString(5, users.getLastName());
-            pst.setString(6, users.getGender());
-            pst.setString(7, users.getBirthDate());
-            pst.setString(8, users.getContactNumber());
-            pst.setString(9, users.getHouseNo());
-            pst.setString(10, users.getStreetAddress());
-            pst.setString(11, users.getCityAddress());
-            pst.setString(12, users.getEmail());
-            pst.setString(13, users.getUserType());
-            pst.setBoolean(14, users.getActive());
-            pst.setString(15, users.getUserId());
-            pst.setBinaryStream(16, users.getProfielImage(), users.getFile().length());
+            pst.setString(1, users.getPassword());
+            pst.setString(2, users.getFirstName());
+            pst.setString(3, users.getMiddleName());
+            pst.setString(4, users.getLastName());
+            pst.setString(5, users.getGender());
+            pst.setString(6, users.getBirthDate());
+            pst.setString(7, users.getContactNumber());
+            pst.setString(8, users.getHouseNo());
+            pst.setString(9, users.getStreetAddress());
+            pst.setString(10, users.getCityAddress());
+            pst.setBinaryStream(11, users.getProfielImage(), users.getFile().length());
+            pst.setString(12, users.getProvince());
+            pst.setString(13, users.getCivilStatus());
+            pst.setInt(14, users.getZipCode());
+            pst.setString(15, users.getUserType());
+            pst.setInt(16, users.getId());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "REGISTERED!");
+            pst.close();
+            JOptionPane.showMessageDialog(null, "REGISTER SUCCESSFUL");
         } catch (Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Error");
+            e.printStackTrace();
         }
     }
 
     public void insertUser(User users) {
-        try {
-            int rand = (int) (Math.random() * 9999 + 10000);
-            String sql = "INSERT INTO users(user_id, username, email, password, user_type, verify_code) VALUES(?,?,?,?,'admin',?)";
-            PreparedStatement pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            String code = generateVerifyCode();
-            pst.setString(1, "admin" + rand);
-            pst.setString(2, users.getUsername());
-            pst.setString(3, users.getEmail());
-            pst.setString(4, users.getPassword());
-            pst.setString(5, code);
-            pst.execute();
-            ResultSet rs = pst.getGeneratedKeys();
-            rs.next();
-            int id = rs.getInt(1);
-            System.out.println("insert " + id);
-            rs.close();
-            pst.close();
-            users.setId(id);
-            users.setVerifyCode(code);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (users != null) {
+            try {
+                String sql = "INSERT INTO users(email, password, verify_code) VALUES(?,?,?)";
+                PreparedStatement pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                String code = generateVerifyCode();
+                pst.setString(1, users.getEmail());
+                pst.setString(2, users.getPassword());
+                pst.setString(3, code);
+                pst.execute();
+                ResultSet rs = pst.getGeneratedKeys();
+                rs.next();
+                int id = rs.getInt(1);
+                System.out.println("insert " + id);
+                rs.close();
+                pst.close();
+                users.setId(id);
+                users.setVerifyCode(code);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            
         }
     }
 
     @Override
     public void update(User users) {
         try {
-            String sql = "UPDATE users SET username=?,password=?,first_name=?,middle_name=?,last_name=?,birthday=?,contact_number=?,house_no=?,street_address=?,city_address =?,email=? WHERE user_id=?";
+            String sql = "UPDATE users SET password=?,first_name=?,middle_name=?,last_name=?,birthday=?,contact_number=?,house_no=?,street_address=?,city_address =?,email=? WHERE id=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, users.getUsername());
-            pst.setString(2, users.getPassword());
-            pst.setString(3, users.getFirstName());
-            pst.setString(4, users.getMiddleName());
-            pst.setString(5, users.getLastName());
-            pst.setString(6, users.getBirthDate());
-            pst.setString(7, users.getContactNumber());
-            pst.setString(8, users.getHouseNo());
-            pst.setString(9, users.getStreetAddress());
-            pst.setString(10, users.getCityAddress());
-            pst.setString(11, users.getEmail());
-
-            pst.setString(12, users.getUserId());
+            pst.setString(1, users.getPassword());
+            pst.setString(2, users.getFirstName());
+            pst.setString(3, users.getMiddleName());
+            pst.setString(4, users.getLastName());
+            pst.setString(5, users.getBirthDate());
+            pst.setString(6, users.getContactNumber());
+            pst.setString(7, users.getHouseNo());
+            pst.setString(8, users.getStreetAddress());
+            pst.setString(9, users.getCityAddress());
+            pst.setString(10, users.getEmail());
+            pst.setInt(11, users.getId());
             pst.executeUpdate();
+            pst.close();
             JOptionPane.showMessageDialog(null, "UPDATED!");
         } catch (Exception e) {
             System.out.println(e);
@@ -150,17 +155,15 @@ public class UserImp implements UserController {
     }
 
     @Override
-    public User get(String userId) {
+    public User get(int userId) {
         User st = new User();
         try {
-            String sql = "SELECT * FROM users WHERE user_id=?";
+            String sql = "SELECT * FROM users WHERE id=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, userId);
+            pst.setInt(1, userId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
 
-                st.setUserId(rs.getString("user_id"));
-                st.setUsername(rs.getString("username"));
                 st.setPassword(rs.getString("password"));
                 st.setFirstName(rs.getString("first_name"));
                 st.setMiddleName(rs.getString("middle_name"));
@@ -209,8 +212,6 @@ public class UserImp implements UserController {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 User st = new User();
-                st.setUserId(rs.getString("user_id"));
-                st.setUsername(rs.getString("username"));
                 st.setPassword(rs.getString("password"));
                 st.setFirstName(rs.getString("first_name"));
                 st.setMiddleName(rs.getString("middle_name"));

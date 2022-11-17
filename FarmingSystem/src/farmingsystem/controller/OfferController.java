@@ -4,8 +4,8 @@
  */
 package farmingsystem.controller;
 
+import farmingsystem.model.Advertisement;
 import farmingsystem.model.Offer;
-import farmingsystem.model.User;
 import java.util.List;
 
 /**
@@ -13,9 +13,13 @@ import java.util.List;
  * @author jtamayo
  */
 public interface OfferController {
-    public void addOffer(Offer offer);
+    public void addOffer(Offer offer,Advertisement ads);
     public void updateOffer(Offer offer);
     public List<Offer>list();
     public Offer get(int offerId);
+    
+    
+    public void updateuserOffer(Offer offers, Advertisement ads);
+    public List<Advertisement>listAdvertisement();
     
 }

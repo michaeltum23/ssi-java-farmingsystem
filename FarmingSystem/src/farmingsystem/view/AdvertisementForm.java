@@ -225,7 +225,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
         String dateneeded = textdateneeded.getText();
         
         
-        int userId = 64;
+        int userId = 102;
         ads.setUserID(userId);
         
         ads.setCropName(cropName);

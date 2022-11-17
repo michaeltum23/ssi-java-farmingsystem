@@ -14,7 +14,6 @@ public class Advertisement {
     private String cropName;
     private double quantityNeeded;
     private String date;
-//    private List Offer;//object variable
     private String status;
     
     public Advertisement(){
