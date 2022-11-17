@@ -11,6 +11,7 @@ import farmingsystem.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -94,7 +95,20 @@ public class ParticipantsImpl implements ParticipantsController{
         
     }
 
-   
+   public boolean validateParticipants(int userID, int trainingID) throws SQLException, Exception {
+        boolean duplicate = false;
+        Connection con = FarmingConnection.getConnection();
+        PreparedStatement pst = con.prepareStatement("SELECT user_id FROM participants WHERE user_id=? AND training_id=?");
+        pst.setInt(1, userID);
+        pst.setInt(2, trainingID);
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            duplicate = true;
+        }
+        rs.close();
+        pst.close();
+        return duplicate;
+    }
     
     
 }

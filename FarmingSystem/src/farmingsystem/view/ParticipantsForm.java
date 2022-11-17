@@ -10,6 +10,8 @@ import farmingsystem.model.Participants;
 import farmingsystem.model.Training;
 import farmingsystem.model.User;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -57,6 +59,8 @@ public class ParticipantsForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton_searchTrainingID = new javax.swing.JButton();
+        text_trainingID = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,6 +162,9 @@ public class ParticipantsForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setText("Training ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,12 +181,14 @@ public class ParticipantsForm extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addComponent(jLabel1))
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel7))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(text_desc, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(text_schedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(text_title, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(text_title, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(text_trainingID, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(18, 18, 18)
@@ -203,12 +212,11 @@ public class ParticipantsForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane2)
-                                .addContainerGap())
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_searchTrainingID, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +227,11 @@ public class ParticipantsForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(text_trainingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(text_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -290,7 +302,8 @@ public class ParticipantsForm extends javax.swing.JFrame {
         int i = jTable1.getSelectedRow();
 
         TableModel model = jTable1.getModel();
-      
+        
+        text_trainingID.setText(model.getValueAt(i,0).toString());
         text_title.setText(model.getValueAt(i,1).toString());
         text_desc.setText(model.getValueAt(i,2).toString());
         text_schedDate.setText(model.getValueAt(i,3).toString());
@@ -299,20 +312,34 @@ public class ParticipantsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton_enrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_enrollActionPerformed
-        int training_id = 3;
-        int user_id = 102;
+        int training_id = Integer.parseInt(text_trainingID.getText());
+        int user_id = 64;
         
         Participants participant = new Participants();
         participant.setTraining_id(training_id);
         participant.setUser_id(user_id);
         
         ParticipantsImpl pi = new ParticipantsImpl();
-        pi.addParticipants(participant);
         
-        text_title.setText("");
-        text_desc.setText("");
-        text_schedDate.setText("");
-        text_schedTime.setText("");
+        try {
+            if(pi.validateParticipants(user_id,training_id)){
+                
+                JOptionPane.showMessageDialog(null, "Already enroled in this training");
+            }else{
+                pi.addParticipants(participant);
+                
+                text_trainingID.setText("");
+               text_title.setText("");
+                text_desc.setText("");
+                text_schedDate.setText("");
+                text_schedTime.setText("");
+                
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ParticipantsForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
                      
     }//GEN-LAST:event_jButton_enrollActionPerformed
 
@@ -383,6 +410,7 @@ public class ParticipantsForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -393,6 +421,7 @@ public class ParticipantsForm extends javax.swing.JFrame {
     private javax.swing.JTextField text_schedDate;
     private javax.swing.JTextField text_schedTime;
     private javax.swing.JTextField text_title;
+    private javax.swing.JTextField text_trainingID;
     private javax.swing.JLabel trainingImage;
     // End of variables declaration//GEN-END:variables
 }
