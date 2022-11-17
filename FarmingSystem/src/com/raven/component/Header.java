@@ -1,17 +1,23 @@
 package com.raven.component;
 
 import farmingsystem.model.User;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 public class Header extends javax.swing.JPanel {
-    
+
     private User user;
-    
+
     public Header(User user) {
         this.user = user;
         initComponents();
         lbUserName.setText(user.getEmail());
         lbRole.setText(user.getUserType());
+        ImageIcon im = new ImageIcon(user.getUserImage());
+        Image image = im.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon userImage = new ImageIcon(image);
+        pic.setIcon(userImage);
     }
 
     public void addMenuEvent(ActionListener event) {

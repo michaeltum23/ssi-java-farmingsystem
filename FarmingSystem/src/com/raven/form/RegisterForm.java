@@ -4,7 +4,6 @@
  */
 package com.raven.form;
 
-import com.raven.component.Message;
 import com.raven.main.LoginForm;
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
@@ -15,6 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -60,7 +61,7 @@ public class RegisterForm extends javax.swing.JFrame {
         rbnFarmer.setActionCommand("Farmer");
         rbnSupplier.setActionCommand("Supplier");
         String role = btnGrpRole.getSelection().getActionCommand();
-        
+
         user.setProfielImage(is);
         user.setFile(f);
         user.setFirstName(firstName);
@@ -88,9 +89,10 @@ public class RegisterForm extends javax.swing.JFrame {
         rbnGender = new javax.swing.ButtonGroup();
         btnGrpRole = new javax.swing.ButtonGroup();
         dateChooser1 = new com.raven.datechooser.DateChooser();
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         button1 = new com.raven.swing.Button();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblPicture = new javax.swing.JLabel();
         btnBrowse = new com.raven.swing.Button();
@@ -133,18 +135,15 @@ public class RegisterForm extends javax.swing.JFrame {
 
         dateChooser1.setTextRefernce(txtDate);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Register");
+        setMaximumSize(new java.awt.Dimension(1200, 950));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1130, 950));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel1.setMaximumSize(new java.awt.Dimension(0, 0));
-        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 811));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
         button1.setText("REGISTER ACCOUNT DETAILS");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -159,15 +158,34 @@ public class RegisterForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 1102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 900, 1250, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 1130, 50));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPane1.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1200, 950));
+        jScrollPane1.setRequestFocusEnabled(false);
+        jScrollPane1.setVerifyInputWhenFocusTarget(false);
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setMaximumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1130, 970));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -326,7 +344,7 @@ public class RegisterForm extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 740, 10));
@@ -341,7 +359,7 @@ public class RegisterForm extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 1050, 10));
@@ -356,7 +374,7 @@ public class RegisterForm extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 810, 10));
@@ -364,7 +382,11 @@ public class RegisterForm extends javax.swing.JFrame {
         lblFilePath.setText("jLabel17");
         jPanel1.add(lblFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 950));
+        jScrollPane1.setViewportView(jPanel1);
+
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 690));
 
         pack();
         setLocationRelativeTo(null);
@@ -391,6 +413,10 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
+        if (txtFirstname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Missing Fields");
+            return;
+        } 
         register();
     }//GEN-LAST:event_button1ActionPerformed
     public static void main(User user) {
@@ -456,6 +482,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFilePath;
     private javax.swing.JLabel lblPicture;
     private javax.swing.JRadioButton rbnFarmer;
