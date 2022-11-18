@@ -1,26 +1,27 @@
 
 package farmingsystem.model;
 
-
 public class Respond {
     private int id;
     private int user_id;
-    private String userid;
-    private int complaint_id;   
-    private String response_date;
     private String response_body;
+    private String response_date;
     
-     public Respond(){
-         
-     }
+    private int complaint_id;
+    private String complaint_message;
+    private int complaint_user_id;
 
-    public Respond(int id, int user_id, String userid, int complaint_id, String response_date, String response_body) {
+    public Respond() {
+        }
+
+    public Respond(int id, int user_id, String response_body, String response_date, int complaint_id, String complaint_message, int complaint_user_id) {
         this.id = id;
         this.user_id = user_id;
-        this.userid = userid;
-        this.complaint_id = complaint_id;
-        this.response_date = response_date;
         this.response_body = response_body;
+        this.response_date = response_date;
+        this.complaint_id = complaint_id;
+        this.complaint_message = complaint_message;
+        this.complaint_user_id = complaint_user_id;
     }
 
     public int getId() {
@@ -39,20 +40,12 @@ public class Respond {
         this.user_id = user_id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getResponse_body() {
+        return response_body;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public int getComplaint_id() {
-        return complaint_id;
-    }
-
-    public void setComplaint_id(int complaint_id) {
-        this.complaint_id = complaint_id;
+    public void setResponse_body(String response_body) {
+        this.response_body = response_body;
     }
 
     public String getResponse_date() {
@@ -63,11 +56,30 @@ public class Respond {
         this.response_date = response_date;
     }
 
-    public String getResponse_body() {
-        return response_body;
+    public int getComplaint_id() {
+        return complaint_id;
     }
 
-    public void setResponse_body(String response_body) {
-        this.response_body = response_body;
-    } 
+    public void setComplaint_id(int complaint_id) {
+        this.complaint_id = complaint_id;
+    }
+
+    public String getComplaint_message() {
+        return complaint_message;
+    }
+
+    public void setComplaint_message(String complaint_message) {
+        this.complaint_message = complaint_message;
+    }
+
+    public int getComplaint_user_id() {
+        return complaint_user_id;
+    }
+
+    public void setComplaint_user_id(int complaint_user_id) {
+        this.complaint_user_id = complaint_user_id;
+    }
+
+    
+    
 }
