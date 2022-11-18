@@ -322,15 +322,15 @@ public class ParticipantsForm extends javax.swing.JFrame {
         search = Integer.parseInt(JOptionPane.showInputDialog("Enter Training ID"));
         
         ParticipantsImpl participantImpl = new ParticipantsImpl();
-        List<User> list = participantImpl.searchParticipantstbyTraningID(search);
+        List<Participants> listParticipants = participantImpl.searchParticipantstbyTraningID(search);
         DefaultTableModel DFT = (DefaultTableModel) jTable2.getModel();
         DFT.setRowCount(0);
         
-        for(User participant: list)
+        for(Participants participant: listParticipants)
         {
            
-            String first_name = participant.getFirstName();
-            DFT.addRow(new Object[]{first_name});
+            String full_name = participant.getFull_name();
+            DFT.addRow(new Object[]{full_name});
         }   
         
         

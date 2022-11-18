@@ -44,14 +44,13 @@ public class AdvertisementImpl implements AdvertisementController{
         List<Advertisement> list = new ArrayList<Advertisement>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM advertisement ";
+            String sql = "SELECT a.id,CONCAT_WS(' ',u.first_name,u.last_name) as \"Username\",a.crop_name,a.quantity_needed,a.date_needed,a.status FROM advertisement AS a JOIN users AS u ON a.user_id = u.id";
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-           
+            ResultSet rs = ps.executeQuery();           
             while(rs.next()){
                 Advertisement ads = new Advertisement();
                 ads.setId(rs.getInt("id"));
-                ads.setUserID(rs.getInt("user_id"));
+                ads.setFullName(rs.getString("Username"));
                 ads.setCropName(rs.getString("crop_name"));
                 ads.setQuantityNeeded(rs.getDouble("quantity_needed"));                
                 ads.setDate(rs.getString("date_needed"));
@@ -92,6 +91,37 @@ public class AdvertisementImpl implements AdvertisementController{
             JOptionPane.showMessageDialog(null, "Error");
         }
         return st;
+    
+    }
+
+    @Override
+    public List<Advertisement> searchAdvertisementByUserID(int user_id) {
+        try {
+           
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT a.id, a.user_id ,CONCAT_WS(' ',u.first_name,u.last_name) as \"Username\",a.crop_name,a.quantity_needed,a.date_needed,a.status FROM advertisement AS a JOIN users AS u ON a.user_id = u.id WHERE a.user_id=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            ResultSet rs = ps.executeQuery();
+            List<Advertisement> listAdvertisementbyuserID = new ArrayList<Advertisement>();
+            while(rs.next()){
+                
+                Advertisement ads = new Advertisement();
+                ads.setId(rs.getInt("id"));
+                ads.setFullName(rs.getString("Username"));
+                ads.setCropName(rs.getString("crop_name"));
+                ads.setQuantityNeeded(rs.getDouble("quantity_needed"));                
+                ads.setDate(rs.getString("date_needed"));
+                ads.setStatus(rs.getString("status"));
+                listAdvertisementbyuserID.add(ads);
+            }
+             return listAdvertisementbyuserID;
+         }
+         catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return null;
     
     }
     

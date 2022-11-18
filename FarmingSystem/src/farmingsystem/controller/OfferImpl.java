@@ -70,15 +70,15 @@ public class OfferImpl implements OfferController{
         List<Offer> list = new ArrayList<Offer>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM Offer ";
+            String sql = "SELECT o.offer_id,a.crop_name as \"Crop Name\", CONCAT_WS(' ',u.first_name,u.last_name) as \"Seller Name\",o.offer_price FROM offer AS o JOIN users AS u ON o.user_id = u.id JOIN advertisement AS a ON o.advertisement_id = a.id";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
            
             while(rs.next()){
                 Offer st = new Offer();
                 st.setOfferId(rs.getInt("offer_id"));
-                st.setAdvertisementID(rs.getInt("advertisement_id"));
-                st.setUserId(rs.getInt("user_id"));
+                st.setCropName(rs.getString("Crop Name"));
+                st.setSellerName(rs.getString("Seller Name"));
                 st.setPriceOffer(rs.getDouble("offer_price"));
  
                 list.add(st);
@@ -124,14 +124,14 @@ public class OfferImpl implements OfferController{
         List<Advertisement> list = new ArrayList<Advertisement>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM advertisement ";
+            String sql = "SELECT a.id, CONCAT_WS(' ',u.first_name,u.last_name) as \"Seller Name\",a.crop_name,a.quantity_needed,a.date_needed,a.status FROM advertisement AS a JOIN users AS u ON a.user_id = u.id";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
            
             while(rs.next()){
                 Advertisement ads = new Advertisement();               
                 ads.setId(rs.getInt("id"));
-                ads.setUserID(rs.getInt("user_id"));
+                ads.setFullName(rs.getString("Seller Name"));
                 ads.setCropName(rs.getString("crop_name"));
                 ads.setQuantityNeeded(rs.getDouble("quantity_needed"));                
                 ads.setDate(rs.getString("date_needed"));

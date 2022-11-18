@@ -58,7 +58,7 @@ public class CropsForm extends javax.swing.JFrame {
         jTable1.getColumn("Crop Image").setCellRenderer(new myTableCellRenderer());
         for (Crops crops : list) {
             int sid = crops.getId();
-            int user_id = crops.getUserID();
+            String seller_name=crops.getFullName();
             String cropname = crops.getCropName();
             double price = crops.getPrice();
             double quantity = crops.getQuantity();
@@ -67,7 +67,7 @@ public class CropsForm extends javax.swing.JFrame {
             ImageIcon image = new ImageIcon(cropImg);
             JLabel lbl = new JLabel();
             lbl.setIcon(image);
-            DFT.addRow(new Object[]{sid, user_id, cropname, price, quantity, lbl});
+            DFT.addRow(new Object[]{sid, seller_name, cropname, price, quantity, lbl});
         }
 
     }
@@ -167,7 +167,7 @@ public class CropsForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "user_id", "Crops Name", "Price", "Quantity", "Crop Image"
+                "ID", "Seller Name/User ID", "Crops Name", "Price", "Quantity", "Crop Image"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -189,16 +189,13 @@ public class CropsForm extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -234,7 +231,7 @@ public class CropsForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Crop ID", "Seller Name/ User ID", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -316,7 +313,7 @@ public class CropsForm extends javax.swing.JFrame {
                                 .addComponent(lblFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(176, Short.MAX_VALUE)
+                                .addContainerGap(179, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(textUserID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -476,16 +473,21 @@ public void getSum() {
 }
     
     private void btnSearchUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserIDActionPerformed
+        
         search = Integer.parseInt(JOptionPane.showInputDialog("Enter User ID"));
-
-        CropsImpl offer = new CropsImpl();
-
-        List<Crops> list = offer.list();
+        
+        
+        
+        CropsImpl cropsImpl = new CropsImpl();
+        List<Crops> listCropByUserID = cropsImpl.searchCropsByUserID(search);
         DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
         DFT.setRowCount(0);
-        for (Crops crops : list) {
+        
+        for(Crops crops: listCropByUserID)
+        {
+           
             int sid = crops.getId();
-            int user_id = crops.getUserID();
+            String seller_name=crops.getFullName();
             String cropname = crops.getCropName();
             double price = crops.getPrice();
             double quantity = crops.getQuantity();
@@ -494,13 +496,8 @@ public void getSum() {
             ImageIcon image = new ImageIcon(cropImg);
             JLabel lbl = new JLabel();
             lbl.setIcon(image);
-            if (search == user_id) {
-                DFT.addRow(new Object[]{sid, user_id, cropname, price, quantity,lbl});
-            } else {
-                System.out.println("error");
-            }
-
-        }
+            DFT.addRow(new Object[]{sid, seller_name, cropname, price, quantity, lbl});
+        }  
     }//GEN-LAST:event_btnSearchUserIDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

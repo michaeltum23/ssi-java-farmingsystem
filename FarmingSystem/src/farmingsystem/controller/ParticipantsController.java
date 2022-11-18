@@ -6,7 +6,6 @@ package farmingsystem.controller;
 
 import farmingsystem.model.Participants;
 import farmingsystem.model.Training;
-import farmingsystem.model.User;
 import java.util.List;
 
 /**
@@ -16,7 +15,7 @@ import java.util.List;
 public interface ParticipantsController {
     public void addParticipants(Participants participants);
     
-    public List<User>searchParticipantstbyTraningID(int training_id);
+    public List<Participants>searchParticipantstbyTraningID(int training_id);
     public List<Training>listTraining();
    
     

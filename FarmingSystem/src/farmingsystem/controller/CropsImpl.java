@@ -106,14 +106,14 @@ public class CropsImpl implements CropsController{
         List<Crops> list = new ArrayList<Crops>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * FROM crops ";
+            String sql = "SELECT c.id, CONCAT_WS(' ',u.first_name,u.last_name) as \"Sellername\",c.crop_name,c.price,c.quantity,c.crop_image FROM crops AS c JOIN users AS u ON c.user_id = u.id";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
            
             while(rs.next()){
                 Crops st = new Crops();
                 st.setId(rs.getInt("id"));
-                st.setUserID(rs.getInt("user_id"));
+                st.setFullName(rs.getString("Sellername"));
                 st.setCropName(rs.getString("crop_name"));
                 st.setPrice(rs.getDouble("price"));
                 st.setQuantity(rs.getDouble("quantity"));
@@ -128,6 +128,38 @@ public class CropsImpl implements CropsController{
         }
         return list;
         
+    }
+
+    @Override
+    public List<Crops> searchCropsByUserID(int user_id) {
+        try {
+           
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT c.id, CONCAT_WS(' ',u.first_name,u.last_name) as \"Sellername\",c.crop_name,c.price,c.quantity,c.crop_image FROM crops AS c JOIN users AS u ON c.user_id = u.id WHERE c.user_id=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            ResultSet rs = ps.executeQuery();
+            List<Crops> listCropsbyuserID = new ArrayList<Crops>();
+            while(rs.next()){
+                
+                Crops cp = new Crops();
+                cp.setId(rs.getInt("id"));
+                cp.setFullName(rs.getString("Sellername"));
+                cp.setCropName(rs.getString("crop_name"));
+                cp.setPrice(rs.getDouble("price"));
+                cp.setQuantity(rs.getDouble("quantity"));
+                cp.setCropImageData(rs.getBytes("crop_image"));
+ 
+                listCropsbyuserID.add(cp);
+            }
+             return listCropsbyuserID;
+         }
+         catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return null;
+    
     }
 
     
