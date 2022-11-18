@@ -15,6 +15,18 @@ public class Advertisement {
     private double quantityNeeded;
     private String date;
     private String status;
+
+    
+    private String fullName;
+    
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+    
     
     public Advertisement(){
         

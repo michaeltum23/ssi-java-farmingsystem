@@ -71,7 +71,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "User Id", "Crop Name", "Quantity Needed", "Date Needed", "Status"
+                "ID", "Seller Name/User ID", "Crop Name", "Quantity Needed", "Date Needed", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -88,7 +88,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +158,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnPost)
                             .addComponent(offerAdsId))))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,12 +209,12 @@ public class AdvertisementForm extends javax.swing.JFrame {
         for(Advertisement ads: list)
         {
             int sid = ads.getId();
-            int user_id=ads.getUserID();
+            String userName=ads.getFullName();
             String cropname = ads.getCropName();
             double quantityNeeded = ads.getQuantityNeeded();
             String date = ads.getDate();
             String status = ads.getStatus();
-            DFT.addRow(new Object[]{sid,user_id,cropname,quantityNeeded,date,status});
+            DFT.addRow(new Object[]{sid,userName,cropname,quantityNeeded,date,status});
         }    
   
     }
@@ -258,28 +258,25 @@ public class AdvertisementForm extends javax.swing.JFrame {
 
     private void btnSearchUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserIDActionPerformed
         search = Integer.parseInt(JOptionPane.showInputDialog("Enter User ID"));
-
-        AdvertisementImpl offer = new AdvertisementImpl();
-
-        List<Advertisement> list = offer.list();
+        
+        
+        
+        AdvertisementImpl adsImpl = new AdvertisementImpl();
+        List<Advertisement> listAdsByUserID = adsImpl.searchAdvertisementByUserID(search);
         DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
         DFT.setRowCount(0);
-        for(Advertisement ads: list)
+        
+        for(Advertisement ads: listAdsByUserID)
         {
+           
             int sid = ads.getId();
-            int user_id=ads.getUserID();
+            String userName=ads.getFullName();
             String cropname = ads.getCropName();
             double quantityNeeded = ads.getQuantityNeeded();
             String date = ads.getDate();
             String status = ads.getStatus();
-            
-            if(search==user_id){
-                DFT.addRow(new Object[]{sid,user_id,cropname,quantityNeeded,date,status});
-            }else{
-                System.out.println("error");
-            }
-
-        }
+            DFT.addRow(new Object[]{sid,userName,cropname,quantityNeeded,date,status});
+        }   
     }//GEN-LAST:event_btnSearchUserIDActionPerformed
 
     /**

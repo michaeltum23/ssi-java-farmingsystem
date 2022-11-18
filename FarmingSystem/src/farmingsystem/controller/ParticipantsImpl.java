@@ -70,22 +70,22 @@ public class ParticipantsImpl implements ParticipantsController{
     }
 
     @Override
-    public List<User> searchParticipantstbyTraningID(int training_id) {
+    public List<Participants> searchParticipantstbyTraningID(int training_id) {
        try {
-          
+           
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT users.first_name FROM participants INNER JOIN users ON participants.user_id = users.id WHERE participants.training_id=?";
+            String sql = "SELECT CONCAT_WS(' ',users.first_name,users.last_name) as \"Participants Name\" FROM participants JOIN users ON participants.user_id = users.id WHERE participants.training_id=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, training_id);
             ResultSet rs = ps.executeQuery();
-            System.out.println(rs);
-            List<User> list = new ArrayList<User>();
+            List<Participants> listParticipants = new ArrayList<Participants>();
             while(rs.next()){
-                User pk = new User();
-                pk.setFirstName(rs.getString("first_name"));
-                list.add(pk);
+                
+                Participants pt = new Participants();
+                pt.setFull_name(rs.getString("Participants Name"));
+                listParticipants.add(pt);
             }
-             return list;
+             return listParticipants;
          }
          catch (Exception e) {
             e.printStackTrace();

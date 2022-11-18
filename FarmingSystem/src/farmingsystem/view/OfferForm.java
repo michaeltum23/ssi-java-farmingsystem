@@ -110,7 +110,7 @@ public class OfferForm extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "User ID", "Advertisement ID", "Offer"
+                "ID", "Buyer Name/User ID", "Crop Name/Advertisement ID", "Offer"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +145,7 @@ public class OfferForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "User ID", "Crop Name", "Quantity Need", "Date Needed", "Status"
+                "ID", "Seller name/UserID", "Crop Name", "Quantity Need", "Date Needed", "Status"
             }
         ));
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,14 +187,14 @@ public class OfferForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(15, 15, 15)
                         .addComponent(jScrollPane2)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(419, 419, 419))))
         );
@@ -244,12 +244,12 @@ public class OfferForm extends javax.swing.JFrame {
         for(Advertisement ads: list)
         {
             int sid = ads.getId();
-            int user_id=ads.getUserID();
+            String sellerName = ads.getFullName();
             String cropname = ads.getCropName();
             double quantityNeeded = ads.getQuantityNeeded();
             String date = ads.getDate();
             String status = ads.getStatus();
-            DFT.addRow(new Object[]{sid,user_id,cropname,quantityNeeded,date,status});
+            DFT.addRow(new Object[]{sid,sellerName,cropname,quantityNeeded,date,status});
         }    
   
     }
@@ -262,10 +262,10 @@ public class OfferForm extends javax.swing.JFrame {
         for(Offer offer: list)
         {
             int offerId = offer.getOfferId();
-            int advertisemetId = offer.getAdvertisementId();
-            int userId = offer.getUserId();
+            String cropName =offer.getCropName();
+            String sellerName = offer.getSellerName();
             double priceOffer = offer.getPriceOffer();
-            DFT.addRow(new Object[]{offerId,userId,advertisemetId,priceOffer});
+            DFT.addRow(new Object[]{offerId,sellerName,cropName,priceOffer});
         }    
   
     }

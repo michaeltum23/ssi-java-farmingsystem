@@ -13,10 +13,31 @@ public class Offer {
     private int offerId; // primary key
     // offer Id
     private int userId; // foreign key
+    private String sellerName;
     // userId
     private int advertisementId; // fk
+    private String cropName;
     // advertisementId
     private double priceOffer; // double
+
+    public String getCropName() {
+        return cropName;
+    }
+
+    public void setCropName(String cropName) {
+        this.cropName = cropName;
+    }
+    
+    
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
+    
+    
     
     public Offer(){
         //

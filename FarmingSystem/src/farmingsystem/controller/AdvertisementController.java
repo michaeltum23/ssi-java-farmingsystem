@@ -15,4 +15,6 @@ public interface AdvertisementController {
     public void postAds(Advertisement ads);
     public List<Advertisement>list();
     public Advertisement get(int AdvertisementId);
+    
+    public List<Advertisement>searchAdvertisementByUserID(int user_id);
 }

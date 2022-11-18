@@ -18,4 +18,6 @@ public interface CropsController {
     public Crops get(int id);
     public List<Crops>list();
     
+    public List<Crops>searchCropsByUserID(int user_id);
+    
 }
