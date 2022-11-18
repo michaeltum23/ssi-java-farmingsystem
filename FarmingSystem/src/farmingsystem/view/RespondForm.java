@@ -376,7 +376,7 @@ public class RespondForm extends javax.swing.JFrame {
 
         TableModel model = jTableComplain.getModel();
       
-        complainIDS.setText(model.getValueAt(i,1).toString());
+        complainIDS.setText(model.getValueAt(i,0).toString());
         jTextAreaMessageComplain.setText(model.getValueAt(i,2).toString());
        
     
