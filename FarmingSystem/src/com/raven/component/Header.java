@@ -36,17 +36,17 @@ public class Header extends javax.swing.JPanel {
         buttonBadges1 = new com.raven.swing.ButtonBadges();
         buttonBadges2 = new com.raven.swing.ButtonBadges();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(240, 240, 240));
 
         cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/menu.png"))); // NOI18N
 
         pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg"))); // NOI18N
 
         lbUserName.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        lbUserName.setForeground(new java.awt.Color(127, 127, 127));
+        lbUserName.setForeground(new java.awt.Color(59, 122, 87));
         lbUserName.setText("User Name");
 
-        lbRole.setForeground(new java.awt.Color(127, 127, 127));
+        lbRole.setForeground(new java.awt.Color(59, 122, 87));
         lbRole.setText("Admin");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -54,6 +54,11 @@ public class Header extends javax.swing.JPanel {
         buttonBadges1.setForeground(new java.awt.Color(250, 49, 49));
         buttonBadges1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/notification.png"))); // NOI18N
         buttonBadges1.setBadges(12);
+        buttonBadges1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBadges1ActionPerformed(evt);
+            }
+        });
 
         buttonBadges2.setForeground(new java.awt.Color(63, 178, 232));
         buttonBadges2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/message.png"))); // NOI18N
@@ -97,6 +102,10 @@ public class Header extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonBadges1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBadges1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonBadges1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.raven.swing.ButtonBadges buttonBadges1;

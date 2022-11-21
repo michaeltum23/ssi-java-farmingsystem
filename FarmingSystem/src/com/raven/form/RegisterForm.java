@@ -418,6 +418,7 @@ public class RegisterForm extends javax.swing.JFrame {
             return;
         } 
         register();
+        this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
     public static void main(User user) {
         /* Set the Nimbus look and feel */

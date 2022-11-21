@@ -207,7 +207,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
-        jButton2.setText("EDIT  PROFILE");
+        jButton2.setText("ADD CROPS");
         jButton2.setBorder(null);
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 413, 240, 144));
 
@@ -215,7 +215,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
-        jButton5.setText("EDIT  PROFILE");
+        jButton5.setText("OFFER CROPS");
         jButton5.setBorder(null);
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 413, 240, 144));
 
@@ -223,7 +223,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
-        jButton6.setText("EDIT  PROFILE");
+        jButton6.setText("COMPLAINTS");
         jButton6.setBorder(null);
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(778, 413, 240, 144));
 
@@ -401,8 +401,6 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -419,7 +417,6 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }
