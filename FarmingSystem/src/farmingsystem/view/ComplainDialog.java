@@ -7,21 +7,17 @@ package farmingsystem.view;
 import farmingsystem.FarmingConnection;
 import farmingsystem.controller.ComplainImpl;
 import farmingsystem.model.Complain;
-//import farmingsystem.controller.RespondImpl;
-//import farmingsystem.model.Respond;
-import farmingsystem.controller.UserImp;
-import farmingsystem.model.User;
 
-import java.io.ObjectInputFilter;
+import farmingsystem.controller.RespondImpl;
+import farmingsystem.model.Respond;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 /**
@@ -70,24 +66,25 @@ public final class ComplainDialog extends javax.swing.JDialog {
         
   
     }
-//    public final void LoadResponse()
-//    {
-//        RespondImpl respondImpl = new RespondImpl();
-//        List<Respond> list = respondImpl.list();
-//        DefaultTableModel DFT = (DefaultTableModel) jTableResponse.getModel();
-//        DFT.setRowCount(0);
-//        for(Respond responds: list)
-//        {
-//            int id = responds.getId();         
-//            int userID = responds.getUser_id();
-//            String username  = responds.getUserid();
-//            int complainID = responds.getComplaint_id();
-//            String respondDate = responds.getResponse_date();
-//            String responBody = responds.getResponse_body();
-//            DFT.addRow(new Object[]{id, userID, username, complainID, respondDate, responBody});
-//        }    
-//  
-//    }
+    public final void LoadResponse()
+    {
+        RespondImpl respondImpl = new RespondImpl();
+        List<Respond> list = respondImpl.list();
+        DefaultTableModel DFT = (DefaultTableModel) jTableResponse.getModel();
+        DFT.setRowCount(0);
+        for(Respond responds: list)
+        {
+            int id = responds.getId();         
+            int userID = responds.getUser_id();
+            int username  = responds.getUser_id();
+            int complainID = responds.getComplaint_id();
+            String respondDate = responds.getResponse_date();
+            String responBody = responds.getResponse_body();
+            DFT.addRow(new Object[]{id, userID, username, complainID, respondDate, responBody});
+        }    
+  
+    }
+
     public final void LoadResponseComplain()
     {
         ComplainImpl complain = new ComplainImpl();
@@ -106,6 +103,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
         }    
   
     }
+   
     public void LoadUserID(){
         try {
             Connection con = FarmingConnection.getConnection();
@@ -125,24 +123,6 @@ public final class ComplainDialog extends javax.swing.JDialog {
         }
         
     }
-//    public void LoadResponseId(){
-//        try {
-//            Connection con = FarmingConnection.getConnection();
-//            String sql = "SELECT id FROM response";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            jcResponse_ID.removeAllItems();
-//            while(rs.next()){
-//               
-//                
-//                jcResponse_ID.addItem(rs.getString(1));
-//            }
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "Error");
-//        }
-//    }
     public void LoadOrderId(){
         try {
             Connection con = FarmingConnection.getConnection();
@@ -697,16 +677,15 @@ public final class ComplainDialog extends javax.swing.JDialog {
         complain.setStatus(status);
         complain.setDateCreated(created);
 
-        
+        //Impl function
         ComplainImpl complainImpl = new ComplainImpl();
         complainImpl.addComplain(complain);
         LoadComplain();
         
+        // clear text
         txtMessage.setText("");
         jcOrderId.setSelectedItem("");
         jcStatus.setSelectedItem("");   
-        lbl10.setText("");
-        lbl11.setText("");        
         txtMessage.requestFocus();
         
         
@@ -714,7 +693,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
   
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         Complain complains = new Complain();
-
+        // variable
         String edtmessage = txtMessage.getText(); 
         String upstatus = lblStatus.getText();
         String edtresolve = lbldateResolve.getText();
