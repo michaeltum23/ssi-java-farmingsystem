@@ -17,7 +17,7 @@ public interface ComplainController {
     public void addComplain(Complain complain);
     public void updateComplain(Complain complain);
     public void markResolve(Complain complain);
-    public void markPending(Complain complain);
+    public void markPending(Complain complain); 
     public void responseComplain(int response_id,int complain_id,String  response_body,String status);
      
     public void deleteComplain(Complain complain);
