@@ -10,6 +10,8 @@ package farmingsystem.controller;
  */
 import farmingsystem.FarmingConnection;
 import farmingsystem.model.Complain;
+import farmingsystem.model.Respond;
+import farmingsystem.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -24,17 +26,17 @@ public class ComplainImpl implements ComplainController {
         try
         {
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO complain(ticket_no, order_id, message, status, date_created, date_resolve, response_id, response, user_id) VALUES(?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO complain(ticket_no, order_id, message, status, date_created, user_id) VALUES(?,?,?,?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, complain.getTicketNo());
             statement.setInt(2, complain.getOrderId());
             statement.setString(3, complain.getMessage());
             statement.setString(4, complain.getStatus());
             statement.setString(5, complain.getDateCreated());
-            statement.setString(6, complain.getDateResolved());
-            statement.setInt(7, complain.getResponse_id());
-            statement.setString(8, complain.getResponse());
-            statement.setInt(9, complain.getUser_id());
+//            statement.setString(6, complain.getDateResolved());
+//            statement.setInt(7, complain.getResponse_id());
+//            statement.setString(8, complain.getResponse());
+            statement.setInt(6, complain.getUser_id());
             
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Complain has been sent");
@@ -50,25 +52,39 @@ public class ComplainImpl implements ComplainController {
     public void updateComplain(Complain complain) {
      try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "UPDATE complain SET  message=?, status=?, date_resolve=? WHERE id=?";
+            String sql = "UPDATE complain SET message=?, status=?, date_resolve=? WHERE ticket_no=?";
             PreparedStatement statement = con.prepareStatement(sql);
-            
             statement.setString(1, complain.getMessage());
             statement.setString(2, complain.getStatus());
             statement.setString(3, complain.getDateResolved());
-            statement.setInt(4, complain.getId());
-            
-//            statement.setInt(7, complain.getResponse_id());
-//            statement.setString(8, complain.getResponse());
-            
+            statement.setString(4, complain.getTicketNo());
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Complain has been sent");
+            JOptionPane.showMessageDialog(null, "Complain has been updated");
         }catch(Exception e){
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
-
+    @Override
+    public void responseComplain(int response_id,int complain_id, String response_body, String status)  {
+        try{
+            Connection con = FarmingConnection.getConnection();
+            String sql = "UPDATE complain SET response_id=?, reponse=? WHERE complain_id=?"; // /status?
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, response_id);
+            statement.setString(2, response_body);
+            statement.setInt(3, complain_id);
+            statement.setString(4, status);
+//            statement.setInt(2, complain.getResponse_id());
+//            statement.setString(3, complain.getResponse());
+//            statement.setString(4, complain.getTicketNo());
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "You responseded on a complain");
+        }catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }}
+        
     @Override
     public void deleteComplain(Complain complain) {
        try {
@@ -120,7 +136,35 @@ public class ComplainImpl implements ComplainController {
             JOptionPane.showMessageDialog(null, "Error wit the implementation");
         }
         return complain;}
+    
+    @Override
+    public List<Complain> list2() {
+        List<Complain> list = new ArrayList<Complain>();
+        try {
+            Connection con = FarmingConnection.getConnection();
+         String sql1 = "SELECT id FROM response ";
+//         SELECT users.first_name FROM participants INNER JOIN users ON participants.user_id = users.id WHERE participants.training_id=?
+          //  String sql1 = "SELECT response.response FROM response INNER JOIN user ";
 
+            PreparedStatement ps = con.prepareStatement(sql1);
+            ResultSet rs = ps.executeQuery();
+           
+            while(rs.next()){
+                Complain pk = new Complain();
+                pk.setUser_id(rs.getInt("user_id"));
+                pk.setOrderId(rs.getInt("order_id"));
+                pk.setId(rs.getInt("id"));
+                pk.setResponse_id(rs.getInt("response_id"));
+                pk.setResponse(rs.getString("response"));       
+                list.add(pk);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return list;
+    }
     @Override
     public List<Complain> list() {
         List<Complain> list = new ArrayList<Complain>();
@@ -133,6 +177,7 @@ public class ComplainImpl implements ComplainController {
             while(rs.next()){
                 Complain pk = new Complain();
                 pk.setId(rs.getInt("id"));
+                pk.setOrderId(rs.getInt("order_id"));
                 pk.setMessage(rs.getString("message"));
                 pk.setTicketNo(rs.getString("ticket_no"));
                 pk.setStatus(rs.getString("status"));
@@ -148,7 +193,8 @@ public class ComplainImpl implements ComplainController {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error");
         }
-        return list;}
+        return list;
+    }
 
     @Override
     public List<Complain> searchComplain(int user_id ,String status) {
@@ -246,4 +292,49 @@ public class ComplainImpl implements ComplainController {
         }
         return null;
     }
+//
+//    @Override
+//    public List<User> listUser() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    @Override
+    public void markResolve(Complain complain) {
+       try{
+            Connection con = FarmingConnection.getConnection();
+            String sql = "UPDATE complain SET  status=?, date_resolve=? WHERE ticket_no=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, complain.getStatus());
+            statement.setString(2, complain.getDateResolved());
+            statement.setString(3, complain.getTicketNo());
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Complained has Resolved");
+        }catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+
+    @Override
+    public void markPending(Complain complain) {
+       try{
+            Connection con = FarmingConnection.getConnection();
+            String sql = "UPDATE complain SET  status=?, date_resolve=? WHERE ticket_no=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, complain.getStatus());
+            statement.setString(2, complain.getDateResolved());
+            statement.setString(3, complain.getTicketNo());
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Complain was pending");
+        }catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+
+    
+
+    
+    
+    
 }
