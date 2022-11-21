@@ -5,8 +5,10 @@
 package farmingsystem.view;
 
 import farmingsystem.controller.CropsImpl;
+import farmingsystem.controller.OrderImpl;
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.Crops;
+import farmingsystem.model.Order;
 import farmingsystem.model.User;
 import java.awt.Component;
 import java.awt.Image;
@@ -118,6 +120,9 @@ public class CropsForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnAddToCart = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -231,17 +236,38 @@ public class CropsForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Crop ID", "Seller Name/ User ID", "Price", "Quantity"
+                "Crop ID", "Seller Name/ User ID", "Crops Name", "Price", "Quantity"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
         jLabel6.setText("Total");
 
-        jButton1.setText("Total");
+        jButton1.setText("+Quantity");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnAddToCart.setText("Add to Cart");
+        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToCartActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Remove from Cart");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Checkout");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -255,14 +281,6 @@ public class CropsForm extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSearch))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cropImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -291,15 +309,25 @@ public class CropsForm extends javax.swing.JFrame {
                                     .addComponent(textUserID))))
                         .addGap(123, 123, 123)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jButton1)))))
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddToCart)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -342,9 +370,10 @@ public class CropsForm extends javax.swing.JFrame {
                             .addComponent(btnAdd)
                             .addComponent(btnUpdate)
                             .addComponent(btnDelete)
-                            .addComponent(btnSearch)))
+                            .addComponent(btnSearch)
+                            .addComponent(btnAddToCart)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -353,8 +382,12 @@ public class CropsForm extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
-                                .addGap(61, 61, 61)
-                                .addComponent(jButton1)))
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -501,10 +534,54 @@ public void getSum() {
     }//GEN-LAST:event_btnSearchUserIDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        TableModel model1 = jTable1.getModel();
+
+        int selectedRowIndex = jTable2.getSelectedRow();
+        int selectedRowIndex1 = jTable2.getSelectedRow();
+
+        Double initialPrice = Double.parseDouble(model1.getValueAt(selectedRowIndex1, 3).toString());
+
+        Double quantity = Double.parseDouble(model.getValueAt(selectedRowIndex, 4).toString());
+        String newQuantity = JOptionPane.showInputDialog(null, "Enter Quantity", quantity);
+        Double newQuantity1 = Double.parseDouble(newQuantity);
+
+        Double newPrice = (Double) (initialPrice * newQuantity1);
+
+        model.setValueAt(newQuantity, selectedRowIndex, 4);
+        model.setValueAt(newPrice, selectedRowIndex, 3);
+
         getSum();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+//       TableModel model1 = jTable1.getModel();
+//
+//        int[] getSelectedRows = jTable1.getSelectedRows();
+//
+//        Object[] row = new Object[5];
+//
+//        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+//
+//        for (int i = 0; i < getSelectedRows.length; i++) {
+//            row[0] = model1.getValueAt(getSelectedRows[i], 0);
+//
+//            row[1] = model1.getValueAt(getSelectedRows[i], 1);
+//
+//            row[2] = model1.getValueAt(getSelectedRows[i], 2);
+//
+//            row[3] = model1.getValueAt(getSelectedRows[i], 3); 
+//
+//            row[4] = model1.getValueAt(getSelectedRows[i], 4);
+//
+//            model2.addRow(row);
+//
+//        }
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
        TableModel model1 = jTable1.getModel();
 
         int[] getSelectedRows = jTable1.getSelectedRows();
@@ -522,12 +599,51 @@ public void getSum() {
 
             row[3] = model1.getValueAt(getSelectedRows[i], 3); 
 
-            row[4] = model1.getValueAt(getSelectedRows[i], 4);
+            row[4] = 1;
 
             model2.addRow(row);
 
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+        getSum();
+    }//GEN-LAST:event_btnAddToCartActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        int selectedrowindex = jTable2.getSelectedRow();
+
+        try {
+            model.removeRow(selectedrowindex);
+
+        } catch (Exception e) {
+
+        }
+
+        getSum();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Order order = new Order();
+        Integer userId = 102;
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        
+        for (int row = 0; row < jTable2.getRowCount(); row++) {
+           
+            int sellerId = Integer.parseInt(model.getValueAt(row, 0).toString());
+            String cropsName = model.getValueAt(row, 2).toString();
+            double quantity = Double.parseDouble(model.getValueAt(row, 3).toString());
+            double unitPrice = Double.parseDouble(model.getValueAt(row, 4).toString());
+            
+            order.setSellerId(sellerId);
+            order.setUserId(userId);
+            order.setProductName(cropsName);
+            order.setQuantity(quantity);
+            order.setUnitPrice(unitPrice);
+
+            OrderImpl or = new OrderImpl();
+            or.addOrder(order);
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,6 +682,7 @@ public void getSum() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddToCart;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSearchUserID;
@@ -573,6 +690,8 @@ public void getSum() {
     private javax.swing.JButton btnUpload;
     private javax.swing.JLabel cropImage;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

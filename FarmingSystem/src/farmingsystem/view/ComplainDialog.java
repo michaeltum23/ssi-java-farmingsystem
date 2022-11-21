@@ -80,11 +80,11 @@ public final class ComplainDialog extends javax.swing.JDialog {
         {
             int id = responds.getId();         
             int userID = responds.getUser_id();
-            String username  = responds.getUserid();
+         //   String username  = responds.getUserid();
             int complainID = responds.getComplaint_id();
             String respondDate = responds.getResponse_date();
             String responBody = responds.getResponse_body();
-            DFT.addRow(new Object[]{id, userID, username, complainID, respondDate, responBody});
+            DFT.addRow(new Object[]{id, userID, complainID, respondDate, responBody});
         }    
   
     }
