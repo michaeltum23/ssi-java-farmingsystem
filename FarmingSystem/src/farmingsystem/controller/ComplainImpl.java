@@ -10,7 +10,6 @@ package farmingsystem.controller;
  */
 import farmingsystem.FarmingConnection;
 import farmingsystem.model.Complain;
-import farmingsystem.model.Respond;
 import farmingsystem.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
