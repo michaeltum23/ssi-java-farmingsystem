@@ -146,19 +146,12 @@ public class UserImp implements UserController {
     @Override
     public void update(User users) {
         try {
-            String sql = "UPDATE users SET password=?,first_name=?,middle_name=?,last_name=?,birthday=?,contact_number=?,house_no=?,street_address=?,city_address =?,email=? WHERE id=?";
+            String sql = "UPDATE users SET first_name=?,middle_name=?,last_name=? WHERE email=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, users.getPassword());
-            pst.setString(2, users.getFirstName());
-            pst.setString(3, users.getMiddleName());
-            pst.setString(4, users.getLastName());
-            pst.setString(5, users.getBirthDate());
-            pst.setString(6, users.getContactNumber());
-            pst.setString(7, users.getHouseNo());
-            pst.setString(8, users.getStreetAddress());
-            pst.setString(9, users.getCityAddress());
-            pst.setString(10, users.getEmail());
-            pst.setInt(11, users.getId());
+            pst.setString(1, users.getFirstName());
+            pst.setString(2, users.getMiddleName());
+            pst.setString(3, users.getLastName());
+            pst.setString(4, users.getEmail());
             pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null, "UPDATED!");
@@ -169,12 +162,12 @@ public class UserImp implements UserController {
     }
 
     @Override
-    public User get(int userId) {
+    public User get(String email) {
         User st = new User();
         try {
-            String sql = "SELECT * FROM users WHERE id=?";
+            String sql = "SELECT * FROM users WHERE email=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, userId);
+            pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
 
@@ -183,12 +176,16 @@ public class UserImp implements UserController {
                 st.setMiddleName(rs.getString("middle_name"));
                 st.setLastName(rs.getString("last_name"));
                 st.setBirthDate(rs.getString("birthday"));
+                st.setGender(rs.getString("gender"));
+                st.setCivilStatus(rs.getString("civil_status"));
                 st.setContactNumber(rs.getString("contact_number"));
                 st.setHouseNo(rs.getString("house_no"));
                 st.setStreetAddress(rs.getString("street_address"));
                 st.setCityAddress(rs.getString("city_address"));
                 st.setEmail(rs.getString("email"));
+                st.setProvince(rs.getString("province"));
                 st.setUserImage(rs.getBytes("profile_image"));
+                st.setZipCode(rs.getInt("zip_code"));
 
             }
 
@@ -333,5 +330,20 @@ public class UserImp implements UserController {
         rs.close();
         pst.close();
         return verify;
+    }
+
+    @Override
+    public void deleteUser(User users) {
+        try {       
+            Connection con = FarmingConnection.getConnection();
+            String sql = "DELETE from users  WHERE email=?";
+            PreparedStatement ps = con.prepareStatement(sql);  
+            ps.setString(1, users.getEmail());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "User Deleted!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }
 }

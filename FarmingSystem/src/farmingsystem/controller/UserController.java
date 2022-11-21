@@ -15,8 +15,10 @@ public interface UserController {
     public void login(User users);
     public void register(User users);
     public void update(User users);
-    public User get(int userId);
+    public User get(String email);
     public List<User>list();
+    
+    public void deleteUser (User users);
    
   
 }

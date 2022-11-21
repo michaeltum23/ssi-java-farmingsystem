@@ -42,8 +42,8 @@ public class Table extends JTable {
                     }
                     return cell;
 
-                } else if (o instanceof ModelAction) {
-                    ModelAction data = (ModelAction) o;
+                } else if (o instanceof ModelActionSupplier) {
+                    ModelActionSupplier data = (ModelActionSupplier) o;
                     Action cell = new Action(data);
                     if (selected) {
                         cell.setBackground(new Color(239, 244, 255));
@@ -68,7 +68,7 @@ public class Table extends JTable {
 
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 4) {
+        if (col == 5) {
             return new TableCellAction();
         } else {
             return super.getCellEditor(row, col);
