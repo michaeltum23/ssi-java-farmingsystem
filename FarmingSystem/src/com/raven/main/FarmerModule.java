@@ -62,7 +62,7 @@ public class FarmerModule extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-                    main.showForm(new FarmerHome());
+                    main.showForm(new FarmerHome(user));
 //                    if (subMenuIndex == 0) {
 //                        main.showForm(new Form_Home());
 //                    } else if (subMenuIndex == 1) {
@@ -175,7 +175,7 @@ public class FarmerModule extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new FarmerHome());
+        main.showForm(new FarmerHome(user));
     }
 
     @SuppressWarnings("unchecked")

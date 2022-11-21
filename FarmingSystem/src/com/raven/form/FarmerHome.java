@@ -24,19 +24,27 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 public class FarmerHome extends javax.swing.JPanel {
+    
+    private User users;
 
-    public FarmerHome() {
+    public FarmerHome(User user) {
+        this.users = user;
         initComponents();
 //        table1.fixTable(jScrollPane1);
+        lblFullName.setText(user.getFirstName() + " " + user.getLastName());
         setOpaque(false);
         initData();
     }
-
+    
+    public FarmerHome() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     private void initData() {
         initCardData();
         initTableData();
     }
-
+    
     private void initTableData() {
         EventAction eventAction = new EventAction() {
             @Override
@@ -47,7 +55,7 @@ public class FarmerHome extends javax.swing.JPanel {
                     System.out.println("User click Cancel");
                 }
             }
-
+            
             @Override
             public void update(ModelStudent student) {
                 if (showMessage("Update Student : " + student.getName())) {
@@ -91,7 +99,6 @@ public class FarmerHome extends javax.swing.JPanel {
 //            return (Component) value;
 //        }
 //    }
-
     private void initCardData() {
         UserImp ui = new UserImp();
         Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
@@ -103,13 +110,13 @@ public class FarmerHome extends javax.swing.JPanel {
         Icon icon4 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.BUSINESS_CENTER, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
         card4.setData(new ModelCard("Pending Response", 550, 95, icon4));
     }
-
+    
     private boolean showMessage(String message) {
         Message obj = new Message(Main.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -122,7 +129,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblFullName = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -184,9 +191,9 @@ public class FarmerHome extends javax.swing.JPanel {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 46, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setText("Users full name");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 82, -1, -1));
+        lblFullName.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblFullName.setText("Users full name");
+        jPanel2.add(lblFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 82, -1, -1));
 
         jLabel3.setText("Farmer Details");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 136, -1, -1));
@@ -403,7 +410,6 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -418,5 +424,6 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblFullName;
     // End of variables declaration//GEN-END:variables
 }
