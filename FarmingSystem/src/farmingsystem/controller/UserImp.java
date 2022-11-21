@@ -124,7 +124,7 @@ public class UserImp implements UserController {
                 e.printStackTrace();
             }
         } else {
-            
+
         }
     }
 
@@ -186,17 +186,30 @@ public class UserImp implements UserController {
 
     private int count;
 
-    public int countUser() {
-        try {
-            String sql = "SELECT COUNT(id) as count_user FROM users ";
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                count = rs.getInt("count_user");
+    public int countUser(String userType) {
+        if (userType.equals("Farmer") || userType.equals("Supplier") || userType.equals("Admin")) {
+            try {
+                String sql = "SELECT COUNT(id) as count_user FROM users WHERE user_type=?";
+                PreparedStatement pst = con.prepareStatement(sql);
+                pst.setString(1, userType);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt("count_user");
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
             }
-
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } else {
+            try {
+                String sql = "SELECT COUNT(id) as count_user FROM users";
+                PreparedStatement pst = con.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt("count_user");
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
         return count;
     }

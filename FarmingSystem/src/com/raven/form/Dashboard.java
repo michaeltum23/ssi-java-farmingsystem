@@ -23,9 +23,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-public class Form_Home extends javax.swing.JPanel {
+public class Dashboard extends javax.swing.JPanel {
 
-    public Form_Home() {
+    public Dashboard() {
         initComponents();
         table1.fixTable(jScrollPane1);
         setOpaque(false);
