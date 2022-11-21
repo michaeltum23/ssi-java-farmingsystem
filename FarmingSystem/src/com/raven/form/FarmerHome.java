@@ -142,7 +142,8 @@ public class FarmerHome extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
 
-        card1.setColorGradient(new java.awt.Color(211, 28, 215));
+        card1.setBackground(new java.awt.Color(59, 122, 87));
+        card1.setColorGradient(new java.awt.Color(0, 102, 51));
         card1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 card1MouseClicked(evt);
@@ -153,14 +154,14 @@ public class FarmerHome extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
         jLabel1.setText("Dashboard / Home");
 
-        card2.setBackground(new java.awt.Color(10, 30, 214));
-        card2.setColorGradient(new java.awt.Color(72, 111, 252));
+        card2.setBackground(new java.awt.Color(59, 122, 87));
+        card2.setColorGradient(new java.awt.Color(0, 102, 51));
 
-        card3.setBackground(new java.awt.Color(194, 85, 1));
-        card3.setColorGradient(new java.awt.Color(255, 212, 99));
+        card3.setBackground(new java.awt.Color(59, 122, 87));
+        card3.setColorGradient(new java.awt.Color(0, 102, 51));
 
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
+        card4.setBackground(new java.awt.Color(59, 122, 87));
+        card4.setColorGradient(new java.awt.Color(0, 102, 51));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,7 +196,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jLabel11.setText("Random Farming Tips");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 82, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 51));
+        jButton1.setBackground(new java.awt.Color(0, 102, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
@@ -203,7 +204,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton1.setBorder(null);
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 413, 240, 144));
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 51));
+        jButton2.setBackground(new java.awt.Color(0, 102, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
@@ -211,7 +212,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton2.setBorder(null);
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 413, 240, 144));
 
-        jButton5.setBackground(new java.awt.Color(0, 204, 51));
+        jButton5.setBackground(new java.awt.Color(0, 102, 51));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
@@ -219,7 +220,7 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton5.setBorder(null);
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 413, 240, 144));
 
-        jButton6.setBackground(new java.awt.Color(0, 204, 51));
+        jButton6.setBackground(new java.awt.Color(0, 102, 51));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
