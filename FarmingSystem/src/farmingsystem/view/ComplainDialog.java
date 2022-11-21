@@ -209,6 +209,11 @@ public final class ComplainDialog extends javax.swing.JDialog {
         jLabel4.setText("Order ID");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Done", "Pending", "Failed", " " }));
         jcStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -382,12 +387,11 @@ public final class ComplainDialog extends javax.swing.JDialog {
                                 .addComponent(jLabel3)
                                 .addGap(3, 3, 3)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
 
-        btnStatusFailed.setBackground(new java.awt.Color(255, 255, 255));
         btnStatusFailed.setForeground(new java.awt.Color(255, 0, 0));
         btnStatusFailed.setText("Failed");
         btnStatusFailed.addActionListener(new java.awt.event.ActionListener() {
@@ -396,7 +400,6 @@ public final class ComplainDialog extends javax.swing.JDialog {
             }
         });
 
-        btnStatusDone.setBackground(new java.awt.Color(255, 255, 255));
         btnStatusDone.setForeground(new java.awt.Color(51, 51, 255));
         btnStatusDone.setText("Done");
 
@@ -654,6 +657,10 @@ public final class ComplainDialog extends javax.swing.JDialog {
     private void statusComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_statusComboBoxActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
