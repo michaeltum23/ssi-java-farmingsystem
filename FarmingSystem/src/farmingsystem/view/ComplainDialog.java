@@ -7,8 +7,10 @@ package farmingsystem.view;
 import farmingsystem.FarmingConnection;
 import farmingsystem.controller.ComplainImpl;
 import farmingsystem.model.Complain;
+
 import farmingsystem.controller.RespondImpl;
 import farmingsystem.model.Respond;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +35,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         LoadComplain();
-        LoadResponse();
+        //LoadResponse(); error on importing java respond.
         LoadUserID();
      //   LoadResponseId();
      //   LoadResponseComplain();
@@ -82,6 +84,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
         }    
   
     }
+
     public final void LoadResponseComplain()
     {
         ComplainImpl complain = new ComplainImpl();
@@ -849,8 +852,8 @@ public final class ComplainDialog extends javax.swing.JDialog {
         // query complain imp
         ComplainImpl complainImpl = new ComplainImpl();
         complainImpl.updateComplain(complains);
-//        complainImpl.responseComplain( responseId, complain_id,  response_body, upstatus);
-        LoadResponse();
+//        complainImpl.responseComplain( responseId, complain_id,  response_body, upstatus); // test to update complain table
+//        LoadResponse();
         
     }//GEN-LAST:event_btnSubmitResponseActionPerformed
 
