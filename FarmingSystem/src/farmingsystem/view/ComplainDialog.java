@@ -7,8 +7,8 @@ package farmingsystem.view;
 import farmingsystem.FarmingConnection;
 import farmingsystem.controller.ComplainImpl;
 import farmingsystem.model.Complain;
-import farmingsystem.controller.RespondImpl;
-import farmingsystem.model.Respond;
+//import farmingsystem.controller.RespondImpl;
+//import farmingsystem.model.Respond;
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
 
@@ -39,7 +39,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         LoadComplain();
-        LoadResponse();
+        //LoadResponse(); error on importing java respond.
         LoadUserID();
      //   LoadResponseId();
      //   LoadResponseComplain();
@@ -70,24 +70,24 @@ public final class ComplainDialog extends javax.swing.JDialog {
         
   
     }
-    public final void LoadResponse()
-    {
-        RespondImpl respondImpl = new RespondImpl();
-        List<Respond> list = respondImpl.list();
-        DefaultTableModel DFT = (DefaultTableModel) jTableResponse.getModel();
-        DFT.setRowCount(0);
-        for(Respond responds: list)
-        {
-            int id = responds.getId();         
-            int userID = responds.getUser_id();
-            String username  = responds.getUserid();
-            int complainID = responds.getComplaint_id();
-            String respondDate = responds.getResponse_date();
-            String responBody = responds.getResponse_body();
-            DFT.addRow(new Object[]{id, userID, username, complainID, respondDate, responBody});
-        }    
-  
-    }
+//    public final void LoadResponse()
+//    {
+//        RespondImpl respondImpl = new RespondImpl();
+//        List<Respond> list = respondImpl.list();
+//        DefaultTableModel DFT = (DefaultTableModel) jTableResponse.getModel();
+//        DFT.setRowCount(0);
+//        for(Respond responds: list)
+//        {
+//            int id = responds.getId();         
+//            int userID = responds.getUser_id();
+//            String username  = responds.getUserid();
+//            int complainID = responds.getComplaint_id();
+//            String respondDate = responds.getResponse_date();
+//            String responBody = responds.getResponse_body();
+//            DFT.addRow(new Object[]{id, userID, username, complainID, respondDate, responBody});
+//        }    
+//  
+//    }
     public final void LoadResponseComplain()
     {
         ComplainImpl complain = new ComplainImpl();
@@ -873,8 +873,8 @@ public final class ComplainDialog extends javax.swing.JDialog {
         // query complain imp
         ComplainImpl complainImpl = new ComplainImpl();
         complainImpl.updateComplain(complains);
-//        complainImpl.responseComplain( responseId, complain_id,  response_body, upstatus);
-        LoadResponse();
+//        complainImpl.responseComplain( responseId, complain_id,  response_body, upstatus); // test to update complain table
+//        LoadResponse();
         
     }//GEN-LAST:event_btnSubmitResponseActionPerformed
 
