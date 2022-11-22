@@ -117,14 +117,14 @@ public class Admin extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
         jLabel1.setText("Dashboard / Admin");
 
-        card2.setBackground(new java.awt.Color(10, 30, 214));
-        card2.setColorGradient(new java.awt.Color(72, 111, 252));
+        card2.setBackground(new java.awt.Color(59, 122, 87));
+        card2.setColorGradient(new java.awt.Color(0, 102, 51));
 
-        card3.setBackground(new java.awt.Color(194, 85, 1));
-        card3.setColorGradient(new java.awt.Color(255, 212, 99));
+        card3.setBackground(new java.awt.Color(59, 122, 87));
+        card3.setColorGradient(new java.awt.Color(0, 102, 51));
 
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
+        card4.setBackground(new java.awt.Color(59, 122, 87));
+        card4.setColorGradient(new java.awt.Color(0, 102, 51));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
