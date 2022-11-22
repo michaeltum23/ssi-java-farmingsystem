@@ -474,7 +474,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 || (!rbnMale.isSelected() && !rbnFemale.isSelected()) || cmbCivilStatus.getSelectedIndex() == 0
                 || cmbCity.getSelectedItem().equals("Select:") || cmbProvince.getSelectedIndex() == 0
                 || txtHouse.getText().isEmpty() || txtBarangay.getText().isEmpty() || txtZipCode.getText().isEmpty()
-                || txtContactNo.getText().isEmpty() || (!rbnFarmer.isSelected() || !rbnSupplier.isSelected())) {
+                || txtContactNo.getText().isEmpty() || (!rbnFarmer.isSelected() && !rbnSupplier.isSelected())) {
             JOptionPane.showMessageDialog(null, "Missing Fields");
             return;
         }
