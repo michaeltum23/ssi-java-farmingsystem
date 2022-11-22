@@ -19,7 +19,6 @@ import com.raven.form.FarmingTips;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
-import com.raven.form.Supplier;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
