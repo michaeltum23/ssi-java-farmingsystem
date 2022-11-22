@@ -1,11 +1,15 @@
 package com.raven.component;
 
+import farmingsystem.controller.UserImp;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PanelVerifyCode extends javax.swing.JPanel {
 
@@ -114,6 +118,12 @@ public class PanelVerifyCode extends javax.swing.JPanel {
 
     private void cmdCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCancelActionPerformed
         setVisible(false);
+        UserImp ui = new UserImp();
+        try {
+            ui.deleteInit();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelVerifyCode.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_cmdCancelActionPerformed
 
     @Override

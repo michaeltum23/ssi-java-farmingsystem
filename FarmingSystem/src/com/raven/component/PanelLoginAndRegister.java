@@ -46,19 +46,32 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     }
 
     private void initRegister(ActionListener eventRegister) {
-        register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]25[]push"));
+        register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]10[]10[]25[]push"));
         JLabel label = new JLabel("Create Account");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(7, 164, 121));
         register.add(label);
+
         MyTextField txtEmail = new MyTextField();
         txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/mail.png")));
         txtEmail.setHint("Email");
         register.add(txtEmail, "w 60%");
+
         MyPasswordField txtPass = new MyPasswordField();
         txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/pass.png")));
         txtPass.setHint("Password");
         register.add(txtPass, "w 60%");
+
+        MyPasswordField txtConfirmPass = new MyPasswordField();
+        txtConfirmPass.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/pass.png")));
+        txtConfirmPass.setHint("Confirm Password");
+        register.add(txtConfirmPass, "w 60%");
+
+        JLabel lblPass = new JLabel("*Password not match");
+        lblPass.setVisible(false);
+        lblPass.setForeground(Color.red);
+        register.add(lblPass);
+
         Button cmd = new Button();
         cmd.setBackground(new Color(7, 164, 121));
         cmd.setForeground(new Color(250, 250, 250));
@@ -69,9 +82,15 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (String.valueOf(txtPass.getPassword()).equals(String.valueOf(txtConfirmPass.getPassword()))) {
+                    lblPass.setVisible(false);
                     String email = txtEmail.getText();
                     String password = String.valueOf(txtPass.getPassword());
                     user = new User(0, email, password, "");
+                } else {
+                    lblPass.setVisible(true);
+                    return;
+                }
             }
         });
     }

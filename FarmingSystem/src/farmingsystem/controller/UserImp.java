@@ -12,6 +12,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,17 @@ public class UserImp implements UserController {
             con = FarmingConnection.getConnection();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public void deleteInit() {
+        PreparedStatement pst;
+        try {
+            pst = con.prepareStatement("DELETE FROM users WHERE active IS NULL");
+            pst.executeQuery();
+            pst.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
