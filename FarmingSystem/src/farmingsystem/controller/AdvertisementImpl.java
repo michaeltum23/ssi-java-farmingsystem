@@ -108,6 +108,7 @@ public class AdvertisementImpl implements AdvertisementController{
                 
                 Advertisement ads = new Advertisement();
                 ads.setId(rs.getInt("id"));
+                ads.setUserID(rs.getInt("user_id"));
                 ads.setFullName(rs.getString("Username"));
                 ads.setCropName(rs.getString("crop_name"));
                 ads.setQuantityNeeded(rs.getDouble("quantity_needed"));                

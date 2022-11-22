@@ -185,5 +185,33 @@ public class OfferImpl implements OfferController{
         }
     }
 
+    @Override
+    public List<Offer> list(int adsID) {
+        List<Offer> list = new ArrayList<Offer>();
+        try {
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT o.offer_id,a.crop_name as \"Crop Name\", CONCAT_WS(' ',u.first_name,u.last_name) as \"Seller Name\",o.offer_price FROM offer AS o JOIN users AS u ON o.user_id = u.id JOIN advertisement AS a ON o.advertisement_id = a.id WHERE o.advertisement_id";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, adsID);
+            ResultSet rs = ps.executeQuery();
+           
+            while(rs.next()){
+                Offer st = new Offer();
+                st.setOfferId(rs.getInt("offer_id"));
+                st.setCropName(rs.getString("Crop Name"));
+                st.setSellerName(rs.getString("Seller Name"));
+                st.setPriceOffer(rs.getDouble("offer_price"));
+ 
+                list.add(st);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return list;    
+    
+    }
+
     
 }
