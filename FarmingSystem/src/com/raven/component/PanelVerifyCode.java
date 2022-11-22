@@ -119,11 +119,7 @@ public class PanelVerifyCode extends javax.swing.JPanel {
     private void cmdCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCancelActionPerformed
         setVisible(false);
         UserImp ui = new UserImp();
-        try {
-            ui.deleteInit();
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelVerifyCode.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ui.deleteInit();
     }//GEN-LAST:event_cmdCancelActionPerformed
 
     @Override
@@ -143,7 +139,7 @@ public class PanelVerifyCode extends javax.swing.JPanel {
     public void addEventButtonOK(ActionListener event) {
         cmdOK.addActionListener(event);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.raven.swing.ButtonOutLine cmdCancel;
     private com.raven.swing.ButtonOutLine cmdOK;
