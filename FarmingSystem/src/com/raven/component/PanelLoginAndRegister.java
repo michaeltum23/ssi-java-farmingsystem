@@ -67,7 +67,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtConfirmPass.setHint("Confirm Password");
         register.add(txtConfirmPass, "w 60%");
 
-        JLabel lblPass = new JLabel("*Password not match");
+        JLabel lblPass = new JLabel("*Password do not match");
         lblPass.setVisible(false);
         lblPass.setForeground(Color.red);
         register.add(lblPass);
