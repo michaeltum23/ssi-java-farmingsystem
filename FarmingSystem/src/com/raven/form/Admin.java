@@ -110,7 +110,8 @@ public class Admin extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new com.raven.swing.table.Table();
 
-        card1.setColorGradient(new java.awt.Color(211, 28, 215));
+        card1.setBackground(new java.awt.Color(59, 122, 87));
+        card1.setColorGradient(new java.awt.Color(0, 102, 51));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));

@@ -23,9 +23,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-public class Dashboard extends javax.swing.JPanel {
+public class SummaryProducts1 extends javax.swing.JPanel {
 
-    public Dashboard() {
+    public SummaryProducts1() {
         initComponents();
         table1.fixTable(jScrollPane1);
         setOpaque(false);
@@ -115,7 +115,6 @@ public class Dashboard extends javax.swing.JPanel {
     private void initComponents() {
 
         card1 = new com.raven.component.Card();
-        jLabel1 = new javax.swing.JLabel();
         card2 = new com.raven.component.Card();
         card3 = new com.raven.component.Card();
         card4 = new com.raven.component.Card();
@@ -141,10 +140,6 @@ public class Dashboard extends javax.swing.JPanel {
                 card1MouseClicked(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(59, 122, 87));
-        jLabel1.setText("Dashboard / Home");
 
         card2.setBackground(new java.awt.Color(59, 122, 87));
         card2.setColorGradient(new java.awt.Color(0, 102, 51));
@@ -346,9 +341,6 @@ public class Dashboard extends javax.swing.JPanel {
                         .addComponent(card3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(card4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3)))
@@ -362,9 +354,7 @@ public class Dashboard extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,7 +390,6 @@ public class Dashboard extends javax.swing.JPanel {
     private com.raven.component.Card card6;
     private com.raven.component.Card card7;
     private com.raven.component.Card card8;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
