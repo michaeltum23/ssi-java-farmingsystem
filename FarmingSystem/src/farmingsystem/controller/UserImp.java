@@ -32,12 +32,14 @@ public class UserImp implements UserController {
 
     public User login(ModelLogin login) throws SQLException {
         User user = new User();
-        PreparedStatement pst = con.prepareStatement("SELECT id, email, user_type, profile_image FROM users WHERE email=? AND password=? AND active=true limit 1");
+        PreparedStatement pst = con.prepareStatement("SELECT * FROM users WHERE email=? AND password=? AND active=true limit 1");
         pst.setString(1, login.getEmail());
         pst.setString(2, login.getPassword());
         ResultSet rs = pst.executeQuery();
         if (rs.next()) {
             user.setId(rs.getInt("id"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
             user.setEmail(rs.getString("email"));
             user.setUserType(rs.getString("user_type"));
             user.setUserImage(rs.getBytes("profile_image"));
