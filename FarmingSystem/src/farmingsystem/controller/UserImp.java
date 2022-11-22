@@ -146,12 +146,24 @@ public class UserImp implements UserController {
     @Override
     public void update(User users) {
         try {
-            String sql = "UPDATE users SET first_name=?,middle_name=?,last_name=? WHERE email=?";
+            String sql = "UPDATE users SET first_name=?,middle_name=?,last_name=?,birthday=?,civil_status=?,gender=?,contact_number=?,email=?,house_no=?,street_address=?,city_address=?,province=?,zip_code=?,profile_image=? WHERE email=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, users.getFirstName());
             pst.setString(2, users.getMiddleName());
             pst.setString(3, users.getLastName());
-            pst.setString(4, users.getEmail());
+            pst.setString(4, users.getBirthDate());
+            pst.setString(5, users.getCivilStatus());
+            pst.setString(6,users.getGender());
+            pst.setString(7, users.getContactNumber());
+            pst.setString(8, users.getEmail());
+            pst.setString(9, users.getHouseNo());
+            pst.setString(10,users.getStreetAddress());
+            pst.setString(11, users.getCityAddress());
+            pst.setString(12, users.getProvince());
+            pst.setInt(13,users.getZipCode());
+            pst.setBinaryStream(14, users.getProfielImage(), users.getFile().length());
+            pst.setString(15, users.getEmail());
+            
             pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null, "UPDATED!");
@@ -346,4 +358,44 @@ public class UserImp implements UserController {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
+
+    @Override
+    public List<User> searchUser(String firstName, String lastName) {
+        try {
+          
+            Connection con = FarmingConnection.getConnection();
+            String sql = "SELECT * from users WHERE first_name=? OR last_name=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, firstName);
+            ps.setString(2, lastName);
+            ResultSet rs = ps.executeQuery();
+            List<User> list = new ArrayList<User>();
+            while(rs.next()){
+                User st = new User();
+                st.setPassword(rs.getString("password"));
+                st.setFirstName(rs.getString("first_name"));
+                st.setMiddleName(rs.getString("middle_name"));
+                st.setLastName(rs.getString("last_name"));
+                st.setBirthDate(rs.getString("birthday"));
+                st.setContactNumber(rs.getString("contact_number"));
+                st.setHouseNo(rs.getString("house_no"));
+                st.setStreetAddress(rs.getString("street_address"));
+                st.setCityAddress(rs.getString("city_address"));
+                st.setEmail(rs.getString("email"));
+                st.setUserType(rs.getString("user_type"));
+                st.setActive(rs.getBoolean("active"));
+                st.setUserImage(rs.getBytes("profile_image"));
+                list.add(st);
+            }
+             return list;
+         }
+         catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return null;
+    
+    }
+
+   
 }

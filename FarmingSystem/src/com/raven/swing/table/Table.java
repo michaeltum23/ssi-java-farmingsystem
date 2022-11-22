@@ -42,8 +42,8 @@ public class Table extends JTable {
                     }
                     return cell;
 
-                } else if (o instanceof ModelActionSupplier) {
-                    ModelActionSupplier data = (ModelActionSupplier) o;
+                } else if (o instanceof ModelActionUser) {
+                    ModelActionUser data = (ModelActionUser) o;
                     Action cell = new Action(data);
                     if (selected) {
                         cell.setBackground(new Color(239, 244, 255));

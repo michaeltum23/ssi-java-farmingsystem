@@ -3,7 +3,7 @@ package com.raven.swing.table;
 import farmingsystem.model.User;
 
 
-public interface EventActionSupplier {
+public interface EventActionUser {
 
     public void delete(User user);
 

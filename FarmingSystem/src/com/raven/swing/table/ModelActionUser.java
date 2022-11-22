@@ -2,7 +2,7 @@ package com.raven.swing.table;
 
 import farmingsystem.model.User;
 
-public class ModelActionSupplier {
+public class ModelActionUser {
 
     public User getUser() {
         return user;
@@ -12,22 +12,22 @@ public class ModelActionSupplier {
         this.user = user;
     }
 
-    public EventActionSupplier getEvent() {
+    public EventActionUser getEvent() {
         return event;
     }
 
-    public void setEvent(EventActionSupplier event) {
+    public void setEvent(EventActionUser event) {
         this.event = event;
     }
 
-    public ModelActionSupplier(User user, EventActionSupplier event) {
+    public ModelActionUser(User user, EventActionUser event) {
         this.user = user;
         this.event = event;
     }
 
-    public ModelActionSupplier() {
+    public ModelActionUser() {
     }
 
     private User user;
-    private EventActionSupplier event;
+    private EventActionUser event;
 }

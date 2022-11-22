@@ -4,9 +4,9 @@
  */
 package farmingsystem.model;
 
-import com.raven.swing.table.EventActionSupplier;
+import com.raven.swing.table.EventActionUser;
 import com.raven.swing.table.ModelAction;
-import com.raven.swing.table.ModelActionSupplier;
+import com.raven.swing.table.ModelActionUser;
 import java.io.File;
 import java.io.InputStream;
 import javax.swing.JLabel;
@@ -60,8 +60,8 @@ public class User {
     
     
     
-    public Object[] toRowTable(EventActionSupplier event) {
-        return new Object[]{lbl,fullName, userType, email,active ,new ModelActionSupplier(this, event)};
+    public Object[] toRowTable(EventActionUser event) {
+        return new Object[]{lbl,fullName, userType, email,active ,new ModelActionUser(this, event)};
     }
 
     public File getFile() {

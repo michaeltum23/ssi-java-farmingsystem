@@ -8,7 +8,7 @@ import javax.swing.JTable;
 
 public class TableCellAction extends DefaultCellEditor {
 
-    private ModelActionSupplier data;
+    private ModelActionUser data;
 
     public TableCellAction() {
         super(new JCheckBox());
@@ -16,7 +16,7 @@ public class TableCellAction extends DefaultCellEditor {
 
     @Override
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
-        data = (ModelActionSupplier) o;
+        data = (ModelActionUser) o;
         Action cell = new Action(data);
         cell.setBackground(new Color(239, 244, 255));
         return cell;

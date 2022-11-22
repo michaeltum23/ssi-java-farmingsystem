@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Action extends javax.swing.JPanel {
 
-    public Action(ModelActionSupplier data) {
+    public Action(ModelActionUser data) {
         initComponents();
         cmdEdit.addActionListener(new ActionListener() {
             @Override
