@@ -54,6 +54,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void init() {
         try {
             userService = new UserImp();
+            userService.deleteInit();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

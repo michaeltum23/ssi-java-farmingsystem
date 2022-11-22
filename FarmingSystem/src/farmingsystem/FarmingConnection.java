@@ -17,7 +17,7 @@ public class FarmingConnection {
     //static String url = "jdbc:postgresql://26.100.93.148:5432/farmingdb";
     static String url = "jdbc:postgresql://localhost:5432/farmingdb";
     static String username = "postgres";
-    static String password = "root";
+    static String password = "Cloud123+4";
     
     public static Connection getConnection() throws Exception {
         if (con == null) {

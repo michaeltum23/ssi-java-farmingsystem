@@ -4,8 +4,12 @@
  */
 package farmingsystem.model;
 
+import com.raven.swing.table.EventActionUser;
+import com.raven.swing.table.ModelAction;
+import com.raven.swing.table.ModelActionUser;
 import java.io.File;
 import java.io.InputStream;
+import javax.swing.JLabel;
 
 /**
  *
@@ -34,6 +38,31 @@ public class User {
     private File file;
     private byte[] userImage;
     private String verifyCode;
+    
+    private String fullName;
+    private JLabel lbl;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public User( JLabel lbl, String fullName, String userType,String email, Boolean active) {
+        this.email = email;
+        this.userType = userType;
+        this.active = active;
+        this.fullName = fullName;
+        this.lbl = lbl;
+    }
+    
+    
+    
+    public Object[] toRowTable(EventActionUser event) {
+        return new Object[]{lbl,fullName, userType, email,active ,new ModelActionUser(this, event)};
+    }
 
     public File getFile() {
         return file;
@@ -244,5 +273,4 @@ public class User {
     public void setVerifyCode(String verifyCode) {
         this.verifyCode = verifyCode;
     }
-
 }

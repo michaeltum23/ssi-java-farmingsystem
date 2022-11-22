@@ -4,6 +4,8 @@ import com.raven.component.Header;
 import com.raven.component.Menu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
+import com.raven.form.AboutApp;
+import com.raven.form.SummaryProducts;
 
 import com.raven.form.Admin;
 import com.raven.form.AdminAdvertisement;
@@ -11,11 +13,12 @@ import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
 import com.raven.form.AdminFarmer;
+import com.raven.form.BlogArticle;
+import com.raven.form.FarmerHome;
 import com.raven.form.FarmingTips;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
-import com.raven.form.AdminSupplier;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -30,7 +33,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class Main extends javax.swing.JFrame {
+public class SupplierModule extends javax.swing.JFrame {
 
     private MigLayout layout;
     private Menu menu;
@@ -39,14 +42,14 @@ public class Main extends javax.swing.JFrame {
     private Animator animator;
 
     private final User user;
-    
-    public Main(User user) {
+
+    public SupplierModule(User user) {
         this.user = user;
         initComponents();
         init();
     }
 
-    private Main() {
+    private SupplierModule() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -61,90 +64,90 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-
-                      main.showForm(new Form_Home());
+                    main.showForm(new FarmerHome(user));
 //                    if (subMenuIndex == 0) {
 //                        main.showForm(new Form_Home());
 //                    } else if (subMenuIndex == 1) {
 //                        main.showForm(new Form1());
 //                    }
                 }
-                
-                 if (menuIndex == 1) {
+                if (menuIndex == 1) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AdminAdvertisement());
-                       } 
-                     }
-                 
-                  if (menuIndex == 2) {
+                    }
+                }
+
+                if (menuIndex == 2) {
                     if (subMenuIndex == -1) {
                         main.showForm(new OrderTracker());
-                       } 
-                     }
-                    
-                    if (menuIndex == 3) {
+                    }
+                }
+
+                if (menuIndex == 3) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Course());
-                       } 
-                     }
-                    
-                    if (menuIndex == 4) {
+                    }
+                }
+
+                if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Complaints());
-                       } 
-                     }
-                    
-                    if (menuIndex == 5) {
+                    }
+                }
+
+                if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
                         main.showForm(new FarmingTips());
-                       } 
-                     }
-                    
-                    if (menuIndex == 6) {
+                    }
+                }
+
+                if (menuIndex == 6) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Blogs());
-                       } 
-                     }
-                    
-                    if (menuIndex == 7) {
+                    }
+                }
+
+                if (menuIndex == 7) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Admin());
-                       } 
-                     }
-                    
-                    if (menuIndex == 8) {
+                    }
+                }
+                
+                if (menuIndex == 10) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new AdminSupplier());
-                       } 
-                     }
-                    
-                    if (menuIndex == 9) {
+                        main.showForm(new AboutApp());
+                    }
+                }
+                
+                  if (menuIndex == 11) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new AdminFarmer());
-                       } 
-                     }
-                    
-                    if (menuIndex == 16) {
+                        main.showForm(new SummaryProducts());
+                    }
+                }
+                  
+                  if (menuIndex == 12) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new BlogArticle());
+                    }
+                }
+
+                if (menuIndex == 16) {
                     if (subMenuIndex == -1) {
                         dispose();
                         LoginForm lf = new LoginForm();
                         lf.setVisible(true);
                         lf.setLocationRelativeTo(null);
-                       } 
-                     }
-                 
-                 
-                 
-                 
+                    }
+                }
             }
         });
         menu.addEventShowPopup(new EventShowPopupMenu() {
             @Override
             public void showPopup(Component com) {
                 MenuItem item = (MenuItem) com;
-                PopupMenu popup = new PopupMenu(Main.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
-                int x = Main.this.getX() + 52;
-                int y = Main.this.getY() + com.getY() + 86;
+                PopupMenu popup = new PopupMenu(SupplierModule.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
+                int x = SupplierModule.this.getX() + 52;
+                int y = SupplierModule.this.getY() + com.getY() + 86;
                 popup.setLocation(x, y);
                 popup.setVisible(true);
             }
@@ -192,7 +195,7 @@ public class Main extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new Form_Home());
+        main.showForm(new FarmerHome(user));
     }
 
     @SuppressWarnings("unchecked")
@@ -247,21 +250,24 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Main(user).setVisible(true);
+                new SupplierModule(user).setVisible(true);
             }
         });
     }
