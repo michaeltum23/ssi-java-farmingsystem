@@ -4,6 +4,8 @@ import com.raven.component.Header;
 import com.raven.component.Menu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
+import com.raven.form.AboutApp;
+import com.raven.form.SummaryProducts;
 
 import com.raven.form.Admin;
 import com.raven.form.AdminAdvertisement;
@@ -11,6 +13,7 @@ import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
 import com.raven.form.AdminFarmer;
+import com.raven.form.BlogArticle;
 import com.raven.form.FarmerHome;
 import com.raven.form.FarmingTips;
 import com.raven.form.Form_Home;
@@ -108,6 +111,24 @@ public class FarmerModule extends javax.swing.JFrame {
                 if (menuIndex == 7) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Admin());
+                    }
+                }
+                
+                if (menuIndex == 10) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new AboutApp());
+                    }
+                }
+                
+                  if (menuIndex == 11) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new SummaryProducts());
+                    }
+                }
+                  
+                  if (menuIndex == 12) {
+                    if (subMenuIndex == -1) {
+                        main.showForm(new BlogArticle());
                     }
                 }
 

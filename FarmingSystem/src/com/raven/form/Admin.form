@@ -67,8 +67,11 @@
   <SubComponents>
     <Component class="com.raven.component.Card" name="card1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="57" green="7a" red="3b" type="rgb"/>
+        </Property>
         <Property name="colorGradient" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="1c" red="d3" type="rgb"/>
+          <Color blue="33" green="66" red="0" type="rgb"/>
         </Property>
       </Properties>
     </Component>

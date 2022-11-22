@@ -92,9 +92,9 @@ public class Menu extends javax.swing.JPanel {
             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-            addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-            addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
-            addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
+             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), "ABOUT THE APPLICATION"));
+            addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), "SUMMARY OF PRODUCTS"));
+            addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), "BLOG ARTICLE"));
             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
             addMenu(new ModelMenu(new ImageIcon(getClass().getResource("")), ""));
