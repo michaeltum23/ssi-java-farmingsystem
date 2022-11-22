@@ -47,10 +47,10 @@ public class FarmingTipsImpl implements FarmingtipsController {
             Connection con = FarmingConnection.getConnection();
             String sql = "UPDATE tips SET title=?,content=? WHERE id=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, tips.getTitle());
-            ps.setString(2, tips.getContent()); 
-            ps.setInt(3, tips.getId());
-            ps.executeUpdate();
+                ps.setString(1, tips.getTitle());
+                ps.setString(2, tips.getContent());
+                ps.setInt(3, tips.getId());
+                ps.executeUpdate(); 
             JOptionPane.showMessageDialog(null, "Updated!");
         } catch (Exception e) {
             System.out.println(e);
@@ -63,9 +63,9 @@ public class FarmingTipsImpl implements FarmingtipsController {
     public void deleteTips(FarmingTips tips) {
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "delete from tips  WHERE id=?";
+            String sql = "delete from tips  WHERE title=?";
             PreparedStatement ps = con.prepareStatement(sql);  
-            ps.setInt(1, tips.getId());
+            ps.setString(1, tips.getTitle());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleted!");
         } catch (Exception e) {
@@ -85,7 +85,7 @@ public class FarmingTipsImpl implements FarmingtipsController {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){            
+            if(rs.next()){  
                 st.setId(rs.getInt("id"));
                 st.setTitle(rs.getString("title"));
                 st.setContent(rs.getString("content"));

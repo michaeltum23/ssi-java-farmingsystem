@@ -6,19 +6,19 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
-public class TableCellAction extends DefaultCellEditor {
+public class TableCellAction1 extends DefaultCellEditor {
 
-    private ModelActionUser data;
+    private ModelActionUser1 data;
    
 
-    public TableCellAction() {
+    public TableCellAction1() {
         super(new JCheckBox());
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
-        data = (ModelActionUser) o;
-        Action cell = new Action(data);
+        data = (ModelActionUser1) o;
+        Action1 cell = new Action1(data);
         cell.setBackground(new Color(239, 244, 255));
         return cell;
     }
