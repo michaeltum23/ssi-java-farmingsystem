@@ -4,7 +4,8 @@
  */
 package farmingsystem;
 
-import farmingsystem.view.LoginForm;
+import com.raven.main.LoginForm;
+//import farmingsystem.view.LoginForm;
 import farmingsystem.view.RegisterForm;
 
 /**
@@ -19,6 +20,7 @@ public class FarmingSystem {
     public static void main(String[] args) {
         LoginForm lf = new LoginForm();
         lf.setVisible(true);
+        lf.setLocationRelativeTo(null);
         
     }
 
