@@ -312,7 +312,7 @@ public class AdminSupplier extends javax.swing.JPanel {
         
              
         UserImp userImpl = new UserImp();
-        List<User>list = userImpl.searchUser(search, search);
+        List<User>list = userImpl.searchUser(search);
         DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
         DFT.setRowCount(0);
         
@@ -326,14 +326,11 @@ public class AdminSupplier extends javax.swing.JPanel {
             Image image = im.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
             ImageIcon userImage = new ImageIcon(image);
             JLabel lbl = new JLabel();
-            lbl.setIcon(userImage);
-            if(search.equals(users.getFirstName()) || search.equals(users.getLastName())){                
+            lbl.setIcon(userImage);       
                 if("Supplier".equals(users.getUserType())){
                     table1.addRow(new User(lbl, fullName, userType,email, active).toRowTable(eventAction));    
                 }            
-            }else{
-                JOptionPane.showMessageDialog(null, "User doesn't exists!");
-            }
+          
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 

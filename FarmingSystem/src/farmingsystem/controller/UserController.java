@@ -17,7 +17,8 @@ public interface UserController {
     public void update(User users);
     public User get(String email);
     public List<User>list();
-    public List<User>searchUser(String firstName,String lastName);
+    public List<User>searchUser(String search);
+    public void addAdmin(User user);
     
     public void deleteUser (User users);
    

@@ -325,7 +325,7 @@ public class AdminFarmer extends javax.swing.JPanel {
         String search = searchFiealds.getText();
 
         UserImp userImpl = new UserImp();
-        List<User>list = userImpl.searchUser(search, search);
+        List<User>list = userImpl.searchUser(search);
         DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
         DFT.setRowCount(0);
 
@@ -340,13 +340,10 @@ public class AdminFarmer extends javax.swing.JPanel {
             ImageIcon userImage = new ImageIcon(image);
             JLabel lbl = new JLabel();
             lbl.setIcon(userImage);
-            if(search.equals(users.getFirstName()) || search.equals(users.getLastName())){
+            
                 if("Farmer".equals(users.getUserType())){
                     table1.addRow(new User(lbl, fullName, userType,email, active).toRowTable(eventAction));
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "User doesn't exists!");
-            }
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 

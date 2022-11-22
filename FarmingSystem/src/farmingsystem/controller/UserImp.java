@@ -360,14 +360,14 @@ public class UserImp implements UserController {
     }
 
     @Override
-    public List<User> searchUser(String firstName, String lastName) {
+    public List<User> searchUser(String search) {
         try {
           
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT * from users WHERE first_name=? OR last_name=?";
+            
+            String sql = "SELECT * FROM users u WHERE lower(CONCAT(u.first_name,u.last_name)) LIKE '%"+search+"%'";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, firstName);
-            ps.setString(2, lastName);
+
             ResultSet rs = ps.executeQuery();
             List<User> list = new ArrayList<User>();
             while(rs.next()){
@@ -396,6 +396,42 @@ public class UserImp implements UserController {
         return null;
     
     }
+
+    @Override
+    public void addAdmin(User user) {
+        try{
+            Connection con = FarmingConnection.getConnection();
+            String sql = "INSERT INTO users(first_name,middle_name,last_name,birthday,civil_status,gender,contact_number,email,house_no,street_address,city_address,province,zip_code,password,user_type,active,profile_image,verify_code) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, user.getFirstName());
+            pst.setString(2, user.getMiddleName());
+            pst.setString(3, user.getLastName());
+            pst.setString(4, user.getBirthDate());
+            pst.setString(5, user.getCivilStatus());
+            pst.setString(6, user.getGender());
+            pst.setString(7, user.getContactNumber()); 
+            pst.setString(8, user.getEmail());
+            pst.setString(9, user.getHouseNo());
+            
+            pst.setString(10, user.getStreetAddress());
+            pst.setString(11, user.getCityAddress());
+            pst.setString(12, user.getProvince());
+            pst.setInt(13, user.getZipCode());
+            pst.setString(14, user.getPassword());
+            pst.setString(15, user.getUserType());
+            pst.setBoolean(16, user.getActive());
+            pst.setBinaryStream(17, user.getProfielImage(), user.getFile().length());
+            pst.setString(18,user.getVerifyCode());
+            
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Post Success!");
+        }catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    
+    }
+    
 
    
 }
