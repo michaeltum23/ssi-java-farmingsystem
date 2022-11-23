@@ -12,13 +12,12 @@ import com.raven.form.AdminAdvertisement;
 import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
-import com.raven.form.AdminFarmer;
 import com.raven.form.BlogArticle;
 import com.raven.form.FarmerHome;
-import com.raven.form.FarmingTips;
-import com.raven.form.Form_Home;
+import com.raven.form.FarmingTip;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
+import com.raven.form.SupplierHome;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -64,7 +63,7 @@ public class SupplierModule extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-                    main.showForm(new FarmerHome(user));
+                    main.showForm(new SupplierHome(user));
 //                    if (subMenuIndex == 0) {
 //                        main.showForm(new Form_Home());
 //                    } else if (subMenuIndex == 1) {
@@ -97,7 +96,7 @@ public class SupplierModule extends javax.swing.JFrame {
 
                 if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new FarmingTips());
+                        main.showForm(new FarmingTip());
                     }
                 }
 
@@ -113,25 +112,25 @@ public class SupplierModule extends javax.swing.JFrame {
                     }
                 }
                 
-                if (menuIndex == 10) {
+                if (menuIndex == 9) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AboutApp());
                     }
                 }
                 
-                  if (menuIndex == 11) {
+                  if (menuIndex == 10) {
                     if (subMenuIndex == -1) {
                         main.showForm(new SummaryProducts());
                     }
                 }
                   
-                  if (menuIndex == 12) {
+                  if (menuIndex == 11) {
                     if (subMenuIndex == -1) {
                         main.showForm(new BlogArticle());
                     }
                 }
 
-                if (menuIndex == 16) {
+                if (menuIndex == 15) {
                     if (subMenuIndex == -1) {
                         dispose();
                         LoginForm lf = new LoginForm();
@@ -195,7 +194,7 @@ public class SupplierModule extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new FarmerHome(user));
+        main.showForm(new SupplierHome(user));
     }
 
     @SuppressWarnings("unchecked")
