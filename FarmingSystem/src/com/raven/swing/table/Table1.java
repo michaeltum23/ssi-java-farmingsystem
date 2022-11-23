@@ -12,9 +12,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 
-public class Table extends JTable {
+public class Table1 extends JTable {
 
-    public Table() {
+    public Table1() {
         setShowHorizontalLines(true);
         setGridColor(new Color(230, 230, 230));
         setRowHeight(40);
@@ -42,9 +42,9 @@ public class Table extends JTable {
                     }
                     return cell;
 
-                } else if (o instanceof ModelActionUser) {
-                    ModelActionUser data = (ModelActionUser) o;
-                    Action cell = new Action(data);
+                } else if (o instanceof ModelActionUser1) {
+                    ModelActionUser1 data = (ModelActionUser1) o;
+                    Action1 cell = new Action1(data);
                     if (selected) {
                         cell.setBackground(new Color(239, 244, 255));
                     } else {
@@ -69,8 +69,8 @@ public class Table extends JTable {
 
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 5) {
-            return new TableCellAction();
+        if (col == 3) {
+            return new TableCellAction1();
         } else {
             return super.getCellEditor(row, col);
         }

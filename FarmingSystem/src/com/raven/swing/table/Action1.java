@@ -5,20 +5,20 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Action extends javax.swing.JPanel {
+public class Action1 extends javax.swing.JPanel {
 
-    public Action(ModelActionUser data) {
+    public Action1(ModelActionUser1 data) {
         initComponents();
         cmdEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                data.getEvent().update(data.getUser());
+                data.getEvent().update(data.getFarmingTips());
             }
         });
         cmdDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                data.getEvent().delete(data.getUser());
+                data.getEvent().delete(data.getFarmingTips());
             }
         });
     }

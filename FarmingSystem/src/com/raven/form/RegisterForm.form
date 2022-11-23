@@ -64,7 +64,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="button1" min="-2" pref="1102" max="-2" attributes="0"/>
+                  <Component id="btnRegister" min="-2" pref="1102" max="-2" attributes="0"/>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -72,22 +72,28 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="button1" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="btnRegister" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="com.raven.swing.Button" name="button1">
+        <Component class="com.raven.swing.Button" name="btnRegister">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="57" green="7a" red="3b" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="REGISTER ACCOUNT DETAILS"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -134,7 +140,7 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="ff" red="cc" type="rgb"/>
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 0]"/>
@@ -188,11 +194,28 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblPicture">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="57" green="7a" red="3b" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="57" green="7a" red="3b" type="rgb"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="com.raven.swing.Button" name="btnBrowse">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="BROWSE PICTURE"/>
               </Properties>
               <Events>
@@ -231,7 +254,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Middle Name"/>
               </Properties>
@@ -247,7 +270,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Last Name"/>
               </Properties>
@@ -263,7 +286,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="House No/Block/Lot/Phase"/>
               </Properties>
@@ -277,6 +300,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Personal Information"/>
               </Properties>
@@ -294,6 +320,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Male"/>
               </Properties>
               <Constraints>
@@ -310,6 +339,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Female"/>
               </Properties>
               <Constraints>
@@ -324,7 +356,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Birthday"/>
               </Properties>
@@ -340,7 +372,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Civil Status"/>
               </Properties>
@@ -387,7 +419,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gender"/>
               </Properties>
@@ -401,6 +433,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Contact Information"/>
               </Properties>
@@ -416,7 +451,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="First Name"/>
               </Properties>
@@ -439,7 +474,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Province"/>
               </Properties>
@@ -541,6 +576,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbProvinceActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -556,13 +594,13 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ZIP Code"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="370" y="430" width="189" height="30"/>
+                  <AbsoluteConstraints x="560" y="430" width="189" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -572,7 +610,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Street/Barangay"/>
               </Properties>
@@ -588,153 +626,8 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="146">
+                  <StringArray count="1">
                     <StringItem index="0" value="Select:"/>
-                    <StringItem index="1" value="Alaminos"/>
-                    <StringItem index="2" value="Angeles"/>
-                    <StringItem index="3" value="Antipolo"/>
-                    <StringItem index="4" value="Bacolod"/>
-                    <StringItem index="5" value="Bacoor"/>
-                    <StringItem index="6" value="Bago"/>
-                    <StringItem index="7" value="Baguio"/>
-                    <StringItem index="8" value="Bais"/>
-                    <StringItem index="9" value="Balanga"/>
-                    <StringItem index="10" value="Batac"/>
-                    <StringItem index="11" value="Batangas City"/>
-                    <StringItem index="12" value="Bayawan"/>
-                    <StringItem index="13" value="Baybay"/>
-                    <StringItem index="14" value="Bayugan"/>
-                    <StringItem index="15" value="Bi&#xf1;an"/>
-                    <StringItem index="16" value="Bislig"/>
-                    <StringItem index="17" value="Bogo"/>
-                    <StringItem index="18" value="Borongan"/>
-                    <StringItem index="19" value="Butuan"/>
-                    <StringItem index="20" value="Cabadbaran"/>
-                    <StringItem index="21" value="Cabanatuan"/>
-                    <StringItem index="22" value="Cabuyao"/>
-                    <StringItem index="23" value="Cadiz"/>
-                    <StringItem index="24" value="Cagayan de Oro"/>
-                    <StringItem index="25" value="Calamba"/>
-                    <StringItem index="26" value="Calapan"/>
-                    <StringItem index="27" value="Calbayog"/>
-                    <StringItem index="28" value="Caloocan"/>
-                    <StringItem index="29" value="Candon"/>
-                    <StringItem index="30" value="Canlaon"/>
-                    <StringItem index="31" value="Carcar"/>
-                    <StringItem index="32" value="Catbalogan"/>
-                    <StringItem index="33" value="Cauayan"/>
-                    <StringItem index="34" value="Cavite City"/>
-                    <StringItem index="35" value="Cebu City"/>
-                    <StringItem index="36" value="Cotabato City"/>
-                    <StringItem index="37" value="Dagupan"/>
-                    <StringItem index="38" value="Danao"/>
-                    <StringItem index="39" value="Dapitan"/>
-                    <StringItem index="40" value="Dasmari&#xf1;as"/>
-                    <StringItem index="41" value="Davao City"/>
-                    <StringItem index="42" value="Digos"/>
-                    <StringItem index="43" value="Dipolog"/>
-                    <StringItem index="44" value="Dumaguete"/>
-                    <StringItem index="45" value="El Salvador"/>
-                    <StringItem index="46" value="Escalante"/>
-                    <StringItem index="47" value="Gapan"/>
-                    <StringItem index="48" value="General Santos"/>
-                    <StringItem index="49" value="General Trias"/>
-                    <StringItem index="50" value="Gingoog"/>
-                    <StringItem index="51" value="Guihulngan"/>
-                    <StringItem index="52" value="Himamaylan"/>
-                    <StringItem index="53" value="Ilagan"/>
-                    <StringItem index="54" value="Iligan"/>
-                    <StringItem index="55" value="Iloilo City"/>
-                    <StringItem index="56" value="Imus"/>
-                    <StringItem index="57" value="Iriga"/>
-                    <StringItem index="58" value="Isabela"/>
-                    <StringItem index="59" value="Kabankalan"/>
-                    <StringItem index="60" value="Kidapawan"/>
-                    <StringItem index="61" value="Koronadal"/>
-                    <StringItem index="62" value="La Carlota"/>
-                    <StringItem index="63" value="Lamitan"/>
-                    <StringItem index="64" value="Laoag"/>
-                    <StringItem index="65" value="Lapu-Lapu"/>
-                    <StringItem index="66" value="Las Pi&#xf1;as"/>
-                    <StringItem index="67" value="Legazpi"/>
-                    <StringItem index="68" value="Ligao"/>
-                    <StringItem index="69" value="Lipa"/>
-                    <StringItem index="70" value="Lucena"/>
-                    <StringItem index="71" value="Maasin"/>
-                    <StringItem index="72" value="Mabalacat"/>
-                    <StringItem index="73" value="Makati"/>
-                    <StringItem index="74" value="Malabon"/>
-                    <StringItem index="75" value="Malaybalay"/>
-                    <StringItem index="76" value="Malolos"/>
-                    <StringItem index="77" value="Mandaluyong"/>
-                    <StringItem index="78" value="Mandaue"/>
-                    <StringItem index="79" value="Manila"/>
-                    <StringItem index="80" value="Marawi"/>
-                    <StringItem index="81" value="Marikina"/>
-                    <StringItem index="82" value="Masbate City"/>
-                    <StringItem index="83" value="Mati"/>
-                    <StringItem index="84" value="Meycauayan"/>
-                    <StringItem index="85" value="Mu&#xf1;oz"/>
-                    <StringItem index="86" value="Muntinlupa"/>
-                    <StringItem index="87" value="Naga"/>
-                    <StringItem index="88" value="Naga"/>
-                    <StringItem index="89" value="Navotas"/>
-                    <StringItem index="90" value="Olongapo"/>
-                    <StringItem index="91" value="Ormoc"/>
-                    <StringItem index="92" value="Oroquieta"/>
-                    <StringItem index="93" value="Ozamiz"/>
-                    <StringItem index="94" value="Pagadian"/>
-                    <StringItem index="95" value="Palayan"/>
-                    <StringItem index="96" value="Panabo"/>
-                    <StringItem index="97" value="Para&#xf1;aque"/>
-                    <StringItem index="98" value="Pasay"/>
-                    <StringItem index="99" value="Pasig"/>
-                    <StringItem index="100" value="Passi"/>
-                    <StringItem index="101" value="Puerto Princesa"/>
-                    <StringItem index="102" value="Quezon City"/>
-                    <StringItem index="103" value="Roxas"/>
-                    <StringItem index="104" value="Sagay"/>
-                    <StringItem index="105" value="Samal"/>
-                    <StringItem index="106" value="San Carlos"/>
-                    <StringItem index="107" value="San Carlos"/>
-                    <StringItem index="108" value="San Fernando"/>
-                    <StringItem index="109" value="San Fernando"/>
-                    <StringItem index="110" value="San Jose"/>
-                    <StringItem index="111" value="San Jose del Monte"/>
-                    <StringItem index="112" value="San Juan"/>
-                    <StringItem index="113" value="San Pablo"/>
-                    <StringItem index="114" value="San Pedro"/>
-                    <StringItem index="115" value="Santa Rosa"/>
-                    <StringItem index="116" value="Santiago"/>
-                    <StringItem index="117" value="Silay"/>
-                    <StringItem index="118" value="Sipalay"/>
-                    <StringItem index="119" value="Sorsogon City"/>
-                    <StringItem index="120" value="Surigao City"/>
-                    <StringItem index="121" value="Tabaco"/>
-                    <StringItem index="122" value="Tabuk"/>
-                    <StringItem index="123" value="Tacloban"/>
-                    <StringItem index="124" value="Tacurong"/>
-                    <StringItem index="125" value="Tagaytay"/>
-                    <StringItem index="126" value="Tagbilaran"/>
-                    <StringItem index="127" value="Taguig"/>
-                    <StringItem index="128" value="Tagum"/>
-                    <StringItem index="129" value="Talisay"/>
-                    <StringItem index="130" value="Talisay"/>
-                    <StringItem index="131" value="Tanauan"/>
-                    <StringItem index="132" value="Tandag"/>
-                    <StringItem index="133" value="Tangub"/>
-                    <StringItem index="134" value="Tanjay"/>
-                    <StringItem index="135" value="Tarlac City"/>
-                    <StringItem index="136" value="Tayabas"/>
-                    <StringItem index="137" value="Toledo"/>
-                    <StringItem index="138" value="Trece Martires"/>
-                    <StringItem index="139" value="Tuguegarao"/>
-                    <StringItem index="140" value="Urdaneta"/>
-                    <StringItem index="141" value="Valencia"/>
-                    <StringItem index="142" value="Valenzuela"/>
-                    <StringItem index="143" value="Victorias"/>
-                    <StringItem index="144" value="Vigan"/>
-                    <StringItem index="145" value="Zamboanga City"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -743,7 +636,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="920" y="370" width="189" height="30"/>
+                  <AbsoluteConstraints x="360" y="470" width="189" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -753,20 +646,23 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="City"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="920" y="330" width="189" height="30"/>
+                  <AbsoluteConstraints x="360" y="430" width="189" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="com.raven.swing.MyTextField" name="txtZipCode">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="370" y="470" width="189" height="40"/>
+                  <AbsoluteConstraints x="560" y="470" width="189" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -783,7 +679,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Contact Number"/>
               </Properties>
@@ -794,6 +690,9 @@
               </Constraints>
             </Component>
             <Component class="com.raven.swing.MyTextField" name="txtContactNo">
+              <Properties>
+                <Property name="columns" type="int" value="11"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="820" y="470" width="285" height="40"/>
@@ -804,6 +703,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Select Role"/>
               </Properties>
@@ -849,13 +751,22 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.raven.swing.Button" name="button2">
+            <Component class="com.raven.swing.Button" name="btnClear">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="CLEAR FIELDS"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="30" y="840" width="320" height="-1"/>
@@ -864,6 +775,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="57" green="7a" red="3b" type="rgb"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/raven/icon/log.png"/>
                 </Property>

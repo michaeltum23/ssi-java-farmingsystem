@@ -18,12 +18,14 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 public class AdminAdvertisement extends javax.swing.JPanel {
 
     public AdminAdvertisement() {
         initComponents();
         table1.fixTable(jScrollPane1);
+        LoadAds();
         setOpaque(false);
         initData();
     }
@@ -32,6 +34,24 @@ public class AdminAdvertisement extends javax.swing.JPanel {
         initCardData();
         initNoticeBoard();
         initTableData();
+    }
+    public void LoadAds()
+    {
+        AdvertisementImpl advertisement = new AdvertisementImpl();
+        List<Advertisement> list = advertisement.list();
+        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
+        DFT.setRowCount(0);
+        for(Advertisement ads: list)
+        {
+            
+            String userName=ads.getFullName();
+            String cropname = ads.getCropName();
+            double quantityNeeded = ads.getQuantityNeeded();
+            String date = ads.getDate();
+            String status = ads.getStatus();
+            DFT.addRow(new Object[]{userName,cropname,quantityNeeded,date,status});
+        }    
+  
     }
 
     private void initTableData() {
@@ -208,7 +228,7 @@ public class AdminAdvertisement extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Supplier Name", "Crop Request", "Quantity Needed", "Order Status", "Date Needed"
+                "Supplier Name", "Crop Request", "Quantity Needed", "Date Needed", "Order Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -222,9 +242,6 @@ public class AdminAdvertisement extends javax.swing.JPanel {
         jScrollPane1.setViewportView(table1);
         if (table1.getColumnModel().getColumnCount() > 0) {
             table1.getColumnModel().getColumn(0).setPreferredWidth(150);
-            table1.getColumnModel().getColumn(2).setHeaderValue("Quantity Needed");
-            table1.getColumnModel().getColumn(3).setHeaderValue("Order Status");
-            table1.getColumnModel().getColumn(4).setHeaderValue("Date Needed");
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

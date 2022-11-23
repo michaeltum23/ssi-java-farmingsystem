@@ -477,8 +477,7 @@ String search;
         DFT.setRowCount(0);
 
         for(User users: list){
-//            String sid = users.getUserId();
-//            String username = users.getUsername();
+            int sid = users.getId();
             String password = users.getPassword();
             String firstName= users.getFirstName();
             String middleName= users.getMiddleName();
@@ -490,31 +489,31 @@ String search;
             String cityAddress= users.getCityAddress();
             String email=users.getEmail();
             String userType= users.getUserType();
-//
-//            // byte profileImage = us.getProfielImage()
-//            if(filter.equals("Farmer")){
-//                if("Farmer".equals(users.getUserType()))
-//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-//                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
-//                        ,cityAddress,email,userType});
-//
-//            }else if(filter.equals("Supplier")){
-//                if("Supplier/Wholesaler".equals(users.getUserType()))
-//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-//                            ,lastName,birthDate,contactNumber,houseNo,streetAddress
-//                            ,cityAddress,email,userType});
-//            }else if(filter.equals("Admin")){
-//                if("Admin".equals(users.getUserType()))
-//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-//                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
-//                        ,cityAddress,email,userType});
-//            }else if(filter.equals("All User")){
-//                DFT.addRow(new Object[]{sid,username,password,firstName,middleName
-//                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
-//                        ,cityAddress,email,userType});
-//            }else{
-//                System.out.println("Error");
-//            }
+
+            // byte profileImage = us.getProfielImage()
+            if(filter.equals("Farmer")){
+                if("Farmer".equals(users.getUserType()))
+                DFT.addRow(new Object[]{sid,password,firstName,middleName
+                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+                        ,cityAddress,email,userType});
+
+            }else if(filter.equals("Supplier")){
+                if("Supplier/Wholesaler".equals(users.getUserType()))
+                DFT.addRow(new Object[]{sid,password,firstName,middleName
+                            ,lastName,birthDate,contactNumber,houseNo,streetAddress
+                            ,cityAddress,email,userType});
+            }else if(filter.equals("Admin")){
+                if("Admin".equals(users.getUserType()))
+                DFT.addRow(new Object[]{sid,password,firstName,middleName
+                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+                        ,cityAddress,email,userType});
+            }else if(filter.equals("All User")){
+                DFT.addRow(new Object[]{sid,password,firstName,middleName
+                        ,lastName,birthDate,contactNumber,houseNo,streetAddress
+                        ,cityAddress,email,userType});
+            }else{
+                System.out.println("Error");
+            }
 
         }
 

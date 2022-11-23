@@ -11,11 +11,11 @@ import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
 import com.raven.form.AdminFarmer;
-import com.raven.form.FarmingTips;
+import com.raven.form.FarmingTip;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
-import com.raven.form.Supplier;
+import com.raven.form.AdminSupplier;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -96,7 +96,7 @@ public class Main extends javax.swing.JFrame {
                     
                     if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new FarmingTips());
+                        main.showForm(new FarmingTip());
                        } 
                      }
                     
@@ -114,7 +114,7 @@ public class Main extends javax.swing.JFrame {
                     
                     if (menuIndex == 8) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Supplier());
+                        main.showForm(new AdminSupplier());
                        } 
                      }
                     

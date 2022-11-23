@@ -12,6 +12,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,17 @@ public class UserImp implements UserController {
             con = FarmingConnection.getConnection();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public void deleteInit() {
+        PreparedStatement pst;
+        try {
+            pst = con.prepareStatement("DELETE FROM users WHERE active IS NULL");
+            pst.executeQuery();
+            pst.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -138,19 +151,24 @@ public class UserImp implements UserController {
     @Override
     public void update(User users) {
         try {
-            String sql = "UPDATE users SET password=?,first_name=?,middle_name=?,last_name=?,birthday=?,contact_number=?,house_no=?,street_address=?,city_address =?,email=? WHERE id=?";
+            String sql = "UPDATE users SET first_name=?,middle_name=?,last_name=?,birthday=?,civil_status=?,gender=?,contact_number=?,email=?,house_no=?,street_address=?,city_address=?,province=?,zip_code=?,profile_image=? WHERE email=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, users.getPassword());
-            pst.setString(2, users.getFirstName());
-            pst.setString(3, users.getMiddleName());
-            pst.setString(4, users.getLastName());
-            pst.setString(5, users.getBirthDate());
-            pst.setString(6, users.getContactNumber());
-            pst.setString(7, users.getHouseNo());
-            pst.setString(8, users.getStreetAddress());
-            pst.setString(9, users.getCityAddress());
-            pst.setString(10, users.getEmail());
-            pst.setInt(11, users.getId());
+            pst.setString(1, users.getFirstName());
+            pst.setString(2, users.getMiddleName());
+            pst.setString(3, users.getLastName());
+            pst.setString(4, users.getBirthDate());
+            pst.setString(5, users.getCivilStatus());
+            pst.setString(6,users.getGender());
+            pst.setString(7, users.getContactNumber());
+            pst.setString(8, users.getEmail());
+            pst.setString(9, users.getHouseNo());
+            pst.setString(10,users.getStreetAddress());
+            pst.setString(11, users.getCityAddress());
+            pst.setString(12, users.getProvince());
+            pst.setInt(13,users.getZipCode());
+            pst.setBinaryStream(14, users.getProfielImage(), users.getFile().length());
+            pst.setString(15, users.getEmail());
+            
             pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null, "UPDATED!");
@@ -161,12 +179,12 @@ public class UserImp implements UserController {
     }
 
     @Override
-    public User get(int userId) {
+    public User get(String email) {
         User st = new User();
         try {
-            String sql = "SELECT * FROM users WHERE id=?";
+            String sql = "SELECT * FROM users WHERE email=?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, userId);
+            pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
 
@@ -175,12 +193,16 @@ public class UserImp implements UserController {
                 st.setMiddleName(rs.getString("middle_name"));
                 st.setLastName(rs.getString("last_name"));
                 st.setBirthDate(rs.getString("birthday"));
+                st.setGender(rs.getString("gender"));
+                st.setCivilStatus(rs.getString("civil_status"));
                 st.setContactNumber(rs.getString("contact_number"));
                 st.setHouseNo(rs.getString("house_no"));
                 st.setStreetAddress(rs.getString("street_address"));
                 st.setCityAddress(rs.getString("city_address"));
                 st.setEmail(rs.getString("email"));
+                st.setProvince(rs.getString("province"));
                 st.setUserImage(rs.getBytes("profile_image"));
+                st.setZipCode(rs.getInt("zip_code"));
 
             }
 
@@ -326,4 +348,95 @@ public class UserImp implements UserController {
         pst.close();
         return verify;
     }
+
+    @Override
+    public void deleteUser(User users) {
+        try {       
+            Connection con = FarmingConnection.getConnection();
+            String sql = "DELETE from users  WHERE email=?";
+            PreparedStatement ps = con.prepareStatement(sql);  
+            ps.setString(1, users.getEmail());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "User Deleted!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+
+    @Override
+    public List<User> searchUser(String search) {
+        try {
+          
+            Connection con = FarmingConnection.getConnection();
+            
+            String sql = "SELECT * FROM users u WHERE lower(CONCAT(u.first_name,u.last_name)) LIKE '%"+search+"%'";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            List<User> list = new ArrayList<User>();
+            while(rs.next()){
+                User st = new User();
+                st.setPassword(rs.getString("password"));
+                st.setFirstName(rs.getString("first_name"));
+                st.setMiddleName(rs.getString("middle_name"));
+                st.setLastName(rs.getString("last_name"));
+                st.setBirthDate(rs.getString("birthday"));
+                st.setContactNumber(rs.getString("contact_number"));
+                st.setHouseNo(rs.getString("house_no"));
+                st.setStreetAddress(rs.getString("street_address"));
+                st.setCityAddress(rs.getString("city_address"));
+                st.setEmail(rs.getString("email"));
+                st.setUserType(rs.getString("user_type"));
+                st.setActive(rs.getBoolean("active"));
+                st.setUserImage(rs.getBytes("profile_image"));
+                list.add(st);
+            }
+             return list;
+         }
+         catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        return null;
+    
+    }
+
+    @Override
+    public void addAdmin(User user) {
+        try{
+            Connection con = FarmingConnection.getConnection();
+            String sql = "INSERT INTO users(first_name,middle_name,last_name,birthday,civil_status,gender,contact_number,email,house_no,street_address,city_address,province,zip_code,password,user_type,active,profile_image,verify_code) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, user.getFirstName());
+            pst.setString(2, user.getMiddleName());
+            pst.setString(3, user.getLastName());
+            pst.setString(4, user.getBirthDate());
+            pst.setString(5, user.getCivilStatus());
+            pst.setString(6, user.getGender());
+            pst.setString(7, user.getContactNumber()); 
+            pst.setString(8, user.getEmail());
+            pst.setString(9, user.getHouseNo());
+            
+            pst.setString(10, user.getStreetAddress());
+            pst.setString(11, user.getCityAddress());
+            pst.setString(12, user.getProvince());
+            pst.setInt(13, user.getZipCode());
+            pst.setString(14, user.getPassword());
+            pst.setString(15, user.getUserType());
+            pst.setBoolean(16, user.getActive());
+            pst.setBinaryStream(17, user.getProfielImage(), user.getFile().length());
+            pst.setString(18,user.getVerifyCode());
+            
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Post Success!");
+        }catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    
+    }
+    
+
+   
 }

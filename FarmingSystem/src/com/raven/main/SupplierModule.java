@@ -12,14 +12,12 @@ import com.raven.form.AdminAdvertisement;
 import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
-import com.raven.form.AdminFarmer;
 import com.raven.form.BlogArticle;
 import com.raven.form.FarmerHome;
 import com.raven.form.FarmingTip;
-import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
-import com.raven.form.AdminSupplier;
+import com.raven.form.SupplierHome;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -34,7 +32,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class FarmerModule extends javax.swing.JFrame {
+public class SupplierModule extends javax.swing.JFrame {
 
     private MigLayout layout;
     private Menu menu;
@@ -44,13 +42,13 @@ public class FarmerModule extends javax.swing.JFrame {
 
     private final User user;
 
-    public FarmerModule(User user) {
+    public SupplierModule(User user) {
         this.user = user;
         initComponents();
         init();
     }
 
-    private FarmerModule() {
+    private SupplierModule() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -65,7 +63,7 @@ public class FarmerModule extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-                    main.showForm(new FarmerHome(user));
+                    main.showForm(new SupplierHome(user));
 //                    if (subMenuIndex == 0) {
 //                        main.showForm(new Form_Home());
 //                    } else if (subMenuIndex == 1) {
@@ -114,25 +112,25 @@ public class FarmerModule extends javax.swing.JFrame {
                     }
                 }
                 
-                if (menuIndex == 10) {
+                if (menuIndex == 9) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AboutApp());
                     }
                 }
                 
-                  if (menuIndex == 11) {
+                  if (menuIndex == 10) {
                     if (subMenuIndex == -1) {
                         main.showForm(new SummaryProducts());
                     }
                 }
                   
-                  if (menuIndex == 12) {
+                  if (menuIndex == 11) {
                     if (subMenuIndex == -1) {
                         main.showForm(new BlogArticle());
                     }
                 }
 
-                if (menuIndex == 16) {
+                if (menuIndex == 15) {
                     if (subMenuIndex == -1) {
                         dispose();
                         LoginForm lf = new LoginForm();
@@ -146,9 +144,9 @@ public class FarmerModule extends javax.swing.JFrame {
             @Override
             public void showPopup(Component com) {
                 MenuItem item = (MenuItem) com;
-                PopupMenu popup = new PopupMenu(FarmerModule.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
-                int x = FarmerModule.this.getX() + 52;
-                int y = FarmerModule.this.getY() + com.getY() + 86;
+                PopupMenu popup = new PopupMenu(SupplierModule.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
+                int x = SupplierModule.this.getX() + 52;
+                int y = SupplierModule.this.getY() + com.getY() + 86;
                 popup.setLocation(x, y);
                 popup.setVisible(true);
             }
@@ -196,7 +194,7 @@ public class FarmerModule extends javax.swing.JFrame {
         //  Init google icon font
         IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
         //  Start with this form
-        main.showForm(new FarmerHome(user));
+        main.showForm(new SupplierHome(user));
     }
 
     @SuppressWarnings("unchecked")
@@ -251,14 +249,16 @@ public class FarmerModule extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FarmerModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FarmerModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FarmerModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FarmerModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupplierModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -266,7 +266,7 @@ public class FarmerModule extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new FarmerModule(user).setVisible(true);
+                new SupplierModule(user).setVisible(true);
             }
         });
     }

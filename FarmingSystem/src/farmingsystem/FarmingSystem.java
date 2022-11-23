@@ -5,8 +5,6 @@
 package farmingsystem;
 
 import com.raven.main.LoginForm;
-//import farmingsystem.view.LoginForm;
-import farmingsystem.view.RegisterForm;
 
 /**
  *
@@ -23,5 +21,5 @@ public class FarmingSystem {
         lf.setLocationRelativeTo(null);
         
     }
-
+    
 }

@@ -2,15 +2,19 @@ package com.raven.form;
 
 import com.raven.dialog.Message;
 import com.raven.main.Main;
-import com.raven.model.ModelCard;
-import com.raven.model.ModelStudent;
-import com.raven.swing.icon.GoogleMaterialDesignIcons;
-import com.raven.swing.icon.IconFontSwing;
-import com.raven.swing.noticeboard.ModelNoticeBoard;
-import com.raven.swing.table.EventAction;
-import java.awt.Color;
-import javax.swing.Icon;
+import com.raven.swing.table.EventActionUser;
+import farmingsystem.controller.UserImp;
+import farmingsystem.model.User;
+import java.awt.Component;
+import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 public class AdminFarmer extends javax.swing.JPanel {
 
@@ -23,57 +27,99 @@ public class AdminFarmer extends javax.swing.JPanel {
     }
 
     private void initData() {
-        initCardData();
-        initNoticeBoard();
         initTableData();
     }
 
     private void initTableData() {
-        EventAction eventAction = new EventAction() {
+        EventActionUser eventAction = new EventActionUser() {
             @Override
-            public void delete(ModelStudent student) {
-                if (showMessage("Delete Student : " + student.getName())) {
-                    System.out.println("User click OK");
+            public void delete(User user) {
+                if (showMessage("Delete Student : " + user.getFullName())) {
+                    UserImp u = new UserImp();
+                    user.setEmail(user.getEmail());
+                    u.deleteUser(user);
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
 
             @Override
-            public void update(ModelStudent student) {
-                if (showMessage("Update Student : " + student.getName())) {
-                    System.out.println("User click OK");
+            public void update(User user) {
+                if (showMessage("Update Student : " + user.getFullName())) {
+                    UserDetails supdets = new UserDetails();
+                    supdets.setVisible(true);
+                    supdets.pack();
+                    
+                    UserImp users =new UserImp();
+                    
+                    User u= users.get(user.getEmail());
+                    
+                    supdets.textFirstName.setText(String.valueOf(u.getFirstName()));
+                    supdets.textMiddleName.setText(String.valueOf(u.getMiddleName()));
+                    supdets.textLastName.setText(String.valueOf(u.getLastName()));
+                    supdets.textBDate.setText(String.valueOf(u.getBirthDate()));
+                    supdets.cmbCStatus.setSelectedItem(String.valueOf(u.getCivilStatus()));
+                        if(u.getGender().equals("Male")){
+                             supdets.buttonGender.setSelected(supdets.rbnMale.getModel(), true);
+                        }else if(u.getGender().equals("Female")){
+                            supdets.buttonGender.setSelected(supdets.rbnFemale.getModel(), true);
+                        }
+                    
+                    supdets.textContactNo.setText(String.valueOf(u.getContactNumber()));
+                    supdets.textEmail.setText(String.valueOf(u.getEmail()));
+                    supdets.textHouseNo.setText(String.valueOf(u.getHouseNo()));
+                    supdets.textStreet.setText(String.valueOf(u.getStreetAddress()));
+                    supdets.cmbCity.setSelectedItem(String.valueOf(u.getCityAddress()));
+                    supdets.cmbProvince.setSelectedItem(String.valueOf(u.getProvince()));
+                    supdets.textPostalcode.setText(String.valueOf(u.getZipCode()));
+                    
+                    ImageIcon im = new ImageIcon(u.getUserImage());
+                    Image image = im.getImage().getScaledInstance(249, 238, Image.SCALE_SMOOTH);
+                    ImageIcon userImage = new ImageIcon(image);
+                    supdets.profile.setIcon(userImage);
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
         };
-        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
+        UserImp user = new UserImp();
+        List<User> list = user.list();
+        table1.getColumn("Profile").setPreferredWidth(60);
+        table1.getColumn("Profile").setCellRenderer(new AdminFarmer.myTableCellRenderer());
+        for (User users : list) {
+
+            String fullName = users.getLastName() + "," + users.getFirstName();
+            String userType = users.getUserType();
+            String email = users.getEmail();
+            Boolean active = users.getActive();
+            ImageIcon im = new ImageIcon(users.getUserImage());
+            Image image = im.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            ImageIcon userImage = new ImageIcon(image);
+            JLabel lbl = new JLabel();
+            lbl.setIcon(userImage);
+            if("Farmer".equals(users.getUserType())){
+                table1.addRow(new User(lbl, fullName, userType,email, active).toRowTable(eventAction));
+            }
+        }
+    
     }
 
-    private void initCardData() {
-        Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card1.setData(new ModelCard("New Farmer", 5100, 20, icon1));
-        Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.MONETIZATION_ON, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card2.setData(new ModelCard("Income", 2000, 60, icon2));
-        Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.SHOPPING_BASKET, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card3.setData(new ModelCard("Expense", 3000, 80, icon3));
-        Icon icon4 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.BUSINESS_CENTER, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card4.setData(new ModelCard("Other Income", 550, 95, icon4));
-    }
+    
+    class myTableCellRenderer implements TableCellRenderer {
 
-    private void initNoticeBoard() {
-        noticeBoard.addDate("04/10/2021");
-        noticeBoard.addNoticeBoard(new ModelNoticeBoard(new Color(94, 49, 238), "Hidemode", "Now", "Sets the hide mode for the component. If the hide mode has been specified in the This hide mode can be overridden by the component constraint."));
-        noticeBoard.addNoticeBoard(new ModelNoticeBoard(new Color(218, 49, 238), "Tag", "2h ago", "Tags the component with metadata name that can be used by the layout engine. The tag can be used to explain for the layout manager what the components is showing, such as an OK or Cancel button."));
-        noticeBoard.addDate("03/10/2021");
-        noticeBoard.addNoticeBoard(new ModelNoticeBoard(new Color(32, 171, 43), "Further Reading", "12:30 PM", "There are more information to digest regarding MigLayout. The resources are all available at www.migcomponents.com"));
-        noticeBoard.addNoticeBoard(new ModelNoticeBoard(new Color(50, 93, 215), "Span", "10:30 AM", "Spans the current cell (merges) over a number of cells. Practically this means that this cell and the count number of cells will be treated as one cell and the component can use the space that all these cells have."));
-        noticeBoard.addNoticeBoard(new ModelNoticeBoard(new Color(27, 188, 204), "Skip ", "9:00 AM", "Skips a number of cells in the flow. This is used to jump over a number of cells before the next free cell is looked for. The skipping is done before this component is put in a cell and thus this cells is affected by it. \"count\" defaults to 1 if not specified."));
-        noticeBoard.addNoticeBoard(new ModelNoticeBoard(new Color(238, 46, 57), "Push", "7:15 AM", "Makes the row and/or column that the component is residing in grow with \"weight\". This can be used instead of having a \"grow\" keyword in the column/row constraints."));
-        noticeBoard.scrollToTop();
+        public Component getTableCellRendererComponent(JTable table,
+                Object value,
+                boolean isSelected,
+                boolean hasFocus,
+                int row,
+                int column) {
+            TableColumn tb = table1.getColumn("Profile");
+            tb.setMaxWidth(60);
+            table1.setRowHeight(60);
+            return (Component) value;
+        }
     }
-
+    
     private boolean showMessage(String message) {
         Message obj = new Message(Main.getFrames()[0], true);
         obj.showMessage(message);
@@ -84,123 +130,23 @@ public class AdminFarmer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        card1 = new com.raven.component.Card();
         jLabel1 = new javax.swing.JLabel();
-        card2 = new com.raven.component.Card();
-        card3 = new com.raven.component.Card();
-        card4 = new com.raven.component.Card();
-        jPanel1 = new javax.swing.JPanel();
-        noticeBoard = new com.raven.swing.noticeboard.NoticeBoard();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        table3 = new com.raven.swing.table.Table();
-        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new com.raven.swing.table.Table();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table2 = new com.raven.swing.table.Table();
-        jLabel6 = new javax.swing.JLabel();
+        searchFiealds = new com.raven.swing.MyTextField();
+        btnSearch = new javax.swing.JButton();
 
-        card1.setColorGradient(new java.awt.Color(211, 28, 215));
+        setPreferredSize(new java.awt.Dimension(911, 645));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
         jLabel1.setText("Dashboard / Farmer");
 
-        card2.setBackground(new java.awt.Color(10, 30, 214));
-        card2.setColorGradient(new java.awt.Color(72, 111, 252));
-
-        card3.setBackground(new java.awt.Color(194, 85, 1));
-        card3.setColorGradient(new java.awt.Color(255, 212, 99));
-
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel2.setText("Farmer History");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(105, 105, 105));
-        jLabel3.setText("Simple Miglayout API Doc");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-
-        jLabel4.setOpaque(true);
-
-        table3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Gender", "Course", "Fees", "Action"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(table3);
-        if (table3.getColumnModel().getColumnCount() > 0) {
-            table3.getColumnModel().getColumn(0).setPreferredWidth(150);
-        }
-
-        jLabel7.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel7.setText("List of Complaints ");
-        jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(noticeBoard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel7)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel3)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(noticeBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(222, 222, 222))
-        );
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(76, 76, 76));
         jLabel5.setText("List of Farmers");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
@@ -210,12 +156,19 @@ public class AdminFarmer extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "Gender", "Course", "Fees", "Action"
+                "Profile", "Name", "Role", "Email", "Active", "Action"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -226,58 +179,56 @@ public class AdminFarmer extends javax.swing.JPanel {
             table1.getColumnModel().getColumn(0).setPreferredWidth(150);
         }
 
-        table2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Gender", "Course", "Fees", "Action"
+        searchFiealds.setText("Search...");
+        searchFiealds.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        searchFiealds.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchFiealdsMouseClicked(evt);
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchFiealdsMousePressed(evt);
             }
         });
-        jScrollPane2.setViewportView(table2);
-        if (table2.getColumnModel().getColumnCount() > 0) {
-            table2.getColumnModel().getColumn(0).setPreferredWidth(150);
-        }
+        searchFiealds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFiealdsActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel6.setText("List of Crops");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        btnSearch.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(738, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchFiealds, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchFiealds, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -287,21 +238,10 @@ public class AdminFarmer extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(card1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(card2, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(card3, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(card4, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 787, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -309,40 +249,111 @@ public class AdminFarmer extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 666, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchFiealdsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFiealdsMouseClicked
+
+    }//GEN-LAST:event_searchFiealdsMouseClicked
+
+    private void searchFiealdsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFiealdsMousePressed
+        this.searchFiealds.setText("");
+    }//GEN-LAST:event_searchFiealdsMousePressed
+
+    private void searchFiealdsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFiealdsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFiealdsActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        EventActionUser eventAction = new EventActionUser() {
+            @Override
+            public void delete(User user) {
+                if (showMessage("Delete Supplier : " + user.getFullName())) {
+
+                    UserImp u = new UserImp();
+                    user.setEmail(user.getEmail());
+                    u.deleteUser(user);
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+
+            @Override
+            public void update(User user) {
+                if (showMessage("Update Supplier : " +  user.getFullName())) {
+                    UserDetails supdets = new UserDetails();
+                    supdets.setVisible(true);
+                    supdets.pack();
+
+                    UserImp users =new UserImp();
+
+                    User u= users.get(user.getEmail());
+
+                    supdets.textFirstName.setText(String.valueOf(u.getFirstName()));
+                    supdets.textMiddleName.setText(String.valueOf(u.getMiddleName()));
+                    supdets.textLastName.setText(String.valueOf(u.getLastName()));
+                    supdets.textBDate.setText(String.valueOf(u.getBirthDate()));
+                    supdets.cmbCStatus.setSelectedItem(String.valueOf(u.getCivilStatus()));
+                    if(u.getGender().equals("Male")){
+                        supdets.buttonGender.setSelected(supdets.rbnMale.getModel(), true);
+                    }else if(u.getGender().equals("Female")){
+                        supdets.buttonGender.setSelected(supdets.rbnFemale.getModel(), true);
+                    }
+
+                    supdets.textContactNo.setText(String.valueOf(u.getContactNumber()));
+                    supdets.textEmail.setText(String.valueOf(u.getEmail()));
+                    supdets.textHouseNo.setText(String.valueOf(u.getHouseNo()));
+                    supdets.textStreet.setText(String.valueOf(u.getStreetAddress()));
+                    supdets.cmbCity.setSelectedItem(String.valueOf(u.getCityAddress()));
+                    supdets.cmbProvince.setSelectedItem(String.valueOf(u.getProvince()));
+                    supdets.textPostalcode.setText(String.valueOf(u.getZipCode()));
+
+                    ImageIcon im = new ImageIcon(u.getUserImage());
+                    Image image = im.getImage().getScaledInstance(249, 290, Image.SCALE_SMOOTH);
+                    ImageIcon userImage = new ImageIcon(image);
+                    supdets.profile.setIcon(userImage);
+
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+
+        };
+        String search = searchFiealds.getText();
+
+        UserImp userImpl = new UserImp();
+        List<User>list = userImpl.searchUser(search);
+        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
+        DFT.setRowCount(0);
+
+        for (User users : list) {
+
+            String fullName = users.getLastName() + "," + users.getFirstName();
+            String userType = users.getUserType();
+            String email = users.getEmail();
+            Boolean active = users.getActive();
+            ImageIcon im = new ImageIcon(users.getUserImage());
+            Image image = im.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            ImageIcon userImage = new ImageIcon(image);
+            JLabel lbl = new JLabel();
+            lbl.setIcon(userImage);
+            
+                if("Farmer".equals(users.getUserType())){
+                    table1.addRow(new User(lbl, fullName, userType,email, active).toRowTable(eventAction));
+                }
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.component.Card card1;
-    private com.raven.component.Card card2;
-    private com.raven.component.Card card3;
-    private com.raven.component.Card card4;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private com.raven.swing.noticeboard.NoticeBoard noticeBoard;
+    private com.raven.swing.MyTextField searchFiealds;
     private com.raven.swing.table.Table table1;
-    private com.raven.swing.table.Table table2;
-    private com.raven.swing.table.Table table3;
     // End of variables declaration//GEN-END:variables
 }

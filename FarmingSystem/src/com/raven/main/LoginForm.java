@@ -54,6 +54,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void init() {
         try {
             userService = new UserImp();
+            userService.deleteInit();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -189,7 +190,7 @@ public class LoginForm extends javax.swing.JFrame {
                 } else if (user.getUserType().equals("Admin")) {
                     Main.main(user);
                 } else if (user.getUserType().equals("Supplier")) {
-
+                    SupplierModule.main(user);
                 } else {
                     showMessage(Message.MessageType.ERROR, "INVALID USER");
                 }
