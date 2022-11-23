@@ -55,6 +55,11 @@ public class PanelVerifyCode extends javax.swing.JPanel {
 
         cmdOK.setBackground(new java.awt.Color(18, 138, 62));
         cmdOK.setText("OK");
+        cmdOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdOKActionPerformed(evt);
+            }
+        });
 
         cmdCancel.setBackground(new java.awt.Color(192, 25, 25));
         cmdCancel.setText("Cancel");
@@ -121,6 +126,10 @@ public class PanelVerifyCode extends javax.swing.JPanel {
         UserImp ui = new UserImp();
         ui.deleteInit();
     }//GEN-LAST:event_cmdCancelActionPerformed
+
+    private void cmdOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdOKActionPerformed
 
     @Override
     protected void paintComponent(Graphics grphcs) {

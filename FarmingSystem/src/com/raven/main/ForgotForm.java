@@ -5,9 +5,9 @@
 package com.raven.main;
 
 import com.raven.component.Message;
-import com.raven.component.PanelCover;
+import com.raven.component.PanelCoverForgot;
 import com.raven.component.PanelLoading;
-import com.raven.component.PanelLoginAndRegister;
+import com.raven.component.PanelForgot;
 import com.raven.component.PanelVerifyCode;
 import com.raven.form.RegisterForm;
 import com.raven.model.ModelLogin;
@@ -27,18 +27,15 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-/**
- *
- * @author MTUMANGAN
- */
-public class LoginForm extends javax.swing.JFrame {
+
+public class ForgotForm extends javax.swing.JFrame {
 
     private final DecimalFormat df = new DecimalFormat("##0.###", DecimalFormatSymbols.getInstance(Locale.US));
     private MigLayout layout;
-    private PanelCover cover;
+    private PanelCoverForgot cover;
     private PanelLoading loading;
     private PanelVerifyCode verifyCode;
-    private PanelLoginAndRegister loginAndRegister;
+    private PanelForgot loginAndRegister;
     private boolean isLogin;
     private final double addSize = 30;
     private final double coverSize = 40;
@@ -46,7 +43,7 @@ public class LoginForm extends javax.swing.JFrame {
     private UserImp userService;
     private RegisterForm registerForm;
 
-    public LoginForm() {
+    public ForgotForm() {
         initComponents();
         init();
     }
@@ -59,7 +56,7 @@ public class LoginForm extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         layout = new MigLayout("fill, insets 0");
-        cover = new PanelCover();
+        cover = new PanelCoverForgot();
         loading = new PanelLoading();
         verifyCode = new PanelVerifyCode();
         
@@ -81,11 +78,11 @@ public class LoginForm extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
               //  forgot();
-              System.out.println("TEst");
+               System.out.println("TEst");
             }
         };
         
-        loginAndRegister = new PanelLoginAndRegister(eventRegister, eventLogin                                            );
+        loginAndRegister = new PanelForgot(eventRegister, eventLogin ,eventForgot);
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -157,13 +154,14 @@ public class LoginForm extends javax.swing.JFrame {
                     User user = loginAndRegister.getUser();
                     System.out.println(user.getId());
                     System.out.println(verifyCode.getInputCode());
-                    if (userService.verifyCodeWithUser(user.getId(), verifyCode.getInputCode())) {
-                        userService.doneVerify(user.getId());
-                        showMessage(Message.MessageType.SUCCESS, "Register Success");
+                    if (userService.verifyCodeWithUserForgot(user.getId(), verifyCode.getInputCode())) {
+                        userService.doneVerifyForgot(user.getId());
+                      
                         verifyCode.setVisible(false);
-                        registerForm = new RegisterForm(user);
-                        registerForm.setVisible(true);
-                        new LoginForm().dispose();
+                        userService.updateUserNewPassword(user);       
+                        showMessage(Message.MessageType.SUCCESS, "Successfully Passwrod Change");
+                        loginAndRegister.showRegister(isLogin);
+
                     } else {
                         showMessage(Message.MessageType.ERROR, "Verification code incorrect");
                     }
@@ -179,10 +177,11 @@ public class LoginForm extends javax.swing.JFrame {
         User user = loginAndRegister.getUser();
         try {
             if (userService.checkDuplicateEmail(user.getEmail())) {
-                showMessage(Message.MessageType.ERROR, "Email already exist!");
+                  showMessage(Message.MessageType.SUCCESS, "Email Confirmed");
+                  userService.insertUserFogot(user);
+                  sendMain(user);
             } else {
-                userService.insertUser(user);
-                sendMain(user);
+               showMessage(Message.MessageType.ERROR, "Email Not Registered");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -335,7 +334,7 @@ public class LoginForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 //                new LoginForm().setVisible(true);
-                LoginForm lf = new LoginForm();
+                ForgotForm lf = new ForgotForm();
                 lf.setVisible(true);
                 lf.setLocationRelativeTo(null);
             }

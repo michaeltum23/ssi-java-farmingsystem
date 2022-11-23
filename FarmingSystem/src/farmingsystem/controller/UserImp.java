@@ -147,6 +147,7 @@ public class UserImp implements UserController {
 
         }
     }
+    
 
     @Override
     public void update(User users) {
@@ -435,6 +436,76 @@ public class UserImp implements UserController {
             JOptionPane.showMessageDialog(null, "Error");
         }
     
+    }
+    
+    
+    
+    public void insertUserFogot(User users) {
+        if (users != null) {
+            try {
+                String sql = "INSERT INTO forgotpassword(email, password, verify_code) VALUES(?,?,?)";
+                PreparedStatement pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                String code = generateVerifyCode();
+                pst.setString(1, users.getEmail());
+                pst.setString(2, users.getPassword());
+                pst.setString(3, code);
+                pst.execute();
+                ResultSet rs = pst.getGeneratedKeys();
+                rs.next();
+                int id = rs.getInt(1);
+                System.out.println("insert " + id);
+                rs.close();
+                pst.close();
+                users.setId(id);
+                users.setVerifyCode(code);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+
+        }
+    }
+    
+      
+    public void updateUserNewPassword(User users) {
+        try {      
+            String sql = "UPDATE users SET password=? WHERE email=? ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, users.getPassword());
+            pst.setString(2, users.getEmail());
+            pst.executeUpdate();
+            pst.close(); 
+            
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error");
+        }    
+    }
+    
+   
+
+    
+    
+     public boolean verifyCodeWithUserForgot(int id, String code) throws SQLException, Exception {
+        boolean verify = false;
+        PreparedStatement pst = con.prepareStatement("SELECT id FROM forgotpassword WHERE id=? AND verify_code=? limit 1");
+        pst.setInt(1, id);
+        pst.setString(2, code);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            verify = true;
+        }
+        rs.close();
+        pst.close();
+        return verify;
+    }
+     
+     public void doneVerifyForgot(int id) throws SQLException, Exception {
+        System.out.println("verify " + id);
+        PreparedStatement pst = con.prepareStatement("UPDATE forgotpassword SET verify_code='Verified', active=true WHERE id=?");
+        pst.setInt(1, id);
+        pst.execute();
+        pst.close();
     }
     
 
