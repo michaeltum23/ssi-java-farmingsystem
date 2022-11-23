@@ -24,6 +24,6 @@ public interface ComplainController {
     public List<Complain> searchComplainByStatus(String status);
     public List<Complain> searchComplainByUser(int user_id);
     public Complain get(int id);
-    public List<Complain>list();
-    public List<Complain>list2();
+    public List<Complain>listAll();
+    public List<Complain>listUser();
 }

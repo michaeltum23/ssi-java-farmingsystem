@@ -263,9 +263,9 @@ public class OfferForm extends javax.swing.JFrame {
         {
             int offerId = offer.getOfferId();
             String cropName =offer.getCropName();
-            String sellerName = offer.getSellerName();
+            String farmerName = offer.getFarmerName();
             double priceOffer = offer.getPriceOffer();
-            DFT.addRow(new Object[]{offerId,sellerName,cropName,priceOffer});
+            DFT.addRow(new Object[]{offerId,farmerName,cropName,priceOffer});
         }    
   
     }

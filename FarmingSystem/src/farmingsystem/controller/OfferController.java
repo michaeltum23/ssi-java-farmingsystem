@@ -18,6 +18,7 @@ public interface OfferController {
     public List<Offer>list();
     public Offer get(int offerId);
     
+    public List<Offer>list(int adsID);
     
     public void updateuserOffer(Offer offers, Advertisement ads);
     public List<Advertisement>listAdvertisement();

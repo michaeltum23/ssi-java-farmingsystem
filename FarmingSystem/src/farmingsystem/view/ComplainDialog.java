@@ -44,7 +44,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
     public final void LoadComplain()
     {
         ComplainImpl complain = new ComplainImpl();
-        List<Complain> list = complain.list();
+        List<Complain> list = complain.listAll();
         DefaultTableModel DFT = (DefaultTableModel) jTable4.getModel();
         DFT.setRowCount(0);
         for(Complain complains: list)
@@ -88,7 +88,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
     public final void LoadResponseComplain()
     {
         ComplainImpl complain = new ComplainImpl();
-        List<Complain> list2List = complain.list();
+        List<Complain> list2List = complain.listUser();
         DefaultTableModel DFT = (DefaultTableModel) ResponseComplainTable.getModel();
         DFT.setRowCount(0);
         for(Complain complains: list2List)

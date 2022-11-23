@@ -7,7 +7,7 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class Message extends javax.swing.JDialog {
+public class MessageCheckOut extends javax.swing.JDialog {
 
     public boolean isOk() {
         return ok;
@@ -21,7 +21,7 @@ public class Message extends javax.swing.JDialog {
     private final Animator animator;
     private boolean show = true;
 
-    public Message(java.awt.Frame parent, boolean modal) {
+    public MessageCheckOut(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         lbIcon.setIcon(IconFontSwing.buildIcon(GoogleMaterialDesignIcons.HELP, 60, new Color(0,165,80), new Color(0,165,80)));
@@ -77,7 +77,7 @@ public class Message extends javax.swing.JDialog {
         lbMessage.setText("Message");
 
         button2.setForeground(new java.awt.Color(66, 66, 66));
-        button2.setText("OK");
+        button2.setText("Yes");
         button2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +86,7 @@ public class Message extends javax.swing.JDialog {
         });
 
         button1.setForeground(new java.awt.Color(66, 66, 66));
-        button1.setText("Cancel");
+        button1.setText("No");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
