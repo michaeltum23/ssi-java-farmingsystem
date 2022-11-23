@@ -111,6 +111,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdOKActionPerformed"/>
+          </Events>
         </Component>
         <Component class="com.raven.swing.ButtonOutLine" name="cmdCancel">
           <Properties>
