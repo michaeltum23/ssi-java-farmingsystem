@@ -12,8 +12,13 @@ import java.util.List;
  * @author RPAGUIO
  */
 public interface OrderController {
+
     public void addOrder(Order order);
+
     public Order get(int id);
-    public List<Order>list();
+
+    public List<Order> list();
     
+    public void viewOrder();
+
 }

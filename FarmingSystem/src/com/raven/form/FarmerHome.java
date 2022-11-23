@@ -6,24 +6,16 @@ import com.raven.model.ModelCard;
 import com.raven.model.ModelStudent;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
 import com.raven.swing.icon.IconFontSwing;
-import com.raven.swing.noticeboard.ModelNoticeBoard;
 import com.raven.swing.table.EventAction;
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
 import farmingsystem.view.UpdateUser;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import jdk.internal.agent.Agent;
-import sun.security.rsa.RSACore;
 
 public class FarmerHome extends javax.swing.JPanel {
     

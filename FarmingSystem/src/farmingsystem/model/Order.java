@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.InputStream;
 
 public class Order {
+
     private int orderId;
     private int sellerId;
     private int userId;
@@ -51,8 +52,6 @@ public class Order {
         this.rating = rating;
         this.status = status;
     }
-
-    
 
     public int getOrderId() {
         return orderId;
@@ -189,5 +188,5 @@ public class Order {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
 }

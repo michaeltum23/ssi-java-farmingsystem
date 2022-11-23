@@ -38,7 +38,7 @@ public class User {
     private File file;
     private byte[] userImage;
     private String verifyCode;
-    
+
     private String fullName;
     private JLabel lbl;
 
@@ -50,18 +50,16 @@ public class User {
         this.fullName = fullName;
     }
 
-    public User( JLabel lbl, String fullName, String userType,String email, Boolean active) {
+    public User(JLabel lbl, String fullName, String userType, String email, Boolean active) {
         this.email = email;
         this.userType = userType;
         this.active = active;
         this.fullName = fullName;
         this.lbl = lbl;
     }
-    
-    
-    
+
     public Object[] toRowTable(EventActionUser event) {
-        return new Object[]{lbl,fullName, userType, email,active ,new ModelActionUser(this, event)};
+        return new Object[]{lbl, fullName, userType, email, active, new ModelActionUser(this, event)};
     }
 
     public File getFile() {
@@ -75,7 +73,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String email, String password, String userType,String verifyCode) {
+    public User(int id, String email, String password, String userType, String verifyCode) {
         this.id = id;
         this.password = password;
         this.email = email;
