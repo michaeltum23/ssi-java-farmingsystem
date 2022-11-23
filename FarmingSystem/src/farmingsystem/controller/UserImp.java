@@ -216,6 +216,7 @@ public class UserImp implements UserController {
 
     private int count;
 
+    
     public int countUser(String userType) {
         if (userType.equals("Farmer") || userType.equals("Supplier") || userType.equals("Admin")) {
             try {
