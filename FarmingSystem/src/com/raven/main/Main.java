@@ -7,6 +7,7 @@ import com.raven.event.EventShowPopupMenu;
 
 import com.raven.form.Admin;
 import com.raven.form.AdminAdvertisement;
+import com.raven.form.AdminComplain;
 import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
@@ -90,7 +91,7 @@ public class Main extends javax.swing.JFrame {
                     
                     if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Complaints());
+                        main.showForm(new AdminComplain());
                        } 
                      }
                     
