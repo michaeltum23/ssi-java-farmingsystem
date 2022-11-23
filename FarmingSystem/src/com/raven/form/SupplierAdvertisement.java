@@ -1,22 +1,18 @@
 package com.raven.form;
 
 import com.raven.dialog.Message;
+import com.raven.dialog.MessageCheckOut;
 import com.raven.main.Main;
+import com.raven.swing.table.EventActionAdvertisement;
+import com.raven.swing.table.EventActionOffer;
 import farmingsystem.controller.AdvertisementImpl;
 import farmingsystem.controller.OfferImpl;
-import farmingsystem.controller.UserImp;
 import farmingsystem.model.Advertisement;
 import farmingsystem.model.Offer;
 import farmingsystem.model.User;
-import java.awt.Component;
-import java.awt.Image;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
 public class SupplierAdvertisement extends javax.swing.JPanel {
     
@@ -25,9 +21,10 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
     public SupplierAdvertisement(User user) {
         initComponents();
         this.user = user;
-        table1.fixTable(jScrollPane1);
+        tableAdvertisement1.fixTable(jScrollPane3);
         setOpaque(false);
         initData();
+        tableAdvertisement1.removeColumn(tableAdvertisement1.getColumnModel().getColumn(0));
     }
 
     private void initData() {
@@ -35,19 +32,54 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
     }
 
     private void initTableData() {
+        EventActionAdvertisement eventAction = new EventActionAdvertisement() {
+            @Override
+            public void delete(Advertisement advertisement) {
+                if (showMessage("Delete Advertisement : " + advertisement.getCropName())) {
+                    AdvertisementImpl ads = new AdvertisementImpl();
+                    advertisement.setId(advertisement.getId());
+                    ads.deleteAdvertisement(advertisement);
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+
+            @Override
+            public void update(Advertisement advertisement) {
+                if (showMessage("Update Advertisement : " + advertisement.getCropName())) {
+                    UpdateAdvertisement ads= new UpdateAdvertisement();
+                    ads.setVisible(true);
+                    ads.pack();
+                    
+                    AdvertisementImpl adver = new AdvertisementImpl();
+                    
+                    Advertisement advertise=adver.get(advertisement.getId());
+                   
+                    ads.textCropName.setText(String.valueOf(advertise.getCropName()));
+                    ads.QuantityNeeded.setText(String.valueOf(advertise.getQuantityNeeded()));
+                    ads.DateNeeded.setText(String.valueOf(advertise.getDate()));
+                    ads.userId.setText(String.valueOf(user.getId()));
+                    ads.cropID.setText(String.valueOf(advertise.getId()));
+                    
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+        };
         AdvertisementImpl ads = new AdvertisementImpl();
         List<Advertisement> list = ads.searchAdvertisementByUserID(user.getId());
-        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
         for (Advertisement advertisement : list) {
+            
+            int adsID = advertisement.getId();
             String cropname = advertisement.getCropName();
             double quantityNeeded = advertisement.getQuantityNeeded();
             String date = advertisement.getDate();
             String status = advertisement.getStatus();
-            DFT.addRow(new Object[]{cropname,quantityNeeded,date,status});
-           
-        }
-//        table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
 
+            tableAdvertisement1.addRow(new Advertisement(adsID,cropname,quantityNeeded,date,status).toRowTable(eventAction));
+                
+
+        }
     }
 
 
@@ -57,7 +89,6 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         return obj.isOk();
     }
 
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -65,13 +96,15 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table2 = new com.raven.swing.table.Table();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableOffer1 = new com.raven.swing.table.TableOffer();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new com.raven.swing.table.Table();
+        btnAddAds = new javax.swing.JButton();
+        filterBtn = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableAdvertisement1 = new com.raven.swing.table.TableAdvertisement();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
@@ -81,12 +114,17 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
 
         jLabel4.setOpaque(true);
 
-        table2.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(76, 76, 76));
+        jLabel6.setText("List of Offers");
+        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+
+        tableOffer1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Farmers Name", "Price Offer", "Action"
+                "Farmer Name", "Price Offer", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -97,15 +135,7 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(table2);
-        if (table2.getColumnModel().getColumnCount() > 0) {
-            table2.getColumnModel().getColumn(0).setPreferredWidth(150);
-        }
-
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel6.setText("List of Offers");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        jScrollPane1.setViewportView(tableOffer1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,30 +144,29 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,50 +176,77 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         jLabel5.setText("List of Advertisement");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        btnAddAds.setBackground(new java.awt.Color(204, 204, 204));
+        btnAddAds.setText("Add Advertisement");
+        btnAddAds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAdsActionPerformed(evt);
+            }
+        });
+
+        filterBtn.setBackground(new java.awt.Color(204, 204, 204));
+        filterBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        filterBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Pending Offer", "Pending Transaction", "Done" }));
+        filterBtn.setBorder(null);
+        filterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterBtnActionPerformed(evt);
+            }
+        });
+
+        tableAdvertisement1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Crop Request", "Quantity Needed", "Date Needed", "Order Status"
+                "Ads ID", "Crop Request", "Quantity Needed", "Date Needed", "Status", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableAdvertisement1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table1MouseClicked(evt);
+                tableAdvertisement1MouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table1);
-        if (table1.getColumnModel().getColumnCount() > 0) {
-            table1.getColumnModel().getColumn(3).setHeaderValue("Order Status");
-        }
+        jScrollPane3.setViewportView(tableAdvertisement1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddAds)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(filterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane3)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(btnAddAds, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(filterBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3)
                 .addContainerGap())
         );
 
@@ -202,9 +258,10 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -220,30 +277,130 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
-        OfferImpl offerImpl = new OfferImpl();
-        List<Offer> listOfferbyAdsID= offerImpl.list();
-//        DefaultTableModel DFT = (DefaultTableModel) jTable1.getModel();
-//        DFT.setRowCount(0);
-        
-//        for(Crops crops: listCropByUserID)
-//        {
-//           
-//            int sid = crops.getId();
-//            String seller_name=crops.getFullName();
-//            String cropname = crops.getCropName();
-//            double price = crops.getPrice();
-//            double quantity = crops.getQuantity();
-//            ImageIcon cropImage = new ImageIcon(crops.getCropImageData());
-//            Image cropImg = cropImage.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-//            ImageIcon image = new ImageIcon(cropImg);
-//            JLabel lbl = new JLabel();
-//            lbl.setIcon(image);
-//            DFT.addRow(new Object[]{sid, seller_name, cropname, price, quantity, lbl});
-//        }  
-    }//GEN-LAST:event_table1MouseClicked
+    private void btnAddAdsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAdsActionPerformed
+            AddAdvertisement ads = new AddAdvertisement();
+            ads.userId.setText(String.valueOf(user.getId()));
+            ads.setVisible(true);
+            ads.pack();
+    }//GEN-LAST:event_btnAddAdsActionPerformed
 
+    private void filterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterBtnActionPerformed
+        String filter = filterBtn.getSelectedItem().toString();
+        
+        
+        EventActionAdvertisement eventAction = new EventActionAdvertisement() {
+            @Override
+            public void delete(Advertisement advertisement) {
+                if (showMessage("Delete Advertisement : " + advertisement.getCropName())) {
+                    
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+
+            @Override
+            public void update(Advertisement advertisement) {
+                if (showMessage("Update Advertisement : " + advertisement.getCropName())) {
+                    UpdateAdvertisement ads= new UpdateAdvertisement();
+                    ads.setVisible(true);
+                    ads.pack();
+                    
+                    AdvertisementImpl adver = new AdvertisementImpl();
+                    
+                    Advertisement advertise=adver.get(advertisement.getId());
+                   
+                    ads.textCropName.setText(String.valueOf(advertise.getCropName()));
+                    ads.QuantityNeeded.setText(String.valueOf(advertise.getQuantityNeeded()));
+                    ads.DateNeeded.setText(String.valueOf(advertise.getDate()));
+                    ads.userId.setText(String.valueOf(user.getId()));
+                    ads.cropID.setText(String.valueOf(advertise.getId()));
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+        };
+        AdvertisementImpl ads = new AdvertisementImpl();
+        List<Advertisement> list = ads.searchAdvertisementByUserID(user.getId());
+        DefaultTableModel DFT = (DefaultTableModel) tableAdvertisement1.getModel();
+        DFT.setRowCount(0);
+        for (Advertisement advertisement : list) {
+            int adsID = advertisement.getId();
+            String cropname = advertisement.getCropName();
+            double quantityNeeded = advertisement.getQuantityNeeded();
+            String date = advertisement.getDate();
+            String status = advertisement.getStatus();
+            
+            if(filter.equals("Pending Offer")){
+                if("Pending Offer".equals(advertisement.getStatus()))
+                tableAdvertisement1.addRow(new Advertisement(adsID,cropname,quantityNeeded,date,status).toRowTable(eventAction));
+                
+            }else if(filter.equals("Pending Transaction")){
+                 if("Pending Transaction".equals(advertisement.getStatus()))
+                tableAdvertisement1.addRow(new Advertisement(adsID,cropname,quantityNeeded,date,status).toRowTable(eventAction));
+            }else if(filter.equals("Done")){
+                 if("Done".equals(advertisement.getStatus()))
+                tableAdvertisement1.addRow(new Advertisement(adsID,cropname,quantityNeeded,date,status).toRowTable(eventAction));
+            }else if(filter.equals("All")){
+                tableAdvertisement1.addRow(new Advertisement(adsID,cropname,quantityNeeded,date,status).toRowTable(eventAction));
+            }
+        }
+        
+       
+    }//GEN-LAST:event_filterBtnActionPerformed
+
+    private void tableAdvertisement1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAdvertisement1MouseClicked
+        int i = tableAdvertisement1.getSelectedRow();
+
+        TableModel model = tableAdvertisement1.getModel();
+        String status= model.getValueAt(i,4).toString();
+        
+        if(status.equals("Done")){
+            DefaultTableModel DFT = (DefaultTableModel) tableOffer1.getModel();
+            DFT.setRowCount(0);
+            tableOffer1.disable();
+        }else{
+            int adsId=(int) model.getValueAt(i,0);
+
+        EventActionOffer eventAction = new EventActionOffer() {
+            @Override
+            public void update(Offer offer) {
+                if (showMessageCheckOut("Accept the offer?" )) {
+                    AdvertisementImpl advertisement =new AdvertisementImpl();
+                    
+                    Advertisement ads=new Advertisement();
+                    ads.setId(adsId);
+                    String status ="Done";
+                    ads.setStatus(status);
+                    advertisement.updateStatus(ads);
+
+                } else {
+                    System.out.println("User click Cancel");
+                }
+            }
+        };
+        OfferImpl offer = new OfferImpl();
+        List<Offer> list = offer.list(adsId);
+        DefaultTableModel DFT = (DefaultTableModel) tableOffer1.getModel();
+        DFT.setRowCount(0);
+        for (Offer offers : list) {
+
+            String farmerName =offers.getFarmerName();
+            double priceOffer = offers.getPriceOffer();
+
+            tableOffer1.addRow(new Offer(farmerName,priceOffer).toRowTable(eventAction));
+
+        }
+            
+        }
+    }//GEN-LAST:event_tableAdvertisement1MouseClicked
+    private boolean showMessageCheckOut(String message) {
+        MessageCheckOut obj = new MessageCheckOut(Main.getFrames()[0], true);
+        obj.showMessage(message);
+        return obj.isOk();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAds;
+    public javax.swing.JComboBox<String> filterBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -251,8 +408,8 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private com.raven.swing.table.Table table1;
-    private com.raven.swing.table.Table table2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private com.raven.swing.table.TableAdvertisement tableAdvertisement1;
+    private com.raven.swing.table.TableOffer tableOffer1;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,9 @@
  */
 package farmingsystem.model;
 
+import com.raven.swing.table.EventActionAdvertisement;
+import com.raven.swing.table.ModelActionAdvertisement;
+
 /**
  *
  * @author jtamayo
@@ -39,6 +42,17 @@ public class Advertisement {
         this.quantityNeeded = quantityNeeded;
         this.date = date;
         this.status = status;
+    }
+    public Advertisement(int id,String cropName, double quantityNeeded, String date, String status){
+        this.id=id;
+        this.cropName = cropName;
+        this.quantityNeeded = quantityNeeded;
+        this.date = date;
+        this.status = status;
+    }
+    
+    public Object[] toRowTable(EventActionAdvertisement event) {
+        return new Object[]{id,cropName,quantityNeeded, date, status,new ModelActionAdvertisement(this, event)};
     }
     
 

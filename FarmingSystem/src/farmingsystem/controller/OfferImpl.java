@@ -70,7 +70,7 @@ public class OfferImpl implements OfferController{
         List<Offer> list = new ArrayList<Offer>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT o.offer_id,a.crop_name as \"Crop Name\", CONCAT_WS(' ',u.first_name,u.last_name) as \"Seller Name\",o.offer_price FROM offer AS o JOIN users AS u ON o.user_id = u.id JOIN advertisement AS a ON o.advertisement_id = a.id";
+            String sql = "SELECT o.offer_id,a.crop_name as \"Crop Name\", CONCAT_WS(' ',u.first_name,u.last_name) as \"Farmer Name\",o.offer_price FROM offer AS o JOIN users AS u ON o.user_id = u.id JOIN advertisement AS a ON o.advertisement_id = a.id";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
            
@@ -78,7 +78,7 @@ public class OfferImpl implements OfferController{
                 Offer st = new Offer();
                 st.setOfferId(rs.getInt("offer_id"));
                 st.setCropName(rs.getString("Crop Name"));
-                st.setSellerName(rs.getString("Seller Name"));
+                st.setFarmerName(rs.getString("Farmer Name"));
                 st.setPriceOffer(rs.getDouble("offer_price"));
  
                 list.add(st);
@@ -190,16 +190,17 @@ public class OfferImpl implements OfferController{
         List<Offer> list = new ArrayList<Offer>();
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "SELECT o.offer_id,a.crop_name as \"Crop Name\", CONCAT_WS(' ',u.first_name,u.last_name) as \"Seller Name\",o.offer_price FROM offer AS o JOIN users AS u ON o.user_id = u.id JOIN advertisement AS a ON o.advertisement_id = a.id WHERE o.advertisement_id";
+            String sql = "SELECT o.offer_id,a.crop_name as \"Crop Name\", CONCAT_WS(' ',u.first_name,u.last_name) as \"Farmer Name\",o.offer_price FROM offer AS o JOIN users AS u ON o.user_id = u.id JOIN advertisement AS a ON o.advertisement_id = a.id WHERE o.advertisement_id=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, adsID);
+            System.out.println(adsID);
             ResultSet rs = ps.executeQuery();
            
             while(rs.next()){
                 Offer st = new Offer();
                 st.setOfferId(rs.getInt("offer_id"));
                 st.setCropName(rs.getString("Crop Name"));
-                st.setSellerName(rs.getString("Seller Name"));
+                st.setFarmerName(rs.getString("Farmer Name"));
                 st.setPriceOffer(rs.getDouble("offer_price"));
  
                 list.add(st);
@@ -211,7 +212,5 @@ public class OfferImpl implements OfferController{
         }
         return list;    
     
-    }
-
-    
+    }    
 }
