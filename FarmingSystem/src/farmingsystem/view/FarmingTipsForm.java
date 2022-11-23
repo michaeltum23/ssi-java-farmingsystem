@@ -197,13 +197,13 @@ public class FarmingTipsForm extends javax.swing.JFrame {
 int search;
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        search = Integer.parseInt(JOptionPane.showInputDialog("Enter Student ID"));
-     
-        FarmingTipsImpl tips = new FarmingTipsImpl();
-        FarmingTips tip  = tips.get(search);
-        
-        txtTitle.setText(tip.getTitle());
-        txtareaTips.setText(tip.getContent());
+//        search = Integer.parseInt(JOptionPane.showInputDialog("Enter Student ID"));
+//     
+//        FarmingTipsImpl tips = new FarmingTipsImpl();
+//        FarmingTips tip  = tips.get(search);
+//        
+//        txtTitle.setText(tip.getTitle());
+//        txtareaTips.setText(tip.getContent());
         
     }//GEN-LAST:event_btnSearchActionPerformed
 

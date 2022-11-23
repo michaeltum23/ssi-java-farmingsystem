@@ -22,6 +22,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import jdk.internal.agent.Agent;
+import sun.security.rsa.RSACore;
 
 public class FarmerHome extends javax.swing.JPanel {
     
@@ -30,8 +32,56 @@ public class FarmerHome extends javax.swing.JPanel {
     public FarmerHome(User user) {
         this.users = user;
         initComponents();
-//        table1.fixTable(jScrollPane1);
+////        table1.fixTable(jScrollPane1);
+      
         lblFullName.setText(user.getFirstName() + " " + user.getLastName());
+        lblEmail.setText(user.getEmail());
+        lblPhone.setText("63"+user.getContactNumber());
+        
+        String province = String.valueOf(user.getProvince());
+        if (province.equalsIgnoreCase("null")){
+            lblProvince.setText("Add province ");
+            
+        }
+        else{
+            lblProvince.setText("Provice "+user.getProvince());
+        
+        }
+           
+        lblCityAddress.setText("Lives at "+user.getCityAddress());
+        lblStreetAddress.setText("Resident of "+user.getStreetAddress());
+        lblHouseNo.setText("House No. "+user.getHouseNo());
+        
+        
+        ImageIcon im = new ImageIcon(users.getUserImage());
+        Image image = im.getImage().getScaledInstance(205, 200, Image.SCALE_SMOOTH);
+        ImageIcon userImage = new ImageIcon(image);
+        userProfilePic.setIcon(userImage);
+        
+        ImageIcon ic1 = new ImageIcon(getClass().getResource("/com/raven/icon/email.png"));
+        Image icImage = ic1.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon emailIcon = new ImageIcon(icImage);
+        lblEmailIcon.setIcon(emailIcon);
+        
+        ImageIcon ic2 = new ImageIcon(getClass().getResource("/com/raven/icon/phone-call.png"));
+        Image icImage2 = ic2.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon phoneIcon = new ImageIcon(icImage2);
+        lblPhoneIcon.setIcon(phoneIcon);
+        
+        ImageIcon ic3 = new ImageIcon(getClass().getResource("/com/raven/icon/messenger.png"));
+        Image icImage3 = ic3.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon chatIcon = new ImageIcon(icImage3);
+        lblChatIcon.setIcon(chatIcon);
+        
+        ImageIcon ic4 = new ImageIcon(getClass().getResource("/com/raven/icon/location.png"));
+        Image icImage4 = ic4.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon locationIcon = new ImageIcon(icImage4);
+        lblLocationIcon1.setIcon(locationIcon);
+        
+        ImageIcon ic5 = new ImageIcon(getClass().getResource("/com/raven/icon/pin.png"));
+        Image icImage5 = ic5.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon cityIcon = new ImageIcon(icImage5);
+        lblCityIcon.setIcon(cityIcon);
         setOpaque(false);
         initData();
     }
@@ -128,9 +178,10 @@ public class FarmerHome extends javax.swing.JPanel {
         card4 = new com.raven.component.Card();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Jpanel = new javax.swing.JPanel();
+        userProfilePic = new javax.swing.JLabel();
         lblFullName = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblStreetAddress = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -148,6 +199,18 @@ public class FarmerHome extends javax.swing.JPanel {
         jPanel13 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblPhone = new javax.swing.JLabel();
+        lblCityAddress = new javax.swing.JLabel();
+        lblCityIcon = new javax.swing.JLabel();
+        lblHouseNo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblPhoneIcon = new javax.swing.JLabel();
+        lblEmailIcon = new javax.swing.JLabel();
+        lblChatIcon = new javax.swing.JLabel();
+        lblCityAddress1 = new javax.swing.JLabel();
+        lblProvince = new javax.swing.JLabel();
+        lblLocationIcon1 = new javax.swing.JLabel();
 
         card1.setBackground(new java.awt.Color(59, 122, 87));
         card1.setColorGradient(new java.awt.Color(0, 102, 51));
@@ -179,25 +242,30 @@ public class FarmerHome extends javax.swing.JPanel {
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 204, Short.MAX_VALUE)
+        userProfilePic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout JpanelLayout = new javax.swing.GroupLayout(Jpanel);
+        Jpanel.setLayout(JpanelLayout);
+        JpanelLayout.setHorizontalGroup(
+            JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userProfilePic, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+        JpanelLayout.setVerticalGroup(
+            JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userProfilePic, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 46, -1, -1));
+        jPanel2.add(Jpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 46, -1, -1));
 
         lblFullName.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblFullName.setText("Users full name");
         jPanel2.add(lblFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 82, -1, -1));
 
-        jLabel3.setText("Farmer Details");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 136, -1, -1));
+        lblStreetAddress.setBackground(new java.awt.Color(204, 204, 204));
+        lblStreetAddress.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblStreetAddress.setForeground(new java.awt.Color(102, 102, 102));
+        lblStreetAddress.setText("Street Address");
+        jPanel2.add(lblStreetAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 210, 20));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Random Farming Tips");
@@ -209,6 +277,11 @@ public class FarmerHome extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
         jButton1.setText("EDIT  PROFILE");
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 413, 240, 144));
 
         jButton2.setBackground(new java.awt.Color(0, 102, 51));
@@ -357,6 +430,54 @@ public class FarmerHome extends javax.swing.JPanel {
 
         jPanel2.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 260, -1));
 
+        lblEmail.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(0, 102, 255));
+        lblEmail.setText("Email");
+        jPanel2.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 220, -1));
+
+        lblPhone.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblPhone.setForeground(new java.awt.Color(0, 102, 255));
+        lblPhone.setText("Phone");
+        jPanel2.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 160, -1));
+
+        lblCityAddress.setBackground(new java.awt.Color(204, 204, 204));
+        lblCityAddress.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblCityAddress.setForeground(new java.awt.Color(102, 102, 102));
+        lblCityAddress.setText("City Address");
+        jPanel2.add(lblCityAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 220, 20));
+
+        lblCityIcon.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblCityIcon.setForeground(new java.awt.Color(0, 51, 255));
+        jPanel2.add(lblCityIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 30, 20));
+
+        lblHouseNo.setBackground(new java.awt.Color(204, 204, 204));
+        lblHouseNo.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblHouseNo.setForeground(new java.awt.Color(102, 102, 102));
+        lblHouseNo.setText("House No.");
+        jPanel2.add(lblHouseNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 230, 20));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel2.setText("Chat");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 50, -1));
+        jPanel2.add(lblPhoneIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 30, 30));
+        jPanel2.add(lblEmailIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 30, 20));
+        jPanel2.add(lblChatIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 30, 20));
+
+        lblCityAddress1.setBackground(new java.awt.Color(204, 204, 204));
+        lblCityAddress1.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
+        lblCityAddress1.setForeground(new java.awt.Color(0, 51, 255));
+        jPanel2.add(lblCityAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 30, -1));
+
+        lblProvince.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblProvince.setForeground(new java.awt.Color(102, 102, 102));
+        lblProvince.setText("Province");
+        jPanel2.add(lblProvince, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 190, 20));
+
+        lblLocationIcon1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblLocationIcon1.setForeground(new java.awt.Color(0, 51, 255));
+        jPanel2.add(lblLocationIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 30, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -398,7 +519,12 @@ public class FarmerHome extends javax.swing.JPanel {
         user.setVisible(true);
     }//GEN-LAST:event_card1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Jpanel;
     private com.raven.component.Card card1;
     private com.raven.component.Card card2;
     private com.raven.component.Card card3;
@@ -411,20 +537,32 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblChatIcon;
+    private javax.swing.JLabel lblCityAddress;
+    private javax.swing.JLabel lblCityAddress1;
+    private javax.swing.JLabel lblCityIcon;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmailIcon;
     private javax.swing.JLabel lblFullName;
+    private javax.swing.JLabel lblHouseNo;
+    private javax.swing.JLabel lblLocationIcon1;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblPhoneIcon;
+    private javax.swing.JLabel lblProvince;
+    private javax.swing.JLabel lblStreetAddress;
+    private javax.swing.JLabel userProfilePic;
     // End of variables declaration//GEN-END:variables
 }

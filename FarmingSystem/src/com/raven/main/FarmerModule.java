@@ -15,7 +15,7 @@ import com.raven.form.Course;
 import com.raven.form.AdminFarmer;
 import com.raven.form.BlogArticle;
 import com.raven.form.FarmerHome;
-import com.raven.form.FarmingTips;
+import com.raven.form.FarmingTip;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
