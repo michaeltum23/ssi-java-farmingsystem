@@ -54,6 +54,11 @@ public class UserImp implements UserController {
             user.setFirstName(rs.getString("first_name"));
             user.setLastName(rs.getString("last_name"));
             user.setEmail(rs.getString("email"));
+            user.setContactNumber(rs.getString("contact_number"));
+            user.setProvince(rs.getString("province"));
+            user.setCityAddress(rs.getString("city_address"));
+            user.setHouseNo(rs.getString("house_no"));
+            user.setStreetAddress(rs.getString("street_address"));
             user.setUserType(rs.getString("user_type"));
             user.setUserImage(rs.getBytes("profile_image"));
         }
