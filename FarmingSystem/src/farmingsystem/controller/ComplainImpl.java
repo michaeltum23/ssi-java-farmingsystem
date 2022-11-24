@@ -19,8 +19,10 @@ import static java.util.Collections.list;
 import java.util.List;
 import javax.swing.JOptionPane;
 public class ComplainImpl implements ComplainController {
+    private Connection con;
+    private User User;
     
-    @Override
+  
     public void addComplain(Complain complain) {
         try
         {
@@ -74,9 +76,6 @@ public class ComplainImpl implements ComplainController {
             statement.setString(2, response_body);
             statement.setInt(3, complain_id);
             statement.setString(4, status);
-//            statement.setInt(2, complain.getResponse_id());
-//            statement.setString(3, complain.getResponse());
-//            statement.setString(4, complain.getTicketNo());
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "You responseded on a complain");
         }catch(Exception e){
@@ -92,14 +91,14 @@ public class ComplainImpl implements ComplainController {
             String sql = "DELETE from complain WHERE ticket_no=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, complain.getTicketNo());
-//            statement.setInt(2, complain.getOrderId());
-//            statement.setString(3, complain.getMessage());
-//            statement.setString(4, complain.getStatus());
-//            statement.setString(5, complain.getDateCreated());
-//            statement.setString(6, complain.getDateResolved());
-//            statement.setInt(7, complain.getResponse_id());
-//            statement.setString(8, complain.getResponse());
-//            statement.setInt(9, complain.getUser_id());
+            statement.setInt(2, complain.getOrderId());
+            statement.setString(3, complain.getMessage());
+            statement.setString(4, complain.getStatus());
+            statement.setString(5, complain.getDateCreated());
+            statement.setString(6, complain.getDateResolved());
+            statement.setInt(7, complain.getResponse_id());
+            statement.setString(8, complain.getResponse());
+            statement.setInt(9, complain.getUser_id());
             
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleteddd!");
@@ -137,11 +136,11 @@ public class ComplainImpl implements ComplainController {
         return complain;}
     
     @Override
-    public List<Complain> list2() {
+    public List<Complain> listUser() {
         List<Complain> list = new ArrayList<Complain>();
         try {
             Connection con = FarmingConnection.getConnection();
-         String sql1 = "SELECT id FROM response ";
+         String sql1 = "SELECT * FROM complain INNER JOIN users on complain.user_id = users.id WHERE complain.user_id=? ";
 //         SELECT users.first_name FROM participants INNER JOIN users ON participants.user_id = users.id WHERE participants.training_id=?
           //  String sql1 = "SELECT response.response FROM response INNER JOIN user ";
 
@@ -150,11 +149,16 @@ public class ComplainImpl implements ComplainController {
            
             while(rs.next()){
                 Complain pk = new Complain();
-                pk.setUser_id(rs.getInt("user_id"));
-                pk.setOrderId(rs.getInt("order_id"));
                 pk.setId(rs.getInt("id"));
+                pk.setOrderId(rs.getInt("order_id"));
+                pk.setMessage(rs.getString("message"));
+                pk.setTicketNo(rs.getString("ticket_no"));
+                pk.setStatus(rs.getString("status"));
+                pk.setDateCreated(rs.getString("date_created"));
+                pk.setDateResolved(rs.getString("date_resolve"));
                 pk.setResponse_id(rs.getInt("response_id"));
-                pk.setResponse(rs.getString("response"));       
+                pk.setResponse(rs.getString("response"));
+                pk.setUser_id(rs.getInt("user_id"));
                 list.add(pk);
             }
             
@@ -165,7 +169,7 @@ public class ComplainImpl implements ComplainController {
         return list;
     }
     @Override
-    public List<Complain> list() {
+    public List<Complain> listAll() {
         List<Complain> list = new ArrayList<Complain>();
         try {
             Connection con = FarmingConnection.getConnection();
@@ -291,12 +295,35 @@ public class ComplainImpl implements ComplainController {
         }
         return null;
     }
-//
-//    @Override
-//    public List<User> listUser() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private int count;
+    
+//    public int countUser(String userType) {
+//        if (userType.equals("Farmer") || userType.equals("Supplier") || userType.equals("Admin")) {
+//            try {
+//                String sql = "SELECT COUNT(id) as count_user FROM complain WHERE user_type=?";
+//                PreparedStatement pst = con.prepareStatement(sql);
+//                pst.setString(1, user_type);
+//                ResultSet rs = pst.executeQuery();
+//                while (rs.next()) {
+//                    count = rs.getInt("count_user");
+//                }
+//            } catch (Exception ex) {
+//                System.out.println(ex);
+//            }
+//        } else {
+//            try {
+//                String sql = "SELECT COUNT(id) as count_user FROM users";
+//                PreparedStatement pst = con.prepareStatement(sql);
+//                ResultSet rs = pst.executeQuery();
+//                while (rs.next()) {
+//                    count = rs.getInt("count_user");
+//                }
+//            } catch (Exception ex) {
+//                System.out.println(ex);
+//            }
+//        }
+//        return count;
 //    }
-
     @Override
     public void markResolve(Complain complain) {
        try{
@@ -330,7 +357,8 @@ public class ComplainImpl implements ComplainController {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
-
+    
+    
     
 
     

@@ -4,6 +4,9 @@
  */
 package farmingsystem.model;
 
+import com.raven.swing.table.EventActionOffer;
+import com.raven.swing.table.ModelActionOffer;
+
 /**
  *
  * @author jtamayo
@@ -13,7 +16,7 @@ public class Offer {
     private int offerId; // primary key
     // offer Id
     private int userId; // foreign key
-    private String sellerName;
+    private String farmerName;
     // userId
     private int advertisementId; // fk
     private String cropName;
@@ -29,16 +32,21 @@ public class Offer {
     }
     
     
-    public String getSellerName() {
-        return sellerName;
+    public String getFarmerName() {
+        return farmerName;
     }
 
-    public void setSellerName(String sellerName) {
-        this.sellerName = sellerName;
+    public void setFarmerName(String farmerName) {
+        this.farmerName = farmerName;
+    }
+    public Offer(String farmerName,double priceOffer) {
+        this.farmerName=farmerName;
+        this.priceOffer = priceOffer;
     }
     
-    
-    
+    public Object[] toRowTable(EventActionOffer event) {
+        return new Object[]{farmerName, priceOffer,new ModelActionOffer(this, event)};
+    }
     public Offer(){
         //
     }
