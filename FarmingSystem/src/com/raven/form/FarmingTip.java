@@ -18,6 +18,7 @@ public class FarmingTip extends javax.swing.JPanel {
         jPanel2.add(jScrollPane2);
         setOpaque(false);
         initData();
+        table11.removeColumn(table11.getColumnModel().getColumn(0));
     }
 
     private void initData() {
@@ -74,6 +75,7 @@ public class FarmingTip extends javax.swing.JPanel {
         
  
     }
+   
 
     
 
@@ -82,6 +84,8 @@ public class FarmingTip extends javax.swing.JPanel {
         obj.showMessage(message);
         return obj.isOk();
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
