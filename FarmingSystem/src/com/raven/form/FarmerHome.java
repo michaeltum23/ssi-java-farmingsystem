@@ -85,6 +85,12 @@ public class FarmerHome extends javax.swing.JPanel {
     private void initData() {
         initCardData();
         initTableData();
+        UserImp ui = new UserImp();
+        int countCrops = ui.countCropsPost(users);
+        double price = ui.sumCrops(users);
+        int complain = ui.countComplaints(users);
+        lblCropPost.setText(String.valueOf(countCrops));
+        lblPrice.setText("PHP " + String.valueOf(price));
     }
     
     private void initTableData() {
@@ -183,10 +189,10 @@ public class FarmerHome extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
+        lblCropPost = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
+        lblPrice = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
@@ -331,8 +337,8 @@ public class FarmerHome extends javax.swing.JPanel {
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 260, -1));
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel22.setText("0");
+        lblCropPost.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblCropPost.setText("0");
 
         jLabel23.setText("Crops Posted");
 
@@ -346,14 +352,14 @@ public class FarmerHome extends javax.swing.JPanel {
                     .addComponent(jLabel23)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel22)))
+                        .addComponent(lblCropPost)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel22)
+                .addComponent(lblCropPost)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -361,8 +367,8 @@ public class FarmerHome extends javax.swing.JPanel {
 
         jPanel2.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 260, -1));
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel24.setText("PHP 0.00");
+        lblPrice.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblPrice.setText("PHP 0.00");
 
         jLabel25.setText("Crops Sold");
 
@@ -377,14 +383,14 @@ public class FarmerHome extends javax.swing.JPanel {
                         .addComponent(jLabel25))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel24)))
+                        .addComponent(lblPrice)))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel24)
+                .addComponent(lblPrice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel25)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -530,9 +536,7 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -546,6 +550,7 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JLabel lblCityAddress;
     private javax.swing.JLabel lblCityAddress1;
     private javax.swing.JLabel lblCityIcon;
+    private javax.swing.JLabel lblCropPost;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmailIcon;
     private javax.swing.JLabel lblFullName;
@@ -553,6 +558,7 @@ public class FarmerHome extends javax.swing.JPanel {
     private javax.swing.JLabel lblLocationIcon1;
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPhoneIcon;
+    private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblProvince;
     private javax.swing.JLabel lblStreetAddress;
     private javax.swing.JLabel userProfilePic;

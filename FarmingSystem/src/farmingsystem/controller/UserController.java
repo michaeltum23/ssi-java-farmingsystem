@@ -21,6 +21,9 @@ public interface UserController {
     public void addAdmin(User user);
     
     public void deleteUser (User users);
-   
+    public int countCropsPost(User users);
+    public double sumCrops(User users);
+    public int countOffer(User users);
+    public int countComplaints(User users);
   
 }

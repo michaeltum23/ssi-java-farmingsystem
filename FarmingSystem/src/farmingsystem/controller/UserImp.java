@@ -147,7 +147,6 @@ public class UserImp implements UserController {
 
         }
     }
-    
 
     @Override
     public void update(User users) {
@@ -159,17 +158,17 @@ public class UserImp implements UserController {
             pst.setString(3, users.getLastName());
             pst.setString(4, users.getBirthDate());
             pst.setString(5, users.getCivilStatus());
-            pst.setString(6,users.getGender());
+            pst.setString(6, users.getGender());
             pst.setString(7, users.getContactNumber());
             pst.setString(8, users.getEmail());
             pst.setString(9, users.getHouseNo());
-            pst.setString(10,users.getStreetAddress());
+            pst.setString(10, users.getStreetAddress());
             pst.setString(11, users.getCityAddress());
             pst.setString(12, users.getProvince());
-            pst.setInt(13,users.getZipCode());
+            pst.setInt(13, users.getZipCode());
             pst.setBinaryStream(14, users.getProfielImage(), users.getFile().length());
             pst.setString(15, users.getEmail());
-            
+
             pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null, "UPDATED!");
@@ -216,7 +215,6 @@ public class UserImp implements UserController {
 
     private int count;
 
-    
     public int countUser(String userType) {
         if (userType.equals("Farmer") || userType.equals("Supplier") || userType.equals("Admin")) {
             try {
@@ -353,10 +351,10 @@ public class UserImp implements UserController {
 
     @Override
     public void deleteUser(User users) {
-        try {       
+        try {
             Connection con = FarmingConnection.getConnection();
             String sql = "DELETE from users  WHERE email=?";
-            PreparedStatement ps = con.prepareStatement(sql);  
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, users.getEmail());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "User Deleted!");
@@ -369,15 +367,15 @@ public class UserImp implements UserController {
     @Override
     public List<User> searchUser(String search) {
         try {
-          
+
             Connection con = FarmingConnection.getConnection();
-            
-            String sql = "SELECT * FROM users u WHERE lower(CONCAT(u.first_name,u.last_name)) LIKE '%"+search+"%'";
+
+            String sql = "SELECT * FROM users u WHERE lower(CONCAT(u.first_name,u.last_name)) LIKE '%" + search + "%'";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             List<User> list = new ArrayList<User>();
-            while(rs.next()){
+            while (rs.next()) {
                 User st = new User();
                 st.setPassword(rs.getString("password"));
                 st.setFirstName(rs.getString("first_name"));
@@ -394,19 +392,18 @@ public class UserImp implements UserController {
                 st.setUserImage(rs.getBytes("profile_image"));
                 list.add(st);
             }
-             return list;
-         }
-         catch (Exception e) {
+            return list;
+        } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error");
         }
         return null;
-    
+
     }
 
     @Override
     public void addAdmin(User user) {
-        try{
+        try {
             Connection con = FarmingConnection.getConnection();
             String sql = "INSERT INTO users(first_name,middle_name,last_name,birthday,civil_status,gender,contact_number,email,house_no,street_address,city_address,province,zip_code,password,user_type,active,profile_image,verify_code) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
@@ -416,10 +413,10 @@ public class UserImp implements UserController {
             pst.setString(4, user.getBirthDate());
             pst.setString(5, user.getCivilStatus());
             pst.setString(6, user.getGender());
-            pst.setString(7, user.getContactNumber()); 
+            pst.setString(7, user.getContactNumber());
             pst.setString(8, user.getEmail());
             pst.setString(9, user.getHouseNo());
-            
+
             pst.setString(10, user.getStreetAddress());
             pst.setString(11, user.getCityAddress());
             pst.setString(12, user.getProvince());
@@ -428,19 +425,17 @@ public class UserImp implements UserController {
             pst.setString(15, user.getUserType());
             pst.setBoolean(16, user.getActive());
             pst.setBinaryStream(17, user.getProfielImage(), user.getFile().length());
-            pst.setString(18,user.getVerifyCode());
-            
+            pst.setString(18, user.getVerifyCode());
+
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Post Success!");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error");
         }
-    
+
     }
-    
-    
-    
+
     public void insertUserFogot(User users) {
         if (users != null) {
             try {
@@ -466,28 +461,23 @@ public class UserImp implements UserController {
 
         }
     }
-    
-      
+
     public void updateUserNewPassword(User users) {
-        try {      
+        try {
             String sql = "UPDATE users SET password=? WHERE email=? ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, users.getPassword());
             pst.setString(2, users.getEmail());
             pst.executeUpdate();
-            pst.close(); 
-            
+            pst.close();
+
         } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error");
-        }    
+        }
     }
-    
-   
 
-    
-    
-     public boolean verifyCodeWithUserForgot(int id, String code) throws SQLException, Exception {
+    public boolean verifyCodeWithUserForgot(int id, String code) throws SQLException, Exception {
         boolean verify = false;
         PreparedStatement pst = con.prepareStatement("SELECT id FROM forgotpassword WHERE id=? AND verify_code=? limit 1");
         pst.setInt(1, id);
@@ -500,15 +490,89 @@ public class UserImp implements UserController {
         pst.close();
         return verify;
     }
-     
-     public void doneVerifyForgot(int id) throws SQLException, Exception {
+
+    public void doneVerifyForgot(int id) throws SQLException, Exception {
         System.out.println("verify " + id);
         PreparedStatement pst = con.prepareStatement("UPDATE forgotpassword SET verify_code='Verified', active=true WHERE id=?");
         pst.setInt(1, id);
         pst.execute();
         pst.close();
     }
-    
 
-   
+    @Override
+    public int countCropsPost(User users) {
+        int count = 0;
+        String sql = "SELECT COUNT(id) as count FROM crops WHERE user_id=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, users.getId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public double sumCrops(User users) {
+        double price = 0.00;
+        String sql = "SELECT SUM(price) as price FROM crops WHERE user_id=?";
+        PreparedStatement pst;
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setDouble(1, users.getId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                price = rs.getDouble("price");
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return price;
+    }
+
+    @Override
+    public int countOffer(User users) {
+        int count = 0;
+        String sql = "SELECT COUNT(id) as count FROM offer WHERE user_id=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, users.getId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public int countComplaints(User users) {
+        int count = 0;
+        String sql = "SELECT COUNT(id) as count FROM complain WHERE user_id=?";
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, users.getId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("count");
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
+    }
 }
