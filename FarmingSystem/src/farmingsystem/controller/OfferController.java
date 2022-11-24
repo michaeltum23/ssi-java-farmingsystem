@@ -8,6 +8,7 @@ import farmingsystem.model.Advertisement;
 import farmingsystem.model.Offer;
 import java.util.List;
 
+
 /**
  *
  * @author jtamayo

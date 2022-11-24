@@ -16,6 +16,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
     /**
      * Creates new form SupplierDetails
      */
+    
     public UpdateAdvertisement() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -46,6 +47,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
         userId = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         cropID = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(DateNeeded);
 
@@ -124,6 +126,8 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
 
         cropID.setText("CropID");
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -144,10 +148,12 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
                             .addComponent(textCropName, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(userId)))
+                                    .addComponent(userId))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel6)))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(DateNeeded, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
@@ -182,7 +188,8 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(postButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cropID)))
@@ -286,6 +293,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
     private javax.swing.JButton cancelButton;
     public javax.swing.JLabel cropID;
     private com.raven.datechooser.DateChooser dateChooser1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

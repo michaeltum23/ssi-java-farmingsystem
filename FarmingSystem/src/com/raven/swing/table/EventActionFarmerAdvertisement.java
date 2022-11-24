@@ -6,4 +6,5 @@ public interface EventActionFarmerAdvertisement {
     
     public void offer(Advertisement advertisement);
     
+    
 }

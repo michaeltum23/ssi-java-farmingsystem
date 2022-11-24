@@ -27,6 +27,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
 
     private void initData() {
         initTableData();
+        
     }
    
     private void initTableData() {
@@ -102,9 +103,10 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         table2 = new com.raven.swing.table.Table();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableFarmerAdvertisement1 = new com.raven.swing.table.TableFarmerAdvertisement();
+        test = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
@@ -168,10 +170,10 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(76, 76, 76));
-        jLabel5.setText("List of Advertisement");
-        jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        title.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        title.setForeground(new java.awt.Color(76, 76, 76));
+        title.setText("List of Advertisement");
+        title.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         tableFarmerAdvertisement1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,6 +193,8 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tableFarmerAdvertisement1);
 
+        test.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -199,7 +203,9 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(title)
+                        .addGap(165, 165, 165)
+                        .addComponent(test)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
                 .addContainerGap())
@@ -208,7 +214,9 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(title)
+                    .addComponent(test))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
                 .addContainerGap())
@@ -246,12 +254,13 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private com.raven.swing.table.Table table2;
     private com.raven.swing.table.TableFarmerAdvertisement tableFarmerAdvertisement1;
+    private javax.swing.JLabel test;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

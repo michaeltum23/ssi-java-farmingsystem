@@ -11,6 +11,7 @@ import com.raven.swing.table.ModelActionOffer;
  *
  * @author jtamayo
  */
+
 public class Offer {
     
     private int offerId; // primary key

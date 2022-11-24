@@ -14,6 +14,7 @@ import javax.swing.table.TableCellEditor;
 
 public class TableFarmerAdvertisement extends JTable {
 
+    
     public TableFarmerAdvertisement() {
         setShowHorizontalLines(true);
         setGridColor(new Color(230, 230, 230));

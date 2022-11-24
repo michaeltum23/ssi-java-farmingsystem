@@ -7,6 +7,7 @@ public class ModelActionFarmerAdvertisement {
     public Advertisement getAdvertisement() {
         return advertisement;
     }
+    
 
     public void setAdvertisement(Advertisement advertisement) {
         this.advertisement = advertisement;
