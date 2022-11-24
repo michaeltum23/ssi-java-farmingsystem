@@ -77,7 +77,7 @@ public class AdminTrainingHome extends javax.swing.JPanel {
               TrainingImpl training = new TrainingImpl();
                  List<Training> list = training.list();
                 tableTraining.getColumn("Profile").setPreferredWidth(60);
-                tableTraining.getColumn("Profile").setCellRenderer(new AdminAdvertisement.myTableCellRenderer());
+//                tableTraining.getColumn("Profile").setCellRenderer(new AdminAdvertisement.myTableCellRenderer());
                  for (Training tr : list) {
                      int id = tr.getId();
                      String title = tr.getTitle();
@@ -85,12 +85,12 @@ public class AdminTrainingHome extends javax.swing.JPanel {
                      String schedDate = tr.getScheduleDate();
                      String schedTime = tr.getSchedulteTime();
                      String status = tr.getStatus();
-                     ImageIcon im = new ImageIcon(tr.getTrainingImage());
-                     Image image = im.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-                     ImageIcon traininImageIcon = new ImageIcon(image);
-                     JLabel lbl = new JLabel();
-                     lbl.setIcon(trainingImage)
-                     tableTraining.addRow(new Training(lbl, id, title, description, schedDate, schedTime , status).toRowTable(eventAction));
+//                     ImageIcon im = new ImageIcon(tr.getTrainingImage());
+//                     Image image = im.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+//                     ImageIcon traininImageIcon = new ImageIcon(image);
+//                     JLabel lbl = new JLabel();
+//                     lbl.setIcon(trainingImage)
+//                     tableTraining.addRow(new Training(lbl, id, title, description, schedDate, schedTime , status).toRowTable(eventAction));
                     }
 
 
