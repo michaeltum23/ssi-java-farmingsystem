@@ -67,7 +67,7 @@ public class TableYourCart extends JTable {
     }
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 3) {
+        if (col == 4) {
             return new TableCellActionYourCart();
         } else {
             return super.getCellEditor(row, col);

@@ -12,11 +12,9 @@ import com.raven.swing.table.EventActionYourCart;
 import com.raven.swing.table.ModelActionYourCart;
 import java.io.File;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Vector;
-import javax.swing.table.TableModel;
 
 public class Order {
+
     private int orderId;
     private int sellerId;
     private int userId;
@@ -34,8 +32,27 @@ public class Order {
     private String dateReceived;
     private int rating;
     private String status;
+    private String sellerName;
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
+
     public Order() {
     }
+
+    public Order(String supplierName, String farmerName, String cropName, double quantity, double price) {
+        userName = supplierName;
+        sellerName = farmerName;
+        productName = cropName;
+        this.quantity = quantity;
+        unitPrice = price;
+    }
+
     public Order(int orderId, int sellerId, String productName, double quantity, double unitPrice) {
         this.orderId = orderId;
         this.sellerId = sellerId;
@@ -43,15 +60,19 @@ public class Order {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
-    public Order(int sellerId,String productName,double unitPrice, double quantity){
-        this.sellerId=sellerId;
-        this.productName=productName;
-        this.unitPrice=unitPrice;
-        this.quantity=quantity;
+
+    public Order(int sellerId, String productName, String sellerName, double unitPrice, double quantity) {
+        this.sellerId = sellerId;
+        this.sellerName = sellerName;
+        this.productName = productName;
+        this.unitPrice = unitPrice;
+        this.quantity = quantity;
     }
+
     public Object[] toRowTable(EventActionYourCart event) {
-        return new Object[]{sellerId, productName, unitPrice, quantity, new ModelActionYourCart(this, event)};
+        return new Object[]{sellerId, productName, sellerName, unitPrice, quantity, new ModelActionYourCart(this, event)};
     }
+
     public Order(int sellerId, int userId, String userName, InputStream orderImage, File file, byte[] cropImageData, String productName, double quantity, double unitPrice, String transacDate, boolean paid, String dateShipped, String dateArrived, String dateReceived, int rating, String status) {
         this.sellerId = sellerId;
         this.userId = userId;
@@ -70,9 +91,11 @@ public class Order {
         this.rating = rating;
         this.status = status;
     }
+
     public int getOrderId() {
         return orderId;
     }
+
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
@@ -88,15 +111,19 @@ public class Order {
     public int getUserId() {
         return userId;
     }
+
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
     public String getUserName() {
         return userName;
     }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     public InputStream getOrderImage() {
         return orderImage;
     }
@@ -112,6 +139,7 @@ public class Order {
     public void setFile(File file) {
         this.file = file;
     }
+
     public byte[] getCropImageData() {
         return cropImageData;
     }
@@ -147,6 +175,7 @@ public class Order {
     public String getTransacDate() {
         return transacDate;
     }
+
     public void setTransacDate(String transacDate) {
         this.transacDate = transacDate;
     }
@@ -154,6 +183,7 @@ public class Order {
     public boolean isPaid() {
         return paid;
     }
+
     public void setPaid(boolean paid) {
         this.paid = paid;
     }
@@ -185,12 +215,15 @@ public class Order {
     public int getRating() {
         return rating;
     }
+
     public void setRating(int rating) {
         this.rating = rating;
     }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }

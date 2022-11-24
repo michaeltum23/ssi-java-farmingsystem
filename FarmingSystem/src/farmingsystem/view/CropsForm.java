@@ -608,7 +608,7 @@ public void getSum() {
             order.setUnitPrice(unitPrice);
 
             OrderImpl or = new OrderImpl();
-            or.addOrder(order);
+          //  or.addOrder(order);
 
         }
     }//GEN-LAST:event_jButton4ActionPerformed
