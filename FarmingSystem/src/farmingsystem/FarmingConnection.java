@@ -19,7 +19,6 @@ public class FarmingConnection {
     static String username = "postgres";
     static String password = "Cloud123+4";
 
-    
     public static Connection getConnection() throws Exception {
         if (con == null) {
             Class.forName(driver);

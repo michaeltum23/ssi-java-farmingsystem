@@ -8,6 +8,8 @@ package farmingsystem.model;
  *
  * @author RPAGUIO
  */
+import com.raven.swing.table.EventActionYourCart;
+import com.raven.swing.table.ModelActionYourCart;
 import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -44,7 +46,15 @@ public class Order {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
-   
+    public Order(int sellerId,String productName,double unitPrice, double quantity){
+        this.sellerId=sellerId;
+        this.productName=productName;
+        this.unitPrice=unitPrice;
+        this.quantity=quantity;
+    }
+    public Object[] toRowTable(EventActionYourCart event) {
+        return new Object[]{sellerId, productName, unitPrice, quantity, new ModelActionYourCart(this, event)};
+    }
 
     public Order(int sellerId, int userId, String userName, InputStream orderImage, File file, byte[] cropImageData, String productName, double quantity, double unitPrice, String transacDate, boolean paid, String dateShipped, String dateArrived, String dateReceived, int rating, String status) {
         this.sellerId = sellerId;

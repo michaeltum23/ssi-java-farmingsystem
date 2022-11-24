@@ -8,6 +8,7 @@ import com.raven.form.AboutApp;
 import com.raven.form.SummaryProducts;
 
 import com.raven.form.Admin;
+import com.raven.form.AdminAdvertisement;
 import com.raven.form.Blogs;
 import com.raven.form.Complaints;
 import com.raven.form.Course;
@@ -71,7 +72,7 @@ public class SupplierModule extends javax.swing.JFrame {
                 }
                 if (menuIndex == 1) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new SupplierAdvertisement(user));
+                        main.showForm(new AdminAdvertisement());
                     }
                 }
 
