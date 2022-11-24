@@ -17,7 +17,6 @@ import farmingsystem.view.UpdateUser;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
-import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -59,7 +58,7 @@ public class SupplierHome extends javax.swing.JPanel {
             textTotal.setText(init + "");
         }
         for (int i = 0; i < tableYourCart1.getRowCount(); i++) {
-            sum += Double.parseDouble(tableYourCart1.getValueAt(i, 1) + "");
+            sum += Double.parseDouble(tableYourCart1.getValueAt(i, 2) + "");
             textTotal.setText(sum + ".00");
         }
     }
@@ -76,13 +75,15 @@ public class SupplierHome extends javax.swing.JPanel {
                     for (int i = 0; i < getSelectedRows.length; i++) {
                         row[0] = model1.getValueAt(getSelectedRows[i], 0);
                         row[1] = model1.getValueAt(getSelectedRows[i], 1);
-                        row[2] = model1.getValueAt(getSelectedRows[i], 3);
-                        row[3] = 1;
+                        row[2] = model1.getValueAt(getSelectedRows[i], 2);
+                        row[3] = model1.getValueAt(getSelectedRows[i], 3);
+                        row[4] = 1;
                         order = new Order();
                         order.setSellerId((int) row[0]);
                         order.setProductName(String.valueOf(row[1]));
-                        order.setUnitPrice((double) row[2]);
-                        order.setQuantity((int) row[3]);
+                        order.setSellerName(String.valueOf(row[2]));
+                        order.setUnitPrice((double) row[3]);
+                        order.setQuantity((int) row[4]);
                         model2.addRow(row);
                         oi = new OrderImpl();
                         oi.addCart(order, users);
@@ -120,23 +121,25 @@ public class SupplierHome extends javax.swing.JPanel {
             @Override
             public void Add(Order order) {
                 if (showMessage("Add Quantity?")) {
-                    
+
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
+
             @Override
             public void Minus(Order order) {
                 if (showMessage("Deduct Quantity ")) {
-                    
+
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
+
             @Override
             public void RemoveCart(Order order) {
                 if (showMessage("Remove from cart?")) {
-                    
+
                 } else {
                     System.out.println("User click Cancel");
                 }
@@ -146,13 +149,15 @@ public class SupplierHome extends javax.swing.JPanel {
         List<Order> listCart = cartAt.listCart(users);
         for (Order order : listCart) {
             int id = order.getOrderId();
+            String seller = order.getSellerName();
             String cropName = order.getProductName();
             double price = order.getUnitPrice();
             double quantity = order.getQuantity();
-            tableYourCart1.addRow(new Order(id, cropName, price, quantity).toRowTable(eventAction));
+            tableYourCart1.addRow(new Order(id, cropName, seller, price, quantity).toRowTable(eventAction));
         }
-    
+
     }
+
     class myTableCellRenderer implements TableCellRenderer {
 
         public Component getTableCellRendererComponent(JTable table,
@@ -204,7 +209,7 @@ public class SupplierHome extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textTotal = new com.raven.swing.MyTextField();
-        btnSearch2 = new javax.swing.JButton();
+        btnPay = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableYourCart1 = new com.raven.swing.table.TableYourCart();
 
@@ -256,7 +261,7 @@ public class SupplierHome extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableCart1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 560, 520));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 590, 530));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -274,12 +279,12 @@ public class SupplierHome extends javax.swing.JPanel {
         textTotal.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         textTotal.setMinimumSize(new java.awt.Dimension(64, 64));
 
-        btnSearch2.setBackground(new java.awt.Color(204, 204, 204));
-        btnSearch2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnSearch2.setText("PAY NOW");
-        btnSearch2.addActionListener(new java.awt.event.ActionListener() {
+        btnPay.setBackground(new java.awt.Color(204, 204, 204));
+        btnPay.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnPay.setText("PAY NOW");
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch2ActionPerformed(evt);
+                btnPayActionPerformed(evt);
             }
         });
 
@@ -288,11 +293,11 @@ public class SupplierHome extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Crop Id", "Crop Name", "Price", "Quantity", "Action"
+                "Crop Id", "Crop Name", "Seller", "Price", "Quantity", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, true, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -309,21 +314,19 @@ public class SupplierHome extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(textTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +346,7 @@ public class SupplierHome extends javax.swing.JPanel {
                         .addGap(2, 2, 2)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -382,7 +385,7 @@ public class SupplierHome extends javax.swing.JPanel {
                     .addComponent(card4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -394,12 +397,28 @@ public class SupplierHome extends javax.swing.JPanel {
         user.setVisible(true);
     }//GEN-LAST:event_card1MouseClicked
 
-    private void btnSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch2ActionPerformed
-
-    }//GEN-LAST:event_btnSearch2ActionPerformed
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
+        oi = new OrderImpl();
+        order = new Order();
+        DefaultTableModel model2 = (DefaultTableModel) tableYourCart1.getModel();;
+        if (showMessage("Purchase your order?")) {
+            for (int i = 0; i < tableYourCart1.getRowCount(); i++) {
+                order.setSellerId(Integer.parseInt(model2.getValueAt(i, 0).toString()));
+                order.setProductName(model2.getValueAt(i, 1).toString());
+                order.setSellerName(model2.getValueAt(i, 2).toString());
+                order.setUnitPrice(Double.parseDouble(model2.getValueAt(i, 3).toString()));
+                order.setQuantity(Integer.parseInt(model2.getValueAt(i, 4).toString()));
+                oi.addOrder(order, users);
+            }
+            System.out.println(users.getId());
+            oi.deleteCart(users);
+        } else {
+            return;
+        }
+    }//GEN-LAST:event_btnPayActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSearch2;
+    private javax.swing.JButton btnPay;
     private com.raven.component.Card card1;
     private com.raven.component.Card card2;
     private com.raven.component.Card card3;
