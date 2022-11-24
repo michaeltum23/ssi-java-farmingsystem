@@ -5,7 +5,9 @@
 package farmingsystem.model;
 
 import com.raven.swing.table.EventActionAdvertisement;
+import com.raven.swing.table.EventActionFarmerAdvertisement;
 import com.raven.swing.table.ModelActionAdvertisement;
+import com.raven.swing.table.ModelActionFarmerAdvertisement;
 
 /**
  *
@@ -55,7 +57,18 @@ public class Advertisement {
         return new Object[]{id,cropName,quantityNeeded, date, status,new ModelActionAdvertisement(this, event)};
     }
     
-
+    public Advertisement(int id,String fullName,String cropName, double quantityNeeded, String date){
+        this.id=id;
+        this.fullName=fullName;
+        this.cropName = cropName;
+        this.quantityNeeded = quantityNeeded;
+        this.date = date;
+    }
+    
+    
+    public Object[] toRowTable1(EventActionFarmerAdvertisement event) {
+        return new Object[]{id,fullName,cropName,quantityNeeded, date,new ModelActionFarmerAdvertisement(this, event)};
+    }
     public int getId() {
         return id;
     }
