@@ -6,6 +6,7 @@ package com.raven.form;
 
 import farmingsystem.controller.FarmingTipsImpl;
 import farmingsystem.model.FarmingTips;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -186,10 +187,9 @@ public class AddFarmingTips extends javax.swing.JFrame {
         FarmingTips tip = new FarmingTips ();
         String title = textTitle.getText();
         String content = textContent.getText();
-
+        JTextArea ta = new JTextArea(content);
         tip.setTitle(title);
         tip.setContent(content);
-        
         FarmingTipsImpl cs = new FarmingTipsImpl();
         cs.addTips(tip);
         this.dispose();
