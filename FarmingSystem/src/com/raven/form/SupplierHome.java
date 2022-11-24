@@ -6,15 +6,17 @@ import com.raven.model.ModelCard;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
 import com.raven.swing.icon.IconFontSwing;
 import com.raven.swing.table.EventActionCart;
-import com.raven.swing.table.TableCart;
 import farmingsystem.controller.CropsImpl;
+import farmingsystem.controller.OrderImpl;
 import farmingsystem.controller.UserImp;
 import farmingsystem.model.Crops;
+import farmingsystem.model.Order;
 import farmingsystem.model.User;
 import farmingsystem.view.UpdateUser;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
+import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -28,30 +30,36 @@ import javax.swing.table.TableModel;
 public class SupplierHome extends javax.swing.JPanel {
 
     private User users;
+    private Order order;
+    private OrderImpl oi;
 
     public SupplierHome(User user) {
         this.users = user;
         initComponents();
         tableCart1.fixTable(jScrollPane1);
+        table2.fixTable(jScrollPane1);
 //        lblFullName.setText(user.getFirstName() + " " + user.getLastName());
         setOpaque(false);
         initData();
+        table2.removeColumn(table2.getColumnModel().getColumn(0));
+        getSum();
     }
+
     private void initData() {
         initCardData();
         initTableData();
     }
+
     public void getSum() {
         int sum = 0;
-	int init = 0;
+        int init = 0;
 
         if (table2.getRowCount() == 0) {
             textTotal.setText(init + "");
-        }    
+        }
         for (int i = 0; i < table2.getRowCount(); i++) {
-            sum+=Double.parseDouble(table2.getValueAt(i, 3)+"");
-            textTotal.setText(sum +".00");
-        
+            sum += Double.parseDouble(table2.getValueAt(i, 1) + "");
+            textTotal.setText(sum + ".00");
         }
     }
 
@@ -59,24 +67,24 @@ public class SupplierHome extends javax.swing.JPanel {
         EventActionCart eventAction = new EventActionCart() {
             @Override
             public void update(Crops crops) {
-                if (showMessage("Add to your cart?" )) {
+                if (showMessage("Add to your cart?")) {
                     TableModel model1 = tableCart1.getModel();
-
                     int[] getSelectedRows = tableCart1.getSelectedRows();
-
                     Object[] row = new Object[5];
-
                     DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
-
                     for (int i = 0; i < getSelectedRows.length; i++) {
-                        row[0] = model1.getValueAt(getSelectedRows[i], 1);
-
-                        row[1] = model1.getValueAt(getSelectedRows[i], 3);
-
-                        row[2] = 1;
-
+                        row[0] = model1.getValueAt(getSelectedRows[i], 0);
+                        row[1] = model1.getValueAt(getSelectedRows[i], 1);
+                        row[2] = model1.getValueAt(getSelectedRows[i], 3);
+                        row[3] = 1;
+                        order = new Order();
+                        order.setSellerId((int) row[0]);
+                        order.setProductName(String.valueOf(row[1]));
+                        order.setUnitPrice((double) row[2]);
+                        order.setQuantity((int) row[3]);
                         model2.addRow(row);
-
+                        oi = new OrderImpl();
+                        oi.addCart(order, users);
                     }
                     getSum();
                 } else {
@@ -84,6 +92,17 @@ public class SupplierHome extends javax.swing.JPanel {
                 }
             }
         };
+
+        OrderImpl cartAt = new OrderImpl();
+        List<Order> listCart = cartAt.listCart(users);
+        for (Order order : listCart) {
+            int id = order.getOrderId();
+            String cropName = order.getProductName();
+            double price = order.getUnitPrice();
+            double quantity = order.getQuantity();
+            table2.addRow(new Object[]{id, cropName, price, quantity});
+        }
+
         CropsImpl crops = new CropsImpl();
         List<Crops> list = crops.list();
         tableCart1.getColumn("Image").setPreferredWidth(60);
@@ -100,10 +119,11 @@ public class SupplierHome extends javax.swing.JPanel {
             JLabel lbl = new JLabel();
             lbl.setIcon(userImage);
 //            table1.addRow(new Object[]{cropName, farmerName, price, quantity, lbl});
-            tableCart1.addRow(new Crops(cropId,cropName, farmerName, price, quantity, lbl).toRowTable(eventAction));
+            tableCart1.addRow(new Crops(cropId, cropName, farmerName, price, quantity, lbl).toRowTable(eventAction));
 
         }
         //  table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
+
     }
 
     class myTableCellRenderer implements TableCellRenderer {
@@ -220,11 +240,11 @@ public class SupplierHome extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Crop Name", "Price", "Quantity", "Action"
+                "id", "Crop Name", "Price", "Quantity", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -350,12 +370,10 @@ public class SupplierHome extends javax.swing.JPanel {
     }//GEN-LAST:event_card1MouseClicked
 
     private void btnSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch2ActionPerformed
-        
+
     }//GEN-LAST:event_btnSearch2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSearch1;
     private javax.swing.JButton btnSearch2;
     private com.raven.component.Card card1;
     private com.raven.component.Card card2;

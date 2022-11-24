@@ -10,6 +10,9 @@ package farmingsystem.model;
  */
 import java.io.File;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Vector;
+import javax.swing.table.TableModel;
 
 public class Order {
 
@@ -30,9 +33,18 @@ public class Order {
     private String dateReceived;
     private int rating;
     private String status;
-
+    
     public Order() {
     }
+
+    public Order(int orderId, int sellerId, String productName, double quantity, double unitPrice) {
+        this.orderId = orderId;
+        this.sellerId = sellerId;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
+   
 
     public Order(int sellerId, int userId, String userName, InputStream orderImage, File file, byte[] cropImageData, String productName, double quantity, double unitPrice, String transacDate, boolean paid, String dateShipped, String dateArrived, String dateReceived, int rating, String status) {
         this.sellerId = sellerId;

@@ -50,8 +50,8 @@ public class Crops {
 
     }
 
-    public Crops(int id,String cropName, String fullName, double price, double quantity, JLabel toImage) {
-        this.id=id;
+    public Crops(int id, String cropName, String fullName, double price, double quantity, JLabel toImage) {
+        this.id = id;
         this.cropName = cropName;
         this.price = price;
         this.quantity = quantity;
