@@ -16,15 +16,16 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
     public FarmerAdvertisement(User user) {
         initComponents();
         this.user = user;
-        tableFarmerAdvertisement1.fixTable(jScrollPane3);
-        table2.fixTable(jScrollPane2);
+        tableFarmerAdvertisement12.fixTable(jScrollPane3);
+        table21.fixTable(jScrollPane2);
         jPanel2.add(jScrollPane3);
         jPanel1.add(jScrollPane2);
         setOpaque(false);
         initData();
-        tableFarmerAdvertisement1.removeColumn(tableFarmerAdvertisement1.getColumnModel().getColumn(0));
+        tableFarmerAdvertisement12.removeColumn(tableFarmerAdvertisement12.getColumnModel().getColumn(0));
     }
 
+    
     private void initData() {
         initTableData();
         
@@ -65,9 +66,9 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
             String date = advertisement.getDate();
             String status=advertisement.getStatus();
             if("Pending Transaction".equals(advertisement.getStatus())){
-                tableFarmerAdvertisement1.addRow(new Advertisement(sid,userName,cropname,quantityNeeded,date).toRowTable1(eventAction));
+                tableFarmerAdvertisement12.addRow(new Advertisement(sid,userName,cropname,quantityNeeded,date).toRowTable1(eventAction));
             }else if("Pending Offer".equals(advertisement.getStatus())){
-                tableFarmerAdvertisement1.addRow(new Advertisement(sid,userName,cropname,quantityNeeded,date).toRowTable1(eventAction));
+                tableFarmerAdvertisement12.addRow(new Advertisement(sid,userName,cropname,quantityNeeded,date).toRowTable1(eventAction));
             }
         }
         
@@ -75,7 +76,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         OfferImpl offer = new OfferImpl();
         System.out.println(user.getId());
         List<Offer> listOffer = offer.searchByUserID(user.getId());
-        DefaultTableModel DFT = (DefaultTableModel) table2.getModel();
+        DefaultTableModel DFT = (DefaultTableModel) table21.getModel();
         DFT.setRowCount(0);
         for (Offer off : listOffer) {
             String cropname = off.getCropName();
@@ -101,11 +102,11 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table2 = new com.raven.swing.table.Table();
+        table21 = new com.raven.swing.table.Table();
         jPanel2 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tableFarmerAdvertisement1 = new com.raven.swing.table.TableFarmerAdvertisement();
+        tableFarmerAdvertisement12 = new com.raven.swing.table.TableFarmerAdvertisement();
         test = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -119,7 +120,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         jLabel2.setText("Advertisement you offered");
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
-        table2.setModel(new javax.swing.table.DefaultTableModel(
+        table21.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -135,10 +136,10 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(table2);
-        if (table2.getColumnModel().getColumnCount() > 0) {
-            table2.getColumnModel().getColumn(0).setPreferredWidth(-50);
-            table2.getColumnModel().getColumn(1).setPreferredWidth(-20);
+        jScrollPane2.setViewportView(table21);
+        if (table21.getColumnModel().getColumnCount() > 0) {
+            table21.getColumnModel().getColumn(0).setPreferredWidth(-50);
+            table21.getColumnModel().getColumn(1).setPreferredWidth(-20);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -175,7 +176,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         title.setText("List of Advertisement");
         title.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
-        tableFarmerAdvertisement1.setModel(new javax.swing.table.DefaultTableModel(
+        tableFarmerAdvertisement12.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -191,7 +192,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tableFarmerAdvertisement1);
+        jScrollPane3.setViewportView(tableFarmerAdvertisement12);
 
         test.setText("jLabel3");
 
@@ -258,8 +259,8 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private com.raven.swing.table.Table table2;
-    private com.raven.swing.table.TableFarmerAdvertisement tableFarmerAdvertisement1;
+    private com.raven.swing.table.Table table21;
+    private com.raven.swing.table.TableFarmerAdvertisement tableFarmerAdvertisement12;
     private javax.swing.JLabel test;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
