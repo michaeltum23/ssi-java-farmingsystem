@@ -18,6 +18,7 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
     
     private User user;
     
+    
     public SupplierAdvertisement(User user) {
         initComponents();
         this.user = user;
@@ -105,6 +106,7 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         filterBtn = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableAdvertisement1 = new com.raven.swing.table.TableAdvertisement();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
@@ -217,6 +219,8 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tableAdvertisement1);
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -228,7 +232,9 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddAds)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(60, 60, 60)
                         .addComponent(filterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -244,7 +250,9 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(btnAddAds, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(filterBtn))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(filterBtn)
+                        .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3)
                 .addContainerGap())
@@ -402,6 +410,7 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
     private javax.swing.JButton btnAddAds;
     public javax.swing.JComboBox<String> filterBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

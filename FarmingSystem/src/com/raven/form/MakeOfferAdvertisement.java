@@ -5,23 +5,27 @@
 package com.raven.form;
 
 import farmingsystem.controller.AdvertisementImpl;
+import farmingsystem.controller.OfferImpl;
 import farmingsystem.model.Advertisement;
+import farmingsystem.model.Offer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
  *
  * @author jtamayo
  */
-public class UpdateAdvertisement extends javax.swing.JFrame {
+public class MakeOfferAdvertisement extends javax.swing.JFrame {
     /**
      * Creates new form SupplierDetails
      */
     
-    public UpdateAdvertisement() {
+    public MakeOfferAdvertisement() {
         initComponents();
         this.setLocationRelativeTo(null);
         userId.setVisible(false);
-        cropID.setVisible(false);
+        adsID.setVisible(false);
     }
 
     /**
@@ -34,7 +38,6 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGender = new javax.swing.ButtonGroup();
-        dateChooser1 = new com.raven.datechooser.DateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -43,13 +46,12 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         DateNeeded = new com.raven.swing.MyTextField();
         cancelButton = new javax.swing.JButton();
-        postButton = new javax.swing.JButton();
+        offerButton = new javax.swing.JButton();
         userId = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        cropID = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-
-        dateChooser1.setTextRefernce(DateNeeded);
+        adsID = new javax.swing.JLabel();
+        priceOffer = new com.raven.swing.MyTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(59, 122, 87));
@@ -66,6 +68,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(17, 129, 70));
         jLabel4.setText("QuantityNeeded:");
 
+        textCropName.setEditable(false);
         textCropName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         textCropName.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
         textCropName.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +77,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
             }
         });
 
+        QuantityNeeded.setEditable(false);
         QuantityNeeded.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         QuantityNeeded.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
         QuantityNeeded.addActionListener(new java.awt.event.ActionListener() {
@@ -106,27 +110,37 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
             }
         });
 
-        postButton.setBackground(new java.awt.Color(17, 129, 70));
-        postButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        postButton.setForeground(new java.awt.Color(255, 255, 255));
-        postButton.setText("Update");
-        postButton.setBorder(null);
-        postButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        postButton.addActionListener(new java.awt.event.ActionListener() {
+        offerButton.setBackground(new java.awt.Color(17, 129, 70));
+        offerButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        offerButton.setForeground(new java.awt.Color(255, 255, 255));
+        offerButton.setText("Offer");
+        offerButton.setBorder(null);
+        offerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        offerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                postButtonActionPerformed(evt);
+                offerButtonActionPerformed(evt);
             }
         });
 
-        userId.setText("UserID");
+        userId.setText("FarmerID");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(17, 129, 70));
-        jLabel18.setText("Post Addvertisement");
+        jLabel18.setText("Offer Advertisement");
 
-        cropID.setText("CropID");
+        adsID.setText("AdsID");
 
-        jLabel1.setText("jLabel1");
+        priceOffer.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
+        priceOffer.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        priceOffer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceOfferActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(17, 129, 70));
+        jLabel7.setText("Price Offer:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,64 +150,66 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cropID)
-                        .addGap(103, 103, 103)
-                        .addComponent(postButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                            .addComponent(textCropName, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(textCropName, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(userId))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel6)))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(DateNeeded, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                                .addComponent(QuantityNeeded, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(66, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addGap(140, 140, 140))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(offerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(DateNeeded, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                                        .addComponent(QuantityNeeded, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(priceOffer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap(80, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(userId)
+                            .addComponent(adsID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(140, 140, 140))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(textCropName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(QuantityNeeded, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(DateNeeded, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(userId)
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(postButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cropID)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(userId)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(adsID))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(textCropName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QuantityNeeded, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(DateNeeded, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priceOffer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(offerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,23 +242,39 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void postButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postButtonActionPerformed
-       Advertisement ads = new Advertisement();
-       int cropId = Integer.parseInt(cropID.getText());
-       String cropName= textCropName.getText();
-       double quantity_needed = Double.parseDouble(QuantityNeeded.getText());
-       String dateneeded = DateNeeded.getText();
+    private void offerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offerButtonActionPerformed
+        Offer offer = new Offer();
+        Advertisement ads = new Advertisement();
         
-        ads.setId(cropId);
-        ads.setCropName(cropName);
-        ads.setQuantityNeeded(quantity_needed);
-        ads.setDate(dateneeded);
+        int userID = Integer.parseInt(userId.getText());
+        int advertisementId = Integer.parseInt(adsID.getText());
+        double offer_price = Double.parseDouble(priceOffer.getText());
+
+        offer.setAdvertisementID(advertisementId);
+        offer.setUserId(userID);
+        offer.setPriceOffer(offer_price);
         
-        AdvertisementImpl advertisement = new AdvertisementImpl();
-        advertisement.update(ads);
-        this.dispose();
+        ads.setStatus("Pending Transaction");
+        ads.setId(advertisementId);
         
-    }//GEN-LAST:event_postButtonActionPerformed
+        OfferImpl offerImpl = new OfferImpl();
+        try {
+            if(offerImpl.validateOfferuser(userID,advertisementId)){               
+                offerImpl.updateuserOffer(offer,ads);    
+                this.dispose();
+            }else{
+                offerImpl.addOffer(offer,ads);
+                this.dispose();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MakeOfferAdvertisement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_offerButtonActionPerformed
+
+    private void priceOfferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceOfferActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceOfferActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,14 +293,22 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MakeOfferAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MakeOfferAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MakeOfferAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MakeOfferAdvertisement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -281,7 +321,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateAdvertisement().setVisible(true);
+                new MakeOfferAdvertisement().setVisible(true);
             }
         });
     }
@@ -289,17 +329,17 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public com.raven.swing.MyTextField DateNeeded;
     public com.raven.swing.MyTextField QuantityNeeded;
+    public javax.swing.JLabel adsID;
     public javax.swing.ButtonGroup buttonGender;
     private javax.swing.JButton cancelButton;
-    public javax.swing.JLabel cropID;
-    private com.raven.datechooser.DateChooser dateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton postButton;
+    private javax.swing.JButton offerButton;
+    public com.raven.swing.MyTextField priceOffer;
     public com.raven.swing.MyTextField textCropName;
     public javax.swing.JLabel userId;
     // End of variables declaration//GEN-END:variables
