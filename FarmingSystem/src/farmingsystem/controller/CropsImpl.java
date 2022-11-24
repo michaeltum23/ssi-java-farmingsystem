@@ -23,7 +23,7 @@ public class CropsImpl implements CropsController{
     public void addCrops(Crops crops) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO crops(user_id,crop_name, crop_image, price, quantity) VALUES(?,?,?,?,?)";
+            String sql = "INSERT INTO crops(user_id,crop_name,crop_image, price, quantity) VALUES(?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, crops.getUserID());
             pst.setString(2, crops.getCropName());
