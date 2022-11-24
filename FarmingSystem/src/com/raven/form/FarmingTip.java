@@ -69,13 +69,13 @@ public class FarmingTip extends javax.swing.JPanel {
             int id = tip.getId();
             String title = tip.getTitle();
             String content = tip.getContent();
-            JTextArea ta = new JTextArea(content);
+            JTextArea ta = new JTextArea();
             ta.append(content);
             ta.setWrapStyleWord(true);
             ta.setLineWrap(true);
             JScrollPane msgScroller = new JScrollPane();
             msgScroller.setBorder(
-                    BorderFactory.createTitledBorder("Messages"));
+                    BorderFactory.createTitledBorder("Details"));
             msgScroller.setViewportView(ta);
             table11.addRow(new FarmingTips(id, title, ta).toRowTable(eventAction));
         }
