@@ -38,8 +38,7 @@ public class SupplierHome extends javax.swing.JPanel {
         this.users = user;
         initComponents();
         tableCart1.fixTable(jScrollPane1);
-        tableYourCart1.fixTable(jScrollPane1);
-//        lblFullName.setText(user.getFirstName() + " " + user.getLastName());
+        tableYourCart1.fixTable(jScrollPane3);
         setOpaque(false);
         initData();
         tableYourCart1.removeColumn(tableYourCart1.getColumnModel().getColumn(0));
