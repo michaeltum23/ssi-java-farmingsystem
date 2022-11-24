@@ -81,7 +81,7 @@ public class SupplierModule extends javax.swing.JFrame {
 
                 if (menuIndex == 3) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Course());
+                        main.showForm(new SupplierComplain());
                     }
                 }
 
