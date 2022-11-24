@@ -121,6 +121,23 @@ public class FarmingTipsImpl implements FarmingtipsController {
         }
        return list;
     }
+    
+    private int count;
+    public int countTips() {
+        try {
+                Connection con = FarmingConnection.getConnection();
+                String sql = "SELECT COUNT(id) as count_tips FROM tips";
+                PreparedStatement pst = con.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt("count_tips");
+                    System.out.print(count);
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+         return count;
+   }
 
     
 }
