@@ -20,7 +20,11 @@ import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
 import com.raven.form.AdminSupplier;
+
 import com.raven.form.FarmerCropsCrud;
+
+import com.raven.form.FarmerComplaints;
+
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -93,13 +97,17 @@ public class FarmerModule extends javax.swing.JFrame {
 
                 if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
+
                         main.showForm(new FarmerCropsCrud(user));
+
+              //          main.showForm(new FarmingTips());
+
                     }
                 }
 
                 if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new FarmingTip());
+                        main.showForm(new FarmerComplaints());
                     }
                 }
 

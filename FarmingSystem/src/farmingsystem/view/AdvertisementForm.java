@@ -6,6 +6,7 @@ package farmingsystem.view;
 
 import farmingsystem.controller.AdvertisementImpl;
 import farmingsystem.model.Advertisement;
+import farmingsystem.model.User;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author jtamayo
  */
 public class AdvertisementForm extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form AdvertisementForm
      */
@@ -225,7 +226,7 @@ public class AdvertisementForm extends javax.swing.JFrame {
         String dateneeded = textdateneeded.getText();
         
         
-        int userId = 102;
+        int userId = 212;
         ads.setUserID(userId);
         
         ads.setCropName(cropName);

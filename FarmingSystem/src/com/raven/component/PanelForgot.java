@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.raven.component;
 
-import com.raven.main.ForgotForm;
 import com.raven.model.ModelLogin;
 import com.raven.swing.Button;
 import com.raven.swing.MyPasswordField;
 import com.raven.swing.MyTextField;
-import farmingsystem.controller.UserImp;
 import farmingsystem.model.User;
-import farmingsystem.view.LoginForm;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -27,7 +21,7 @@ import net.miginfocom.swing.MigLayout;
  *
  * @author MTUMANGAN
  */
-public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
+public class PanelForgot extends javax.swing.JLayeredPane {
 
     private User user;
     private ModelLogin dataLogin;
@@ -40,7 +34,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         return user;
     }
 
-    public PanelLoginAndRegister(ActionListener eventRegister, ActionListener eventLogin) {
+    public PanelForgot(ActionListener eventRegister, ActionListener eventLogin,  ActionListener eventForgot) {
         initComponents();
         initRegister(eventRegister);
         initLogin(eventLogin);
@@ -50,7 +44,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
     private void initRegister(ActionListener eventRegister) {
         register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]10[]10[]25[]push"));
-        JLabel label = new JLabel("Create Account");
+        JLabel label = new JLabel("Input Your Email Address");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(7, 164, 121));
         register.add(label);
@@ -80,7 +74,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.setForeground(new Color(250, 250, 250));
         cmd.setFont(new Font("sansserif", 1, 18));
         cmd.addActionListener(eventRegister);
-        cmd.setText("SIGN UP");
+        cmd.setText("Send OTP");
         register.add(cmd, "w 40%, h 40");
         cmd.addActionListener(new ActionListener() {
             @Override
@@ -112,35 +106,20 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/pass.png")));
         txtPass.setHint("Password");
         login.add(txtPass, "w 60%");
-        JButton cmdForget = new JButton("Forgot your password ?");
-        cmdForget.setForeground(new Color(100, 100, 100));
-        cmdForget.setFont(new Font("sansserif", 1, 12));
-        cmdForget.setContentAreaFilled(false);
-        cmdForget.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        login.add(cmdForget);
-
-        cmdForget.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Forgot Passs");
-
-              setVisible(false); 
-              ForgotForm ff =  new ForgotForm();
-              ff.setVisible(true);
-              ff.setLocationRelativeTo(null);
-              LoginForm lf = new LoginForm();
-              lf.dispose();
-
-            }
-        });
-
+        
+//        JButton cmdForget = new JButton("Forgot your password ?");
+//        cmdForget.setForeground(new Color(100, 100, 100));
+//        cmdForget.setFont(new Font("sansserif", 1, 12));
+//        cmdForget.setContentAreaFilled(false);
+//        cmdForget.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//        login.add(cmdForget);
+        
         Button cmd = new Button();
         cmd.setBackground(new Color(7, 164, 121));
         cmd.setForeground(new Color(250, 250, 250));
         cmd.setFont(new Font("sansserif", 1, 18));
         cmd.addActionListener(eventLogin);
         cmd.setText("SIGN IN");
-
         login.add(cmd, "w 40%, h 40");
         cmd.addActionListener(new ActionListener() {
             @Override
