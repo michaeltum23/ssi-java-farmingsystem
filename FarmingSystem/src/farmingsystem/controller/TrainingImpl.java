@@ -134,5 +134,21 @@ public class TrainingImpl implements TrainingController{
         return list;
     
     }
+     private int count;
+    public int countTraining() {
+        try {
+                Connection con = FarmingConnection.getConnection();
+                String sql = "SELECT COUNT(id) as count_training FROM training";
+                PreparedStatement pst = con.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt("count_training");
+                    System.out.print(count);
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+         return count;
+   }
     
 }
