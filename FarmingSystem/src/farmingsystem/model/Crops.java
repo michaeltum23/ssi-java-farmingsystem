@@ -36,8 +36,8 @@ public class Crops {
 
     }
 
-    public Crops(int id,String cropName, String fullName, double price, double quantity, JLabel toImage) {
-        this.id=id;
+    public Crops(int id, String cropName, String fullName, double price, double quantity, JLabel toImage) {
+        this.id = id;
         this.cropName = cropName;
         this.price = price;
         this.quantity = quantity;
@@ -125,8 +125,8 @@ public class Crops {
     }
 
     public Object[] toRowTable(EventActionCart event) {
-        DecimalFormat df = new DecimalFormat("$#,##0.00");
-        return new Object[]{id,cropName, fullName, df.format(price), quantity, toImage, new ModelActionCart(this, event)};
+//        DecimalFormat df = new DecimalFormat("$#,##0.00");
+        return new Object[]{id, cropName, fullName, price, quantity, toImage, new ModelActionCart(this, event)};
     }
 
 }
