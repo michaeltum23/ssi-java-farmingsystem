@@ -6,21 +6,21 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
-public class TableCellActionCart extends DefaultCellEditor {
+public class TableCellActionYourCart extends DefaultCellEditor {
 
-    private ModelActionCart data;
-
-    public TableCellActionCart() {
+    private ModelActionYourCart data;
+   
+    public TableCellActionYourCart() {
         super(new JCheckBox());
     }
     @Override
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
-        data = (ModelActionCart) o;
-        ActionCart cell = new ActionCart(data);
+        data = (ModelActionYourCart) o;
+        ActionYourCart cell = new ActionYourCart(data);
         cell.setBackground(new Color(239, 244, 255));
         return cell;
     }
-
+    
     //  This method to pass data to cell render when focus lose in cell
     @Override
     public Object getCellEditorValue() {

@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 public class ActionCart extends javax.swing.JPanel {
-
     public ActionCart(ModelActionCart data) {
         initComponents();
         cmdEdit.addActionListener(new ActionListener() {
@@ -16,14 +14,12 @@ public class ActionCart extends javax.swing.JPanel {
             }
         });
     }
-
     @Override
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
         grphcs.setColor(new Color(230, 230, 230));
         grphcs.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

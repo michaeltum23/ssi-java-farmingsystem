@@ -12,8 +12,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 
-public class TableCart extends JTable {
-    public TableCart() {
+public class TableYourCart extends JTable {
+    public TableYourCart() {
         setShowHorizontalLines(true);
         setGridColor(new Color(230, 230, 230));
         setRowHeight(40);
@@ -40,9 +40,10 @@ public class TableCart extends JTable {
                         cell.setBackground(Color.WHITE);
                     }
                     return cell;
-                } else if (o instanceof ModelActionCart) {
-                    ModelActionCart data = (ModelActionCart) o;
-                    ActionCart cell = new ActionCart(data);
+
+                } else if (o instanceof ModelActionYourCart) {
+                    ModelActionYourCart data = (ModelActionYourCart) o;
+                    ActionYourCart cell = new ActionYourCart(data);
                     if (selected) {
                         cell.setBackground(new Color(239, 244, 255));
                     } else {
@@ -66,8 +67,8 @@ public class TableCart extends JTable {
     }
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 6) {
-            return new TableCellActionCart();
+        if (col == 3) {
+            return new TableCellActionYourCart();
         } else {
             return super.getCellEditor(row, col);
         }
