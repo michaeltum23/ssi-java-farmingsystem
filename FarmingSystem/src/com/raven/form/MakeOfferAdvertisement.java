@@ -23,8 +23,8 @@ public class MakeOfferAdvertisement extends javax.swing.JFrame {
     public MakeOfferAdvertisement() {
         initComponents();
         this.setLocationRelativeTo(null);
-//        userId.setVisible(false);
-//        cropID.setVisible(false);
+        userId.setVisible(false);
+        adsID.setVisible(false);
     }
 
     /**
