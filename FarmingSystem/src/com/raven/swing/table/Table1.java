@@ -69,7 +69,7 @@ public class Table1 extends JTable {
 
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 3) {
+        if (col == 2) {
             return new TableCellAction1();
         } else {
             return super.getCellEditor(row, col);

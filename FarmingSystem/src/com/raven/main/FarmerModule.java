@@ -97,11 +97,8 @@ public class FarmerModule extends javax.swing.JFrame {
 
                 if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
-
                         main.showForm(new FarmerCropsCrud(user));
-
               //          main.showForm(new FarmingTips());
-
                     }
                 }
 
