@@ -6,37 +6,35 @@ package farmingsystem.model;
 
 import com.raven.swing.table.EventActionUser1;
 import com.raven.swing.table.ModelActionUser1;
-import javax.swing.JTextArea;
 
 /**
  *
  * @author RPAGUIO
  */
 public class FarmingTips {
-
     private int id;
     private String title;
     private String content;
-    private JTextArea ta;
 
     public FarmingTips() {
-
+        
     }
 
-    public FarmingTips(int id, String title, JTextArea ta) {
+    public FarmingTips(int id, String title, String content) {
         this.id = id;
         this.title = title;
-        this.ta = ta;
+        this.content = content;
     }
-
+    
     public Object[] toRowTable(EventActionUser1 event) {
-        return new Object[]{id, title, ta, new ModelActionUser1(this, event)};
+        return new Object[]{id,title,content,new ModelActionUser1(this, event)};
     }
 
     public FarmingTips(String title, String content) {
         this.title = title;
         this.content = content;
     }
+    
 
     public int getId() {
         return id;
@@ -61,5 +59,5 @@ public class FarmingTips {
     public void setContent(String content) {
         this.content = content;
     }
-
+    
 }

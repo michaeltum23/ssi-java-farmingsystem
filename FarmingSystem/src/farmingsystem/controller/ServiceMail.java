@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
 public class ServiceMail {
      public ModelMessage sendMain(String toEmail, String code) {
         ModelMessage ms = new ModelMessage(false, "");
-        String from = "ssi.java.onlinefarming@gmail.com";
+        String from = "tester100.assistance@gmail.com";
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");     
@@ -28,8 +28,8 @@ public class ServiceMail {
         prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
-        String username = "ssi.java.onlinefarming@gmail.com"; // P@5sw0rdSSIJAVA
-        String password = "rutftoyisbppnjlx";    //  Your email password here
+        String username = "tester100.assistance@gmail.com"; // P@5sW0rd
+        String password = "rtlajyosxpxxjmgt";    //  Your email password here
         Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {

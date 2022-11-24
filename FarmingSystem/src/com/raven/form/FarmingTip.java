@@ -5,13 +5,10 @@ import com.raven.main.Main;
 import com.raven.swing.table.EventActionUser1;
 import farmingsystem.controller.FarmingTipsImpl;
 import farmingsystem.model.FarmingTips;
-import java.awt.Component;
+
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.table.TableCellRenderer;
+
+
 
 public class FarmingTip extends javax.swing.JPanel {
 
@@ -25,12 +22,12 @@ public class FarmingTip extends javax.swing.JPanel {
     }
 
     private void initData() {
-
+        
         initTableData();
     }
-
-    private void initTableData() {
-        EventActionUser1 eventAction = new EventActionUser1() {
+    
+   private void initTableData() {
+         EventActionUser1 eventAction = new EventActionUser1() {
             @Override
             public void delete(FarmingTips tips) {
                 if (showMessage("Delete Tip")) {
@@ -44,19 +41,19 @@ public class FarmingTip extends javax.swing.JPanel {
 
             @Override
             public void update(FarmingTips tips) {
-                if (showMessage("Update Tip")) {
+                if (showMessage("Update Tip" )) {
                     UpdateFarmingTips update = new UpdateFarmingTips();
                     update.setVisible(true);
                     update.pack();
-
-                    FarmingTipsImpl tip = new FarmingTipsImpl();
-
-                    FarmingTips u = tip.get(tips.getId());
-
+                    
+                    FarmingTipsImpl tip =new FarmingTipsImpl();
+                    
+                    FarmingTips u= tip.get(tips.getId());
+                    
                     update.jLabel1.setText(String.valueOf(u.getId()));
                     update.textTitle.setText(String.valueOf(u.getTitle()));
                     update.textContent.setText(String.valueOf(u.getContent()));
-
+                    
                 } else {
                     System.out.println("User click Cancel");
                 }
@@ -64,52 +61,31 @@ public class FarmingTip extends javax.swing.JPanel {
         };
         FarmingTipsImpl tips = new FarmingTipsImpl();
         List<FarmingTips> list = tips.list();
-        table11.getColumn("Content").setCellRenderer(new MyCellRenderer());
-        for (FarmingTips tip : list) {
+        
+
+        for(FarmingTips tip: list)
+        {
             int id = tip.getId();
             String title = tip.getTitle();
             String content = tip.getContent();
-            JTextArea ta = new JTextArea();
-            ta.append(content);
-            ta.setWrapStyleWord(true);
-            ta.setLineWrap(true);
-            JScrollPane msgScroller = new JScrollPane();
-            msgScroller.setBorder(
-                    BorderFactory.createTitledBorder("Details"));
-            msgScroller.setViewportView(ta);
-            table11.addRow(new FarmingTips(id, title, ta).toRowTable(eventAction));
-        }
+            
+            
+            table11.addRow(new FarmingTips(id,title,content).toRowTable(eventAction));
+        }    
+        
+ 
     }
+   
 
-    public class MyCellRenderer implements TableCellRenderer {
-//
-//        public MyCellRenderer() {
-//            setLineWrap(true);
-//            setWrapStyleWord(true);
-//        }
-
-        public Component getTableCellRendererComponent(JTable table,
-                Object value,
-                boolean isSelected,
-                boolean hasFocus,
-                int row,
-                int column) {
-//            setText(value);//or something in value, like value.getNote()...
-//            setSize(table.getColumnModel().getColumn(column).getWidth(),
-//                    getPreferredSize().height);
-//            if (table11.getRowHeight(row) != getPreferredSize().height) {
-//                table11.setRowHeight(60);
-//            }
-            table11.setRowHeight(120);
-            return (Component) value;
-        }
-    }
+    
 
     private boolean showMessage(String message) {
         Message obj = new Message(Main.getFrames()[0], true);
         obj.showMessage(message);
         return obj.isOk();
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -148,17 +124,7 @@ public class FarmingTip extends javax.swing.JPanel {
             new String [] {
                 "Id", "Title", "Content", "Action"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        table11.setOpaque(false);
-        table11.setShowVerticalLines(true);
+        ));
         jScrollPane2.setViewportView(table11);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
