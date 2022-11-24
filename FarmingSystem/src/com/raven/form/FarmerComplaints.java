@@ -24,7 +24,7 @@ public class FarmerComplaints extends javax.swing.JPanel {
     public FarmerComplaints() {
         
         initComponents();
-        table1.fixTable(jScrollPane1);
+//        table1.fixTable(jScrollPane1);
         LoadUserComplain();
         setOpaque(false);
         initData();
@@ -33,8 +33,8 @@ public class FarmerComplaints extends javax.swing.JPanel {
     {
         ComplainImpl complain = new ComplainImpl();
         List<Complain> list = complain.listUser();
-        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
-        DFT.setRowCount(0);
+//        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
+//        DFT.setRowCount(0);
         for(Complain complains: list)
         {
             String status = complains.getStatus();
@@ -47,7 +47,7 @@ public class FarmerComplaints extends javax.swing.JPanel {
 //            String dateResolve = complains.getDateResolved();
 //          
            
-            DFT.addRow(new Object[]{status,user,orderId,ticketNo,message});
+//            DFT.addRow(new Object[]{status,user,orderId,ticketNo,message});
         }
     }
 
@@ -133,8 +133,6 @@ public class FarmerComplaints extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new com.raven.swing.table.Table();
         jcStatus = new javax.swing.JComboBox<>();
 
         card1.setColorGradient(new java.awt.Color(211, 28, 215));
@@ -174,43 +172,6 @@ public class FarmerComplaints extends javax.swing.JPanel {
         jLabel5.setText("Farmer Complain List");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Status", "User", "Order", "Ticket No.", "Message"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(table1);
-        if (table1.getColumnModel().getColumnCount() > 0) {
-            table1.getColumnModel().getColumn(0).setMinWidth(100);
-            table1.getColumnModel().getColumn(0).setMaxWidth(100);
-            table1.getColumnModel().getColumn(1).setMinWidth(50);
-            table1.getColumnModel().getColumn(1).setMaxWidth(50);
-            table1.getColumnModel().getColumn(2).setMinWidth(50);
-            table1.getColumnModel().getColumn(2).setMaxWidth(50);
-            table1.getColumnModel().getColumn(3).setMinWidth(100);
-            table1.getColumnModel().getColumn(3).setMaxWidth(100);
-            table1.getColumnModel().getColumn(4).setMinWidth(500);
-            table1.getColumnModel().getColumn(4).setMaxWidth(800);
-        }
-
         jcStatus.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jcStatus.setForeground(new java.awt.Color(102, 102, 102));
         jcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Responded", "Resolved", "Failed" }));
@@ -226,17 +187,12 @@ public class FarmerComplaints extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(351, 351, 351))))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(351, 351, 351))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,9 +202,7 @@ public class FarmerComplaints extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(518, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -296,8 +250,8 @@ public class FarmerComplaints extends javax.swing.JPanel {
         String searchStatus = String.valueOf(jcStatus.getSelectedItem());
         ComplainImpl complainImpl = new ComplainImpl();
         List<Complain> list = complainImpl.searchComplainByStatus(searchStatus);
-        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
-        DFT.setRowCount(0);
+//        DefaultTableModel DFT = (DefaultTableModel) table1.getModel();
+//        DFT.setRowCount(0);
         for(Complain complains: list)
         {
             String status = complains.getStatus();
@@ -305,7 +259,7 @@ public class FarmerComplaints extends javax.swing.JPanel {
             int orderId = complains.getOrderId();
             String ticketNo = complains.getTicketNo();
             String message = complains.getMessage();
-            DFT.addRow(new Object[]{status,user,ticketNo,orderId,message});
+//            DFT.addRow(new Object[]{status,user,ticketNo,orderId,message});
         }    
          
     }//GEN-LAST:event_jcStatusActionPerformed
@@ -328,8 +282,6 @@ public class FarmerComplaints extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcStatus;
-    private com.raven.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables
 }

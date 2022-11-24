@@ -4,6 +4,7 @@
  */
 package farmingsystem.model;
 
+import com.raven.swing.table.EventActionFarmerAdvertisement;
 import com.raven.swing.table.EventActionOffer;
 import com.raven.swing.table.ModelActionOffer;
 
@@ -22,8 +23,18 @@ public class Offer {
     private int advertisementId; // fk
     private String cropName;
     // advertisementId
+    private String status;
     private double priceOffer; // double
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    
     public String getCropName() {
         return cropName;
     }
@@ -45,11 +56,25 @@ public class Offer {
         this.priceOffer = priceOffer;
     }
     
+    
+    
+    
     public Object[] toRowTable(EventActionOffer event) {
         return new Object[]{farmerName, priceOffer,new ModelActionOffer(this, event)};
     }
     public Offer(){
         //
+    }
+    
+    public Offer(String cropName, double priceOffer,String status) {
+        this.cropName = cropName;
+        this.priceOffer = priceOffer;
+        this.status = status;
+    }
+    
+    
+    public Object[] toRowTable1() {
+        return new Object[]{cropName, priceOffer,status};
     }
     // contructor and parameter
     public Offer(int userId, int advertisementId, double priceOffer) {
