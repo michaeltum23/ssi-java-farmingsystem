@@ -27,6 +27,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
 
     private void initData() {
         initTableData();
+        
     }
    
     private void initTableData() {

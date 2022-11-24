@@ -14,6 +14,7 @@ public class TableCellActionFarmerAdvertisement extends DefaultCellEditor {
         super(new JCheckBox());
     }
 
+    
     @Override
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
         data = (ModelActionFarmerAdvertisement) o;

@@ -16,6 +16,7 @@ public class ActionFarmerAdvertisement extends javax.swing.JPanel {
             }
         });
     }
+    
 
     @Override
     protected void paintComponent(Graphics grphcs) {

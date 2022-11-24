@@ -11,6 +11,7 @@ public class ModelActionFarmerAdvertisement {
     public void setAdvertisement(Advertisement advertisement) {
         this.advertisement = advertisement;
     }
+    
 
     public EventActionFarmerAdvertisement getEvent() {
         return event;

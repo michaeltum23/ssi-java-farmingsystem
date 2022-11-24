@@ -22,6 +22,7 @@ public class Advertisement {
     private String status;
 
     
+    
     private String fullName;
     
     public String getFullName() {
