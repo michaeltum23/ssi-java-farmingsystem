@@ -18,6 +18,7 @@ import com.raven.form.FarmingTip;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
 import com.raven.form.SupplierHome;
+import com.raven.form.SupplierMyProfile;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -96,21 +97,21 @@ public class SupplierModule extends javax.swing.JFrame {
 
                 if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new FarmingTip());
+                        main.showForm(new SupplierMyProfile());
                     }
                 }
 
-                if (menuIndex == 6) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Blogs());
-                    }
-                }
+//                if (menuIndex == 6) {
+//                    if (subMenuIndex == -1) {
+//                        main.showForm(new FarmingTip());
+//                    }
+//                }
 
-                if (menuIndex == 7) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Admin());
-                    }
-                }
+//                if (menuIndex == 7) {
+//                    if (subMenuIndex == -1) {
+//                        main.showForm(new Admin());
+//                    }
+//                }
                 
                 if (menuIndex == 9) {
                     if (subMenuIndex == -1) {

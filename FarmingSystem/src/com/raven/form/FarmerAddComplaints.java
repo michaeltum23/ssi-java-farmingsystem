@@ -110,12 +110,12 @@ public class FarmerAddComplaints extends javax.swing.JPanel {
     }
 
     private void initCardData() {
-        Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.REPORT_PROBLEM, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card1.setData(new ModelCard("Add Complain", 5100, 20, icon1));
-        Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.REPLY, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card2.setData(new ModelCard("Respond Complain", 2000, 60, icon2));
-        Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.EMAIL, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card3.setData(new ModelCard("Resolve Complain", 3000, 80, icon3));
+//        Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.REPORT_PROBLEM, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
+//        card1.setData(new ModelCard("Add Complain", 5100, 20, icon1));
+//        Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.REPLY, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
+//        card2.setData(new ModelCard("Respond Complain", 2000, 60, icon2));
+//        Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.EMAIL, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
+//        card3.setData(new ModelCard("Resolve Complain", 3000, 80, icon3));
 //        Icon icon4 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.BUSINESS_CENTER, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
 //        card4.setData(new ModelCard("Other Income", 550, 95, icon4));
     }
