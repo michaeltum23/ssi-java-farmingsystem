@@ -93,41 +93,17 @@ public class SupplierModule extends javax.swing.JFrame {
 
                 if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new FarmingTip());
+                        main.showForm(new AboutApp());
                     }
                 }
 
                 if (menuIndex == 6) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new SupplierComplain());
-                    }
-                }
-
-                if (menuIndex == 7) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Admin());
-                    }
-                }
-                
-                if (menuIndex == 9) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new AboutApp());
-                    }
-                }
-                
-                  if (menuIndex == 10) {
-                    if (subMenuIndex == -1) {
                         main.showForm(new SummaryProducts());
                     }
                 }
-                  
-                  if (menuIndex == 11) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new BlogArticle());
-                    }
-                }
 
-                if (menuIndex == 15) {
+                if (menuIndex == 16) {
                     if (subMenuIndex == -1) {
                         dispose();
                         LoginForm lf = new LoginForm();
