@@ -36,7 +36,7 @@ public class Table1 extends JTable {
                     ModelProfile data = (ModelProfile) o;
                     Profile cell = new Profile(data);
                     if (selected) {
-                        cell.setBackground(new Color(239, 244, 255));
+                        cell.setBackground(new Color(255,255,255));
                     } else {
                         cell.setBackground(Color.WHITE);
                     }
@@ -46,7 +46,7 @@ public class Table1 extends JTable {
                     ModelActionUser1 data = (ModelActionUser1) o;
                     Action1 cell = new Action1(data);
                     if (selected) {
-                        cell.setBackground(new Color(239, 244, 255));
+                        cell.setBackground(new Color(255,255,255));
                     } else {
                         cell.setBackground(Color.WHITE);
                     }
@@ -57,7 +57,7 @@ public class Table1 extends JTable {
                     setBorder(noFocusBorder);
                     com.setForeground(new Color(102, 102, 102));
                     if (selected) {
-                        com.setBackground(new Color(239, 244, 255));
+                        com.setBackground(new Color(255,255,255));
                     } else {
                         com.setBackground(Color.WHITE);
                     }

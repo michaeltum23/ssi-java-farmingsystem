@@ -164,6 +164,8 @@ private User user;
                 return canEdit [columnIndex];
             }
         });
+        table21.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        table21.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(table21);
         if (table21.getColumnModel().getColumnCount() > 0) {
             table21.getColumnModel().getColumn(5).setPreferredWidth(-50);

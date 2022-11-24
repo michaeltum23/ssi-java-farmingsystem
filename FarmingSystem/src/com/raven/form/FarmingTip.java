@@ -5,6 +5,7 @@ import com.raven.main.Main;
 import com.raven.swing.table.EventActionUser1;
 import farmingsystem.controller.FarmingTipsImpl;
 import farmingsystem.model.FarmingTips;
+import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -73,6 +74,9 @@ public class FarmingTip extends javax.swing.JPanel {
             ta.append(content);
             ta.setWrapStyleWord(true);
             ta.setLineWrap(true);
+            ta.setBackground(Color.white);
+            ta.setBorder(null);
+            add(ta);
             JScrollPane msgScroller = new JScrollPane();
             msgScroller.setBorder(
                     BorderFactory.createTitledBorder("Details"));
@@ -157,7 +161,9 @@ public class FarmingTip extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        table11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         table11.setOpaque(false);
+        table11.setSelectionBackground(new java.awt.Color(255, 255, 255));
         table11.setShowVerticalLines(true);
         jScrollPane2.setViewportView(table11);
 
