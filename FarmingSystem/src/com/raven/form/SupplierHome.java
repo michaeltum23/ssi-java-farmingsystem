@@ -119,7 +119,7 @@ public class SupplierHome extends javax.swing.JPanel {
             JLabel lbl = new JLabel();
             lbl.setIcon(userImage);
 //            table1.addRow(new Object[]{cropName, farmerName, price, quantity, lbl});
-            tableCart1.addRow(new Crops(cropId, cropName, farmerName, price, quantity, lbl).toRowTable(eventAction));
+            tableCart1.addRow(new Crops(cropId, cropName, farmerName, price, quantity, lbl).toRowTable1(eventAction));
 
         }
         //  table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));

@@ -140,9 +140,9 @@ public class Crops {
         return toImage;
     }
 
-    public Object[] toRowTable(EventActionCart event) {
+    public Object[] toRowTable1(EventActionCart event) {
   //      DecimalFormat df = new DecimalFormat("$#,##0.00");
-        return new Object[]{cropName, fullName, price, quantity, toImage, new ModelActionCart(this, event)};
+        return new Object[]{id,cropName, fullName, price, quantity, toImage, new ModelActionCart(this, event)};
     }
 
 }
