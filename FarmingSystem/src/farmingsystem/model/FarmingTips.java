@@ -29,6 +29,7 @@ public class FarmingTips {
         this.ta = ta;
     }
 
+    
     public Object[] toRowTable(EventActionUser1 event) {
         return new Object[]{id, title, ta, new ModelActionUser1(this, event)};
     }
