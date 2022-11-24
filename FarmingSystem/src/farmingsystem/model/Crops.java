@@ -4,9 +4,12 @@
  */
 package farmingsystem.model;
 
+import com.raven.swing.table.ModelActionCrops;
 import java.io.File;
 import java.io.InputStream;
 import javax.swing.Icon;
+import com.raven.swing.table.EventActionCrops;
+import javax.swing.JLabel;
 
 /**
  *
@@ -23,6 +26,7 @@ public class Crops {
     private File file;
     private byte[] cropImageData;
     private String fullName;
+    private JLabel lbl;
 
     public String getFullName() {
         return fullName;
@@ -32,8 +36,18 @@ public class Crops {
         this.fullName = fullName;
     }
     
-    
-    
+    public Object[] toRowTable(EventActionCrops event) {
+        return new Object[]{lbl,id,cropName,price,quantity,new ModelActionCrops(this, event)};
+    }
+
+    public Crops(JLabel lbl, int id, String cropName, double price, double quantity ) {
+        this.id = id;
+        this.cropName = cropName;
+        this.price = price;
+        this.quantity = quantity;
+        this.lbl = lbl;
+    }
+
     public Crops(){
         
     }
