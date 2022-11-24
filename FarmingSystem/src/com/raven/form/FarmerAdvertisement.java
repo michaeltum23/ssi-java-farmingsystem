@@ -106,6 +106,7 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableFarmerAdvertisement1 = new com.raven.swing.table.TableFarmerAdvertisement();
+        test = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
@@ -192,6 +193,8 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tableFarmerAdvertisement1);
 
+        test.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -201,6 +204,8 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
+                        .addGap(201, 201, 201)
+                        .addComponent(test)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
                 .addContainerGap())
@@ -209,7 +214,9 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(test))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
                 .addContainerGap())
@@ -254,5 +261,6 @@ public class FarmerAdvertisement extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private com.raven.swing.table.Table table2;
     private com.raven.swing.table.TableFarmerAdvertisement tableFarmerAdvertisement1;
+    private javax.swing.JLabel test;
     // End of variables declaration//GEN-END:variables
 }
