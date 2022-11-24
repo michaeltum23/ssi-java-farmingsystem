@@ -35,10 +35,11 @@ public class AddFarmingTips extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         textTitle = new com.raven.swing.MyTextField();
         jLabel11 = new javax.swing.JLabel();
-        textContent = new com.raven.swing.MyTextField();
         jPanel6 = new javax.swing.JPanel();
         cancelButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textContent = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -65,14 +66,6 @@ public class AddFarmingTips extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(17, 129, 70));
         jLabel11.setText("Content");
-
-        textContent.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
-        textContent.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
-        textContent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textContentActionPerformed(evt);
-            }
-        });
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
         jPanel6.setPreferredSize(new java.awt.Dimension(599, 2));
@@ -112,6 +105,13 @@ public class AddFarmingTips extends javax.swing.JFrame {
             }
         });
 
+        textContent.setBackground(new java.awt.Color(230, 245, 241));
+        textContent.setColumns(20);
+        textContent.setForeground(new java.awt.Color(122, 140, 141));
+        textContent.setLineWrap(true);
+        textContent.setRows(5);
+        jScrollPane1.setViewportView(textContent);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -136,7 +136,7 @@ public class AddFarmingTips extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(textTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(textContent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1))
                                 .addGap(267, 267, 267)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -154,8 +154,8 @@ public class AddFarmingTips extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(textContent, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,10 +198,6 @@ public class AddFarmingTips extends javax.swing.JFrame {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void textContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textContentActionPerformed
-        
-    }//GEN-LAST:event_textContentActionPerformed
 
     private void textTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTitleActionPerformed
        
@@ -249,7 +245,8 @@ public class AddFarmingTips extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    public com.raven.swing.MyTextField textContent;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTextArea textContent;
     public com.raven.swing.MyTextField textTitle;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
