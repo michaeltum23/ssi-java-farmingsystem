@@ -17,6 +17,7 @@ import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.OrderTracker;
 import com.raven.form.AdminSupplier;
+import com.raven.form.AdminTrainingHome;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -73,7 +74,7 @@ public class Main extends javax.swing.JFrame {
                 
                  if (menuIndex == 1) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new AdminAdvertisement());
+                        main.showForm(new AdminTrainingHome());
                        } 
                      }
                  
@@ -85,7 +86,7 @@ public class Main extends javax.swing.JFrame {
                     
                     if (menuIndex == 3) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Course());
+                        main.showForm(new AdminTrainingHome());
                        } 
                      }
                     

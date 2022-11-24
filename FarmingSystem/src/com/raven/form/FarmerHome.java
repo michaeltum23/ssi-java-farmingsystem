@@ -32,8 +32,6 @@ public class FarmerHome extends javax.swing.JPanel {
     public FarmerHome(User user) {
         this.users = user;
         initComponents();
-////        table1.fixTable(jScrollPane1);
-      
         lblFullName.setText(user.getFirstName() + " " + user.getLastName());
         lblEmail.setText(user.getEmail());
         lblPhone.setText("63"+user.getContactNumber());
