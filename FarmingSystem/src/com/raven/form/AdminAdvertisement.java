@@ -3,21 +3,14 @@ package com.raven.form;
 import com.raven.dialog.Message;
 import com.raven.main.Main;
 import com.raven.model.ModelCard;
-import com.raven.model.ModelStudent;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
 import com.raven.swing.icon.IconFontSwing;
 import com.raven.swing.noticeboard.ModelNoticeBoard;
-import com.raven.swing.table.EventAction;
 import farmingsystem.controller.AdvertisementImpl;
-import farmingsystem.controller.UserImp;
 import farmingsystem.model.Advertisement;
-import farmingsystem.model.User;
 import java.awt.Color;
-import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 public class AdminAdvertisement extends javax.swing.JPanel {
@@ -116,20 +109,21 @@ public class AdminAdvertisement extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new com.raven.swing.table.Table();
 
-        card1.setColorGradient(new java.awt.Color(211, 28, 215));
+        card1.setBackground(new java.awt.Color(0, 165, 80));
+        card1.setColorGradient(new java.awt.Color(59, 122, 87));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
         jLabel1.setText("Dashboard / Advertisement");
 
-        card2.setBackground(new java.awt.Color(10, 30, 214));
-        card2.setColorGradient(new java.awt.Color(72, 111, 252));
+        card2.setBackground(new java.awt.Color(0, 165, 80));
+        card2.setColorGradient(new java.awt.Color(59, 122, 87));
 
-        card3.setBackground(new java.awt.Color(194, 85, 1));
-        card3.setColorGradient(new java.awt.Color(255, 212, 99));
+        card3.setBackground(new java.awt.Color(0, 165, 80));
+        card3.setColorGradient(new java.awt.Color(59, 122, 87));
 
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
+        card4.setBackground(new java.awt.Color(0, 165, 80));
+        card4.setColorGradient(new java.awt.Color(59, 122, 87));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -253,7 +247,7 @@ public class AdminAdvertisement extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 470, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );

@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package farmingsystem.model;
 
+import com.raven.swing.table.EventActionCart;
+import com.raven.swing.table.EventActionCrops;
+import com.raven.swing.table.ModelActionCart;
 import com.raven.swing.table.ModelActionCrops;
 import java.io.File;
 import java.io.InputStream;
-import javax.swing.Icon;
-import com.raven.swing.table.EventActionCrops;
+import java.text.DecimalFormat;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +14,7 @@ import javax.swing.JLabel;
  * @author jtamayo
  */
 public class Crops {
-    
+
     private int id;
     private int userID;
     private String cropName;
@@ -27,6 +25,7 @@ public class Crops {
     private byte[] cropImageData;
     private String fullName;
     private JLabel lbl;
+    private JLabel toImage;
 
     public String getFullName() {
         return fullName;
@@ -48,8 +47,18 @@ public class Crops {
         this.lbl = lbl;
     }
 
-    public Crops(){
-        
+
+    public Crops() {
+
+    }
+
+    public Crops(int id, String cropName, String fullName, double price, double quantity, JLabel toImage) {
+        this.id = id;
+        this.cropName = cropName;
+        this.price = price;
+        this.quantity = quantity;
+        this.toImage = toImage;
+        this.fullName = fullName;
     }
 
     public Crops(int id, int userID, String cropName, double price, double quantity, InputStream cropImage, File file, byte[] cropImageData) {
@@ -126,5 +135,14 @@ public class Crops {
     public void setCropImageData(byte[] cropImageData) {
         this.cropImageData = cropImageData;
     }
-    
+
+    public JLabel getToImage() {
+        return toImage;
+    }
+
+    public Object[] toRowTable(EventActionCart event) {
+  //      DecimalFormat df = new DecimalFormat("$#,##0.00");
+        return new Object[]{cropName, fullName, price, quantity, toImage, new ModelActionCart(this, event)};
+    }
+
 }

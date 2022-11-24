@@ -15,7 +15,7 @@ import com.raven.form.AdminFarmer;
 import com.raven.form.FarmingTip;
 import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
-import com.raven.form.OrderTracker;
+import com.raven.form.AdminOrderTracker;
 import com.raven.form.AdminSupplier;
 
 import com.raven.swing.MenuItem;
@@ -79,7 +79,7 @@ public class Main extends javax.swing.JFrame {
                  
                   if (menuIndex == 2) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new OrderTracker());
+                        main.showForm(new AdminOrderTracker());
                        } 
                      }
                     

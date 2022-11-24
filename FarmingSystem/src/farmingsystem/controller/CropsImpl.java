@@ -109,6 +109,7 @@ public class CropsImpl implements CropsController{
             String sql = "SELECT c.id, CONCAT_WS(' ',u.first_name,u.last_name) as \"Sellername\",c.crop_name,c.price,c.quantity,c.crop_image FROM crops AS c JOIN users AS u ON c.user_id = u.id";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+            
            
             while(rs.next()){
                 Crops st = new Crops();
