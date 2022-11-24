@@ -33,6 +33,8 @@ public class FarmerCourse extends javax.swing.JPanel {
         initData();  
         
         table1.removeColumn(table1.getColumnModel().getColumn(0));
+        
+       
     }
 
     private void initData() {
@@ -165,9 +167,16 @@ public class FarmerCourse extends javax.swing.JPanel {
                 "Training ID", "Title", "Description", "Schedule Date", "Schdule Time", "Status"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -305,6 +314,8 @@ public class FarmerCourse extends javax.swing.JPanel {
         enrol.text_desc.setText(model.getValueAt(i,2).toString());
         enrol.text_schedDate.setText(model.getValueAt(i,3).toString());
         enrol.text_schedTime.setText(model.getValueAt(i,4).toString());
+        
+        enrol.text_desc.setLineWrap(true);
     }//GEN-LAST:event_table1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

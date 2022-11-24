@@ -52,7 +52,8 @@ public class EnrollCourse extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         text_title = new com.raven.swing.MyTextField();
         jLabel4 = new javax.swing.JLabel();
-        text_desc = new com.raven.swing.MyTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        text_desc = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         text_schedDate = new com.raven.swing.MyTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -90,13 +91,13 @@ public class EnrollCourse extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(17, 129, 70));
         jLabel4.setText("Description:");
 
-        text_desc.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        text_desc.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
-        text_desc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_descActionPerformed(evt);
-            }
-        });
+        text_desc.setEditable(false);
+        text_desc.setBackground(new java.awt.Color(230, 245, 241));
+        text_desc.setColumns(20);
+        text_desc.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        text_desc.setForeground(new java.awt.Color(122, 140, 141));
+        text_desc.setRows(5);
+        jScrollPane1.setViewportView(text_desc);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(17, 129, 70));
@@ -181,7 +182,7 @@ public class EnrollCourse extends javax.swing.JFrame {
                             .addComponent(text_title, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addComponent(text_schedDate, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addComponent(text_schedTime, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                            .addComponent(text_desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -199,9 +200,11 @@ public class EnrollCourse extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(text_desc, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text_schedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -220,11 +223,17 @@ public class EnrollCourse extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -269,10 +278,6 @@ public class EnrollCourse extends javax.swing.JFrame {
     private void text_schedTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_schedTimeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_schedTimeActionPerformed
-
-    private void text_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_descActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_descActionPerformed
         File f;
         InputStream is;
     /**
@@ -320,7 +325,8 @@ public class EnrollCourse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
-    public com.raven.swing.MyTextField text_desc;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTextArea text_desc;
     public com.raven.swing.MyTextField text_schedDate;
     public com.raven.swing.MyTextField text_schedTime;
     public com.raven.swing.MyTextField text_title;
