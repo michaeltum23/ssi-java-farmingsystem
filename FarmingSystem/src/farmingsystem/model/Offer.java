@@ -20,11 +20,7 @@ public class Offer {
     // userId
     private int advertisementId; // fk
     private String cropName;
-    private String status;
-    
     // advertisementId
-    
-    
     private double priceOffer; // double
 
     public String getCropName() {
@@ -34,29 +30,14 @@ public class Offer {
     public void setCropName(String cropName) {
         this.cropName = cropName;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
     
     
     public String getFarmerName() {
         return farmerName;
     }
-    
 
     public void setFarmerName(String farmerName) {
         this.farmerName = farmerName;
-    }
-    
-    public Offer(String cropName,double priceOffer,String status) {
-        this.cropName=cropName;
-        this.priceOffer = priceOffer;
-        this.status=status;
     }
     public Offer(String farmerName,double priceOffer) {
         this.farmerName=farmerName;
