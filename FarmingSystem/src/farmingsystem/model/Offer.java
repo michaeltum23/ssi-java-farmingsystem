@@ -7,6 +7,7 @@ package farmingsystem.model;
 import com.raven.swing.table.EventActionOffer;
 import com.raven.swing.table.ModelActionOffer;
 
+
 /**
  *
  * @author jtamayo
