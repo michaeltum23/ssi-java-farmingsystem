@@ -75,7 +75,7 @@ public class FarmingTip extends javax.swing.JPanel {
             ta.setLineWrap(true);
             JScrollPane msgScroller = new JScrollPane();
             msgScroller.setBorder(
-                    BorderFactory.createTitledBorder("Messages"));
+                    BorderFactory.createTitledBorder("Content"));
             msgScroller.setViewportView(ta);
             table11.addRow(new FarmingTips(id, title, ta).toRowTable(eventAction));
         }
