@@ -195,7 +195,6 @@ public class LoginForm extends javax.swing.JFrame {
         try {
             User user = userService.login(data);
             if (user != null) {
-                this.dispose();
                 if (user.getUserType().equals("Farmer")) {
                     FarmerModule.main(user);
                 } else if (user.getUserType().equals("Admin")) {
@@ -205,12 +204,12 @@ public class LoginForm extends javax.swing.JFrame {
                 } else {
                     showMessage(Message.MessageType.ERROR, "INVALID USER");
                 }
+                this.dispose();
             } else {
                 showMessage(Message.MessageType.ERROR, "Email or Password incorrect");
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
-            showMessage(Message.MessageType.ERROR, "Error");
+            showMessage(Message.MessageType.ERROR, "Login Error");
         }
     }
 

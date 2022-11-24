@@ -14,10 +14,11 @@ public class FarmingConnection {
 
     static Connection con;
     static String driver = "org.postgresql.Driver";
-    static String url = "jdbc:postgresql://26.100.93.148:5432/farmingdb";
-    //static String url = "jdbc:postgresql://localhost/farmingdb";
+//    static String url = "jdbc:postgresql://26.100.93.148:5432/farmingdb";
+    static String url = "jdbc:postgresql://localhost/farmingdb";
     static String username = "postgres";
-    static String password = "password";
+    static String password = "Cloud123+4";
+
     
     public static Connection getConnection() throws Exception {
         if (con == null) {

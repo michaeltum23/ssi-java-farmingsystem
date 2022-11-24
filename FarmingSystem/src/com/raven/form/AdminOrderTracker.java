@@ -12,9 +12,9 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class OrderTracker extends javax.swing.JPanel {
+public class AdminOrderTracker extends javax.swing.JPanel {
 
-    public OrderTracker() {
+    public AdminOrderTracker() {
         initComponents();
         table1.fixTable(jScrollPane1);
         setOpaque(false);
@@ -64,13 +64,13 @@ public class OrderTracker extends javax.swing.JPanel {
 
     private void initCardData() {
         Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card1.setData(new ModelCard("New Order Tracker", 5100, 20, icon1));
+        card1.setData(new ModelCard("Total Orders", 5100, 20, icon1));
         Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.MONETIZATION_ON, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card2.setData(new ModelCard("Income", 2000, 60, icon2));
+        card2.setData(new ModelCard("Shipped", 2000, 60, icon2));
         Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.SHOPPING_BASKET, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card3.setData(new ModelCard("Expense", 3000, 80, icon3));
+        card3.setData(new ModelCard("Delivered", 3000, 80, icon3));
         Icon icon4 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.BUSINESS_CENTER, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-        card4.setData(new ModelCard("Other Income", 550, 95, icon4));
+        card4.setData(new ModelCard("Recieved", 550, 95, icon4));
     }
 
     private void initNoticeBoard() {
@@ -110,20 +110,21 @@ public class OrderTracker extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new com.raven.swing.table.Table();
 
-        card1.setColorGradient(new java.awt.Color(211, 28, 215));
+        card1.setBackground(new java.awt.Color(0, 165, 80));
+        card1.setColorGradient(new java.awt.Color(59, 122, 87));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
         jLabel1.setText("Dashboard / OrderTracker");
 
-        card2.setBackground(new java.awt.Color(10, 30, 214));
-        card2.setColorGradient(new java.awt.Color(72, 111, 252));
+        card2.setBackground(new java.awt.Color(0, 165, 80));
+        card2.setColorGradient(new java.awt.Color(59, 122, 87));
 
-        card3.setBackground(new java.awt.Color(194, 85, 1));
-        card3.setColorGradient(new java.awt.Color(255, 212, 99));
+        card3.setBackground(new java.awt.Color(0, 165, 80));
+        card3.setColorGradient(new java.awt.Color(59, 122, 87));
 
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
+        card4.setBackground(new java.awt.Color(0, 165, 80));
+        card4.setColorGradient(new java.awt.Color(59, 122, 87));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
