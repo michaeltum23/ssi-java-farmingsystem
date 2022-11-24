@@ -23,6 +23,7 @@ public class AdminAdvertisement extends javax.swing.JPanel {
         initData();
     }
 
+    
     private void initData() {
         initCardData();
         initNoticeBoard();
