@@ -16,6 +16,8 @@ import com.raven.form.FarmingTip;
 import com.raven.form.MainForm;
 import com.raven.form.SupplierAdvertisement;
 import com.raven.form.AdminOrderTracker;
+
+import com.raven.form.SupplierComplain;
 import com.raven.form.SupplierHome;
 
 import com.raven.swing.MenuItem;
@@ -63,11 +65,7 @@ public class SupplierModule extends javax.swing.JFrame {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
                     main.showForm(new SupplierHome(user));
-//                    if (subMenuIndex == 0) {
-//                        main.showForm(new Form_Home());
-//                    } else if (subMenuIndex == 1) {
-//                        main.showForm(new Form1());
-//                    }
+
                 }
                 if (menuIndex == 1) {
                     if (subMenuIndex == -1) {

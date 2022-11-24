@@ -120,7 +120,7 @@ public class UpdateAdvertisement extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(17, 129, 70));
-        jLabel18.setText("Post Advertisement");
+        jLabel18.setText("Post Addvertisement");
 
         cropID.setText("CropID");
 

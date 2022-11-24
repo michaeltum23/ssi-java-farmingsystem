@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 public class Header extends javax.swing.JPanel {
-
+    public static int usersession;
     private User user;
 
     public Header(User user) {
@@ -18,6 +18,9 @@ public class Header extends javax.swing.JPanel {
         Image image = im.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         ImageIcon userImage = new ImageIcon(image);
         pic.setIcon(userImage);
+        
+        usersession=user.getId();
+        
     }
 
     public void addMenuEvent(ActionListener event) {

@@ -23,6 +23,4 @@ public interface OfferController {
     public void updateuserOffer(Offer offers, Advertisement ads);
     public List<Advertisement>listAdvertisement();
     
-    public List<Offer>searchByUserID(int user_id);
-    
 }

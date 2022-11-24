@@ -22,9 +22,7 @@ public class SupplierAdvertisement extends javax.swing.JPanel {
         initComponents();
         this.user = user;
         tableAdvertisement1.fixTable(jScrollPane3);
-        tableOffer1.fixTable(jScrollPane1);
         setOpaque(false);
-        jPanel2.add(jScrollPane1);
         initData();
         tableAdvertisement1.removeColumn(tableAdvertisement1.getColumnModel().getColumn(0));
     }
