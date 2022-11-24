@@ -108,36 +108,19 @@ public class FarmerModule extends javax.swing.JFrame {
                     }
                 }
 
-                if (menuIndex == 6) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Blogs());
-                    }
-                }
-
-                if (menuIndex == 7) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Admin());
-                    }
-                }
                 
-                if (menuIndex == 10) {
+                if (menuIndex == 6) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AboutApp());
                     }
                 }
                 
-                  if (menuIndex == 11) {
+                  if (menuIndex == 7) {
                     if (subMenuIndex == -1) {
                         main.showForm(new SummaryProducts());
                     }
                 }
-                  
-                  if (menuIndex == 12) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new BlogArticle());
-                    }
-                }
-
+                                                  
                 if (menuIndex == 16) {
                     if (subMenuIndex == -1) {
                         dispose();
