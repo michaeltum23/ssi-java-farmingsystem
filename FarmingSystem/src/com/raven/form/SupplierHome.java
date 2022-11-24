@@ -55,7 +55,6 @@ public class SupplierHome extends javax.swing.JPanel {
     public void getSum() {
         int sum = 0;
         int init = 0;
-
         if (tableYourCart1.getRowCount() == 0) {
             textTotal.setText(init + "");
         }
@@ -94,7 +93,6 @@ public class SupplierHome extends javax.swing.JPanel {
                 }
             }
         };
-     
         CropsImpl crops = new CropsImpl();
         List<Crops> list = crops.list();
         tableCart1.getColumn("Image").setPreferredWidth(60);
@@ -115,7 +113,6 @@ public class SupplierHome extends javax.swing.JPanel {
 
         }
         //  table1.addRow(new ModelStudent(new ImageIcon(getClass().getResource("/com/raven/icon/profile.jpg")), "Jonh", "Male", "Java", 300).toRowTable(eventAction));
-
     }
 
     private void initTableDataYourCart() {
@@ -128,7 +125,6 @@ public class SupplierHome extends javax.swing.JPanel {
                     System.out.println("User click Cancel");
                 }
             }
-
             @Override
             public void Minus(Order order) {
                 if (showMessage("Deduct Quantity ")) {

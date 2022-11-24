@@ -9,12 +9,10 @@ import javax.swing.JTable;
 public class TableCellActionCart extends DefaultCellEditor {
 
     private ModelActionCart data;
-   
 
     public TableCellActionCart() {
         super(new JCheckBox());
     }
-
     @Override
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
         data = (ModelActionCart) o;
@@ -22,8 +20,6 @@ public class TableCellActionCart extends DefaultCellEditor {
         cell.setBackground(new Color(239, 244, 255));
         return cell;
     }
-    
-    
 
     //  This method to pass data to cell render when focus lose in cell
     @Override

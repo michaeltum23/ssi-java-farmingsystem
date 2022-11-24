@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 
 public class TableYourCart extends JTable {
-
     public TableYourCart() {
         setShowHorizontalLines(true);
         setGridColor(new Color(230, 230, 230));
@@ -66,7 +65,6 @@ public class TableYourCart extends JTable {
             }
         });
     }
-
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
         if (col == 3) {
@@ -75,12 +73,10 @@ public class TableYourCart extends JTable {
             return super.getCellEditor(row, col);
         }
     }
-
     public void addRow(Object[] row) {
         DefaultTableModel mod = (DefaultTableModel) getModel();
         mod.addRow(row);
     }
-
     public void fixTable(JScrollPane scroll) {
         scroll.getViewport().setBackground(Color.WHITE);
         scroll.setVerticalScrollBar(new ScrollBarCustom());

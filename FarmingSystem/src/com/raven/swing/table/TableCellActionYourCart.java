@@ -10,11 +10,9 @@ public class TableCellActionYourCart extends DefaultCellEditor {
 
     private ModelActionYourCart data;
    
-
     public TableCellActionYourCart() {
         super(new JCheckBox());
     }
-
     @Override
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
         data = (ModelActionYourCart) o;
@@ -23,8 +21,6 @@ public class TableCellActionYourCart extends DefaultCellEditor {
         return cell;
     }
     
-    
-
     //  This method to pass data to cell render when focus lose in cell
     @Override
     public Object getCellEditorValue() {
