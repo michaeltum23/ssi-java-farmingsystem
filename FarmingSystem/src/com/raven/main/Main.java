@@ -4,12 +4,9 @@ import com.raven.component.Header;
 import com.raven.component.Menu;
 import com.raven.event.EventMenuSelected;
 import com.raven.event.EventShowPopupMenu;
-
 import com.raven.form.Admin;
 import com.raven.form.AdminAdvertisement;
 import com.raven.form.AdminComplain;
-import com.raven.form.Blogs;
-import com.raven.form.Complaints;
 import com.raven.form.Course;
 import com.raven.form.AdminFarmer;
 import com.raven.form.FarmingTip;
@@ -17,7 +14,6 @@ import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.AdminOrderTracker;
 import com.raven.form.AdminSupplier;
-
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
@@ -40,7 +36,7 @@ public class Main extends javax.swing.JFrame {
     private Animator animator;
 
     private final User user;
-    
+
     public Main(User user) {
         this.user = user;
         initComponents();
@@ -62,81 +58,61 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 0) {
-
-                      main.showForm(new Form_Home());
+                    main.showForm(new Form_Home());
 //                    if (subMenuIndex == 0) {
 //                        main.showForm(new Form_Home());
 //                    } else if (subMenuIndex == 1) {
 //                        main.showForm(new Form1());
 //                    }
                 }
-                
-                 if (menuIndex == 1) {
+                if (menuIndex == 1) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AdminAdvertisement());
-                       } 
-                     }
-                 
-                  if (menuIndex == 2) {
+                    }
+                }
+                if (menuIndex == 2) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AdminOrderTracker());
-                       } 
-                     }
-                    
-                    if (menuIndex == 3) {
+                    }
+                }
+                if (menuIndex == 3) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Course());
-                       } 
-                     }
-                    
-                    if (menuIndex == 4) {
+                    }
+                }
+                if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AdminComplain());
-                       } 
-                     }
-                    
-                    if (menuIndex == 5) {
+                    }
+                }
+                if (menuIndex == 5) {
                     if (subMenuIndex == -1) {
                         main.showForm(new FarmingTip());
-                       } 
-                     }
-                    
-                    if (menuIndex == 6) {
-                    if (subMenuIndex == -1) {
-                        main.showForm(new Blogs());
-                       } 
-                     }
-                    
-                    if (menuIndex == 7) {
+                    }
+                }
+                if (menuIndex == 6) {
                     if (subMenuIndex == -1) {
                         main.showForm(new Admin());
-                       } 
-                     }
-                    
-                    if (menuIndex == 8) {
+                    }
+                }
+                if (menuIndex == 7) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AdminSupplier());
-                       } 
-                     }
-                    
-                    if (menuIndex == 9) {
+                    }
+                }
+                if (menuIndex == 8) {
                     if (subMenuIndex == -1) {
                         main.showForm(new AdminFarmer());
-                       } 
-                     }
-                    
-                    if (menuIndex == 16) {
+                    }
+                }
+                if (menuIndex == 16) {
                     if (subMenuIndex == -1) {
                         dispose();
                         LoginForm lf = new LoginForm();
                         lf.setVisible(true);
                         lf.setLocationRelativeTo(null);
-                       } 
-                     }
-                 
-                 
-                 
-                 
+                    }
+                }
             }
         });
         menu.addEventShowPopup(new EventShowPopupMenu() {
@@ -172,7 +148,6 @@ public class Main extends javax.swing.JFrame {
                 menu.setShowMenu(!menu.isShowMenu());
                 menu.setEnableMenu(true);
             }
-
         };
         animator = new Animator(500, target);
         animator.setResolution(0);
