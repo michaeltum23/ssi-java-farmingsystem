@@ -26,7 +26,7 @@ public class ActionCrops extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
-        grphcs.setColor(new Color(230, 230, 230));
+        grphcs.setColor(new Color(255, 255, 255));
         grphcs.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
     }
 
@@ -38,8 +38,10 @@ public class ActionCrops extends javax.swing.JPanel {
         cmdDelete = new com.raven.swing.Button();
 
         cmdEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/edit.png"))); // NOI18N
+        cmdEdit.setEffectColor(new java.awt.Color(255, 255, 255));
 
         cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/delete.png"))); // NOI18N
+        cmdDelete.setEffectColor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

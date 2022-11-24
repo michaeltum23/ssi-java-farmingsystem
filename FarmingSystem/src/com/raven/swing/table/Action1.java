@@ -38,8 +38,10 @@ public class Action1 extends javax.swing.JPanel {
         cmdDelete = new com.raven.swing.Button();
 
         cmdEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/edit.png"))); // NOI18N
+        cmdEdit.setEffectColor(new java.awt.Color(255, 255, 255));
 
         cmdDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/delete.png"))); // NOI18N
+        cmdDelete.setEffectColor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

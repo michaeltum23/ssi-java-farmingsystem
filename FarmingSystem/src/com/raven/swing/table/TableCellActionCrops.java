@@ -19,7 +19,7 @@ public class TableCellActionCrops extends DefaultCellEditor {
     public Component getTableCellEditorComponent(JTable jtable, Object o, boolean bln, int i, int i1) {
         data = (ModelActionCrops) o;
         ActionCrops cell = new ActionCrops(data);
-        cell.setBackground(new Color(239, 244, 255));
+        cell.setBackground(new Color(255, 255, 255));
         return cell;
     }
     

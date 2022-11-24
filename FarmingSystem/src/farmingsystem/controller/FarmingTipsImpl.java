@@ -63,9 +63,9 @@ public class FarmingTipsImpl implements FarmingtipsController {
     public void deleteTips(FarmingTips tips) {
         try {
             Connection con = FarmingConnection.getConnection();
-            String sql = "delete from tips  WHERE title=?";
-            PreparedStatement ps = con.prepareStatement(sql);  
-            ps.setString(1, tips.getTitle());
+            String sql = "delete from tips  WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, tips.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleted!");
         } catch (Exception e) {
