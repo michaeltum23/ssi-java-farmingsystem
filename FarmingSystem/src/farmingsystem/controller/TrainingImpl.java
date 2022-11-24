@@ -23,14 +23,14 @@ public class TrainingImpl implements TrainingController{
     public void addTraining(Training training) {
         try{
             Connection con = FarmingConnection.getConnection();
-            String sql = "INSERT INTO training(title,description,schedule_date,schedule_time,training_image,status) VALUES(?,?,?,?,?,?)";
+            String sql = "INSERT INTO training(title,description,schedule_date,schedule_time,status) VALUES(?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, training.getTitle());
             pst.setString(2, training.getDescription());
             pst.setString(3, training.getScheduleDate());
             pst.setString(4, training.getSchedulteTime());
-            pst.setBinaryStream(5, training.getTrainingImage(), training.getFile().length());
-            pst.setString(6, training.getStatus());
+//            pst.setBinaryStream(5, training.getTrainingImage(), training.getFile().length());
+            pst.setString(5, training.getStatus());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Post Success!");
         }catch(Exception e){

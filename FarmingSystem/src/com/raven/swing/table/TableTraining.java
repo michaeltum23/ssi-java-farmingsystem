@@ -69,8 +69,8 @@ public class TableTraining extends JTable {
 
     @Override
     public TableCellEditor getCellEditor(int row, int col) {
-        if (col == 3) {
-            return new TableCellAction1();
+        if (col == 5) {
+            return new TableCellActionTraining();
         } else {
             return super.getCellEditor(row, col);
         }

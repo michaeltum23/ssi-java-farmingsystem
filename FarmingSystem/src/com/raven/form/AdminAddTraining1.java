@@ -42,9 +42,6 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
     private void initComponents() {
 
         dateChooser1 = new com.raven.datechooser.DateChooser();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         txtTitle = new com.raven.swing.MyTextField();
@@ -52,45 +49,15 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
         txtDate = new com.raven.swing.MyTextField();
         txtTime = new com.raven.swing.MyTextField();
         btnPost = new com.raven.swing.Button();
-        jPanel4 = new javax.swing.JPanel();
-        trainingImage = new javax.swing.JLabel();
         label_path = new javax.swing.JLabel();
-        btnPost1 = new com.raven.swing.Button();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(txtDate);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 165, 78)));
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(17, 129, 70));
-        jLabel1.setText("ADD TRAINING");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/return.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        setUndecorated(true);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -107,7 +74,7 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
                 txtTitleFocusLost(evt);
             }
         });
-        jPanel1.add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 13, 343, -1));
+        jPanel1.add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 343, -1));
 
         txtDescription.setText("Description");
         txtDescription.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -118,9 +85,8 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
                 txtDescriptionFocusLost(evt);
             }
         });
-        jPanel1.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 134, 343, 157));
+        jPanel1.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 343, 157));
 
-        txtDate.setText("Date");
         txtDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtDateFocusGained(evt);
@@ -129,7 +95,7 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
                 txtDateFocusLost(evt);
             }
         });
-        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 304, 160, -1));
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 160, -1));
 
         txtTime.setText("Time");
         txtTime.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -145,7 +111,7 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
                 txtTimeActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 304, 165, -1));
+        jPanel1.add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 165, -1));
 
         btnPost.setBackground(new java.awt.Color(17, 129, 70));
         btnPost.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,61 +122,53 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
                 btnPostActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPost, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 361, 116, 40));
-
-        trainingImage.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        trainingImage.setForeground(new java.awt.Color(143, 144, 145));
-        trainingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/gallery32px.png"))); // NOI18N
-        trainingImage.setText("Image");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(trainingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(trainingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 64, -1, -1));
+        jPanel1.add(btnPost, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 116, 40));
         jPanel1.add(label_path, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 104, 174, 23));
 
-        btnPost1.setBackground(new java.awt.Color(142, 143, 145));
-        btnPost1.setForeground(new java.awt.Color(255, 255, 255));
-        btnPost1.setText("Upload Image");
-        btnPost1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnPost1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPost1ActionPerformed(evt);
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 370, 380));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 165, 78)));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(17, 129, 70));
+        jLabel1.setText("ADD COURSE");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/return.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(btnPost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 64, 174, -1));
 
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 370, 410));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 418, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -278,15 +236,7 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
         File f;
         InputStream is;
     private void btnPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostActionPerformed
-         Training training = new Training();
-        f = new File(label_path.getText());
-        System.out.println(f);
-        try {
-            is = new FileInputStream(f);
-        } catch (FileNotFoundException ex) {
-        }
-        training.setTrainingImage(is);
-        training.setFile(f);
+        Training training = new Training();
         
         String trainingTitle = txtTitle.getText();
         String trainingDesc = txtDescription.getText();
@@ -302,32 +252,8 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
         
         TrainingImpl tr = new TrainingImpl();
         tr.addTraining(training);
-        
-        txtTitle.setText("");
-        txtDescription.setText("");
-        txtDate.setText("");
-        txtTime.setText("");
-        txtTitle.requestFocus();
+        this.dispose();
     }//GEN-LAST:event_btnPostActionPerformed
-
-    private void btnPost1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPost1ActionPerformed
-      JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Image Type", "png", "jpg", "jpeg");
-        fileChooser.addChoosableFileFilter(fileFilter);
-        int load = fileChooser.showOpenDialog(null);
-        if (load == fileChooser.APPROVE_OPTION) {
-
-            File f = fileChooser.getSelectedFile();
-            String path = f.getAbsolutePath();
-            label_path.setText(path);
-            System.out.println("Path: " + path);
-            ImageIcon ii = new ImageIcon(path);
-            Image img = ii.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH);
-            trainingImage.setText("");
-            trainingImage.setIcon(new ImageIcon(img));
-            
-        }
-    }//GEN-LAST:event_btnPost1ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -372,16 +298,13 @@ public class AdminAddTraining1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.raven.swing.Button btnPost;
-    private com.raven.swing.Button btnPost1;
     private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel label_path;
-    private javax.swing.JLabel trainingImage;
     private com.raven.swing.MyTextField txtDate;
     private com.raven.swing.MyTextField txtDescription;
     private com.raven.swing.MyTextField txtTime;

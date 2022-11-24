@@ -1,6 +1,5 @@
 package com.raven.swing.table;
 
-//import com.raven.model.Training;
 import farmingsystem.model.Training;
 
 public interface EventActionTraining {

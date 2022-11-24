@@ -140,11 +140,12 @@ public class ComplainImpl implements ComplainController {
         List<Complain> list = new ArrayList<Complain>();
         try {
             Connection con = FarmingConnection.getConnection();
-         String sql1 = "SELECT * FROM complain INNER JOIN users on complain.user_id = users.id WHERE complain.user_id=? ";
+            String sql = "SELECT * FROM complain ";
+      //   String sql1 = "SELECT * FROM complain c INNER JOIN users on c.user_id = users.id WHERE complain.user_id=? ";
 //         SELECT users.first_name FROM participants INNER JOIN users ON participants.user_id = users.id WHERE participants.training_id=?
           //  String sql1 = "SELECT response.response FROM response INNER JOIN user ";
 
-            PreparedStatement ps = con.prepareStatement(sql1);
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
            
             while(rs.next()){

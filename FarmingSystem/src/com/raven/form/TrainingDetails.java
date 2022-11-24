@@ -4,20 +4,25 @@
  */
 package com.raven.form;
 
+import farmingsystem.controller.TrainingImpl;
+import farmingsystem.model.Training;
 import java.awt.Color;
 
 /**
  *
  * @author FPALES
  */
-public class AddTraning extends javax.swing.JFrame {
+public class TrainingDetails extends javax.swing.JFrame {
 
     /**
      * Creates new form AddTraning
      */
-    public AddTraning() {
+    private Training training;
+    
+    public TrainingDetails() {
         initComponents();
         setLocationRelativeTo(null);
+        jLabel2.setVisible(false);
     }
 
     /**
@@ -34,13 +39,13 @@ public class AddTraning extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        btnUpdate = new javax.swing.JButton();
+        txtDescription = new com.raven.swing.MyTextField();
+        txtTitle = new com.raven.swing.MyTextField();
+        txtDate = new com.raven.swing.MyTextField();
+        txtTime = new com.raven.swing.MyTextField();
+        jcStatus = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        txtDate = new javax.swing.JTextField();
-        txtTime = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        myTextField1 = new com.raven.swing.MyTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -50,7 +55,7 @@ public class AddTraning extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 165, 78));
-        jLabel1.setText("ADD TRAINING");
+        jLabel1.setText("EDIT COURSE");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/return.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -80,39 +85,42 @@ public class AddTraning extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("Title of the course");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        btnUpdate.setBackground(new java.awt.Color(0, 165, 78));
+        btnUpdate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 340, 40));
+
+        txtDescription.setText("Description");
+        txtDescription.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                txtDescriptionFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                txtDescriptionFocusLost(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jPanel3.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 340, 137));
+
+        txtTitle.setText("Title of the course");
+        txtTitle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTitleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTitleFocusLost(evt);
             }
         });
+        jPanel3.add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 343, -1));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Upload Photo");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        txtDate.setText("Schedule Date");
+        txtDate.setText("Date");
         txtDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtDateFocusGained(evt);
@@ -121,8 +129,9 @@ public class AddTraning extends javax.swing.JFrame {
                 txtDateFocusLost(evt);
             }
         });
+        jPanel3.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 160, -1));
 
-        txtTime.setText("Schedule Time");
+        txtTime.setText("Time");
         txtTime.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtTimeFocusGained(evt);
@@ -131,46 +140,19 @@ public class AddTraning extends javax.swing.JFrame {
                 txtTimeFocusLost(evt);
             }
         });
+        txtTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 165, -1));
 
-        jButton1.setText("SAVE");
+        jcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open", "Closed", "Reschedule" }));
+        jPanel3.add(jcStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 340, 50));
 
-        myTextField1.setText("myTextField1");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(myTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(myTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("trId");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,9 +168,9 @@ public class AddTraning extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,7 +181,9 @@ public class AddTraning extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,51 +193,91 @@ public class AddTraning extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-       if(jTextField1.getText().equals("Title of the course")){
-            jTextField1.setText("");
-            jTextField1.setForeground(new Color(153, 153, 153));
+    private void txtTitleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTitleFocusGained
+        if(txtTitle.getText().equals(training.getTitle())){
+            txtTitle.setText("");
+            txtTitle.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_txtTitleFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(jTextField1.getText().equals("")){
-            jTextField1.setText("Title of the course");
-            jTextField1.setForeground(new Color(153, 153, 153));
+    private void txtTitleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTitleFocusLost
+        if(txtTitle.getText().equals("")){
+            txtTitle.setText(training.getTitle());
+            txtTitle.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_txtTitleFocusLost
 
     private void txtDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDateFocusGained
-      if(txtDate.getText().equals("Schedule Date")){
+        if(txtDate.getText().equals(training.getScheduleDate())){
             txtDate.setText("");
-               txtDate.setForeground(new Color(51,51,51));
+            txtDate.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtDateFocusGained
 
     private void txtDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDateFocusLost
-       if(txtDate.getText().equals("")){
-            txtDate.setText("Schedule Date");
-              txtDate.setForeground(new Color(51,51,51));
+        if(txtDate.getText().equals("")){
+            txtDate.setText(training.getScheduleDate());
+            txtDate.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtDateFocusLost
 
     private void txtTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimeFocusGained
-      if(txtTime.getText().equals("Schedule Time")){
+        if(txtTime.getText().equals(training.getSchedulteTime())){
             txtTime.setText("");
-            txtTime.setForeground(new Color(51,51,51));
+            txtTime.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtTimeFocusGained
 
     private void txtTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimeFocusLost
         if(txtTime.getText().equals("")){
-            txtTime.setText("Schedule Time");
-            txtTime.setForeground(new Color(51,51,51));
+            txtTime.setText(training.getSchedulteTime());
+            txtTime.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txtTimeFocusLost
+
+    private void txtTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimeActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+       
+       
+        Training tr = new Training();
+        int trainingId = Integer.parseInt(jLabel2.getText());
+        String trainingTitle = txtTitle.getText();
+        String trainingDesc = txtDescription.getText();
+        String scheduleDate = txtDate.getText();
+        String scheduleTime = txtTime.getText();
+        String status = jcStatus.getSelectedItem().toString();
+        
+        tr.setId(trainingId);
+        tr.setTitle(trainingTitle);
+        tr.setDescription(trainingDesc);
+        tr.setScheduleDate(scheduleDate);
+        tr.setSchedulteTime(scheduleTime);
+        tr.setStatus(status);
+        
+    
+        
+        TrainingImpl ti = new TrainingImpl();
+        ti.updateTraining(tr);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtDescriptionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescriptionFocusGained
+      if(txtTitle.getText().equals(training.getDescription())){
+            txtTitle.setText("");
+            txtTitle.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_txtDescriptionFocusGained
+
+    private void txtDescriptionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescriptionFocusLost
+       if(txtTitle.getText().equals("")){
+            txtTitle.setText("getDescription");
+            txtTitle.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_txtDescriptionFocusLost
    
     /**
      * @param args the command line arguments
@@ -272,36 +296,39 @@ public class AddTraning extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddTraning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainingDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddTraning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainingDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddTraning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainingDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddTraning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainingDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddTraning().setVisible(true);
+                new TrainingDetails().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private com.raven.swing.MyTextField myTextField1;
-    private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtTime;
+    public javax.swing.JComboBox<String> jcStatus;
+    public com.raven.swing.MyTextField txtDate;
+    public com.raven.swing.MyTextField txtDescription;
+    public com.raven.swing.MyTextField txtTime;
+    public com.raven.swing.MyTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@ public class Training {
     private InputStream trainingImage;
     private File file;
     private String status;
-    private JLabel lbl;
+   
     public Training(){
         
     }
@@ -38,28 +38,17 @@ public class Training {
         this.file = file;
         this.status = status;
     }
-    
-    public Object[] toRowTable(EventActionTraining event) {
-        return new Object[]{lbl,id, title, description,scheduleDate, schedulteTime, status ,new ModelActionTraining(this, event)};
-    }
-    
-    
-    
-    public Training(JLabel lbl,int id, String title, String description, String scheduleDate, String schedulteTime, InputStream trainingImage, File file, String status) {
-        this.lbl=lbl;
+    public Training(int id, String title, String description, String scheduleDate, String scheduleTime, String status){
         this.id = id;
         this.title = title;
         this.description = description;
         this.scheduleDate = scheduleDate;
-        this.schedulteTime = schedulteTime;
-        this.trainingImage = trainingImage;
-        this.file = file;
+        this.schedulteTime = scheduleTime;
         this.status = status;
     }
-    
-    
-    
-    
+     public Object[] toRowTable(EventActionTraining event) {
+        return new Object[]{id, title, description, scheduleDate, schedulteTime, status , new ModelActionTraining(this, event)};
+    }
     
     public int getId() {
         return id;

@@ -2,18 +2,10 @@ package com.raven.form;
 
 import com.raven.dialog.Message;
 import com.raven.main.Main;
-import com.raven.swing.table.EventActionUser1;
-import farmingsystem.controller.FarmingTipsImpl;
+import com.raven.swing.table.EventActionTraining;
 import farmingsystem.controller.TrainingImpl;
-import farmingsystem.model.FarmingTips;
 import farmingsystem.model.Training;
-import java.awt.Image;
-
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.table.DefaultTableModel;
-
 
 
 public class AdminTrainingHome extends javax.swing.JPanel {
@@ -21,11 +13,12 @@ public class AdminTrainingHome extends javax.swing.JPanel {
     private Training training;
     public AdminTrainingHome() {
         initComponents();
-        //  table11.fixTable(jScrollPane2);
-        // jPanel2.add(jScrollPane2);
+          tableTraining.fixTable(jScrollPane1);
+        jPanel2.add(jScrollPane1);
         Load();
         setOpaque(false);
         initData();
+        tableTraining.removeColumn(tableTraining.getColumnModel().getColumn(0));
     }
 
     private void initData() {
@@ -41,43 +34,45 @@ public class AdminTrainingHome extends javax.swing.JPanel {
   
      
    private void initTableData() {
-         EventActionUser1 eventAction = new EventActionUser1() {
+         EventActionTraining eventAction = new EventActionTraining() {
             @Override
-            public void delete(FarmingTips tips) {
-                if (showMessage("Delete Tip")) {
-                    FarmingTipsImpl f = new FarmingTipsImpl();
-                    tips.setTitle(tips.getTitle());
-                    f.deleteTips(tips);
+            public void delete(Training training) {
+                if (showMessage("Delete Course " + training.getTitle())) {
+                    
+                    TrainingImpl ti = new TrainingImpl();
+                    training.setId(training.getId());
+                    ti.deleteTraining(training);
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
 
             @Override
-            public void update(FarmingTips tips) {
-                if (showMessage("Update Tip" )) {
-                    UpdateFarmingTips update = new UpdateFarmingTips();
-                    update.setVisible(true);
-                    update.pack();
+            public void update(Training training) {
+                if (showMessage("Update Course " + training.getTitle())) {
+                    TrainingDetails traidet = new TrainingDetails();
+                    traidet.setVisible(true);
+                    traidet.pack();
                     
-                    FarmingTipsImpl tip =new FarmingTipsImpl();
+                    TrainingImpl ti = new TrainingImpl();
                     
-                    FarmingTips u= tip.get(tips.getId());
-                    
-                    update.jLabel1.setText(String.valueOf(u.getId()));
-                    update.textTitle.setText(String.valueOf(u.getTitle()));
-                    update.textContent.setText(String.valueOf(u.getContent()));
-                    
+                    Training course = ti.get(training.getId());
+                    traidet.jLabel2.setText(String.valueOf(course.getId()));
+                    traidet.txtTitle.setText(String.valueOf(course.getTitle()));
+                    traidet.txtDescription.setText(String.valueOf(course.getDescription()));
+                    traidet.txtDate.setText(String.valueOf(course.getScheduleDate()));
+                    traidet.txtTime.setText(String.valueOf(course.getSchedulteTime()));
+                    traidet.jcStatus.setSelectedItem(String.valueOf(course.getStatus()));
+
                 } else {
                     System.out.println("User click Cancel");
                 }
             }
              
         };
+                
               TrainingImpl training = new TrainingImpl();
                  List<Training> list = training.list();
-                tableTraining.getColumn("Profile").setPreferredWidth(60);
-//                tableTraining.getColumn("Profile").setCellRenderer(new AdminAdvertisement.myTableCellRenderer());
                  for (Training tr : list) {
                      int id = tr.getId();
                      String title = tr.getTitle();
@@ -85,25 +80,9 @@ public class AdminTrainingHome extends javax.swing.JPanel {
                      String schedDate = tr.getScheduleDate();
                      String schedTime = tr.getSchedulteTime();
                      String status = tr.getStatus();
-//                     ImageIcon im = new ImageIcon(tr.getTrainingImage());
-//                     Image image = im.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-//                     ImageIcon traininImageIcon = new ImageIcon(image);
-//                     JLabel lbl = new JLabel();
-//                     lbl.setIcon(trainingImage)
-//                     tableTraining.addRow(new Training(lbl, id, title, description, schedDate, schedTime , status).toRowTable(eventAction));
-                    }
-
-
-//                     DFT.addRow(new Object[]{id, title, descrption, schedDate, schedTime, status});
-//                 lbl.setIcon(userImage);
-//            if("Farmer".equals(users.getUserType())){
-//                table1.addRow(new User(lbl, fullName, userType,email, active).toRowTable(eventAction));
-          
-//                 
-                 //}
-
-        
- 
+                   
+                     tableTraining.addRow(new Training(id, title, description, schedDate, schedTime , status).toRowTable(eventAction));
+                    } 
     }
 
     
@@ -151,14 +130,14 @@ public class AdminTrainingHome extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Title", "Description", "Schedule Date", "Schedule Time", "Status"
+                "ID", "Title", "Description", "Schedule Date", "Schedule Time", "Status", "Action"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -175,14 +154,16 @@ public class AdminTrainingHome extends javax.swing.JPanel {
             tableTraining.getColumnModel().getColumn(0).setMaxWidth(80);
             tableTraining.getColumnModel().getColumn(1).setMinWidth(200);
             tableTraining.getColumnModel().getColumn(1).setMaxWidth(200);
-            tableTraining.getColumnModel().getColumn(2).setMinWidth(450);
-            tableTraining.getColumnModel().getColumn(2).setMaxWidth(450);
+            tableTraining.getColumnModel().getColumn(2).setMinWidth(400);
+            tableTraining.getColumnModel().getColumn(2).setMaxWidth(400);
             tableTraining.getColumnModel().getColumn(3).setMinWidth(100);
             tableTraining.getColumnModel().getColumn(3).setMaxWidth(100);
             tableTraining.getColumnModel().getColumn(4).setMinWidth(100);
             tableTraining.getColumnModel().getColumn(4).setMaxWidth(100);
             tableTraining.getColumnModel().getColumn(5).setMinWidth(100);
             tableTraining.getColumnModel().getColumn(5).setMaxWidth(100);
+            tableTraining.getColumnModel().getColumn(6).setMinWidth(80);
+            tableTraining.getColumnModel().getColumn(6).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -197,8 +178,7 @@ public class AdminTrainingHome extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(792, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
