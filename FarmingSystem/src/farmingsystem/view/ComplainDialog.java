@@ -634,7 +634,7 @@ public final class ComplainDialog extends javax.swing.JDialog {
          Complain complain = new Complain();
           //complain id, user id, order id, ticketNumber, startdate, message, 
           int userid = Integer.parseInt( String.valueOf(jcUseId.getSelectedItem()));
-          int orderid = Integer.parseInt(String.valueOf(jcOrderId.getSelectedItem()));
+//          int orderid = Integer.parseInt(String.valueOf(jcOrderId.getSelectedItem()));
           String messageComplain = txtMessage.getText(); 
           /// get Ticket No
           int length = 10;
@@ -662,17 +662,11 @@ public final class ComplainDialog extends javax.swing.JDialog {
         String ticketNo = genTicket;         
         String status ="Pending";
         String created = String.valueOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss")));
-       // String resolve="";
-//        if (status.equalsIgnoreCase("Done") || status.equalsIgnoreCase("Failed")){
-//        resolve = String.valueOf(LocalDateTime.now());    
-//        }
-//        else if(status.equalsIgnoreCase("Pending")){
-//        
-//        }
+    
         //setters
         complain.setUser_id(userid);
         complain.setMessage(messageComplain);
-        complain.setOrderId(orderid);
+     //   complain.setOrderId(orderid);
         complain.setTicketNo(ticketNo);
         complain.setStatus(status);
         complain.setDateCreated(created);

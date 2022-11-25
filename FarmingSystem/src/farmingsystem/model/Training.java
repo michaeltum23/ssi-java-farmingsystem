@@ -4,8 +4,11 @@
  */
 package farmingsystem.model;
 
+import com.raven.swing.table.EventActionTraining;
+import com.raven.swing.table.ModelActionTraining;
 import java.io.File;
 import java.io.InputStream;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,11 +23,11 @@ public class Training {
     private InputStream trainingImage;
     private File file;
     private String status;
-    
+   
     public Training(){
         
     }
-
+    
     public Training(int id, String title, String description, String scheduleDate, String schedulteTime, InputStream trainingImage, File file, String status) {
         this.id = id;
         this.title = title;
@@ -35,7 +38,18 @@ public class Training {
         this.file = file;
         this.status = status;
     }
-
+    public Training(int id, String title, String description, String scheduleDate, String scheduleTime, String status){
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.scheduleDate = scheduleDate;
+        this.schedulteTime = scheduleTime;
+        this.status = status;
+    }
+     public Object[] toRowTable(EventActionTraining event) {
+        return new Object[]{id, title, description, scheduleDate, schedulteTime, status , new ModelActionTraining(this, event)};
+    }
+    
     public int getId() {
         return id;
     }
