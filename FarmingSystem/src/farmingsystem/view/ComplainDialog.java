@@ -274,6 +274,11 @@ public final class ComplainDialog extends javax.swing.JDialog {
                 jcUseIdItemStateChanged(evt);
             }
         });
+        jcUseId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcUseIdActionPerformed(evt);
+            }
+        });
         addComplainPanel.add(jcUseId, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, -1));
 
         btnSave.setBackground(new java.awt.Color(0, 204, 255));
@@ -881,6 +886,10 @@ public final class ComplainDialog extends javax.swing.JDialog {
         System.out.println("Resolve : "+complains.getDateResolved());
         
     }//GEN-LAST:event_btnStatusResolvedActionPerformed
+
+    private void jcUseIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcUseIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcUseIdActionPerformed
 
     /**
      * @param args the command line arguments

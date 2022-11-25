@@ -23,7 +23,7 @@ public class Complain {
     private int response_id;
     private String response;
     private int user_id;
-
+    private int complainant_id;
    
     
     
@@ -41,7 +41,16 @@ public class Complain {
         this.response = response;
         
     }
-   
+
+    public int getComplainant_id() {
+        return complainant_id;
+    }
+
+    public void setComplainant_id(int complainant_id) {
+        this.complainant_id = complainant_id;
+    }
+    
+    
     public int getId() {
         return id;
     }
