@@ -137,20 +137,21 @@ public class AdminComplain extends javax.swing.JPanel {
         table1 = new com.raven.swing.table.Table();
         jcStatus = new javax.swing.JComboBox<>();
 
-        card1.setColorGradient(new java.awt.Color(211, 28, 215));
+        card1.setBackground(new java.awt.Color(0, 165, 80));
+        card1.setColorGradient(new java.awt.Color(59, 122, 87));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 72, 210));
         jLabel1.setText("Dashboard / Complaints");
 
-        card2.setBackground(new java.awt.Color(10, 30, 214));
-        card2.setColorGradient(new java.awt.Color(72, 111, 252));
+        card2.setBackground(new java.awt.Color(0, 165, 80));
+        card2.setColorGradient(new java.awt.Color(59, 122, 87));
 
-        card3.setBackground(new java.awt.Color(194, 85, 1));
-        card3.setColorGradient(new java.awt.Color(255, 212, 99));
+        card3.setBackground(new java.awt.Color(0, 165, 80));
+        card3.setColorGradient(new java.awt.Color(59, 122, 87));
 
-        card4.setBackground(new java.awt.Color(60, 195, 0));
-        card4.setColorGradient(new java.awt.Color(208, 255, 90));
+        card4.setBackground(new java.awt.Color(0, 165, 80));
+        card4.setColorGradient(new java.awt.Color(59, 122, 87));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

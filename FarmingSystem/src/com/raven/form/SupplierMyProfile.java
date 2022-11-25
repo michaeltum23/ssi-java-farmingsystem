@@ -176,11 +176,7 @@ public class SupplierMyProfile extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         userProfilePic = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -252,10 +248,6 @@ public class SupplierMyProfile extends javax.swing.JPanel {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 46, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setText("Random Farming Tips");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 82, -1, -1));
-
         jButton1.setBackground(new java.awt.Color(0, 102, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -263,30 +255,6 @@ public class SupplierMyProfile extends javax.swing.JPanel {
         jButton1.setText("EDIT  PROFILE");
         jButton1.setBorder(null);
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 413, 240, 144));
-
-        jButton2.setBackground(new java.awt.Color(0, 102, 51));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
-        jButton2.setText("ADD CROPS");
-        jButton2.setBorder(null);
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 413, 240, 144));
-
-        jButton5.setBackground(new java.awt.Color(0, 102, 51));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
-        jButton5.setText("OFFER CROPS");
-        jButton5.setBorder(null);
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 413, 240, 144));
-
-        jButton6.setBackground(new java.awt.Color(0, 102, 51));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/farmer.png"))); // NOI18N
-        jButton6.setText("COMPLAINTS");
-        jButton6.setBorder(null);
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(778, 413, 240, 144));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel18.setText("0");
@@ -322,7 +290,7 @@ public class SupplierMyProfile extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel22.setText("0");
 
-        jLabel23.setText("Crops Posted");
+        jLabel23.setText("Ads Posted");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -352,7 +320,7 @@ public class SupplierMyProfile extends javax.swing.JPanel {
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel24.setText("PHP 0.00");
 
-        jLabel25.setText("Crops Sold");
+        jLabel25.setText("Crops bought");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -383,7 +351,7 @@ public class SupplierMyProfile extends javax.swing.JPanel {
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel26.setText("0");
 
-        jLabel27.setText("Offered Crops");
+        jLabel27.setText("Crops at cart");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -510,11 +478,7 @@ public class SupplierMyProfile extends javax.swing.JPanel {
     private com.raven.component.Card card3;
     private com.raven.component.Card card4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;

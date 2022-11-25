@@ -159,7 +159,7 @@ public class ForgotForm extends javax.swing.JFrame {
                       
                         verifyCode.setVisible(false);
                         userService.updateUserNewPassword(user);       
-                        showMessage(Message.MessageType.SUCCESS, "Successfully Passwrod Change");
+                        showMessage(Message.MessageType.SUCCESS, "Successfully Password Change");
                         loginAndRegister.showRegister(isLogin);
 
                     } else {

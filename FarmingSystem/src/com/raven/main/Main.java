@@ -14,6 +14,8 @@ import com.raven.form.Form_Home;
 import com.raven.form.MainForm;
 import com.raven.form.AdminOrderTracker;
 import com.raven.form.AdminSupplier;
+import com.raven.form.AdminTrainingHome;
+import com.raven.form.FarmerCourse;
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
 import com.raven.swing.icon.GoogleMaterialDesignIcons;
@@ -77,7 +79,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 if (menuIndex == 3) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Course());
+                        main.showForm(new AdminTrainingHome());
                     }
                 }
                 if (menuIndex == 4) {

@@ -104,7 +104,7 @@ public class FarmingTip extends javax.swing.JPanel {
 //            if (table11.getRowHeight(row) != getPreferredSize().height) {
 //                table11.setRowHeight(60);
 //            }
-            table11.setRowHeight(120);
+            table11.setRowHeight(180);
             return (Component) value;
         }
     }

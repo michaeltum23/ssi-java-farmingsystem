@@ -406,7 +406,7 @@ public class SupplierHome extends javax.swing.JPanel {
                 order.setProductName(model2.getValueAt(i, 1).toString());
                 order.setSellerName(model2.getValueAt(i, 2).toString());
                 order.setUnitPrice(Double.parseDouble(model2.getValueAt(i, 3).toString()));
-                order.setQuantity(Integer.parseInt(model2.getValueAt(i, 4).toString()));
+                order.setQuantity(Double.parseDouble(model2.getValueAt(i, 4).toString()));
                 oi.addOrder(order, users);
             }
             System.out.println(users.getId());

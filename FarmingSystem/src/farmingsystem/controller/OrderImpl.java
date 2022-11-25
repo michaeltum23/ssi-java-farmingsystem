@@ -64,7 +64,7 @@ public class OrderImpl implements OrderController {
         try {
             String sql = "SELECT (SELECT CONCAT(first_name,' ', last_name) FROM users WHERE id = orders.user_id) as supplier,\n"
                     + "orders.seller_name as farmer,"
-                    + "(SELECT crop_name FROM crops WHERE id = orders.seller_id ) as crop, orders.quantity as quantity, "
+                    + "orders.product_name as crop, orders.quantity as quantity, "
                     + "orders.unit_price as price\n"
                     + "FROM orders";
             PreparedStatement pst = con.prepareStatement(sql);

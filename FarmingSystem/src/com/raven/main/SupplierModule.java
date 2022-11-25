@@ -19,6 +19,7 @@ import com.raven.form.AdminOrderTracker;
 
 import com.raven.form.SupplierComplain;
 import com.raven.form.SupplierHome;
+import com.raven.form.SupplierMyProfile;
 
 import com.raven.swing.MenuItem;
 import com.raven.swing.PopupMenu;
@@ -87,7 +88,7 @@ public class SupplierModule extends javax.swing.JFrame {
 
                 if (menuIndex == 4) {
                     if (subMenuIndex == -1) {
-                        main.showForm(new Complaints());
+                        main.showForm(new SupplierMyProfile(user));
                     }
                 }
 
